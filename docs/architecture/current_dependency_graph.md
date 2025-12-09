@@ -14,6 +14,7 @@ graph TD
         App --> useEventSpawner[useEventSpawner.js]
         App --> useGameState[useGameState.js]
         App --> useAchievementSystem[useAchievementSystem.js]
+        App --> useVersionSplash[useVersionSplash.js]
     end
 
     subgraph UI_Components
@@ -25,6 +26,7 @@ graph TD
         App --> FlavorText[FlavorText.jsx]
         App --> GoldenFloater[GoldenFloater.jsx]
         App --> AchievementPopup[AchievementPopup.jsx]
+        App --> VersionSplash[VersionSplash.jsx]
     end
 
     subgraph Data

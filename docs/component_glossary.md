@@ -1,6 +1,6 @@
 # Component Glossary
 
-> Auto-generated on 2025-12-09T05:28:55.211Z
+> Auto-generated on 2025-12-09T06:11:55.258Z
 
 ## Components
 
@@ -13,6 +13,8 @@
 - **GoldenFloater** - `src/features/events/ui/GoldenFloater.jsx`
 - **FlavorText** - `src/features/flavor/ui/FlavorText.jsx`
 - **StorePanel** - `src/features/shop/ui/StorePanel.jsx`
+- **VersionSplash** - `src/features/splash/ui/VersionSplash.jsx`
+- **VersionSplash.test** - `src/features/splash/ui/VersionSplash.test.jsx`
 - **StatsPanel** - `src/features/stats/ui/StatsPanel.jsx`
 - **UpgradeGrid** - `src/features/upgrades/ui/UpgradeGrid.jsx`
 - **UpgradeGrid.test** - `src/features/upgrades/ui/UpgradeGrid.test.jsx`
