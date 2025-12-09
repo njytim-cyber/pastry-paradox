@@ -323,6 +323,21 @@
       "id": "upgrade_reality_dough",
       "path": "assets/icons/upgrade_reality_dough.png",
       "status": "skipped"
+    },
+    {
+      "id": "bgm_layer_01",
+      "path": "assets/audio/bgm_layer_01.mp3",
+      "status": "placeholder"
+    },
+    {
+      "id": "bgm_layer_02",
+      "path": "assets/audio/bgm_layer_02.mp3",
+      "status": "placeholder"
+    },
+    {
+      "id": "bgm_layer_03",
+      "path": "assets/audio/bgm_layer_03.mp3",
+      "status": "placeholder"
     }
   ],
   "achievements": [
@@ -785,6 +800,23 @@
     {
       "id": "ach_click_3",
       "prompt": "Diamond cursor medal, 3d render, game icon style"
+    }
+  ],
+  "audio": [
+    {
+      "id": "bgm_layer_01",
+      "prompt": "Solo piano melody, melancholic but hopeful, vintage patisserie vibe, loopable",
+      "path": "assets/audio/bgm_layer_01.mp3"
+    },
+    {
+      "id": "bgm_layer_02",
+      "prompt": "String quartet joining the piano, uplifting and busy, chamber music style, loopable",
+      "path": "assets/audio/bgm_layer_02.mp3"
+    },
+    {
+      "id": "bgm_layer_03",
+      "prompt": "Operatic vocals and orchestral swell, cosmic and epic, space opera style, loopable",
+      "path": "assets/audio/bgm_layer_03.mp3"
     }
   ]
 }

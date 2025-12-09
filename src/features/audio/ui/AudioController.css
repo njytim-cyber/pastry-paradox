@@ -1,0 +1,49 @@
+/* AudioController.css */
+.audio-controller {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 9999;
+    /* Above everything */
+}
+
+/* Adjust for mobile tab bar */
+@media (max-width: 768px) {
+    .audio-controller {
+        bottom: 90px;
+        /* Above tab bar (approx 80px height) */
+        left: 16px;
+    }
+}
+
+.mute-btn {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--color-ink);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mute-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+}
+
+.mute-btn:active {
+    transform: scale(0.95);
+}
+
+.mute-btn.muted {
+    background: rgba(0, 0, 0, 0.4);
+    color: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.2);
+}

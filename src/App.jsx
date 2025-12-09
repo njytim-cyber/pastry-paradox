@@ -28,6 +28,7 @@ import { useAchievementSystem } from '@features/achievements/logic/useAchievemen
 import { AchievementPopup } from '@features/achievements/ui/AchievementPopup';
 import { useVersionSplash } from '@features/splash/logic/useVersionSplash';
 import { VersionSplash } from '@features/splash/ui/VersionSplash';
+import { AudioController } from '@features/audio/ui/AudioController';
 import packageJson from '../package.json';
 
 const { globalConfig } = balanceData;
@@ -228,6 +229,8 @@ function App() {
                 timeRemaining={eventSystem.timeRemaining}
                 isActive={cakeLogic.globalMultiplier > 1}
             />
+            {/* Audio Engine Disabled for v1.4.0 (Pending Assets) */}
+            {/* <AudioController cakesPerSecond={effectiveCps} /> */}
             <AchievementPopup
                 queue={achievementSystem.newUnlockQueue}
                 onDismiss={achievementSystem.popNotification}
