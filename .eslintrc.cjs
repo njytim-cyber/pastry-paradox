@@ -7,7 +7,7 @@ module.exports = {
         'plugin:react/jsx-runtime',
         'plugin:react-hooks/recommended',
     ],
-    ignorePatterns: ['dist', '.eslintrc.cjs', 'node_modules'],
+    ignorePatterns: ['dist', '.eslintrc.cjs', 'node_modules', 'android', 'ios'],
     parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
     settings: { react: { version: '18.2' } },
     plugins: ['react-hooks'],
@@ -21,6 +21,7 @@ module.exports = {
         beforeAll: 'readonly',
         afterAll: 'readonly',
         test: 'readonly',
+        global: 'readonly',
     },
     rules: {
         'react/prop-types': 'off',

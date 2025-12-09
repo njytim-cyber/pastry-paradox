@@ -680,6 +680,81 @@
       "status": "placeholder"
     },
     {
+      "id": "tier1_apprentice_baker",
+      "path": "assets/icons/tier1_apprentice_baker.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier2_grandmas_secret_recipe",
+      "path": "assets/icons/tier2_grandmas_secret_recipe.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier3_convection_oven",
+      "path": "assets/icons/tier3_convection_oven.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier4_professional_mixer",
+      "path": "assets/icons/tier4_professional_mixer.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier5_local_bakery_franchise",
+      "path": "assets/icons/tier5_local_bakery_franchise.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier6_cake_factory",
+      "path": "assets/icons/tier6_cake_factory.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier7_industrial_frosting_hose",
+      "path": "assets/icons/tier7_industrial_frosting_hose.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier8_3d_cake_printer",
+      "path": "assets/icons/tier8_3d_cake_printer.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier9_robotic_pastry_chef",
+      "path": "assets/icons/tier9_robotic_pastry_chef.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier10_cloning_vat",
+      "path": "assets/icons/tier10_cloning_vat.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier11_orbital_bakery_station",
+      "path": "assets/icons/tier11_orbital_bakery_station.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier12_nanobot_yeast",
+      "path": "assets/icons/tier12_nanobot_yeast.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier13_time_warp_oven",
+      "path": "assets/icons/tier13_time_warp_oven.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier14_matter_replicator",
+      "path": "assets/icons/tier14_matter_replicator.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier15_multiverse_portal",
+      "path": "assets/icons/tier15_multiverse_portal.png",
+      "status": "skipped"
+    },
+    {
       "id": "upgrade_the_vibe_check",
       "path": "assets/icons/upgrade_the_vibe_check.png",
       "status": "skipped"
@@ -867,7 +942,7 @@
     {
       "id": "nano_swarm",
       "path": "assets/icons/nano_swarm.png",
-      "status": "generated"
+      "status": "skipped"
     },
     {
       "id": "temporal_baking",
@@ -897,7 +972,7 @@
     {
       "id": "apprentice_baker_upgrade_4",
       "path": "assets/icons/apprentice_baker_upgrade_4.png",
-      "status": "generated"
+      "status": "skipped"
     },
     {
       "id": "apprentice_baker_upgrade_5",
@@ -917,7 +992,7 @@
     {
       "id": "grandmas_secret_recipe_upgrade_2",
       "path": "assets/icons/grandmas_secret_recipe_upgrade_2.png",
-      "status": "generated"
+      "status": "skipped"
     },
     {
       "id": "grandmas_secret_recipe_upgrade_3",
@@ -936,8 +1011,8 @@
     },
     {
       "id": "grandmas_secret_recipe_upgrade_6",
-      "status": "error",
-      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+      "path": "assets/icons/grandmas_secret_recipe_upgrade_6.png",
+      "status": "generated"
     },
     {
       "id": "convection_oven_upgrade_1",
@@ -957,7 +1032,7 @@
     {
       "id": "convection_oven_upgrade_4",
       "path": "assets/icons/convection_oven_upgrade_4.png",
-      "status": "generated"
+      "status": "skipped"
     },
     {
       "id": "convection_oven_upgrade_5",
@@ -977,7 +1052,7 @@
     {
       "id": "professional_mixer_upgrade_2",
       "path": "assets/icons/professional_mixer_upgrade_2.png",
-      "status": "generated"
+      "status": "skipped"
     },
     {
       "id": "professional_mixer_upgrade_3",
@@ -996,8 +1071,8 @@
     },
     {
       "id": "professional_mixer_upgrade_6",
-      "status": "error",
-      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+      "path": "assets/icons/professional_mixer_upgrade_6.png",
+      "status": "generated"
     },
     {
       "id": "local_bakery_franchise_upgrade_1",
@@ -1017,7 +1092,7 @@
     {
       "id": "local_bakery_franchise_upgrade_4",
       "path": "assets/icons/local_bakery_franchise_upgrade_4.png",
-      "status": "generated"
+      "status": "skipped"
     },
     {
       "id": "local_bakery_franchise_upgrade_5",
@@ -1036,8 +1111,8 @@
     },
     {
       "id": "cake_factory_upgrade_2",
-      "status": "error",
-      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+      "path": "assets/icons/cake_factory_upgrade_2.png",
+      "status": "generated"
     },
     {
       "id": "cake_factory_upgrade_3",
@@ -1047,7 +1122,7 @@
     {
       "id": "cake_factory_upgrade_4",
       "path": "assets/icons/cake_factory_upgrade_4.png",
-      "status": "generated"
+      "status": "skipped"
     },
     {
       "id": "cake_factory_upgrade_5",
@@ -1056,8 +1131,8 @@
     },
     {
       "id": "cake_factory_upgrade_6",
-      "status": "error",
-      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+      "path": "assets/icons/cake_factory_upgrade_6.png",
+      "status": "generated"
     },
     {
       "id": "industrial_frosting_hose_upgrade_1",
@@ -1067,7 +1142,7 @@
     {
       "id": "industrial_frosting_hose_upgrade_2",
       "path": "assets/icons/industrial_frosting_hose_upgrade_2.png",
-      "status": "generated"
+      "status": "skipped"
     },
     {
       "id": "industrial_frosting_hose_upgrade_3",
@@ -1076,8 +1151,8 @@
     },
     {
       "id": "industrial_frosting_hose_upgrade_4",
-      "status": "error",
-      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+      "path": "assets/icons/industrial_frosting_hose_upgrade_4.png",
+      "status": "generated"
     },
     {
       "id": "industrial_frosting_hose_upgrade_5",
@@ -1087,7 +1162,7 @@
     {
       "id": "industrial_frosting_hose_upgrade_6",
       "path": "assets/icons/industrial_frosting_hose_upgrade_6.png",
-      "status": "generated"
+      "status": "skipped"
     },
     {
       "id": "3d_cake_printer_upgrade_1",
@@ -1096,8 +1171,8 @@
     },
     {
       "id": "3d_cake_printer_upgrade_2",
-      "status": "error",
-      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+      "path": "assets/icons/3d_cake_printer_upgrade_2.png",
+      "status": "generated"
     },
     {
       "id": "3d_cake_printer_upgrade_3",
@@ -1107,7 +1182,7 @@
     {
       "id": "3d_cake_printer_upgrade_4",
       "path": "assets/icons/3d_cake_printer_upgrade_4.png",
-      "status": "generated"
+      "status": "skipped"
     },
     {
       "id": "3d_cake_printer_upgrade_5",
@@ -1116,8 +1191,8 @@
     },
     {
       "id": "3d_cake_printer_upgrade_6",
-      "status": "error",
-      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+      "path": "assets/icons/3d_cake_printer_upgrade_6.png",
+      "status": "generated"
     },
     {
       "id": "robotic_pastry_chef_upgrade_1",
@@ -1127,7 +1202,7 @@
     {
       "id": "robotic_pastry_chef_upgrade_2",
       "path": "assets/icons/robotic_pastry_chef_upgrade_2.png",
-      "status": "generated"
+      "status": "skipped"
     },
     {
       "id": "robotic_pastry_chef_upgrade_3",
@@ -1136,8 +1211,8 @@
     },
     {
       "id": "robotic_pastry_chef_upgrade_4",
-      "status": "error",
-      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+      "path": "assets/icons/robotic_pastry_chef_upgrade_4.png",
+      "status": "generated"
     },
     {
       "id": "robotic_pastry_chef_upgrade_5",
@@ -1147,7 +1222,7 @@
     {
       "id": "robotic_pastry_chef_upgrade_6",
       "path": "assets/icons/robotic_pastry_chef_upgrade_6.png",
-      "status": "generated"
+      "status": "skipped"
     },
     {
       "id": "cloning_vat_upgrade_1",
@@ -1156,8 +1231,8 @@
     },
     {
       "id": "cloning_vat_upgrade_2",
-      "status": "error",
-      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+      "path": "assets/icons/cloning_vat_upgrade_2.png",
+      "status": "generated"
     },
     {
       "id": "cloning_vat_upgrade_3",
@@ -1167,7 +1242,7 @@
     {
       "id": "cloning_vat_upgrade_4",
       "path": "assets/icons/cloning_vat_upgrade_4.png",
-      "status": "generated"
+      "status": "skipped"
     },
     {
       "id": "cloning_vat_upgrade_5",
@@ -1176,8 +1251,8 @@
     },
     {
       "id": "cloning_vat_upgrade_6",
-      "status": "error",
-      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+      "path": "assets/icons/cloning_vat_upgrade_6.png",
+      "status": "generated"
     },
     {
       "id": "orbital_bakery_station_upgrade_1",
@@ -1187,7 +1262,7 @@
     {
       "id": "orbital_bakery_station_upgrade_2",
       "path": "assets/icons/orbital_bakery_station_upgrade_2.png",
-      "status": "generated"
+      "status": "skipped"
     },
     {
       "id": "orbital_bakery_station_upgrade_3",
@@ -1196,8 +1271,8 @@
     },
     {
       "id": "orbital_bakery_station_upgrade_4",
-      "status": "error",
-      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+      "path": "assets/icons/orbital_bakery_station_upgrade_4.png",
+      "status": "generated"
     },
     {
       "id": "orbital_bakery_station_upgrade_5",
@@ -1207,7 +1282,7 @@
     {
       "id": "orbital_bakery_station_upgrade_6",
       "path": "assets/icons/orbital_bakery_station_upgrade_6.png",
-      "status": "generated"
+      "status": "skipped"
     },
     {
       "id": "nanobot_yeast_upgrade_1",
@@ -1216,8 +1291,8 @@
     },
     {
       "id": "nanobot_yeast_upgrade_2",
-      "status": "error",
-      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+      "path": "assets/icons/nanobot_yeast_upgrade_2.png",
+      "status": "generated"
     },
     {
       "id": "nanobot_yeast_upgrade_3",
@@ -1227,7 +1302,7 @@
     {
       "id": "nanobot_yeast_upgrade_4",
       "path": "assets/icons/nanobot_yeast_upgrade_4.png",
-      "status": "generated"
+      "status": "skipped"
     },
     {
       "id": "nanobot_yeast_upgrade_5",
@@ -1236,8 +1311,8 @@
     },
     {
       "id": "nanobot_yeast_upgrade_6",
-      "status": "error",
-      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+      "path": "assets/icons/nanobot_yeast_upgrade_6.png",
+      "status": "generated"
     },
     {
       "id": "time_warp_oven_upgrade_1",
@@ -1247,7 +1322,7 @@
     {
       "id": "time_warp_oven_upgrade_2",
       "path": "assets/icons/time_warp_oven_upgrade_2.png",
-      "status": "generated"
+      "status": "skipped"
     },
     {
       "id": "time_warp_oven_upgrade_3",
@@ -1282,7 +1357,7 @@
     {
       "id": "matter_replicator_upgrade_3",
       "path": "assets/icons/matter_replicator_upgrade_3.png",
-      "status": "generated"
+      "status": "skipped"
     },
     {
       "id": "matter_replicator_upgrade_4",
@@ -1317,7 +1392,7 @@
     {
       "id": "multiverse_portal_upgrade_4",
       "path": "assets/icons/multiverse_portal_upgrade_4.png",
-      "status": "generated"
+      "status": "skipped"
     },
     {
       "id": "multiverse_portal_upgrade_5",
@@ -1336,8 +1411,8 @@
     },
     {
       "id": "click_upgrade_new_2",
-      "status": "error",
-      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+      "path": "assets/icons/click_upgrade_new_2.png",
+      "status": "generated"
     },
     {
       "id": "click_upgrade_new_3",
@@ -1347,7 +1422,7 @@
     {
       "id": "click_upgrade_new_4",
       "path": "assets/icons/click_upgrade_new_4.png",
-      "status": "generated"
+      "status": "skipped"
     },
     {
       "id": "click_upgrade_new_5",
@@ -1356,8 +1431,8 @@
     },
     {
       "id": "click_upgrade_new_6",
-      "status": "error",
-      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+      "path": "assets/icons/click_upgrade_new_6.png",
+      "status": "generated"
     },
     {
       "id": "click_upgrade_new_7",
@@ -1372,86 +1447,11 @@
     {
       "id": "click_upgrade_new_9",
       "path": "assets/icons/click_upgrade_new_9.png",
-      "status": "generated"
+      "status": "skipped"
     },
     {
       "id": "click_upgrade_new_10",
       "path": "assets/icons/click_upgrade_new_10.png",
-      "status": "skipped"
-    },
-    {
-      "id": "tier1_apprentice_baker",
-      "path": "assets/icons/tier1_apprentice_baker.png",
-      "status": "skipped"
-    },
-    {
-      "id": "tier2_grandmas_secret_recipe",
-      "path": "assets/icons/tier2_grandmas_secret_recipe.png",
-      "status": "skipped"
-    },
-    {
-      "id": "tier3_convection_oven",
-      "path": "assets/icons/tier3_convection_oven.png",
-      "status": "skipped"
-    },
-    {
-      "id": "tier4_professional_mixer",
-      "path": "assets/icons/tier4_professional_mixer.png",
-      "status": "skipped"
-    },
-    {
-      "id": "tier5_local_bakery_franchise",
-      "path": "assets/icons/tier5_local_bakery_franchise.png",
-      "status": "skipped"
-    },
-    {
-      "id": "tier6_cake_factory",
-      "path": "assets/icons/tier6_cake_factory.png",
-      "status": "skipped"
-    },
-    {
-      "id": "tier7_industrial_frosting_hose",
-      "path": "assets/icons/tier7_industrial_frosting_hose.png",
-      "status": "skipped"
-    },
-    {
-      "id": "tier8_3d_cake_printer",
-      "path": "assets/icons/tier8_3d_cake_printer.png",
-      "status": "skipped"
-    },
-    {
-      "id": "tier9_robotic_pastry_chef",
-      "path": "assets/icons/tier9_robotic_pastry_chef.png",
-      "status": "skipped"
-    },
-    {
-      "id": "tier10_cloning_vat",
-      "path": "assets/icons/tier10_cloning_vat.png",
-      "status": "skipped"
-    },
-    {
-      "id": "tier11_orbital_bakery_station",
-      "path": "assets/icons/tier11_orbital_bakery_station.png",
-      "status": "skipped"
-    },
-    {
-      "id": "tier12_nanobot_yeast",
-      "path": "assets/icons/tier12_nanobot_yeast.png",
-      "status": "skipped"
-    },
-    {
-      "id": "tier13_time_warp_oven",
-      "path": "assets/icons/tier13_time_warp_oven.png",
-      "status": "skipped"
-    },
-    {
-      "id": "tier14_matter_replicator",
-      "path": "assets/icons/tier14_matter_replicator.png",
-      "status": "skipped"
-    },
-    {
-      "id": "tier15_multiverse_portal",
-      "path": "assets/icons/tier15_multiverse_portal.png",
       "status": "skipped"
     }
   ],
