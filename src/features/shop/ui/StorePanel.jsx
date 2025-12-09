@@ -14,7 +14,7 @@ import { Tooltip } from '../../shared/ui/Tooltip';
 
 // Placeholder icons for generators - inline SVGs
 // Import all icons from assets folder
-const iconAssets = import.meta.glob('@assets/icons/*.{png,svg}', { eager: true, import: 'default' });
+const iconAssets = import.meta.glob('@assets/icons-optimized/*.{webp,png,svg}', { eager: true, import: 'default' });
 
 /**
  * Get the icon URL for a given tier ID

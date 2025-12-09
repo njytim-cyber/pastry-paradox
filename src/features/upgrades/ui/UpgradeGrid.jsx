@@ -9,7 +9,7 @@ import balanceData from '@data/balance.json';
 
 // Import all icons from assets folder
 // Import all icons from assets folder
-const iconAssets = import.meta.glob('@assets/icons/*.{png,svg}', { eager: true, import: 'default' });
+const iconAssets = import.meta.glob('@assets/icons-optimized/*.{webp,png,svg}', { eager: true, import: 'default' });
 
 /**
  * Get the icon URL for a given upgrade ID
@@ -97,15 +97,15 @@ export function UpgradeGrid({
     canPurchase,
     onPurchase,
 }) {
-    if (upgrades.length === 0) {
-        return null;
-    }
-
-    // View Mode: 'available' | 'owned'
+    // View Mode: 'available' | 'owned' - must be before any early returns (rules-of-hooks)
     const [viewMode, setViewMode] = useState('available');
 
     // Progressive unlocking: show upgrade when you have at least 50% of its cost
     const visibilityThreshold = balanceData.globalConfig?.upgradeVisibilityThreshold || 0.5;
+
+    if (upgrades.length === 0) {
+        return null;
+    }
 
     const visibleUpgrades = upgrades.filter(u => {
         if (viewMode === 'owned') {

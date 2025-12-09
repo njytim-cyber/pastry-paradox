@@ -9,7 +9,7 @@ import './AchievementPopup.css';
 // import { getAssetPath } from '@assets/asset_helper';
 
 // Import icons
-const iconAssets = import.meta.glob('@assets/icons/*.{png,svg}', { eager: true, import: 'default' });
+const iconAssets = import.meta.glob('@assets/icons-optimized/*.{webp,png,svg}', { eager: true, import: 'default' });
 const getIconResult = (id) => {
     const match = Object.keys(iconAssets).find(path => path.includes(id + '.') || path.includes(id));
     return match ? iconAssets[match] : null;
