@@ -30,7 +30,7 @@ const tierIdMap = [
     'tier15_multiverse_portal',
 ];
 
-// Generator icon using external SVG files
+// Generator icon using external PNG files from Vertex AI
 const GeneratorIcon = ({ tier, isMystery }) => {
     if (isMystery) {
         return (

@@ -151,178 +151,178 @@
   "generated": [
     {
       "id": "tier1_apprentice_baker",
-      "path": "assets/icons/tier1_apprentice_baker.svg",
-      "status": "placeholder"
+      "path": "assets/icons/tier1_apprentice_baker.png",
+      "status": "generated"
     },
     {
       "id": "tier2_grandma_recipe",
-      "path": "assets/icons/tier2_grandma_recipe.svg",
-      "status": "placeholder"
+      "path": "assets/icons/tier2_grandma_recipe.png",
+      "status": "generated"
     },
     {
       "id": "tier3_convection_oven",
-      "path": "assets/icons/tier3_convection_oven.svg",
-      "status": "placeholder"
+      "path": "assets/icons/tier3_convection_oven.png",
+      "status": "generated"
     },
     {
       "id": "tier4_professional_mixer",
-      "path": "assets/icons/tier4_professional_mixer.svg",
-      "status": "placeholder"
+      "path": "assets/icons/tier4_professional_mixer.png",
+      "status": "generated"
     },
     {
       "id": "tier5_bakery_franchise",
-      "path": "assets/icons/tier5_bakery_franchise.svg",
-      "status": "placeholder"
+      "path": "assets/icons/tier5_bakery_franchise.png",
+      "status": "generated"
     },
     {
       "id": "tier6_cake_factory",
-      "path": "assets/icons/tier6_cake_factory.svg",
-      "status": "placeholder"
+      "path": "assets/icons/tier6_cake_factory.png",
+      "status": "generated"
     },
     {
       "id": "tier7_frosting_hose",
-      "path": "assets/icons/tier7_frosting_hose.svg",
-      "status": "placeholder"
+      "path": "assets/icons/tier7_frosting_hose.png",
+      "status": "generated"
     },
     {
       "id": "tier8_3d_printer",
-      "path": "assets/icons/tier8_3d_printer.svg",
-      "status": "placeholder"
+      "path": "assets/icons/tier8_3d_printer.png",
+      "status": "generated"
     },
     {
       "id": "tier9_robotic_chef",
-      "path": "assets/icons/tier9_robotic_chef.svg",
-      "status": "placeholder"
+      "path": "assets/icons/tier9_robotic_chef.png",
+      "status": "generated"
     },
     {
       "id": "tier10_cloning_vat",
-      "path": "assets/icons/tier10_cloning_vat.svg",
-      "status": "placeholder"
+      "path": "assets/icons/tier10_cloning_vat.png",
+      "status": "generated"
     },
     {
       "id": "tier11_orbital_bakery",
-      "path": "assets/icons/tier11_orbital_bakery.svg",
-      "status": "placeholder"
+      "path": "assets/icons/tier11_orbital_bakery.png",
+      "status": "generated"
     },
     {
       "id": "tier12_nanobot_yeast",
-      "path": "assets/icons/tier12_nanobot_yeast.svg",
-      "status": "placeholder"
+      "path": "assets/icons/tier12_nanobot_yeast.png",
+      "status": "generated"
     },
     {
       "id": "tier13_time_warp_oven",
-      "path": "assets/icons/tier13_time_warp_oven.svg",
-      "status": "placeholder"
+      "path": "assets/icons/tier13_time_warp_oven.png",
+      "status": "generated"
     },
     {
       "id": "tier14_matter_replicator",
-      "path": "assets/icons/tier14_matter_replicator.svg",
-      "status": "placeholder"
+      "path": "assets/icons/tier14_matter_replicator.png",
+      "status": "generated"
     },
     {
       "id": "tier15_multiverse_portal",
-      "path": "assets/icons/tier15_multiverse_portal.svg",
-      "status": "placeholder"
+      "path": "assets/icons/tier15_multiverse_portal.png",
+      "status": "generated"
     },
     {
       "id": "upgrade_vibe_check",
-      "path": "assets/icons/upgrade_vibe_check.svg",
-      "status": "placeholder"
+      "path": "assets/icons/upgrade_vibe_check.png",
+      "status": "generated"
     },
     {
       "id": "upgrade_butter_blessing",
-      "path": "assets/icons/upgrade_butter_blessing.svg",
-      "status": "placeholder"
+      "path": "assets/icons/upgrade_butter_blessing.png",
+      "status": "generated"
     },
     {
       "id": "upgrade_flour_power",
-      "path": "assets/icons/upgrade_flour_power.svg",
-      "status": "placeholder"
+      "path": "assets/icons/upgrade_flour_power.png",
+      "status": "generated"
     },
     {
       "id": "upgrade_sugar_rush",
-      "path": "assets/icons/upgrade_sugar_rush.svg",
-      "status": "placeholder"
+      "path": "assets/icons/upgrade_sugar_rush.png",
+      "status": "generated"
     },
     {
       "id": "upgrade_grandmas_approval",
-      "path": "assets/icons/upgrade_grandmas_approval.svg",
-      "status": "placeholder"
+      "path": "assets/icons/upgrade_grandmas_approval.png",
+      "status": "generated"
     },
     {
       "id": "upgrade_preheated",
-      "path": "assets/icons/upgrade_preheated.svg",
-      "status": "placeholder"
+      "path": "assets/icons/upgrade_preheated.png",
+      "status": "generated"
     },
     {
       "id": "upgrade_turbo_whisk",
-      "path": "assets/icons/upgrade_turbo_whisk.svg",
-      "status": "placeholder"
+      "path": "assets/icons/upgrade_turbo_whisk.png",
+      "status": "generated"
     },
     {
       "id": "upgrade_viral_resonance",
-      "path": "assets/icons/upgrade_viral_resonance.svg",
-      "status": "placeholder"
+      "path": "assets/icons/upgrade_viral_resonance.png",
+      "status": "generated"
     },
     {
       "id": "upgrade_click_mastery",
-      "path": "assets/icons/upgrade_click_mastery.svg",
-      "status": "placeholder"
+      "path": "assets/icons/upgrade_click_mastery.png",
+      "status": "generated"
     },
     {
       "id": "upgrade_double_tap",
-      "path": "assets/icons/upgrade_double_tap.svg",
-      "status": "placeholder"
+      "path": "assets/icons/upgrade_double_tap.png",
+      "status": "generated"
     },
     {
       "id": "upgrade_franchise_fever",
-      "path": "assets/icons/upgrade_franchise_fever.svg",
-      "status": "placeholder"
+      "path": "assets/icons/upgrade_franchise_fever.png",
+      "status": "generated"
     },
     {
       "id": "upgrade_factory_overdrive",
-      "path": "assets/icons/upgrade_factory_overdrive.svg",
-      "status": "placeholder"
+      "path": "assets/icons/upgrade_factory_overdrive.png",
+      "status": "generated"
     },
     {
       "id": "upgrade_frosting_flood",
-      "path": "assets/icons/upgrade_frosting_flood.svg",
-      "status": "placeholder"
+      "path": "assets/icons/upgrade_frosting_flood.png",
+      "status": "generated"
     },
     {
       "id": "upgrade_printer_perfection",
-      "path": "assets/icons/upgrade_printer_perfection.svg",
-      "status": "placeholder"
+      "path": "assets/icons/upgrade_printer_perfection.png",
+      "status": "generated"
     },
     {
       "id": "upgrade_robot_uprising",
-      "path": "assets/icons/upgrade_robot_uprising.svg",
-      "status": "placeholder"
+      "path": "assets/icons/upgrade_robot_uprising.png",
+      "status": "generated"
     },
     {
       "id": "upgrade_clone_perfection",
-      "path": "assets/icons/upgrade_clone_perfection.svg",
-      "status": "placeholder"
+      "path": "assets/icons/upgrade_clone_perfection.png",
+      "status": "generated"
     },
     {
       "id": "upgrade_zero_g_frosting",
-      "path": "assets/icons/upgrade_zero_g_frosting.svg",
-      "status": "placeholder"
+      "path": "assets/icons/upgrade_zero_g_frosting.png",
+      "status": "generated"
     },
     {
       "id": "upgrade_nano_swarm",
-      "path": "assets/icons/upgrade_nano_swarm.svg",
-      "status": "placeholder"
+      "path": "assets/icons/upgrade_nano_swarm.png",
+      "status": "generated"
     },
     {
       "id": "upgrade_temporal_baking",
-      "path": "assets/icons/upgrade_temporal_baking.svg",
-      "status": "placeholder"
+      "path": "assets/icons/upgrade_temporal_baking.png",
+      "status": "generated"
     },
     {
       "id": "upgrade_reality_dough",
-      "path": "assets/icons/upgrade_reality_dough.svg",
-      "status": "placeholder"
+      "path": "assets/icons/upgrade_reality_dough.png",
+      "status": "generated"
     }
   ]
 }
