@@ -1,9 +1,13 @@
 /**
- * App.jsx - Main Game Composition (3-Pane Layout)
- * Assembles all feature containers and views
+ * App.jsx - Main Game Composition (3-Pane Layout + Mobile Responsive)
+ * Assembles all feature containers and views with mobile tab navigation
  */
 import React, { useCallback } from 'react';
 import balanceData from '@data/balance.json';
+
+// Responsive Utilities
+import { useIsMobile } from '@hooks/useMediaQuery';
+import { useMobileNav } from '@hooks/useMobileNav';
 
 // Feature Containers
 import { useCakeLogic } from '@features/cake/logic/useCakeLogic';
@@ -19,6 +23,7 @@ import { GoldenFloater, MultiplierIndicator } from '@features/events/ui/GoldenFl
 import { StatsPanel } from '@features/stats/ui/StatsPanel';
 import { BakeryHeader } from '@features/bakery/ui/BakeryHeader';
 import { FlavorText } from '@features/flavor/ui/FlavorText';
+import { MobileTabBar } from '@features/navigation/ui/MobileTabBar';
 import { useAchievementSystem } from '@features/achievements/logic/useAchievementSystem';
 import { AchievementPopup } from '@features/achievements/ui/AchievementPopup';
 import { useVersionSplash } from '@features/splash/logic/useVersionSplash';
@@ -28,6 +33,14 @@ import packageJson from '../package.json';
 const { globalConfig } = balanceData;
 
 function App() {
+    // Responsive & Mobile Navigation
+    const isMobile = useIsMobile();
+    const mobileNav = useMobileNav({
+        initialTab: 'bakery',
+        enableSwipe: true,
+        persist: true
+    });
+
     // Initialize game state (prestige, stats, shop mode)
     const gameState = useGameState();
 
@@ -100,6 +113,70 @@ function App() {
     // Apply legacy multiplier to CpS
     const effectiveCps = cakeLogic.cps * gameState.legacyMultiplier;
 
+    // Render bakery pane (shared between mobile/desktop)
+    const renderBakeryPane = () => (
+        <div className="pane-left">
+            <BakeryHeader
+                bakeryName={gameState.bakeryName}
+                onNameChange={gameState.setBakeryName}
+                balance={cakeLogic.balance}
+                cps={effectiveCps}
+                currencyName={globalConfig.currencyName}
+            />
+            <MainCake
+                onCakeClick={handleCakeClick}
+                particles={cakeLogic.particles}
+                balance={cakeLogic.balance}
+                cps={effectiveCps}
+                currencyName={globalConfig.currencyName}
+            />
+        </div>
+    );
+
+    // Render stats pane (shared between mobile/desktop)
+    const renderStatsPane = () => (
+        <div className="pane-center">
+            <UpgradeGrid
+                upgrades={upgradeSystem.upgradeList}
+                balance={cakeLogic.balance}
+                canPurchase={upgradeSystem.canPurchaseUpgrade}
+                onPurchase={(upgradeId) => {
+                    upgradeSystem.purchaseUpgrade(upgradeId, cakeLogic.balance, () => { });
+                }}
+            />
+            <StatsPanel
+                stats={gameState.stats}
+                cps={effectiveCps}
+                legacyPoints={gameState.legacyPoints}
+                legacyMultiplier={gameState.legacyMultiplier}
+                potentialLegacyPoints={gameState.potentialLegacyPoints}
+                canPrestige={gameState.canPrestige}
+                onPrestige={handlePrestige}
+                achievements={achievementSystem.allAchievements}
+                unlockedIds={achievementSystem.unlockedIds}
+                upgrades={upgradeSystem.upgradeList}
+            />
+        </div>
+    );
+
+    // Render store pane (shared between mobile/desktop)
+    const renderStorePane = () => (
+        <div className="pane-right">
+            <StorePanel
+                generators={cakeLogic.productionTiers}
+                getGeneratorInfo={cakeLogic.getGeneratorInfo}
+                canAfford={cakeLogic.canAfford}
+                onPurchase={handlePurchase}
+                onSell={handleSell}
+                shopMode={gameState.shopMode}
+                setShopMode={gameState.setShopMode}
+                buyQuantity={gameState.buyQuantity}
+                setBuyQuantity={gameState.setBuyQuantity}
+                getSellPrice={gameState.getSellPrice}
+            />
+        </div>
+    );
+
     return (
         <div className="app-container">
             {/* Top Flavor Text Banner */}
@@ -112,99 +189,60 @@ function App() {
                 />
             </div>
 
-            {/* Left Pane: Cake Click Zone */}
-            <div className="pane-left">
-                <BakeryHeader
-                    bakeryName={gameState.bakeryName}
-                    onNameChange={gameState.setBakeryName}
-                    balance={cakeLogic.balance}
-                    cps={effectiveCps}
-                    currencyName={globalConfig.currencyName}
-                />
+            {/* Mobile Tabbed Layout */}
+            {isMobile ? (
+                <>
+                    <div className="mobile-content" {...mobileNav.swipeHandlers}>
+                        <div className={mobileNav.activeTab === 'bakery' ? 'active' : ''}>
+                            {renderBakeryPane()}
+                        </div>
+                        <div className={mobileNav.activeTab === 'stats' ? 'active' : ''}>
+                            {renderStatsPane()}
+                        </div>
+                        <div className={mobileNav.activeTab === 'store' ? 'active' : ''}>
+                            {renderStorePane()}
+                        </div>
+                    </div>
+                    <MobileTabBar
+                        activeTab={mobileNav.activeTab}
+                        onTabChange={mobileNav.setActiveTab}
+                    />
+                </>
+            ) : (
+                /* Desktop 3-Pane Layout */
+                <>
+                    {renderBakeryPane()}
+                    {renderStatsPane()}
+                    {renderStorePane()}
+                </>
+            )}
 
-                <MainCake
-                    onCakeClick={handleCakeClick}
-                    particles={cakeLogic.particles}
-                    balance={cakeLogic.balance}
-                    cps={effectiveCps}
-                    currencyName={globalConfig.currencyName}
-                />
-            </div>
-
-            {/* Center Pane: Stats & Upgrades */}
-            <div className="pane-center">
-                <UpgradeGrid
-                    upgrades={upgradeSystem.upgradeList}
-                    balance={cakeLogic.balance}
-                    canPurchase={upgradeSystem.canPurchaseUpgrade}
-                    onPurchase={(upgradeId) => {
-                        // Simple upgrade purchase
-                        upgradeSystem.purchaseUpgrade(upgradeId, cakeLogic.balance, () => { });
-                    }}
-                />
-
-                <StatsPanel
-                    stats={gameState.stats}
-                    cps={effectiveCps}
-                    legacyPoints={gameState.legacyPoints}
-                    legacyMultiplier={gameState.legacyMultiplier}
-                    potentialLegacyPoints={gameState.potentialLegacyPoints}
-                    canPrestige={gameState.canPrestige}
-                    onPrestige={handlePrestige}
-                    achievements={achievementSystem.allAchievements}
-                    unlockedIds={achievementSystem.unlockedIds}
-                    upgrades={upgradeSystem.upgradeList}
-                />
-            </div>
-
-            {/* Right Pane: Store */}
-            <div className="pane-right">
-                <StorePanel
-                    generators={cakeLogic.productionTiers}
-                    getGeneratorInfo={cakeLogic.getGeneratorInfo}
-                    canAfford={cakeLogic.canAfford}
-                    onPurchase={handlePurchase}
-                    onSell={handleSell}
-                    shopMode={gameState.shopMode}
-                    setShopMode={gameState.setShopMode}
-                    buyQuantity={gameState.buyQuantity}
-                    setBuyQuantity={gameState.setBuyQuantity}
-                    getSellPrice={gameState.getSellPrice}
-                />
-            </div>
-
-            {/* Golden Croissant Event */}
+            {/* Global Overlays (Both Mobile & Desktop) */}
             <GoldenFloater
                 isActive={eventSystem.isEventActive}
                 position={eventSystem.eventPosition}
                 onClick={eventSystem.clickEvent}
             />
-
-            {/* Multiplier Indicator */}
             <MultiplierIndicator
                 multiplier={eventSystem.multiplier}
                 timeRemaining={eventSystem.timeRemaining}
                 isActive={cakeLogic.globalMultiplier > 1}
             />
-
-            {/* Achievement Toast */}
             <AchievementPopup
                 queue={achievementSystem.newUnlockQueue}
                 onDismiss={achievementSystem.popNotification}
             />
-
-            {/* Version Splash */}
             <VersionSplash
                 version={packageJson.version}
                 features={[
-                    '🎉 NEW: Version splash screen to showcase updates',
+                    '📱 NEW: Mobile-first responsive design with tab navigation!',
+                    '👆 Swipe left/right to switch between tabs on mobile',
+                    '🎯 Optimized touch targets for better mobile UX',
                     '🎨 Smoother balance counter - updates only 4 times per second',
                     '📝 Improved flavor text timing - shows for 10s, then hides for 3 min',
                     '🛒 Buy in bulk with ×67 and ×6767 quantity buttons',
                     '🚫 Quantity buttons auto-disable when unaffordable',
-                    '🏆 Achievement popups now auto-dismiss after 3 seconds',
-                    '🐛 Fixed Details view crash',
-                    '✨ Various UI polish and bug fixes'
+                    '🏆 Achievement popups now auto-dismiss after 3 seconds'
                 ]}
                 isVisible={versionSplash.isVisible}
                 onClose={versionSplash.onClose}

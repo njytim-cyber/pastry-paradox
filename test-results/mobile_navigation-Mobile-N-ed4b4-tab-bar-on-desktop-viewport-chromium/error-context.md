@@ -1,0 +1,110 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - paragraph [ref=e6]: You accidentally baked a shoe. It tasted okay.
+  - generic [ref=e7]:
+    - generic [ref=e8]:
+      - heading "My Patisserie" [level=1] [ref=e10] [cursor=pointer]
+      - generic [ref=e11]:
+        - generic [ref=e13]: "0"
+        - generic [ref=e14]: Delicious Cakes
+    - button "Click to bake cakes" [ref=e16]:
+      - img "Delicious cake" [ref=e18] [cursor=pointer]
+  - generic [ref=e38]:
+    - generic [ref=e39]:
+      - heading "Upgrades" [level=2] [ref=e41]
+      - generic [ref=e43]: No upgrades available right now. Bake more cakes!
+    - generic [ref=e44]:
+      - generic [ref=e45]:
+        - heading "Your Bakery" [level=2] [ref=e46]
+        - button "📜 Details" [ref=e47] [cursor=pointer]
+      - generic [ref=e48]:
+        - generic [ref=e49]:
+          - heading "Production" [level=3] [ref=e50]
+          - generic [ref=e51]:
+            - generic [ref=e52]: Total Baked
+            - generic [ref=e53]: "0"
+          - generic [ref=e54]:
+            - generic [ref=e55]: All-Time Baked
+            - generic [ref=e56]: "0"
+          - generic [ref=e57]:
+            - generic [ref=e58]: Per Second
+            - generic [ref=e59]: "0"
+        - generic [ref=e60]:
+          - heading "Session" [level=3] [ref=e61]
+          - generic [ref=e62]:
+            - generic [ref=e63]: Time Played
+            - generic [ref=e64]: 39s
+          - generic [ref=e65]:
+            - generic [ref=e66]: Total Clicks
+            - generic [ref=e67]: "0"
+        - generic [ref=e68]:
+          - heading "🌟 Cosmic History" [level=3] [ref=e69]
+          - generic [ref=e70]:
+            - generic [ref=e71]: Dark Matter
+            - generic [ref=e72]: "0"
+          - generic [ref=e73]:
+            - generic [ref=e74]: CpS Bonus
+            - generic [ref=e75]: +0%
+          - generic [ref=e76]:
+            - generic [ref=e77]: Universe Resets
+            - generic [ref=e78]: "0"
+      - generic [ref=e79]:
+        - generic [ref=e80]: Bake 1 trillion cakes to collapse the universe
+        - button "💥 The Big Crunch" [disabled] [ref=e81]
+  - generic [ref=e83]:
+    - generic [ref=e84]:
+      - heading "🧁 Store" [level=2] [ref=e85]
+      - generic [ref=e86]:
+        - button "Buy" [ref=e87] [cursor=pointer]
+        - button "Sell" [ref=e88] [cursor=pointer]
+    - generic [ref=e89]:
+      - button "1" [disabled] [ref=e90]
+      - button "67" [disabled] [ref=e91]
+      - button "6767" [disabled] [ref=e92]
+    - generic [ref=e93]:
+      - button "Tier 1 Apprentice Baker 🍰 15 0" [disabled] [ref=e94]:
+        - img "Tier 1" [ref=e95]
+        - generic [ref=e96]:
+          - generic [ref=e97]: Apprentice Baker
+          - generic [ref=e98]: 🍰 15
+        - generic [ref=e99]: "0"
+      - generic [ref=e100]:
+        - img [ref=e101]:
+          - generic [ref=e103]: "?"
+        - generic [ref=e104]:
+          - generic [ref=e105]: "???"
+          - generic [ref=e106]: 🍰 100
+        - generic [ref=e107]: "0"
+  - generic [ref=e109]:
+    - generic [ref=e110]:
+      - heading "🎉 What's New in v1.3.0" [level=1] [ref=e111]
+      - button "Close" [ref=e112] [cursor=pointer]: ×
+    - list [ref=e114]:
+      - listitem [ref=e115]:
+        - generic [ref=e116]: ✨
+        - text: "📱 NEW: Mobile-first responsive design with tab navigation!"
+      - listitem [ref=e117]:
+        - generic [ref=e118]: ✨
+        - text: 👆 Swipe left/right to switch between tabs on mobile
+      - listitem [ref=e119]:
+        - generic [ref=e120]: ✨
+        - text: 🎯 Optimized touch targets for better mobile UX
+      - listitem [ref=e121]:
+        - generic [ref=e122]: ✨
+        - text: 🎨 Smoother balance counter - updates only 4 times per second
+      - listitem [ref=e123]:
+        - generic [ref=e124]: ✨
+        - text: 📝 Improved flavor text timing - shows for 10s, then hides for 3 min
+      - listitem [ref=e125]:
+        - generic [ref=e126]: ✨
+        - text: 🛒 Buy in bulk with ×67 and ×6767 quantity buttons
+      - listitem [ref=e127]:
+        - generic [ref=e128]: ✨
+        - text: 🚫 Quantity buttons auto-disable when unaffordable
+      - listitem [ref=e129]:
+        - generic [ref=e130]: ✨
+        - text: 🏆 Achievement popups now auto-dismiss after 3 seconds
+    - button "Start Baking!" [ref=e132] [cursor=pointer]
+```

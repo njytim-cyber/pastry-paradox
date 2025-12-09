@@ -1,0 +1,101 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE TAB BAR
+   Fixed bottom navigation for mobile layout
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.mobile-tab-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(61, 41, 20, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 2px solid var(--color-caramel);
+    padding: var(--space-xs) var(--space-sm);
+    padding-bottom: calc(var(--space-xs) + env(safe-area-inset-bottom));
+    z-index: 1000;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-tab {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: var(--space-sm);
+    background: transparent;
+    border: none;
+    color: var(--color-butter);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    min-width: 64px;
+    min-height: 48px;
+    border-radius: 8px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-tab:active {
+    transform: scale(0.95);
+}
+
+.mobile-tab--active {
+    color: var(--color-gold);
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.mobile-tab__icon {
+    font-size: 1.5rem;
+    line-height: 1;
+    transition: transform var(--transition-fast);
+}
+
+.mobile-tab--active .mobile-tab__icon {
+    transform: scale(1.1);
+}
+
+.mobile-tab__label {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1;
+}
+
+/* Active indicator (gold underline) */
+.mobile-tab__indicator {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: var(--color-gold);
+    border-radius: 0 0 3px 3px;
+    animation: tab-indicator-slide 0.3s ease-out;
+}
+
+@keyframes tab-indicator-slide {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 40px;
+        opacity: 1;
+    }
+}
+
+/* Desktop: Hide tab bar */
+@media (min-width: 1025px) {
+    .mobile-tab-bar {
+        display: none;
+    }
+}

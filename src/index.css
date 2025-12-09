@@ -144,19 +144,179 @@ h4 {
   gap: 0;
 }
 
-@media (max-width: 1024px) {
-  .app-container {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto 1fr auto;
-    grid-template-areas:
-      "flavor"
-      "left"
-      "center"
-      "right";
-  }
-
+/* ─── Mobile Tabbed Layout (Option A) ─── */
+@media (max-width: 768px) {
   :root {
     --panel-width: 100%;
+    --flavor-height: 40px;
+    --mobile-tab-bar-height: 64px;
+  }
+
+  html {
+    font-size: 14px;
+    /* Scale down base font size */
+  }
+
+  .app-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--flavor-height) 1fr var(--mobile-tab-bar-height);
+    grid-template-areas:
+      "flavor"
+      "content"
+      "tabs";
+    min-height: 100vh;
+    min-height: 100dvh;
+    /* Dynamic viewport height for mobile browsers */
+  }
+
+  /* Mobile Content Area (Single Pane Shown at a Time) */
+  .mobile-content {
+    grid-area: content;
+    position: relative;
+    overflow: hidden;
+    height: calc(100vh - var(--flavor-height) - var(--mobile-tab-bar-height));
+    height: calc(100dvh - var(--flavor-height) - var(--mobile-tab-bar-height));
+  }
+
+  .mobile-content>div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+  }
+
+  .mobile-content>div.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Reposition panes for mobile tabs */
+  .pane-left,
+  .pane-center,
+  .pane-right {
+    height: 100%;
+    border: none;
+    grid-area: unset;
+  }
+
+  .pane-left {
+    border-right: none;
+  }
+
+  .pane-right {
+    border-left: none;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Optimize touch targets */
+  .upgrade-card {
+    min-width: 56px;
+    min-height: 56px;
+  }
+
+  .quantity-btn,
+  .store-mode-btn {
+    min-height: 44px;
+    min-width: 50px;
+    font-size: 0.95rem;
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .shop-item {
+    min-height: 68px;
+    padding: var(--space-md);
+  }
+
+  .btn {
+    min-height: 44px;
+    padding: var(--space-sm) var(--space-lg);
+  }
+
+  /* Scale down elements for smaller screens */
+  .cake-wrapper {
+    width: 180px;
+    height: 180px;
+  }
+
+  .bakery-balance {
+    font-size: 2rem;
+  }
+
+  .bakery-name {
+    font-size: 1.1rem;
+  }
+
+  /* Flavor banner optimization */
+  .flavor-banner {
+    padding: var(--space-xs) var(--space-sm);
+  }
+
+  .flavor-text__message {
+    font-size: 0.85rem;
+  }
+
+  /* Upgrade grid optimization */
+  .upgrade-grid {
+    gap: var(--space-sm);
+  }
+
+  /* Stats grid responsive */
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xs);
+  }
+}
+
+/* ─── Tablet Layout (Optional Hybrid) ─── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  :root {
+    --panel-width: 250px;
+  }
+
+  .app-container {
+    grid-template-columns: var(--panel-width) 1fr var(--panel-width);
+  }
+}
+
+/* ─── Landscape Mobile Optimization ─── */
+@media (max-width: 768px) and (orientation: landscape) {
+  :root {
+    --flavor-height: 32px;
+    --mobile-tab-bar-height: 48px;
+  }
+
+  .flavor-text__message {
+    font-size: 0.75rem;
+  }
+
+  .cake-wrapper {
+    width: 140px;
+    height: 140px;
+  }
+
+  .bakery-balance {
+    font-size: 1.5rem;
+  }
+
+  .bakery-header {
+    margin-bottom: var(--space-sm);
+  }
+}
+
+/* ─── Safe Area Insets (Notched Devices) ─── */
+@supports (padding: env(safe-area-inset-bottom)) {
+  @media (max-width: 768px) {
+    .mobile-tab-bar {
+      padding-bottom: calc(var(--space-xs) + env(safe-area-inset-bottom));
+    }
+
+    .pane-right {
+      padding-bottom: calc(var(--space-md) + env(safe-area-inset-bottom));
+    }
   }
 }
 

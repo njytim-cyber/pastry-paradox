@@ -1,6 +1,6 @@
 # Component Glossary
 
-> Auto-generated on 2025-12-09T06:11:55.258Z
+> Auto-generated on 2025-12-09T08:12:46.843Z
 
 ## Components
 
@@ -12,6 +12,8 @@
 - **MainCake** - `src/features/cake/ui/MainCake.jsx`
 - **GoldenFloater** - `src/features/events/ui/GoldenFloater.jsx`
 - **FlavorText** - `src/features/flavor/ui/FlavorText.jsx`
+- **MobileTabBar** - `src/features/navigation/ui/MobileTabBar.jsx`
+- **MobileTabBar.test** - `src/features/navigation/ui/MobileTabBar.test.jsx`
 - **StorePanel** - `src/features/shop/ui/StorePanel.jsx`
 - **VersionSplash** - `src/features/splash/ui/VersionSplash.jsx`
 - **VersionSplash.test** - `src/features/splash/ui/VersionSplash.test.jsx`
