@@ -248,6 +248,16 @@ function App() {
                         activeTab={mobileNav.activeTab}
                         onTabChange={mobileNav.setActiveTab}
                     />
+                    {/* Floating Mini-Cake FAB - visible when not on bakery tab */}
+                    {mobileNav.activeTab !== 'bakery' && (
+                        <button
+                            className="floating-cake-fab"
+                            onClick={handleCakeClick}
+                            aria-label="Click to bake cakes"
+                        >
+                            🎂
+                        </button>
+                    )}
                 </>
             ) : (
                 /* Desktop 3-Pane Layout */

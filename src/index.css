@@ -272,6 +272,48 @@ h4 {
     grid-template-columns: 1fr;
     gap: var(--space-xs);
   }
+
+  /* Floating Cake FAB - click cake while on other tabs */
+  .floating-cake-fab {
+    position: fixed;
+    bottom: calc(var(--mobile-tab-bar-height) + 16px);
+    left: 16px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-golden), var(--accent-berry));
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    animation: fab-bounce 0.3s ease-out;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .floating-cake-fab:active {
+    transform: scale(0.9);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  }
+
+  @keyframes fab-bounce {
+    0% {
+      transform: scale(0) rotate(-180deg);
+    }
+
+    60% {
+      transform: scale(1.1) rotate(10deg);
+    }
+
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+  }
 }
 
 /* ─── Tablet Layout (Optional Hybrid) ─── */
@@ -535,6 +577,14 @@ h4 {
   justify-content: center;
   border: none;
   background: transparent;
+  /* Remove focus outline and tap highlight on mobile */
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+.cake-wrapper:focus {
+  outline: none;
 }
 
 .cake {

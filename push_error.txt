@@ -1,0 +1,9 @@
+remote: error: GH008: Your push referenced at least 32 unknown Git LFS objects:        
+remote:     eb69a47a017e5e27c34d850fbd6cc74745f5264fa34e4af20432416f57b7dc60        
+remote:     e2fd2ce42fee0f9e80abb0ba8bff4afd1794dc8188493c3253ff77eedb2789c2        
+remote:     9cf09cc44ab238391220843cc052e6da9eb3277123f269879d4a6aef803199e1        
+remote:     ...        
+remote: Try to push them with 'git lfs push --all'.        
+To https://github.com/njytim-cyber/pastry-paradox.git
+ ! [remote rejected] main -> main (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/njytim-cyber/pastry-paradox.git'
