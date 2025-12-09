@@ -11,6 +11,9 @@
         "cap": "cap",
         "docs": "node scripts/auto-doc.js",
         "lint": "eslint .",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "test:e2e": "playwright test",
         "prepare": "husky"
     },
     "dependencies": {
@@ -21,13 +24,18 @@
         "react-dom": "^18.2.0"
     },
     "devDependencies": {
+        "@playwright/test": "^1.57.0",
+        "@testing-library/jest-dom": "^6.9.1",
+        "@testing-library/react": "^16.3.0",
         "@vitejs/plugin-react": "^5.1.2",
         "eslint": "^8.55.0",
         "eslint-plugin-react": "^7.33.2",
         "eslint-plugin-react-hooks": "^4.6.0",
         "husky": "^9.0.0",
+        "jsdom": "^27.3.0",
         "lint-staged": "^15.2.0",
-        "vite": "^7.2.7"
+        "vite": "^7.2.7",
+        "vitest": "^4.0.15"
     },
     "lint-staged": {
         "*.{js,jsx}": [

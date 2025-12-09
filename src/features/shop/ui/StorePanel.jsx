@@ -1,17 +1,32 @@
 /**
  * StorePanel - Shop for purchasing/selling generators
  * View Component (NO LOGIC)
+ * 
+ * Progressive tier unlocking:
+ * - Show owned tiers (purchased at least once)
+ * - Show next unlockable tier (can afford or nearly afford)
+ * - Show one mystery tier (???)
+ * - Hide all other tiers
  */
 import React from 'react';
 import { formatNumber } from '../../cake/logic/useCakeLogic';
 
 // Placeholder icons for generators
-const GeneratorIcon = ({ tier }) => {
+const GeneratorIcon = ({ tier, isMystery }) => {
     const colors = [
         '#F5D89A', '#E8D5C4', '#C4956A', '#A8D5BA', '#7B8CDE',
         '#E8A0A0', '#B24C63', '#FFB6C1', '#9B59B6', '#3498DB',
         '#1ABC9C', '#F39C12', '#E74C3C', '#9B59B6', '#2ECC71',
     ];
+
+    if (isMystery) {
+        return (
+            <svg viewBox="0 0 48 48" className="shop-item__icon shop-item__icon--mystery" aria-hidden="true">
+                <circle cx="24" cy="24" r="20" fill="#555" stroke="#333" strokeWidth="2" />
+                <text x="24" y="30" textAnchor="middle" fontSize="16" fontWeight="bold" fill="#888">?</text>
+            </svg>
+        );
+    }
 
     return (
         <svg viewBox="0 0 48 48" className="shop-item__icon" aria-hidden="true">
@@ -22,6 +37,46 @@ const GeneratorIcon = ({ tier }) => {
         </svg>
     );
 };
+
+/**
+ * Determine which tiers to show based on current ownership
+ * @param {Array} generators - All generators
+ * @param {Function} getGeneratorInfo - Get owned count for generator
+ * @returns {{ visible: Array, mystery: Object|null }}
+ */
+function getVisibleTiers(generators, getGeneratorInfo) {
+    // Find the highest unlocked (owned > 0) tier index
+    let highestOwnedIndex = -1;
+
+    for (let i = 0; i < generators.length; i++) {
+        const info = getGeneratorInfo?.(generators[i].id) || generators[i];
+        if ((info.owned || 0) > 0) {
+            highestOwnedIndex = i;
+        }
+    }
+
+    // If nothing owned, show first tier + mystery
+    if (highestOwnedIndex === -1) {
+        return {
+            visible: [{ ...generators[0], tierIndex: 0 }],
+            mystery: generators[1] ? { ...generators[1], tierIndex: 1 } : null,
+        };
+    }
+
+    // Show all owned tiers + next unlockable + mystery
+    const visible = [];
+    for (let i = 0; i <= highestOwnedIndex + 1 && i < generators.length; i++) {
+        visible.push({ ...generators[i], tierIndex: i });
+    }
+
+    // Mystery tier is the one after visible
+    const mysteryIndex = highestOwnedIndex + 2;
+    const mystery = generators[mysteryIndex]
+        ? { ...generators[mysteryIndex], tierIndex: mysteryIndex }
+        : null;
+
+    return { visible, mystery };
+}
 
 /**
  * Store Panel Component
@@ -38,6 +93,8 @@ export function StorePanel({
     setBuyQuantity,
     getSellPrice,
 }) {
+    const { visible, mystery } = getVisibleTiers(generators, getGeneratorInfo);
+
     return (
         <div className="panel store-panel">
             {/* Header with Buy/Sell Toggle */}
@@ -76,7 +133,8 @@ export function StorePanel({
 
             {/* Generator List */}
             <div className="shop-list">
-                {generators.map((tier, index) => {
+                {/* Visible Tiers */}
+                {visible.map((tier) => {
                     const info = getGeneratorInfo?.(tier.id) || tier;
                     const owned = info.owned || 0;
 
@@ -96,7 +154,7 @@ export function StorePanel({
                                 disabled={!affordable}
                                 title={tier.description}
                             >
-                                <GeneratorIcon tier={index + 1} />
+                                <GeneratorIcon tier={tier.tierIndex + 1} />
                                 <div className="shop-item__info">
                                     <div className="shop-item__name">{tier.name}</div>
                                     <div className="shop-item__cost">
@@ -122,7 +180,7 @@ export function StorePanel({
                                 disabled={!canSell}
                                 title={`Sell for ${formatNumber(sellPrice)} cakes`}
                             >
-                                <GeneratorIcon tier={index + 1} />
+                                <GeneratorIcon tier={tier.tierIndex + 1} />
                                 <div className="shop-item__info">
                                     <div className="shop-item__name">{tier.name}</div>
                                     <div className="shop-item__cost shop-item__cost--sell">
@@ -134,6 +192,18 @@ export function StorePanel({
                         );
                     }
                 })}
+
+                {/* Mystery Tier */}
+                {mystery && (
+                    <div className="shop-item shop-item--mystery shop-item--disabled">
+                        <GeneratorIcon tier={mystery.tierIndex + 1} isMystery />
+                        <div className="shop-item__info">
+                            <div className="shop-item__name shop-item__name--mystery">???</div>
+                            <div className="shop-item__cost">🍰 {formatNumber(mystery.baseCost)}</div>
+                        </div>
+                        <div className="shop-item__owned">0</div>
+                    </div>
+                )}
             </div>
         </div>
     );

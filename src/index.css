@@ -692,6 +692,21 @@ h4 {
   text-align: right;
 }
 
+/* Mystery Tier */
+.shop-item--mystery {
+  background: rgba(30, 30, 30, 0.5);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.shop-item__name--mystery {
+  color: #888;
+  font-style: italic;
+}
+
+.shop-item__icon--mystery {
+  opacity: 0.6;
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
    PANEL STYLES (Generic)
    ═══════════════════════════════════════════════════════════════════════════ */
