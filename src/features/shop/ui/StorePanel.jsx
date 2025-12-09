@@ -1,5 +1,5 @@
 /**
- * StorePanel - Shop for purchasing generators
+ * StorePanel - Shop for purchasing/selling generators
  * View Component (NO LOGIC)
  */
 import React from 'react';
@@ -25,51 +25,114 @@ const GeneratorIcon = ({ tier }) => {
 
 /**
  * Store Panel Component
- * @param {Object} props
- * @param {Array} props.generators - List of generator tiers
- * @param {Function} props.getGeneratorInfo - Get info for a generator
- * @param {Function} props.canAfford - Check if can afford
- * @param {Function} props.onPurchase - Purchase handler
  */
 export function StorePanel({
     generators = [],
     getGeneratorInfo,
     canAfford,
     onPurchase,
+    onSell,
+    shopMode = 'buy',
+    setShopMode,
+    buyQuantity = 1,
+    setBuyQuantity,
+    getSellPrice,
 }) {
     return (
         <div className="panel store-panel">
-            <div className="panel-header">
-                <h2 className="panel-title">🧁 Bakery</h2>
+            {/* Header with Buy/Sell Toggle */}
+            <div className="panel-header store-header">
+                <h2 className="panel-title">🧁 Store</h2>
+                <div className="store-mode-toggle">
+                    <button
+                        className={`store-mode-btn ${shopMode === 'buy' ? 'store-mode-btn--active' : ''}`}
+                        onClick={() => setShopMode?.('buy')}
+                    >
+                        Buy
+                    </button>
+                    <button
+                        className={`store-mode-btn ${shopMode === 'sell' ? 'store-mode-btn--active store-mode-btn--sell' : ''}`}
+                        onClick={() => setShopMode?.('sell')}
+                    >
+                        Sell
+                    </button>
+                </div>
             </div>
 
+            {/* Quantity Selector - 67 themed! */}
+            {shopMode === 'buy' && (
+                <div className="quantity-selector">
+                    {[1, 67, 6767].map((qty) => (
+                        <button
+                            key={qty}
+                            className={`quantity-btn ${buyQuantity === qty ? 'quantity-btn--active' : ''}`}
+                            onClick={() => setBuyQuantity?.(qty)}
+                        >
+                            {qty}
+                        </button>
+                    ))}
+                </div>
+            )}
+
+            {/* Generator List */}
             <div className="shop-list">
                 {generators.map((tier, index) => {
                     const info = getGeneratorInfo?.(tier.id) || tier;
-                    const affordable = canAfford?.(tier.id) ?? false;
+                    const owned = info.owned || 0;
 
-                    return (
-                        <button
-                            key={tier.id}
-                            className={`shop-item ${!affordable ? 'shop-item--disabled' : ''}`}
-                            onClick={() => affordable && onPurchase?.(tier.id)}
-                            disabled={!affordable}
-                            title={tier.description}
-                        >
-                            <GeneratorIcon tier={index + 1} />
+                    if (shopMode === 'buy') {
+                        const affordable = canAfford?.(tier.id) ?? false;
 
-                            <div className="shop-item__info">
-                                <div className="shop-item__name">{tier.name}</div>
-                                <div className="shop-item__cost">
-                                    🍰 {formatNumber(info.currentPrice || tier.baseCost)}
+                        return (
+                            <button
+                                key={tier.id}
+                                className={`shop-item ${!affordable ? 'shop-item--disabled' : ''}`}
+                                onClick={() => {
+                                    for (let i = 0; i < buyQuantity; i++) {
+                                        if (!canAfford?.(tier.id)) break;
+                                        onPurchase?.(tier.id);
+                                    }
+                                }}
+                                disabled={!affordable}
+                                title={tier.description}
+                            >
+                                <GeneratorIcon tier={index + 1} />
+                                <div className="shop-item__info">
+                                    <div className="shop-item__name">{tier.name}</div>
+                                    <div className="shop-item__cost">
+                                        🍰 {formatNumber(info.currentPrice || tier.baseCost)}
+                                        {buyQuantity > 1 && (
+                                            <span className="shop-item__bulk"> (×{buyQuantity})</span>
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
+                                <div className="shop-item__owned">{owned}</div>
+                            </button>
+                        );
+                    } else {
+                        // Sell mode
+                        const sellPrice = getSellPrice?.(tier.baseCost, owned) || 0;
+                        const canSell = owned > 0;
 
-                            <div className="shop-item__owned">
-                                {info.owned || 0}
-                            </div>
-                        </button>
-                    );
+                        return (
+                            <button
+                                key={tier.id}
+                                className={`shop-item shop-item--sell ${!canSell ? 'shop-item--disabled' : ''}`}
+                                onClick={() => canSell && onSell?.(tier.id)}
+                                disabled={!canSell}
+                                title={`Sell for ${formatNumber(sellPrice)} cakes`}
+                            >
+                                <GeneratorIcon tier={index + 1} />
+                                <div className="shop-item__info">
+                                    <div className="shop-item__name">{tier.name}</div>
+                                    <div className="shop-item__cost shop-item__cost--sell">
+                                        💰 +{formatNumber(sellPrice)}
+                                    </div>
+                                </div>
+                                <div className="shop-item__owned">{owned}</div>
+                            </button>
+                        );
+                    }
                 })}
             </div>
         </div>
