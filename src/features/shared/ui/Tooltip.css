@@ -1,0 +1,90 @@
+/* Tooltip Triggers */
+.tooltip-trigger {
+    display: inline-block;
+}
+
+/* Portal Tooltip Container */
+.portal-tooltip {
+    z-index: 10000;
+    /* Very high z-index */
+    pointer-events: none;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+    width: max-content;
+    max-width: 300px;
+    animation: tooltip-fade-in 0.2s ease-out;
+}
+
+/* Tooltip Content Box */
+.portal-tooltip-content {
+    background: var(--color-cream, #FFF8F0);
+    color: var(--color-chocolate, #5D3A1A);
+    border: 2px solid var(--color-caramel, #C4956A);
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 0.9rem;
+    position: relative;
+    text-align: left;
+    white-space: normal;
+}
+
+/* Arrow */
+.portal-tooltip-arrow {
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 10px;
+    height: 10px;
+    background: var(--color-cream, #FFF8F0);
+    border-bottom: 2px solid var(--color-caramel, #C4956A);
+    border-right: 2px solid var(--color-caramel, #C4956A);
+}
+
+/* Animations */
+@keyframes tooltip-fade-in {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -100%) translateY(-8px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -100%) translateY(-12px) scale(1);
+    }
+}
+
+/* Helper utility for Rich Tooltips */
+.tooltip-rich-header {
+    font-family: var(--font-display, serif);
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 4px;
+    color: var(--color-chocolate, #5D3A1A);
+    border-bottom: 1px dashed var(--color-caramel, #C4956A);
+    padding-bottom: 4px;
+}
+
+.tooltip-rich-body {
+    font-size: 0.85rem;
+    color: var(--ink-secondary, #6B5344);
+    margin-bottom: 6px;
+    font-style: italic;
+}
+
+.tooltip-rich-stats {
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-weight: bold;
+}
+
+.tooltip-stat-cost.affordable {
+    color: var(--color-mint, #A8D5BA);
+    /* Actually plain mint text on cream might be hard to read, darker mint? */
+    color: #2E8B57;
+}
+
+.tooltip-stat-cost.expensive {
+    color: var(--color-sell, #E74C3C);
+}

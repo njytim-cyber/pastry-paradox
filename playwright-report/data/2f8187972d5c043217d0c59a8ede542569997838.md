@@ -1,0 +1,104 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - paragraph [ref=e6]: Grandma is watching. She is always watching.
+  - generic [ref=e7]:
+    - generic [ref=e8]:
+      - heading "Your Patisserie" [level=1] [ref=e10] [cursor=pointer]
+      - generic [ref=e11]:
+        - generic [ref=e13]: "0"
+        - generic [ref=e14]: Delicious Cakes
+    - button "Click to bake cakes" [ref=e16]:
+      - img "Delicious cake" [ref=e18] [cursor=pointer]
+  - generic [ref=e38]:
+    - generic [ref=e39]:
+      - heading "Secret Ingredients" [level=2] [ref=e41]
+      - generic [ref=e43]: No secret ingredients available right now. Bake more cakes!
+    - generic [ref=e44]:
+      - generic [ref=e45]:
+        - heading "Your Bakery" [level=2] [ref=e46]
+        - button "📜 Details" [ref=e47] [cursor=pointer]
+      - generic [ref=e48]:
+        - generic [ref=e49]:
+          - heading "Production" [level=3] [ref=e50]
+          - generic [ref=e51]:
+            - generic [ref=e52]: Total Baked
+            - generic [ref=e53]: "0"
+          - generic [ref=e54]:
+            - generic [ref=e55]: All-Time Baked
+            - generic [ref=e56]: "0"
+          - generic [ref=e57]:
+            - generic [ref=e58]: Per Second
+            - generic [ref=e59]: "0"
+        - generic [ref=e60]:
+          - heading "Session" [level=3] [ref=e61]
+          - generic [ref=e62]:
+            - generic [ref=e63]: Time Played
+            - generic [ref=e64]: 29s
+          - generic [ref=e65]:
+            - generic [ref=e66]: Total Clicks
+            - generic [ref=e67]: "0"
+        - generic [ref=e68]:
+          - heading "🌟 Cosmic History" [level=3] [ref=e69]
+          - generic [ref=e70]:
+            - generic [ref=e71]: Dark Matter
+            - generic [ref=e72]: "0"
+          - generic [ref=e73]:
+            - generic [ref=e74]: CpS Bonus
+            - generic [ref=e75]: +0%
+          - generic [ref=e76]:
+            - generic [ref=e77]: Universe Resets
+            - generic [ref=e78]: "0"
+      - generic [ref=e79]:
+        - generic [ref=e80]: Bake 1 trillion cakes to collapse the universe
+        - button "💥 The Big Crunch" [disabled] [ref=e81]
+  - generic [ref=e83]:
+    - generic [ref=e84]:
+      - heading "🧁 Market" [level=2] [ref=e85]
+      - generic [ref=e86]:
+        - button "Buy" [ref=e87] [cursor=pointer]
+        - button "Sell" [ref=e88] [cursor=pointer]
+    - generic [ref=e89]:
+      - button "1" [disabled] [ref=e90]
+      - button "67" [disabled] [ref=e91]
+      - button "6767" [disabled] [ref=e92]
+    - generic [ref=e93]:
+      - button "Tier 1 Apprentice Baker 🍰 15 0" [disabled] [ref=e95]:
+        - img "Tier 1" [ref=e96]
+        - generic [ref=e97]:
+          - generic [ref=e98]: Apprentice Baker
+          - generic [ref=e99]: 🍰 15
+        - generic [ref=e100]: "0"
+      - generic [ref=e101]:
+        - img [ref=e102]:
+          - generic [ref=e104]: "?"
+        - generic [ref=e105]:
+          - generic [ref=e106]: "???"
+          - generic [ref=e107]: 🍰 100
+        - generic [ref=e108]: "0"
+  - generic [ref=e110]:
+    - generic [ref=e111]:
+      - heading "🎉 What's New in v1.4.0" [level=1] [ref=e112]
+      - button "Close" [ref=e113] [cursor=pointer]: ×
+    - list [ref=e115]:
+      - listitem [ref=e116]:
+        - generic [ref=e117]: ✨
+        - text: "🥐 NEW: \"Your Patisserie\" rebranding!"
+      - listitem [ref=e118]:
+        - generic [ref=e119]: ✨
+        - text: "🍪 NEW: 10 Types of Golden Macarons with unique buffs!"
+      - listitem [ref=e120]:
+        - generic [ref=e121]: ✨
+        - text: "📱 NEW: Streamlined specific-stats panel (No scrolling!)"
+      - listitem [ref=e122]:
+        - generic [ref=e123]: ✨
+        - text: 👆 Swipe left/right to switch between tabs on mobile
+      - listitem [ref=e124]:
+        - generic [ref=e125]: ✨
+        - text: 🛒 Buy in bulk with ×67 and ×6767 quantity buttons
+      - listitem [ref=e126]:
+        - generic [ref=e127]: ✨
+        - text: 🏆 Achievement popups now auto-dismiss after 3 seconds
+    - button "Start Baking!" [ref=e129] [cursor=pointer]
+```

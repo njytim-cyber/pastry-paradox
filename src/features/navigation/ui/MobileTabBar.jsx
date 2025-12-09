@@ -18,7 +18,7 @@ import './MobileTabBar.css';
 const TAB_CONFIG = [
     { id: 'bakery', label: 'Bakery', icon: '🎂' },
     { id: 'stats', label: 'Stats', icon: '📊' },
-    { id: 'store', label: 'Store', icon: '🛒' },
+    { id: 'store', label: 'Market', icon: '🛒' },
 ];
 
 /**

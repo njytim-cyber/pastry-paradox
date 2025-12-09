@@ -58,6 +58,66 @@ describe('useCakeLogic', () => {
         });
     });
 
+    describe('Buffs & Modifiers', () => {
+        it('applies production buff correctly', () => {
+            const { result } = renderHook(() => useCakeLogic());
+
+            // Should start at 1
+            expect(result.current.modifiers.production).toBe(1);
+
+            act(() => {
+                result.current.applyBuff('production_multiplier', 7, 10);
+            });
+
+            expect(result.current.modifiers.production).toBe(7);
+        });
+
+        it('applies click buff correctly', () => {
+            const { result } = renderHook(() => useCakeLogic());
+
+            act(() => {
+                result.current.applyBuff('click_multiplier', 77, 10);
+            });
+
+            expect(result.current.modifiers.click).toBe(77);
+
+            // Verify click earnings
+            act(() => {
+                const earned = result.current.handleClick({ clientX: 0, clientY: 0 });
+                // Base click 1 * 77 = 77
+                expect(earned).toBe(77);
+            });
+        });
+
+        it('applies discount correctly', () => {
+            const { result } = renderHook(() => useCakeLogic());
+
+            act(() => {
+                result.current.applyBuff('discount', 0.5, 10);
+            });
+
+            // Base cost for apprentice_baker is 15. Discount 50% -> 7.
+            const info = result.current.getGeneratorInfo('apprentice_baker');
+            expect(info.currentPrice).toBe(7);
+
+            // Verify canAfford also respects discount
+            // Give 8 balance
+            const initialBalance = result.current.balance;
+            act(() => {
+                result.current.grantResources(0); // Dummy acting
+                // Hack to set balance? No setter exposed.
+                // Just click 8 times (with normal click power)
+                // But we have 0 balance initially? 
+                // handleClick adds balance.
+                for (let i = 0; i < 8; i++) {
+                    result.current.handleClick({});
+                }
+            });
+
+            expect(result.current.canAfford('apprentice_baker')).toBe(true);
+        });
+    });
+
     describe('Purchases', () => {
         it('cannot afford generator with 0 balance', () => {
             const { result } = renderHook(() => useCakeLogic());

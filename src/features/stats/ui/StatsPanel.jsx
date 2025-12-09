@@ -4,6 +4,7 @@
  */
 import React, { useState, useEffect } from 'react';
 import { formatNumber } from '../../cake/logic/useCakeLogic';
+import { Tooltip } from '../../shared/ui/Tooltip';
 
 // Import all icons from assets folder
 const iconAssets = import.meta.glob('@assets/icons/*.{png,svg}', { eager: true, import: 'default' });
@@ -15,6 +16,43 @@ const iconAssets = import.meta.glob('@assets/icons/*.{png,svg}', { eager: true, 
 const getIconResult = (id) => {
     const match = Object.keys(iconAssets).find(path => path.includes(id + '.') || path.includes(id));
     return match ? iconAssets[match] : null;
+};
+
+/**
+ * Helper: Paged List Component
+ */
+/**
+ * Helper: Scrollable List Component (Fixed Height)
+ */
+const ScrollableSection = ({ title, items = [], renderItem, emptyMessage, totalCount, unlockedCount, style }) => {
+    // Display counts: "Title (Unlocked/Total)" OR just "Title (Total)"
+    const countDisplay = unlockedCount !== undefined
+        ? `(${unlockedCount}/${totalCount || items.length})`
+        : `(${items.length})`;
+
+    return (
+        <div className="details-section" style={{ display: 'flex', flexDirection: 'column', ...style }}>
+            <h3 style={{ margin: '0 0 8px 0', flexShrink: 0 }}>{title} {countDisplay}</h3>
+
+            <div className="scrollable-list-container" style={{
+                fontSize: '0.9rem',
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '8px',
+                padding: '8px',
+                background: 'rgba(0,0,0,0.05)',
+                borderRadius: '8px',
+                minHeight: '60px',    // Prevent layout jumping
+                alignContent: 'flex-start' // Ensure items stick to top
+            }}>
+                {items.length === 0 ? (
+                    <p style={{ opacity: 0.8, fontStyle: 'italic', width: '100%' }}>{emptyMessage}</p>
+                ) : (
+                    items.map(renderItem)
+                )}
+            </div>
+        </div>
+    );
 };
 
 /**
@@ -59,9 +97,15 @@ export function StatsPanel({
     };
 
     return (
-        <div className="panel stats-panel">
+        <div className="panel stats-panel" style={{
+            flex: 1, // Fill available space in parent flex container
+            display: 'flex',
+            flexDirection: 'column',
+            overflow: 'hidden', // Prevent internal overflow leaking
+            minHeight: 0 // Allow shrinking below content size
+        }}>
             <div className="panel-header">
-                <h2 className="panel-title">Your Bakery</h2>
+                <h2 className="panel-title">Your Patisserie</h2>
                 <button
                     className="btn btn--small"
                     onClick={() => setShowDetails(!showDetails)}
@@ -72,7 +116,7 @@ export function StatsPanel({
             </div>
 
             {!showDetails ? (
-                <div className="stats-grid">
+                <div className="stats-grid" style={{ overflowY: 'auto' }}>
                     {/* Production Stats */}
                     <div className="stats-section">
                         <h3 className="stats-section-title">Production</h3>
@@ -122,60 +166,80 @@ export function StatsPanel({
                 </div>
             ) : (
                 // DETAILS VIEW (Achievements & Upgrades)
-                <div className="details-view">
+                <div className="details-view" style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flex: 1,
+                    minHeight: 0,
+                    overflowY: 'auto',  // Single scrollbar for entire Details view
+                    gap: '12px',
+                    paddingRight: '4px' // Space for scrollbar
+                }}>
+
+                    {/* UPGRADES SECTION */}
+                    <ScrollableSection
+                        title="⚡ Secret Ingredients"
+                        items={upgrades.filter(u => u.isPurchased)}
+                        emptyMessage="Active upgrades are listed in the Upgrade Grid. Buy some!"
+                        renderItem={(u) => {
+                            const iconUrl = getIconResult(u.id);
+                            const tooltipContent = (
+                                <>
+                                    <div className="tooltip-rich-header">{u.name}</div>
+                                    <div className="tooltip-rich-body">{u.description}</div>
+                                    <div className="tooltip-rich-stats">
+                                        <span>Cost: {formatNumber(u.cost)} cakes</span>
+                                    </div>
+                                </>
+                            );
+                            return (
+                                <Tooltip key={u.id} content={tooltipContent}>
+                                    <div style={{
+                                        width: '40px', height: '40px', background: 'var(--color-cream)',
+                                        border: '2px solid var(--color-caramel)', borderRadius: '8px',
+                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                        cursor: 'help', fontSize: '1.5rem', overflow: 'hidden'
+                                    }}>
+                                        {iconUrl ? <img src={iconUrl} alt={u.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : '⚡'}
+                                    </div>
+                                </Tooltip>
+                            );
+                        }}
+                    />
 
                     {/* ACHIEVEMENTS SECTION */}
-                    {/* UPGRADES SECTION */}
-                    <div className="details-section" style={{ marginTop: '1rem' }}>
-                        <h3>⚡ Upgrades</h3>
-                        <div className="upgrade-list-text" style={{
-                            fontSize: '0.9rem',
-                            display: 'flex',
-                            flexWrap: 'wrap',
-                            gap: '8px',
-                            maxHeight: '200px',
-                            overflowY: 'auto',
-                            padding: '8px',
-                            background: 'rgba(0,0,0,0.05)',
-                            borderRadius: '8px'
-                        }}>
-                            {upgrades.filter(u => u.isPurchased).length === 0 ? (
-                                <p style={{ opacity: 0.8, fontStyle: 'italic', width: '100%' }}>
-                                    Active upgrades are listed in the Upgrade Grid. Buy some!
-                                </p>
-                            ) : (
-                                upgrades.filter(u => u.isPurchased).map(u => {
-                                    const iconUrl = getIconResult(u.id);
-                                    return (
-                                        <div
-                                            key={u.id}
-                                            className="upgrade-icon-small"
-                                            title={`${u.name}\n${u.description}`}
-                                            style={{
-                                                width: '40px',
-                                                height: '40px',
-                                                background: 'var(--color-cream)',
-                                                border: '2px solid var(--color-caramel)',
-                                                borderRadius: '8px',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                cursor: 'help',
-                                                fontSize: '1.5rem',
-                                                overflow: 'hidden'
-                                            }}
-                                        >
-                                            {iconUrl ? (
-                                                <img src={iconUrl} alt={u.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                                            ) : (
-                                                '⚡'
-                                            )}
-                                        </div>
-                                    );
-                                })
-                            )}
-                        </div>
-                    </div>
+                    <ScrollableSection
+                        title="🏆 Sweet Success"
+                        items={achievements}
+                        totalCount={achievements.length}
+                        unlockedCount={unlockedIds?.length || 0}
+                        emptyMessage="No achievements yet."
+                        renderItem={(ach) => {
+                            const isUnlocked = unlockedIds.includes(ach.id);
+                            const tooltipContent = (
+                                <>
+                                    <div className="tooltip-rich-header">{ach.name}</div>
+                                    <div className="tooltip-rich-body">{ach.description}</div>
+                                    {!isUnlocked && <div style={{ color: 'var(--color-sell)', fontSize: '0.8rem' }}>🔒 Locked</div>}
+                                    {isUnlocked && <div style={{ color: 'var(--color-mint)', fontSize: '0.8rem' }}>✅ Unlocked</div>}
+                                </>
+                            );
+                            return (
+                                <Tooltip key={ach.id} content={tooltipContent}>
+                                    <div style={{
+                                        width: '40px', height: '40px',
+                                        background: isUnlocked ? 'var(--color-cream)' : '#e0e0e0',
+                                        border: isUnlocked ? '2px solid var(--color-gold)' : '2px dashed #aaa',
+                                        borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                        cursor: 'help', fontSize: '1.5rem', overflow: 'hidden',
+                                        opacity: isUnlocked ? 1 : 0.5, filter: isUnlocked ? 'none' : 'grayscale(100%)'
+                                    }}>
+                                        <span>{ach.icon || '🏆'}</span>
+                                    </div>
+                                </Tooltip>
+                            );
+                        }}
+                    />
                 </div>
             )}
 

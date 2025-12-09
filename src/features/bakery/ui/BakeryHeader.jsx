@@ -9,7 +9,7 @@ import { formatNumberWord, formatNumberParts } from '../../cake/logic/useCakeLog
  * Bakery Header Component
  */
 export function BakeryHeader({
-    bakeryName = "My Patisserie",
+    bakeryName = "Your Patisserie",
     onNameChange,
     balance = 0,
     cps = 0,

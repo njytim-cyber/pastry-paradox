@@ -12,7 +12,7 @@ const { globalConfig, prestige } = balanceData;
  */
 export function useGameState() {
     // Bakery name
-    const [bakeryName, setBakeryName] = useState("My Patisserie");
+    const [bakeryName, setBakeryName] = useState("Your Patisserie");
 
     // Stats tracking
     const [stats, setStats] = useState({
@@ -72,14 +72,31 @@ export function useGameState() {
         }));
     }, []);
 
-    // Calculate sell price for a generator
-    const getSellPrice = useCallback((baseCost, owned) => {
-        if (owned <= 0) return 0;
-        const costMultiplier = globalConfig.costMultiplier || 1.15;
+    // Calculate sell price for a generator (single or bulk)
+    const getSellPrice = useCallback((baseCost, owned, quantity = 1) => {
+        if (owned < quantity) return 0;
+        // Refund = Cost of buying these items fresh (at the time) * refundRate
+        // Items being sold are indices: (owned - quantity) to (owned - 1)
+        // This is exactly asking: "How much would it cost to buy 'quantity' items if I currently owned 'owned - quantity'?"
+        const startOwned = owned - quantity;
+
+        // Import helper dynamically or assume it's available? 
+        // We need to import it at top of file. For now, let's duplicate the logic to avoid import cycle issues if any,
+        // OR better: Move helper to a shared utility? 
+        // Actually, logic is identical. Let's just implement the O(1) math here directly to be safe and clean.
+
+        const r = globalConfig.costMultiplier || 1.15;
         const refundRate = globalConfig.sellRefundRate || 0.25;
-        // Sell price is the cost of the last purchased unit * refund rate
-        const lastPurchasePrice = Math.floor(baseCost * Math.pow(costMultiplier, owned - 1));
-        return Math.floor(lastPurchasePrice * refundRate);
+
+        // Geometric Series: Sum = a * r^k * (r^n - 1) / (r - 1)
+        // a = baseCost
+        // k = startOwned
+        // n = quantity
+
+        const firstTerm = baseCost * Math.pow(r, startOwned);
+        const buyCost = firstTerm * (Math.pow(r, quantity) - 1) / (r - 1);
+
+        return Math.floor(buyCost * refundRate);
     }, []);
 
     // Perform prestige reset

@@ -1,0 +1,1092 @@
+{
+    "apprentice_baker_upgrade_1": {
+        "id": "apprentice_baker_upgrade_1",
+        "name": "Sturdy Apprentice Baker",
+        "description": "Reinforced foundation. Apprentice Bakers production x2.",
+        "cost": 75,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 1,
+            "value": 2
+        }
+    },
+    "apprentice_baker_upgrade_2": {
+        "id": "apprentice_baker_upgrade_2",
+        "name": "Efficient Apprentice Baker",
+        "description": "Improved efficiency. Apprentice Bakers production x2.",
+        "cost": 750,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 1,
+            "value": 2
+        }
+    },
+    "apprentice_baker_upgrade_3": {
+        "id": "apprentice_baker_upgrade_3",
+        "name": "Advanced Apprentice Baker",
+        "description": "High-tech integration. Apprentice Bakers production x2.",
+        "cost": 7500,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 1,
+            "value": 2
+        }
+    },
+    "apprentice_baker_upgrade_4": {
+        "id": "apprentice_baker_upgrade_4",
+        "name": "Super Apprentice Baker",
+        "description": "Maximum overdrive. Apprentice Bakers production x2.",
+        "cost": 75000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 1,
+            "value": 2
+        }
+    },
+    "apprentice_baker_upgrade_5": {
+        "id": "apprentice_baker_upgrade_5",
+        "name": "Mega Apprentice Baker",
+        "description": "Quantum enhancement. Apprentice Bakers production x2.",
+        "cost": 750000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 1,
+            "value": 2
+        }
+    },
+    "apprentice_baker_upgrade_6": {
+        "id": "apprentice_baker_upgrade_6",
+        "name": "Hyper Apprentice Baker",
+        "description": "Divine perfection. Apprentice Bakers production x2.",
+        "cost": 7500000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 1,
+            "value": 2
+        }
+    },
+    "grandmas_secret_recipe_upgrade_1": {
+        "id": "grandmas_secret_recipe_upgrade_1",
+        "name": "Sturdy Grandma's Secret Recipe",
+        "description": "Reinforced foundation. Grandma's Secret Recipes production x2.",
+        "cost": 500,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 2,
+            "value": 2
+        }
+    },
+    "grandmas_secret_recipe_upgrade_2": {
+        "id": "grandmas_secret_recipe_upgrade_2",
+        "name": "Efficient Grandma's Secret Recipe",
+        "description": "Improved efficiency. Grandma's Secret Recipes production x2.",
+        "cost": 5000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 2,
+            "value": 2
+        }
+    },
+    "grandmas_secret_recipe_upgrade_3": {
+        "id": "grandmas_secret_recipe_upgrade_3",
+        "name": "Advanced Grandma's Secret Recipe",
+        "description": "High-tech integration. Grandma's Secret Recipes production x2.",
+        "cost": 50000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 2,
+            "value": 2
+        }
+    },
+    "grandmas_secret_recipe_upgrade_4": {
+        "id": "grandmas_secret_recipe_upgrade_4",
+        "name": "Super Grandma's Secret Recipe",
+        "description": "Maximum overdrive. Grandma's Secret Recipes production x2.",
+        "cost": 500000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 2,
+            "value": 2
+        }
+    },
+    "grandmas_secret_recipe_upgrade_5": {
+        "id": "grandmas_secret_recipe_upgrade_5",
+        "name": "Mega Grandma's Secret Recipe",
+        "description": "Quantum enhancement. Grandma's Secret Recipes production x2.",
+        "cost": 5000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 2,
+            "value": 2
+        }
+    },
+    "grandmas_secret_recipe_upgrade_6": {
+        "id": "grandmas_secret_recipe_upgrade_6",
+        "name": "Hyper Grandma's Secret Recipe",
+        "description": "Divine perfection. Grandma's Secret Recipes production x2.",
+        "cost": 50000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 2,
+            "value": 2
+        }
+    },
+    "convection_oven_upgrade_1": {
+        "id": "convection_oven_upgrade_1",
+        "name": "Sturdy Convection Oven",
+        "description": "Reinforced foundation. Convection Ovens production x2.",
+        "cost": 5500,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 3,
+            "value": 2
+        }
+    },
+    "convection_oven_upgrade_2": {
+        "id": "convection_oven_upgrade_2",
+        "name": "Efficient Convection Oven",
+        "description": "Improved efficiency. Convection Ovens production x2.",
+        "cost": 55000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 3,
+            "value": 2
+        }
+    },
+    "convection_oven_upgrade_3": {
+        "id": "convection_oven_upgrade_3",
+        "name": "Advanced Convection Oven",
+        "description": "High-tech integration. Convection Ovens production x2.",
+        "cost": 550000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 3,
+            "value": 2
+        }
+    },
+    "convection_oven_upgrade_4": {
+        "id": "convection_oven_upgrade_4",
+        "name": "Super Convection Oven",
+        "description": "Maximum overdrive. Convection Ovens production x2.",
+        "cost": 5500000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 3,
+            "value": 2
+        }
+    },
+    "convection_oven_upgrade_5": {
+        "id": "convection_oven_upgrade_5",
+        "name": "Mega Convection Oven",
+        "description": "Quantum enhancement. Convection Ovens production x2.",
+        "cost": 55000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 3,
+            "value": 2
+        }
+    },
+    "convection_oven_upgrade_6": {
+        "id": "convection_oven_upgrade_6",
+        "name": "Hyper Convection Oven",
+        "description": "Divine perfection. Convection Ovens production x2.",
+        "cost": 550000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 3,
+            "value": 2
+        }
+    },
+    "professional_mixer_upgrade_1": {
+        "id": "professional_mixer_upgrade_1",
+        "name": "Sturdy Professional Mixer",
+        "description": "Reinforced foundation. Professional Mixers production x2.",
+        "cost": 60000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 4,
+            "value": 2
+        }
+    },
+    "professional_mixer_upgrade_2": {
+        "id": "professional_mixer_upgrade_2",
+        "name": "Efficient Professional Mixer",
+        "description": "Improved efficiency. Professional Mixers production x2.",
+        "cost": 600000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 4,
+            "value": 2
+        }
+    },
+    "professional_mixer_upgrade_3": {
+        "id": "professional_mixer_upgrade_3",
+        "name": "Advanced Professional Mixer",
+        "description": "High-tech integration. Professional Mixers production x2.",
+        "cost": 6000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 4,
+            "value": 2
+        }
+    },
+    "professional_mixer_upgrade_4": {
+        "id": "professional_mixer_upgrade_4",
+        "name": "Super Professional Mixer",
+        "description": "Maximum overdrive. Professional Mixers production x2.",
+        "cost": 60000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 4,
+            "value": 2
+        }
+    },
+    "professional_mixer_upgrade_5": {
+        "id": "professional_mixer_upgrade_5",
+        "name": "Mega Professional Mixer",
+        "description": "Quantum enhancement. Professional Mixers production x2.",
+        "cost": 600000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 4,
+            "value": 2
+        }
+    },
+    "professional_mixer_upgrade_6": {
+        "id": "professional_mixer_upgrade_6",
+        "name": "Hyper Professional Mixer",
+        "description": "Divine perfection. Professional Mixers production x2.",
+        "cost": 6000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 4,
+            "value": 2
+        }
+    },
+    "local_bakery_franchise_upgrade_1": {
+        "id": "local_bakery_franchise_upgrade_1",
+        "name": "Sturdy Local Bakery Franchise",
+        "description": "Reinforced foundation. Local Bakery Franchises production x2.",
+        "cost": 650000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 5,
+            "value": 2
+        }
+    },
+    "local_bakery_franchise_upgrade_2": {
+        "id": "local_bakery_franchise_upgrade_2",
+        "name": "Efficient Local Bakery Franchise",
+        "description": "Improved efficiency. Local Bakery Franchises production x2.",
+        "cost": 6500000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 5,
+            "value": 2
+        }
+    },
+    "local_bakery_franchise_upgrade_3": {
+        "id": "local_bakery_franchise_upgrade_3",
+        "name": "Advanced Local Bakery Franchise",
+        "description": "High-tech integration. Local Bakery Franchises production x2.",
+        "cost": 65000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 5,
+            "value": 2
+        }
+    },
+    "local_bakery_franchise_upgrade_4": {
+        "id": "local_bakery_franchise_upgrade_4",
+        "name": "Super Local Bakery Franchise",
+        "description": "Maximum overdrive. Local Bakery Franchises production x2.",
+        "cost": 650000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 5,
+            "value": 2
+        }
+    },
+    "local_bakery_franchise_upgrade_5": {
+        "id": "local_bakery_franchise_upgrade_5",
+        "name": "Mega Local Bakery Franchise",
+        "description": "Quantum enhancement. Local Bakery Franchises production x2.",
+        "cost": 6500000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 5,
+            "value": 2
+        }
+    },
+    "local_bakery_franchise_upgrade_6": {
+        "id": "local_bakery_franchise_upgrade_6",
+        "name": "Hyper Local Bakery Franchise",
+        "description": "Divine perfection. Local Bakery Franchises production x2.",
+        "cost": 65000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 5,
+            "value": 2
+        }
+    },
+    "cake_factory_upgrade_1": {
+        "id": "cake_factory_upgrade_1",
+        "name": "Sturdy Cake Factory",
+        "description": "Reinforced foundation. Cake Factorys production x2.",
+        "cost": 7000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 6,
+            "value": 2
+        }
+    },
+    "cake_factory_upgrade_2": {
+        "id": "cake_factory_upgrade_2",
+        "name": "Efficient Cake Factory",
+        "description": "Improved efficiency. Cake Factorys production x2.",
+        "cost": 70000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 6,
+            "value": 2
+        }
+    },
+    "cake_factory_upgrade_3": {
+        "id": "cake_factory_upgrade_3",
+        "name": "Advanced Cake Factory",
+        "description": "High-tech integration. Cake Factorys production x2.",
+        "cost": 700000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 6,
+            "value": 2
+        }
+    },
+    "cake_factory_upgrade_4": {
+        "id": "cake_factory_upgrade_4",
+        "name": "Super Cake Factory",
+        "description": "Maximum overdrive. Cake Factorys production x2.",
+        "cost": 7000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 6,
+            "value": 2
+        }
+    },
+    "cake_factory_upgrade_5": {
+        "id": "cake_factory_upgrade_5",
+        "name": "Mega Cake Factory",
+        "description": "Quantum enhancement. Cake Factorys production x2.",
+        "cost": 70000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 6,
+            "value": 2
+        }
+    },
+    "cake_factory_upgrade_6": {
+        "id": "cake_factory_upgrade_6",
+        "name": "Hyper Cake Factory",
+        "description": "Divine perfection. Cake Factorys production x2.",
+        "cost": 700000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 6,
+            "value": 2
+        }
+    },
+    "industrial_frosting_hose_upgrade_1": {
+        "id": "industrial_frosting_hose_upgrade_1",
+        "name": "Sturdy Industrial Frosting Hose",
+        "description": "Reinforced foundation. Industrial Frosting Hoses production x2.",
+        "cost": 100000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 7,
+            "value": 2
+        }
+    },
+    "industrial_frosting_hose_upgrade_2": {
+        "id": "industrial_frosting_hose_upgrade_2",
+        "name": "Efficient Industrial Frosting Hose",
+        "description": "Improved efficiency. Industrial Frosting Hoses production x2.",
+        "cost": 1000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 7,
+            "value": 2
+        }
+    },
+    "industrial_frosting_hose_upgrade_3": {
+        "id": "industrial_frosting_hose_upgrade_3",
+        "name": "Advanced Industrial Frosting Hose",
+        "description": "High-tech integration. Industrial Frosting Hoses production x2.",
+        "cost": 10000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 7,
+            "value": 2
+        }
+    },
+    "industrial_frosting_hose_upgrade_4": {
+        "id": "industrial_frosting_hose_upgrade_4",
+        "name": "Super Industrial Frosting Hose",
+        "description": "Maximum overdrive. Industrial Frosting Hoses production x2.",
+        "cost": 100000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 7,
+            "value": 2
+        }
+    },
+    "industrial_frosting_hose_upgrade_5": {
+        "id": "industrial_frosting_hose_upgrade_5",
+        "name": "Mega Industrial Frosting Hose",
+        "description": "Quantum enhancement. Industrial Frosting Hoses production x2.",
+        "cost": 1000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 7,
+            "value": 2
+        }
+    },
+    "industrial_frosting_hose_upgrade_6": {
+        "id": "industrial_frosting_hose_upgrade_6",
+        "name": "Hyper Industrial Frosting Hose",
+        "description": "Divine perfection. Industrial Frosting Hoses production x2.",
+        "cost": 10000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 7,
+            "value": 2
+        }
+    },
+    "3d_cake_printer_upgrade_1": {
+        "id": "3d_cake_printer_upgrade_1",
+        "name": "Sturdy 3D Cake Printer",
+        "description": "Reinforced foundation. 3D Cake Printers production x2.",
+        "cost": 1650000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 8,
+            "value": 2
+        }
+    },
+    "3d_cake_printer_upgrade_2": {
+        "id": "3d_cake_printer_upgrade_2",
+        "name": "Efficient 3D Cake Printer",
+        "description": "Improved efficiency. 3D Cake Printers production x2.",
+        "cost": 16500000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 8,
+            "value": 2
+        }
+    },
+    "3d_cake_printer_upgrade_3": {
+        "id": "3d_cake_printer_upgrade_3",
+        "name": "Advanced 3D Cake Printer",
+        "description": "High-tech integration. 3D Cake Printers production x2.",
+        "cost": 165000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 8,
+            "value": 2
+        }
+    },
+    "3d_cake_printer_upgrade_4": {
+        "id": "3d_cake_printer_upgrade_4",
+        "name": "Super 3D Cake Printer",
+        "description": "Maximum overdrive. 3D Cake Printers production x2.",
+        "cost": 1650000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 8,
+            "value": 2
+        }
+    },
+    "3d_cake_printer_upgrade_5": {
+        "id": "3d_cake_printer_upgrade_5",
+        "name": "Mega 3D Cake Printer",
+        "description": "Quantum enhancement. 3D Cake Printers production x2.",
+        "cost": 16500000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 8,
+            "value": 2
+        }
+    },
+    "3d_cake_printer_upgrade_6": {
+        "id": "3d_cake_printer_upgrade_6",
+        "name": "Hyper 3D Cake Printer",
+        "description": "Divine perfection. 3D Cake Printers production x2.",
+        "cost": 165000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 8,
+            "value": 2
+        }
+    },
+    "robotic_pastry_chef_upgrade_1": {
+        "id": "robotic_pastry_chef_upgrade_1",
+        "name": "Sturdy Robotic Pastry Chef",
+        "description": "Reinforced foundation. Robotic Pastry Chefs production x2.",
+        "cost": 25500000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 9,
+            "value": 2
+        }
+    },
+    "robotic_pastry_chef_upgrade_2": {
+        "id": "robotic_pastry_chef_upgrade_2",
+        "name": "Efficient Robotic Pastry Chef",
+        "description": "Improved efficiency. Robotic Pastry Chefs production x2.",
+        "cost": 255000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 9,
+            "value": 2
+        }
+    },
+    "robotic_pastry_chef_upgrade_3": {
+        "id": "robotic_pastry_chef_upgrade_3",
+        "name": "Advanced Robotic Pastry Chef",
+        "description": "High-tech integration. Robotic Pastry Chefs production x2.",
+        "cost": 2550000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 9,
+            "value": 2
+        }
+    },
+    "robotic_pastry_chef_upgrade_4": {
+        "id": "robotic_pastry_chef_upgrade_4",
+        "name": "Super Robotic Pastry Chef",
+        "description": "Maximum overdrive. Robotic Pastry Chefs production x2.",
+        "cost": 25500000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 9,
+            "value": 2
+        }
+    },
+    "robotic_pastry_chef_upgrade_5": {
+        "id": "robotic_pastry_chef_upgrade_5",
+        "name": "Mega Robotic Pastry Chef",
+        "description": "Quantum enhancement. Robotic Pastry Chefs production x2.",
+        "cost": 255000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 9,
+            "value": 2
+        }
+    },
+    "robotic_pastry_chef_upgrade_6": {
+        "id": "robotic_pastry_chef_upgrade_6",
+        "name": "Hyper Robotic Pastry Chef",
+        "description": "Divine perfection. Robotic Pastry Chefs production x2.",
+        "cost": 2550000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 9,
+            "value": 2
+        }
+    },
+    "cloning_vat_upgrade_1": {
+        "id": "cloning_vat_upgrade_1",
+        "name": "Sturdy Cloning Vat",
+        "description": "Reinforced foundation. Cloning Vats production x2.",
+        "cost": 375000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 10,
+            "value": 2
+        }
+    },
+    "cloning_vat_upgrade_2": {
+        "id": "cloning_vat_upgrade_2",
+        "name": "Efficient Cloning Vat",
+        "description": "Improved efficiency. Cloning Vats production x2.",
+        "cost": 3750000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 10,
+            "value": 2
+        }
+    },
+    "cloning_vat_upgrade_3": {
+        "id": "cloning_vat_upgrade_3",
+        "name": "Advanced Cloning Vat",
+        "description": "High-tech integration. Cloning Vats production x2.",
+        "cost": 37500000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 10,
+            "value": 2
+        }
+    },
+    "cloning_vat_upgrade_4": {
+        "id": "cloning_vat_upgrade_4",
+        "name": "Super Cloning Vat",
+        "description": "Maximum overdrive. Cloning Vats production x2.",
+        "cost": 375000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 10,
+            "value": 2
+        }
+    },
+    "cloning_vat_upgrade_5": {
+        "id": "cloning_vat_upgrade_5",
+        "name": "Mega Cloning Vat",
+        "description": "Quantum enhancement. Cloning Vats production x2.",
+        "cost": 3750000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 10,
+            "value": 2
+        }
+    },
+    "cloning_vat_upgrade_6": {
+        "id": "cloning_vat_upgrade_6",
+        "name": "Hyper Cloning Vat",
+        "description": "Divine perfection. Cloning Vats production x2.",
+        "cost": 37500000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 10,
+            "value": 2
+        }
+    },
+    "orbital_bakery_station_upgrade_1": {
+        "id": "orbital_bakery_station_upgrade_1",
+        "name": "Sturdy Orbital Bakery Station",
+        "description": "Reinforced foundation. Orbital Bakery Stations production x2.",
+        "cost": 5000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 11,
+            "value": 2
+        }
+    },
+    "orbital_bakery_station_upgrade_2": {
+        "id": "orbital_bakery_station_upgrade_2",
+        "name": "Efficient Orbital Bakery Station",
+        "description": "Improved efficiency. Orbital Bakery Stations production x2.",
+        "cost": 50000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 11,
+            "value": 2
+        }
+    },
+    "orbital_bakery_station_upgrade_3": {
+        "id": "orbital_bakery_station_upgrade_3",
+        "name": "Advanced Orbital Bakery Station",
+        "description": "High-tech integration. Orbital Bakery Stations production x2.",
+        "cost": 500000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 11,
+            "value": 2
+        }
+    },
+    "orbital_bakery_station_upgrade_4": {
+        "id": "orbital_bakery_station_upgrade_4",
+        "name": "Super Orbital Bakery Station",
+        "description": "Maximum overdrive. Orbital Bakery Stations production x2.",
+        "cost": 5000000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 11,
+            "value": 2
+        }
+    },
+    "orbital_bakery_station_upgrade_5": {
+        "id": "orbital_bakery_station_upgrade_5",
+        "name": "Mega Orbital Bakery Station",
+        "description": "Quantum enhancement. Orbital Bakery Stations production x2.",
+        "cost": 50000000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 11,
+            "value": 2
+        }
+    },
+    "orbital_bakery_station_upgrade_6": {
+        "id": "orbital_bakery_station_upgrade_6",
+        "name": "Hyper Orbital Bakery Station",
+        "description": "Divine perfection. Orbital Bakery Stations production x2.",
+        "cost": 500000000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 11,
+            "value": 2
+        }
+    },
+    "nanobot_yeast_upgrade_1": {
+        "id": "nanobot_yeast_upgrade_1",
+        "name": "Sturdy Nanobot Yeast",
+        "description": "Reinforced foundation. Nanobot Yeasts production x2.",
+        "cost": 70000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 12,
+            "value": 2
+        }
+    },
+    "nanobot_yeast_upgrade_2": {
+        "id": "nanobot_yeast_upgrade_2",
+        "name": "Efficient Nanobot Yeast",
+        "description": "Improved efficiency. Nanobot Yeasts production x2.",
+        "cost": 700000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 12,
+            "value": 2
+        }
+    },
+    "nanobot_yeast_upgrade_3": {
+        "id": "nanobot_yeast_upgrade_3",
+        "name": "Advanced Nanobot Yeast",
+        "description": "High-tech integration. Nanobot Yeasts production x2.",
+        "cost": 7000000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 12,
+            "value": 2
+        }
+    },
+    "nanobot_yeast_upgrade_4": {
+        "id": "nanobot_yeast_upgrade_4",
+        "name": "Super Nanobot Yeast",
+        "description": "Maximum overdrive. Nanobot Yeasts production x2.",
+        "cost": 70000000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 12,
+            "value": 2
+        }
+    },
+    "nanobot_yeast_upgrade_5": {
+        "id": "nanobot_yeast_upgrade_5",
+        "name": "Mega Nanobot Yeast",
+        "description": "Quantum enhancement. Nanobot Yeasts production x2.",
+        "cost": 700000000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 12,
+            "value": 2
+        }
+    },
+    "nanobot_yeast_upgrade_6": {
+        "id": "nanobot_yeast_upgrade_6",
+        "name": "Hyper Nanobot Yeast",
+        "description": "Divine perfection. Nanobot Yeasts production x2.",
+        "cost": 7000000000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 12,
+            "value": 2
+        }
+    },
+    "time_warp_oven_upgrade_1": {
+        "id": "time_warp_oven_upgrade_1",
+        "name": "Sturdy Time Warp Oven",
+        "description": "Reinforced foundation. Time Warp Ovens production x2.",
+        "cost": 850000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 13,
+            "value": 2
+        }
+    },
+    "time_warp_oven_upgrade_2": {
+        "id": "time_warp_oven_upgrade_2",
+        "name": "Efficient Time Warp Oven",
+        "description": "Improved efficiency. Time Warp Ovens production x2.",
+        "cost": 8500000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 13,
+            "value": 2
+        }
+    },
+    "time_warp_oven_upgrade_3": {
+        "id": "time_warp_oven_upgrade_3",
+        "name": "Advanced Time Warp Oven",
+        "description": "High-tech integration. Time Warp Ovens production x2.",
+        "cost": 85000000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 13,
+            "value": 2
+        }
+    },
+    "time_warp_oven_upgrade_4": {
+        "id": "time_warp_oven_upgrade_4",
+        "name": "Super Time Warp Oven",
+        "description": "Maximum overdrive. Time Warp Ovens production x2.",
+        "cost": 850000000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 13,
+            "value": 2
+        }
+    },
+    "time_warp_oven_upgrade_5": {
+        "id": "time_warp_oven_upgrade_5",
+        "name": "Mega Time Warp Oven",
+        "description": "Quantum enhancement. Time Warp Ovens production x2.",
+        "cost": 8500000000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 13,
+            "value": 2
+        }
+    },
+    "time_warp_oven_upgrade_6": {
+        "id": "time_warp_oven_upgrade_6",
+        "name": "Hyper Time Warp Oven",
+        "description": "Divine perfection. Time Warp Ovens production x2.",
+        "cost": 85000000000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 13,
+            "value": 2
+        }
+    },
+    "matter_replicator_upgrade_1": {
+        "id": "matter_replicator_upgrade_1",
+        "name": "Sturdy Matter Replicator",
+        "description": "Reinforced foundation. Matter Replicators production x2.",
+        "cost": 10500000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 14,
+            "value": 2
+        }
+    },
+    "matter_replicator_upgrade_2": {
+        "id": "matter_replicator_upgrade_2",
+        "name": "Efficient Matter Replicator",
+        "description": "Improved efficiency. Matter Replicators production x2.",
+        "cost": 105000000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 14,
+            "value": 2
+        }
+    },
+    "matter_replicator_upgrade_3": {
+        "id": "matter_replicator_upgrade_3",
+        "name": "Advanced Matter Replicator",
+        "description": "High-tech integration. Matter Replicators production x2.",
+        "cost": 1050000000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 14,
+            "value": 2
+        }
+    },
+    "matter_replicator_upgrade_4": {
+        "id": "matter_replicator_upgrade_4",
+        "name": "Super Matter Replicator",
+        "description": "Maximum overdrive. Matter Replicators production x2.",
+        "cost": 10500000000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 14,
+            "value": 2
+        }
+    },
+    "matter_replicator_upgrade_5": {
+        "id": "matter_replicator_upgrade_5",
+        "name": "Mega Matter Replicator",
+        "description": "Quantum enhancement. Matter Replicators production x2.",
+        "cost": 105000000000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 14,
+            "value": 2
+        }
+    },
+    "matter_replicator_upgrade_6": {
+        "id": "matter_replicator_upgrade_6",
+        "name": "Hyper Matter Replicator",
+        "description": "Divine perfection. Matter Replicators production x2.",
+        "cost": 1.05e+21,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 14,
+            "value": 2
+        }
+    },
+    "multiverse_portal_upgrade_1": {
+        "id": "multiverse_portal_upgrade_1",
+        "name": "Sturdy Multiverse Portal",
+        "description": "Reinforced foundation. Multiverse Portals production x2.",
+        "cost": 375000000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 15,
+            "value": 2
+        }
+    },
+    "multiverse_portal_upgrade_2": {
+        "id": "multiverse_portal_upgrade_2",
+        "name": "Efficient Multiverse Portal",
+        "description": "Improved efficiency. Multiverse Portals production x2.",
+        "cost": 3750000000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 15,
+            "value": 2
+        }
+    },
+    "multiverse_portal_upgrade_3": {
+        "id": "multiverse_portal_upgrade_3",
+        "name": "Advanced Multiverse Portal",
+        "description": "High-tech integration. Multiverse Portals production x2.",
+        "cost": 37500000000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 15,
+            "value": 2
+        }
+    },
+    "multiverse_portal_upgrade_4": {
+        "id": "multiverse_portal_upgrade_4",
+        "name": "Super Multiverse Portal",
+        "description": "Maximum overdrive. Multiverse Portals production x2.",
+        "cost": 375000000000000000000,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 15,
+            "value": 2
+        }
+    },
+    "multiverse_portal_upgrade_5": {
+        "id": "multiverse_portal_upgrade_5",
+        "name": "Mega Multiverse Portal",
+        "description": "Quantum enhancement. Multiverse Portals production x2.",
+        "cost": 3.75e+21,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 15,
+            "value": 2
+        }
+    },
+    "multiverse_portal_upgrade_6": {
+        "id": "multiverse_portal_upgrade_6",
+        "name": "Hyper Multiverse Portal",
+        "description": "Divine perfection. Multiverse Portals production x2.",
+        "cost": 3.75e+22,
+        "effect": {
+            "type": "tierBonus",
+            "tier": 15,
+            "value": 2
+        }
+    },
+    "click_upgrade_new_1": {
+        "id": "click_upgrade_new_1",
+        "name": "Plastic Mouse",
+        "description": "Better than a trackpad.",
+        "cost": 500,
+        "effect": {
+            "type": "clickPowerMultiplier",
+            "value": 2
+        }
+    },
+    "click_upgrade_new_2": {
+        "id": "click_upgrade_new_2",
+        "name": "Mechanic Switch",
+        "description": "Clicky sounds.",
+        "cost": 5000,
+        "effect": {
+            "type": "clickPowerMultiplier",
+            "value": 2
+        }
+    },
+    "click_upgrade_new_3": {
+        "id": "click_upgrade_new_3",
+        "name": "Gaming Mouse",
+        "description": "RGB boosts FPS.",
+        "cost": 50000,
+        "effect": {
+            "type": "clickPowerMultiplier",
+            "value": 2
+        }
+    },
+    "click_upgrade_new_4": {
+        "id": "click_upgrade_new_4",
+        "name": "Macro Script",
+        "description": "Automated efficiency.",
+        "cost": 1000000,
+        "effect": {
+            "type": "clickPowerMultiplier",
+            "value": 2
+        }
+    },
+    "click_upgrade_new_5": {
+        "id": "click_upgrade_new_5",
+        "name": "Neural Link",
+        "description": "Mind over matter.",
+        "cost": 50000000,
+        "effect": {
+            "type": "clickPowerMultiplier",
+            "value": 2
+        }
+    },
+    "click_upgrade_new_6": {
+        "id": "click_upgrade_new_6",
+        "name": "Cybernetic Finger",
+        "description": "Steel tendons.",
+        "cost": 1000000000,
+        "effect": {
+            "type": "clickPowerMultiplier",
+            "value": 2
+        }
+    },
+    "click_upgrade_new_7": {
+        "id": "click_upgrade_new_7",
+        "name": "Quantum Click",
+        "description": "Superposition poking.",
+        "cost": 50000000000,
+        "effect": {
+            "type": "clickPowerMultiplier",
+            "value": 2
+        }
+    },
+    "click_upgrade_new_8": {
+        "id": "click_upgrade_new_8",
+        "name": "Time Clicks",
+        "description": "Clicking yesterday.",
+        "cost": 1000000000000,
+        "effect": {
+            "type": "clickPowerMultiplier",
+            "value": 2
+        }
+    },
+    "click_upgrade_new_9": {
+        "id": "click_upgrade_new_9",
+        "name": "Reality Touch",
+        "description": "Molding the universe.",
+        "cost": 50000000000000,
+        "effect": {
+            "type": "clickPowerMultiplier",
+            "value": 2
+        }
+    },
+    "click_upgrade_new_10": {
+        "id": "click_upgrade_new_10",
+        "name": "God Hand",
+        "description": "Divine intervention.",
+        "cost": 1000000000000000,
+        "effect": {
+            "type": "clickPowerMultiplier",
+            "value": 2
+        }
+    }
+}

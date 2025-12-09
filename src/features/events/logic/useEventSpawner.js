@@ -1,21 +1,23 @@
 /**
- * useEventSpawner - Golden Croissant random event system
+ * useEventSpawner - Golden Macaron random event system
  * Container Component (NO UI)
  */
 import { useState, useEffect, useCallback, useRef } from 'react';
 import balanceData from '@data/balance.json';
+import { getRandomMacaron } from './macaronConstants';
 
 const { events } = balanceData;
-const goldenCroissant = events?.goldenCroissant;
+const goldenCroissant = events?.goldenCroissant; // Re-use timing config
 
 /**
  * Main event spawner hook
  */
-export function useEventSpawner({ setGlobalMultiplier }) {
+export function useEventSpawner({ onEventClick }) {
     const [isEventActive, setIsEventActive] = useState(false);
     const [eventPosition, setEventPosition] = useState({ x: 0, y: 0 });
     const [isEventUnlocked, setIsEventUnlocked] = useState(false);
     const [timeRemaining, setTimeRemaining] = useState(0);
+    const [activeEvent, setActiveEvent] = useState(null);
 
     const spawnTimeoutRef = useRef(null);
     const durationTimeoutRef = useRef(null);
@@ -47,6 +49,8 @@ export function useEventSpawner({ setGlobalMultiplier }) {
                 const x = Math.random() * (window.innerWidth - 100) + 50;
                 const y = Math.random() * (window.innerHeight - 200) + 100;
 
+                // Pick a random macaron
+                setActiveEvent(getRandomMacaron());
                 setEventPosition({ x, y });
                 setIsEventActive(true);
                 setTimeRemaining(goldenCroissant.duration);
@@ -54,6 +58,7 @@ export function useEventSpawner({ setGlobalMultiplier }) {
                 // Auto-expire after duration
                 durationTimeoutRef.current = setTimeout(() => {
                     setIsEventActive(false);
+                    setActiveEvent(null);
                 }, goldenCroissant.duration * 1000);
 
                 // Countdown timer
@@ -72,9 +77,9 @@ export function useEventSpawner({ setGlobalMultiplier }) {
         };
     }, [isEventUnlocked, isEventActive]);
 
-    // Handle clicking the golden croissant
+    // Handle clicking the golden macaron
     const clickEvent = useCallback(() => {
-        if (!isEventActive || !goldenCroissant) return;
+        if (!isEventActive || !activeEvent) return;
 
         // Clear timers
         if (durationTimeoutRef.current) clearTimeout(durationTimeoutRef.current);
@@ -82,45 +87,29 @@ export function useEventSpawner({ setGlobalMultiplier }) {
 
         setIsEventActive(false);
 
-        // Apply multiplier
-        const multiplier = goldenCroissant.multiplier;
-        const duration = goldenCroissant.duration * 1000;
+        // Execute effect callback
+        if (onEventClick) {
+            onEventClick(activeEvent);
+        }
 
-        setGlobalMultiplier(multiplier);
-        setTimeRemaining(goldenCroissant.duration);
+        // Removed internal multiplier logic here to delegate to App.jsx
+        // But we might need to handle Duration based buffs display? 
+        // For now, let App handle actual game logic updates.
 
-        // Start countdown for multiplier effect
-        countdownRef.current = setInterval(() => {
-            setTimeRemaining(prev => {
-                if (prev <= 1) {
-                    clearInterval(countdownRef.current);
-                    setGlobalMultiplier(1);
-                    return 0;
-                }
-                return prev - 1;
-            });
-        }, 1000);
-
-        // Reset multiplier after duration
-        setTimeout(() => {
-            setGlobalMultiplier(1);
-            setTimeRemaining(0);
-        }, duration);
-
-        return multiplier;
-    }, [isEventActive, setGlobalMultiplier]);
+    }, [isEventActive, activeEvent, onEventClick]);
 
     return {
         isEventActive,
         isEventUnlocked,
         eventPosition,
         timeRemaining,
-        multiplier: goldenCroissant?.multiplier || 1,
+        activeEvent, // Return the full object for rendering
         clickEvent,
 
         // Dev/testing: manually unlock
         unlockEvent: () => setIsEventUnlocked(true),
     };
 }
+
 
 export default useEventSpawner;

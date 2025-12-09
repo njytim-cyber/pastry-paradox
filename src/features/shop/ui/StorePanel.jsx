@@ -10,6 +10,7 @@
  */
 import React from 'react';
 import { formatNumber, formatNumberWord } from '../../cake/logic/useCakeLogic';
+import { Tooltip } from '../../shared/ui/Tooltip';
 
 // Placeholder icons for generators - inline SVGs
 // Import all icons from assets folder
@@ -125,16 +126,23 @@ export function StorePanel({
 }) {
     const { visible, mystery } = getVisibleTiers(generators, getGeneratorInfo);
 
-    // Check if ANY item can be afforded at a given quantity
-    const canAffordAtQuantity = (qty) => {
-        return visible.some(tier => canAfford?.(tier.id, qty));
+    // Check if quantity is valid for current mode
+    const canUseQuantity = (qty) => {
+        if (shopMode === 'buy') {
+            return visible.some(tier => canAfford?.(tier.id, qty));
+        } else {
+            return visible.some(tier => {
+                const info = getGeneratorInfo?.(tier.id) || tier;
+                return (info.owned || 0) >= qty;
+            });
+        }
     };
 
     return (
         <div className="panel store-panel">
             {/* Header with Buy/Sell Toggle */}
             <div className="panel-header store-header">
-                <h2 className="panel-title">🧁 Store</h2>
+                <h2 className="panel-title">🧁 Market</h2>
                 <div className="store-mode-toggle">
                     <button
                         className={`store-mode-btn ${shopMode === 'buy' ? 'store-mode-btn--active' : ''}`}
@@ -152,23 +160,23 @@ export function StorePanel({
             </div>
 
             {/* Quantity Selector - 67 themed! */}
-            {shopMode === 'buy' && (
-                <div className="quantity-selector">
-                    {[1, 67, 6767].map((qty) => {
-                        const isAffordable = canAffordAtQuantity(qty);
-                        return (
-                            <button
-                                key={qty}
-                                className={`quantity-btn ${buyQuantity === qty ? 'quantity-btn--active' : ''} ${!isAffordable ? 'quantity-btn--disabled' : ''}`}
-                                onClick={() => setBuyQuantity?.(qty)}
-                                disabled={!isAffordable}
-                            >
-                                {qty}
-                            </button>
-                        );
-                    })}
-                </div>
-            )}
+            {/* Quantity Selector (Available for Buy AND Sell) */}
+            <div className="quantity-selector">
+                {[1, 67, 6767].map((qty) => {
+                    const isAvailable = canUseQuantity(qty);
+                    return (
+                        <button
+                            key={qty}
+                            className={`quantity-btn ${buyQuantity === qty ? 'quantity-btn--active' : ''} ${!isAvailable ? 'quantity-btn--disabled' : ''}`}
+                            onClick={() => setBuyQuantity?.(qty)}
+                            disabled={!isAvailable}
+                        >
+                            {qty}
+                        </button>
+                    );
+                })}
+            </div>
+
 
             {/* Generator List */}
             <div className="shop-list">
@@ -181,28 +189,45 @@ export function StorePanel({
                         const affordable = canAfford?.(tier.id, buyQuantity) ?? false;
 
                         return (
-                            <button
-                                key={tier.id}
-                                className={`shop-item ${!affordable ? 'shop-item--disabled' : ''}`}
-                                onClick={() => {
-                                    // Make atomic bulk purchase
-                                    onPurchase?.(tier.id, buyQuantity);
-                                }}
-                                disabled={!affordable}
-                                title={tier.description}
-                            >
-                                <GeneratorIcon tier={tier.tierIndex + 1} id={tier.id} />
-                                <div className="shop-item__info">
-                                    <div className="shop-item__name">{tier.name}</div>
-                                    <div className="shop-item__cost">
-                                        🍰 {(info.currentPrice || tier.baseCost).toLocaleString()}
-                                        {buyQuantity > 1 && (
-                                            <span className="shop-item__bulk"> (×{buyQuantity})</span>
-                                        )}
+                            <Tooltip key={tier.id} content={
+                                <>
+                                    <div className="tooltip-rich-header">{tier.name}</div>
+                                    <div className="tooltip-rich-body">{tier.description}</div>
+                                    <div className="tooltip-rich-stats">
+                                        <span className={affordable ? 'tooltip-stat-cost affordable' : 'tooltip-stat-cost expensive'}>
+                                            🍰 {formatNumber(info.currentPrice || tier.baseCost)}
+                                        </span>
+                                        <span>Owned: {owned}</span>
                                     </div>
-                                </div>
-                                <div className="shop-item__owned">{owned}</div>
-                            </button>
+                                    {tier.baseCps > 0 && (
+                                        <div style={{ fontSize: '0.8rem', marginTop: '4px', color: 'var(--ink-secondary)' }}>
+                                            Total: {formatNumber(tier.baseCps * owned)} CpS
+                                        </div>
+                                    )}
+                                </>
+                            }>
+                                <button
+                                    className={`shop-item ${!affordable ? 'shop-item--disabled' : ''}`}
+                                    onClick={() => {
+                                        // Make atomic bulk purchase
+                                        onPurchase?.(tier.id, buyQuantity);
+                                    }}
+                                    disabled={!affordable}
+                                // Removed native title to allow Tooltip
+                                >
+                                    <GeneratorIcon tier={tier.tierIndex + 1} id={tier.id} />
+                                    <div className="shop-item__info">
+                                        <div className="shop-item__name">{tier.name}</div>
+                                        <div className="shop-item__cost">
+                                            🍰 {(info.currentPrice || tier.baseCost).toLocaleString()}
+                                            {buyQuantity > 1 && (
+                                                <span className="shop-item__bulk"> (×{buyQuantity})</span>
+                                            )}
+                                        </div>
+                                    </div>
+                                    <div className="shop-item__owned">{owned}</div>
+                                </button>
+                            </Tooltip>
                         );
                     } else {
                         // Sell mode
@@ -242,7 +267,7 @@ export function StorePanel({
                     </div>
                 )}
             </div>
-        </div>
+        </div >
     );
 }
 

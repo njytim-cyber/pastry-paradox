@@ -108,6 +108,28 @@ export function formatNumberWord(num) {
 }
 
 /**
+ * Calculate total cost for bulk purchase using Geometric Series Formula
+ * O(1) complexity instead of O(N) loop
+ * Formula: Sum = a * r^k * (1 - r^n) / (1 - r)
+ * where a=base, r=1.15, k=owned, n=quantity
+ */
+export function calculateBulkPrice(baseCost, owned, quantity) {
+    if (quantity <= 0) return 0;
+    if (quantity === 1) return calculatePrice(baseCost, owned);
+
+    const r = 1.15; // Hardcoded multiplier for consistency with balance.json
+
+    // First term cost: a * r^k
+    const firstTerm = baseCost * Math.pow(r, owned);
+
+    // Sum of geometric series: firstTerm * (1 - r^n) / (1 - r)
+    // Since r > 1, we can flip signs: firstTerm * (r^n - 1) / (r - 1)
+    const sum = firstTerm * (Math.pow(r, quantity) - 1) / (r - 1);
+
+    return Math.floor(sum);
+}
+
+/**
  * Format numbers returning value and suffix separately
  * @param {number} num - Number to format
  * @returns {{value: string, suffix: string}}
@@ -160,15 +182,57 @@ export function useCakeLogic(options = {}) {
         return initial;
     });
 
-    // Click particles for animation
-    const [particles, setParticles] = useState([]);
-    const particleIdRef = useRef(0);
+    // Temporary Modifiers (Buffs)
+    const [modifiers, setModifiers] = useState({
+        production: 1,
+        click: 1,
+        costScale: 1, // < 1 means discount
+        global: 1
+    });
+
+    // Buff Application Helper
+    const applyBuff = useCallback((type, value, durationSeconds) => {
+        // Map buff type to modifier key
+        let key = '';
+        if (type === 'production_multiplier') key = 'production';
+        else if (type === 'click_multiplier') key = 'click';
+        else if (type === 'discount') key = 'costScale'; // e.g. 0.5 discount = 0.5 scale
+        else if (type === 'global_multiplier') key = 'global';
+
+        if (!key) return;
+
+        // Apply modifier
+        setModifiers(prev => ({ ...prev, [key]: value }));
+
+        // Reset after duration
+        setTimeout(() => {
+            setModifiers(prev => ({ ...prev, [key]: 1 }));
+        }, durationSeconds * 1000);
+    }, []);
 
     // Calculate CpS (Cakes Per Second)
     const cps = productionTiers.reduce((total, tier) => {
         const owned = generators[tier.id] || 0;
         return total + (tier.baseCps * owned);
-    }, 0) * cpsMultiplier * globalMultiplier;
+    }, 0) * cpsMultiplier * globalMultiplier * modifiers.production * modifiers.global;
+
+    // Instant Resource Helper
+    const grantResources = useCallback((secondsOfProduction) => {
+        // Calculate based on CURRENT effective CpS
+        const amount = cps * secondsOfProduction;
+        if (amount > 0) {
+            setBalance(prev => prev + amount);
+            setTotalBaked(prev => prev + amount);
+        }
+        return amount;
+    }, [cps]);
+
+    // Click particles for animation
+    const [particles, setParticles] = useState([]);
+    const particleIdRef = useRef(0);
+
+    // Calculate CpS (Cakes Per Second)
+
 
     // Game tick - accumulate CpS
     useEffect(() => {
@@ -191,7 +255,7 @@ export function useCakeLogic(options = {}) {
 
     // Handle cake click
     const handleClick = useCallback((event) => {
-        const earned = clickPower * globalMultiplier;
+        const earned = clickPower * globalMultiplier * modifiers.click * modifiers.global;
 
         setBalance(prev => prev + earned);
         setTotalBaked(prev => prev + earned);
@@ -215,7 +279,7 @@ export function useCakeLogic(options = {}) {
         }, 1000);
 
         return earned;
-    }, [clickPower, globalMultiplier]);
+    }, [clickPower, globalMultiplier, modifiers]);
 
     // Purchase a generator (single or bulk)
     const purchaseGenerator = useCallback((tierId, quantity = 1) => {
@@ -223,12 +287,12 @@ export function useCakeLogic(options = {}) {
         if (!tier) return false;
 
         const owned = generators[tierId] || 0;
-        let totalCost = 0;
-        let currentOwned = owned;
+        // Calculate total cost using O(1) formula
+        let totalCost = calculateBulkPrice(tier.baseCost, owned, quantity);
 
-        // Calculate total cost iteratively to match exact single-buy pricing (with flooring)
-        for (let i = 0; i < quantity; i++) {
-            totalCost += calculatePrice(tier.baseCost, currentOwned + i);
+        // Apply discount if active
+        if (modifiers.costScale !== 1) {
+            totalCost = Math.floor(totalCost * modifiers.costScale);
         }
 
         if (balance < totalCost) return false;
@@ -240,7 +304,7 @@ export function useCakeLogic(options = {}) {
         }));
 
         return true;
-    }, [balance, generators]);
+    }, [balance, generators, modifiers.costScale]);
 
     // Check if can afford generator (single or bulk)
     const canAfford = useCallback((tierId, quantity = 1) => {
@@ -249,14 +313,16 @@ export function useCakeLogic(options = {}) {
 
         const owned = generators[tierId] || 0;
 
-        // Calculate total cost for bulk purchase
-        let totalCost = 0;
-        for (let i = 0; i < quantity; i++) {
-            totalCost += calculatePrice(tier.baseCost, owned + i);
+        // Calculate total cost for bulk purchase O(1)
+        let totalCost = calculateBulkPrice(tier.baseCost, owned, quantity);
+
+        // Apply discount
+        if (modifiers.costScale !== 1) {
+            totalCost = Math.floor(totalCost * modifiers.costScale);
         }
 
         return balance >= totalCost;
-    }, [balance, generators]);
+    }, [balance, generators, modifiers.costScale]);
 
     // Get generator info
     const getGeneratorInfo = useCallback((tierId) => {
@@ -264,13 +330,20 @@ export function useCakeLogic(options = {}) {
         if (!tier) return null;
 
         const owned = generators[tierId] || 0;
+        let currentPrice = calculatePrice(tier.baseCost, owned);
+
+        // Apply discount for display
+        if (modifiers.costScale !== 1) {
+            currentPrice = Math.floor(currentPrice * modifiers.costScale);
+        }
+
         return {
             ...tier,
             owned,
-            currentPrice: calculatePrice(tier.baseCost, owned),
-            contribution: tier.baseCps * owned * cpsMultiplier * globalMultiplier,
+            currentPrice,
+            contribution: tier.baseCps * owned * cpsMultiplier * globalMultiplier * modifiers.production * modifiers.global,
         };
-    }, [generators, cpsMultiplier, globalMultiplier]);
+    }, [generators, cpsMultiplier, globalMultiplier, modifiers]);
 
     // Keep track of latest state for saving without re-triggering effects
     const stateRef = useRef({ balance, totalBaked, clickPower, cpsMultiplier, globalMultiplier, generators });
@@ -300,6 +373,35 @@ export function useCakeLogic(options = {}) {
         };
     }, []); // Empty dependency array ensures this only runs once on mount/unmount
 
+    // Sell a generator (single or bulk)
+    const sellGenerator = useCallback((tierId, quantity = 1) => {
+        const tier = productionTiers.find(t => t.id === tierId);
+        if (!tier) return false;
+
+        const owned = generators[tierId] || 0;
+        if (owned < quantity) return false; // Strict sell rule? Or sell max? Strict for now.
+
+        let totalRefund = 0;
+        const refundRate = globalConfig.sellRefundRate || 0.25;
+
+        // Calculate total refund iteratively (selling from highest owned down)
+        for (let i = 0; i < quantity; i++) {
+            // Price of the Nth item (where N = owned - i)
+            // If owned=1, we are selling the 1st item (index 0). cost = base * 1.15^0
+            const itemIndex = owned - 1 - i;
+            const originalCost = Math.floor(tier.baseCost * Math.pow(COST_MULTIPLIER, itemIndex));
+            totalRefund += Math.floor(originalCost * refundRate);
+        }
+
+        setBalance(prev => prev + totalRefund);
+        setGenerators(prev => ({
+            ...prev,
+            [tierId]: prev[tierId] - quantity,
+        }));
+
+        return true;
+    }, [generators]);
+
     return {
         // State
         balance,
@@ -314,6 +416,7 @@ export function useCakeLogic(options = {}) {
         // Actions
         handleClick,
         purchaseGenerator,
+        sellGenerator,
         canAfford,
         getGeneratorInfo,
 
@@ -321,6 +424,11 @@ export function useCakeLogic(options = {}) {
         setClickPower,
         setCpsMultiplier,
         setGlobalMultiplier,
+
+        // Buff Actions
+        applyBuff,
+        grantResources,
+        modifiers
     };
 }
 

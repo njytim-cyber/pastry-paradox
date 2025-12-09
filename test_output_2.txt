@@ -1,0 +1,53 @@
+
+> pastry-paradox@1.4.0 test
+> vitest run features/cake/logic/useCakeLogic.test.js --run
+
+
+[1m[46m RUN [49m[22m [36mv4.0.15 [39m[90mC:/Users/njyti/Desktop/Google-Antigravity/pastry-paradox[39m
+
+ [31mΓ¥»[39m src/features/cake/logic/useCakeLogic.test.js [2m([22m[2m13 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[33m 805[2mms[22m[39m
+       [32mΓ£ô[39m starts with 0 balance[32m 201[2mms[22m[39m
+       [32mΓ£ô[39m starts with 0 CpS[32m 48[2mms[22m[39m
+       [32mΓ£ô[39m starts with click power of 1[32m 64[2mms[22m[39m
+       [32mΓ£ô[39m loads all 15 production tiers[32m 9[2mms[22m[39m
+       [32mΓ£ô[39m increases balance by click power on click[32m 53[2mms[22m[39m
+       [32mΓ£ô[39m accumulates balance with multiple clicks[32m 16[2mms[22m[39m
+       [32mΓ£ô[39m applies production buff correctly[32m 65[2mms[22m[39m
+[31m       [31m├ù[31m applies click buff correctly[39m[32m 223[2mms[22m[39m
+       [32mΓ£ô[39m applies discount correctly[32m 37[2mms[22m[39m
+       [32mΓ£ô[39m cannot afford generator with 0 balance[32m 16[2mms[22m[39m
+       [32mΓ£ô[39m can afford generator when balance exceeds cost[32m 13[2mms[22m[39m
+       [32mΓ£ô[39m deducts cost and increases owned count on purchase[32m 4[2mms[22m[39m
+       [32mΓ£ô[39m formats millions correctly[32m 6[2mms[22m[39m
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ» Failed Tests 1 ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+
+ FAIL  src/features/cake/logic/useCakeLogic.test.js > useCakeLogic > Buffs & Modifiers > applies click buff correctly
+AssertionError: expected 1 to be 77 // Object.is equality
+
+- Expected
++ Received
+
+- 77
++ 1
+
+ Γ¥» src/features/cake/logic/useCakeLogic.test.js:88:32
+     86|                 const earned = result.current.handleClick({ clientX: 0ΓÇª
+     87|                 // Base click 1 * 77 = 77
+     88|                 expect(earned).toBe(77);
+       |                                ^
+     89|             });
+     90|         });
+ Γ¥» node_modules/@testing-library/react/dist/act-compat.js:48:24
+ Γ¥» act node_modules/react/cjs/react.development.js:2512:16
+ Γ¥» node_modules/@testing-library/react/dist/act-compat.js:47:25
+ Γ¥» src/features/cake/logic/useCakeLogic.test.js:85:16
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[1/1]ΓÄ»
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m12 passed[39m[22m[90m (13)[39m
+[2m   Start at [22m 18:57:08
+[2m   Duration [22m 9.46s[2m (transform 385ms, setup 1.44s, import 631ms, tests 805ms, environment 4.65s)[22m
+

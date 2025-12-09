@@ -1,48 +1,64 @@
 /**
- * GoldenFloater - The Golden Croissant event view
+ * GoldenFloater - The Golden Macaron event view
  * View Component (NO LOGIC)
  */
 import React from 'react';
+import { MACARON_TYPES } from '../logic/macaronConstants';
 
-// Golden Croissant SVG
-const GoldenCroissantIcon = () => (
-    <svg viewBox="0 0 80 80" aria-label="Golden Croissant - Click for bonus!">
-        <defs>
-            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#FFD700" />
-                <stop offset="50%" stopColor="#FFA500" />
-                <stop offset="100%" stopColor="#FFD700" />
-            </linearGradient>
-            <filter id="glow">
-                <feGaussianBlur stdDeviation="2" result="coloredBlur" />
-                <feMerge>
-                    <feMergeNode in="coloredBlur" />
-                    <feMergeNode in="SourceGraphic" />
-                </feMerge>
-            </filter>
-        </defs>
+// Macaron SVG Component
+const MacaronIcon = ({ type }) => {
+    // Default to rose if not found
+    const macaron = type || MACARON_TYPES[0];
 
-        {/* Croissant body */}
-        <path
-            d="M10 50 Q5 40 15 30 Q25 20 40 25 Q55 20 65 30 Q75 40 70 50 Q65 60 55 55 Q45 65 40 60 Q35 65 25 55 Q15 60 10 50"
-            fill="url(#goldGradient)"
-            stroke="#B8860B"
-            strokeWidth="2"
-            filter="url(#glow)"
-        />
+    return (
+        <svg viewBox="0 0 100 100" aria-label={`${macaron.name} - ${macaron.description}`}>
+            <defs>
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
+                    <feMerge>
+                        <feMergeNode in="coloredBlur" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+            </defs>
 
-        {/* Croissant ridges */}
-        <path d="M20 45 Q25 35 35 40" stroke="#B8860B" strokeWidth="1.5" fill="none" />
-        <path d="M35 50 Q40 38 50 42" stroke="#B8860B" strokeWidth="1.5" fill="none" />
-        <path d="M48 48 Q55 38 62 45" stroke="#B8860B" strokeWidth="1.5" fill="none" />
+            {/* Bottom Cookie */}
+            <path
+                d="M10 65 Q 10 85 50 85 Q 90 85 90 65 Q 90 55 50 55 Q 10 55 10 65"
+                fill={macaron.color}
+                stroke="#000"
+                strokeWidth="1"
+                filter="url(#glow)"
+            />
+            {/* Feet (The ruffles) */}
+            <path
+                d="M12 65 Q 15 70 20 65 Q 25 70 30 65 Q 35 70 40 65 Q 45 70 50 65 Q 55 70 60 65 Q 65 70 70 65 Q 75 70 80 65 Q 85 70 88 65"
+                fill="none"
+                stroke={macaron.color}
+                strokeWidth="2"
+                strokeDasharray="2 1"
+            />
 
-        {/* Sparkles */}
-        <circle cx="15" cy="25" r="2" fill="#FFF" opacity="0.8" />
-        <circle cx="65" cy="20" r="1.5" fill="#FFF" opacity="0.7" />
-        <circle cx="40" cy="15" r="2" fill="#FFF" opacity="0.9" />
-        <circle cx="70" cy="55" r="1.5" fill="#FFF" opacity="0.6" />
-    </svg>
-);
+            {/* Filling */}
+            <path
+                d="M15 60 Q 15 50 50 50 Q 85 50 85 60 Q 85 65 50 65 Q 15 65 15 60"
+                fill={macaron.filling}
+            />
+
+            {/* Top Cookie */}
+            <path
+                d="M10 45 Q 10 20 50 20 Q 90 20 90 45 Q 90 55 50 55 Q 10 55 10 45"
+                fill={macaron.color}
+                stroke="#000"
+                strokeWidth="1"
+                filter="url(#glow)"
+            />
+
+            {/* Shine/Reflection */}
+            <ellipse cx="65" cy="35" rx="15" ry="8" fill="#FFF" opacity="0.3" transform="rotate(-15 65 35)" />
+        </svg>
+    );
+};
 
 /**
  * Golden Floater Component
@@ -50,25 +66,29 @@ const GoldenCroissantIcon = () => (
  * @param {boolean} props.isActive - Whether event is spawned
  * @param {Object} props.position - { x, y } screen position
  * @param {Function} props.onClick - Click handler
+ * @param {Object} props.type - Macaron definition object
  */
 export function GoldenFloater({
     isActive = false,
     position = { x: 0, y: 0 },
     onClick,
+    type
 }) {
     if (!isActive) return null;
 
     return (
         <button
-            className="golden-croissant"
+            className="golden-croissant" // Keeping class name for existing animations
             style={{
                 left: position.x,
                 top: position.y,
+                width: '80px', // Slightly larger for macaron detail
+                height: '80px'
             }}
             onClick={onClick}
-            aria-label="Golden Croissant bonus! Click for 67x multiplier!"
+            aria-label={`${type?.name || 'Macaron'} - Click for bonus!`}
         >
-            <GoldenCroissantIcon />
+            <MacaronIcon type={type} />
         </button>
     );
 }

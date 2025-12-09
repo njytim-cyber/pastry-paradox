@@ -33,6 +33,18 @@ import packageJson from '../package.json';
 
 const { globalConfig } = balanceData;
 
+// Helper: Determine if a color is light (needs dark text)
+const isLightColor = (hexColor) => {
+    if (!hexColor) return false;
+    const hex = hexColor.replace('#', '');
+    const r = parseInt(hex.substr(0, 2), 16);
+    const g = parseInt(hex.substr(2, 2), 16);
+    const b = parseInt(hex.substr(4, 2), 16);
+    // Luminance formula (perceived brightness)
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+    return luminance > 0.65; // Threshold for "light" color
+};
+
 function App() {
     // Responsive & Mobile Navigation
     const isMobile = useIsMobile();
@@ -56,9 +68,31 @@ function App() {
         setCpsMultiplier: cakeLogic.setCpsMultiplier,
     });
 
-    // Initialize event system (connected to multiplier)
+    // Notification State for Events
+    const [currentBuffInfo, setCurrentBuffInfo] = React.useState(null);
+    const [instantNotification, setInstantNotification] = React.useState(null);
+    const [showBuffNotification, setShowBuffNotification] = React.useState(false);
+
+    // Initialize event system (connected to multipliers)
     const eventSystem = useEventSpawner({
-        setGlobalMultiplier: cakeLogic.setGlobalMultiplier,
+        onEventClick: (macaron) => {
+            const { type, value, duration } = macaron.buff;
+
+            if (type === 'production_multiplier' || type === 'click_multiplier' || type === 'global_multiplier' || type === 'discount') {
+                cakeLogic.applyBuff(type, value, duration);
+                setCurrentBuffInfo(macaron);
+                setShowBuffNotification(true);
+                setTimeout(() => setShowBuffNotification(false), 2000);
+            } else if (type === 'instant_production') {
+                cakeLogic.grantResources(value);
+                setInstantNotification({ name: macaron.name, desc: macaron.description, color: macaron.color, filling: macaron.filling });
+                setTimeout(() => setInstantNotification(null), 2000);
+            } else if (type === 'time_warp') {
+                cakeLogic.grantResources(value);
+                setInstantNotification({ name: macaron.name, desc: macaron.description, color: macaron.color, filling: macaron.filling });
+                setTimeout(() => setInstantNotification(null), 2000);
+            }
+        }
     });
 
     // Initialize Achievement System
@@ -84,24 +118,17 @@ function App() {
         if (info && cakeLogic.purchaseGenerator(tierId, quantity)) {
             // Calculate total cost for stats tracking
             let totalCost = 0;
-            for (let i = 0; i < quantity; i++) {
-                totalCost += info.currentPrice * Math.pow(1.15, i);
-            }
+            // Approximation for stats since exact calculation is complex with bulk
+            // and we care mostly about "lots of money spent"
+            totalCost = info.currentPrice * quantity;
             gameState.recordSpent(totalCost);
         }
     }, [cakeLogic, gameState]);
 
     // Handle generator sale
-    const handleSell = useCallback((tierId) => {
-        const tier = cakeLogic.productionTiers.find(t => t.id === tierId);
-        const info = cakeLogic.getGeneratorInfo(tierId);
-        if (!tier || !info || info.owned <= 0) return;
-
-        const sellPrice = gameState.getSellPrice(tier.baseCost, info.owned);
-        // Add sell price to balance (we need to expose a way to add balance)
-        // For now, simulate by clicking equivalent times
-        // TODO: Add proper setBalance to useCakeLogic
-    }, [cakeLogic, gameState]);
+    const handleSell = useCallback((tierId, quantity = 1) => {
+        cakeLogic.sellGenerator(tierId, quantity);
+    }, [cakeLogic]);
 
     // Handle prestige
     const handlePrestige = useCallback(() => {
@@ -137,14 +164,16 @@ function App() {
     // Render stats pane (shared between mobile/desktop)
     const renderStatsPane = () => (
         <div className="pane-center">
-            <UpgradeGrid
-                upgrades={upgradeSystem.upgradeList}
-                balance={cakeLogic.balance}
-                canPurchase={upgradeSystem.canPurchaseUpgrade}
-                onPurchase={(upgradeId) => {
-                    upgradeSystem.purchaseUpgrade(upgradeId, cakeLogic.balance, () => { });
-                }}
-            />
+            <div style={{ maxHeight: '50%', overflowY: 'auto', flexShrink: 0 }}>
+                <UpgradeGrid
+                    upgrades={upgradeSystem.upgradeList}
+                    balance={cakeLogic.balance}
+                    canPurchase={upgradeSystem.canPurchaseUpgrade}
+                    onPurchase={(upgradeId) => {
+                        upgradeSystem.purchaseUpgrade(upgradeId, cakeLogic.balance, () => { });
+                    }}
+                />
+            </div>
             <StatsPanel
                 stats={gameState.stats}
                 cps={effectiveCps}
@@ -178,6 +207,17 @@ function App() {
         </div>
     );
 
+    // Calculate active multiplier for UI
+    const activeMultiplier = cakeLogic.modifiers.global * cakeLogic.modifiers.production;
+    const isBuffActive = activeMultiplier > 1 || cakeLogic.modifiers.click > 1 || cakeLogic.modifiers.costScale < 1;
+
+    // Helper to clear buff label when buff expires
+    React.useEffect(() => {
+        if (!isBuffActive) {
+            setCurrentBuffInfo(null);
+        }
+    }, [isBuffActive]);
+
     return (
         <div className="app-container">
             {/* Top Flavor Text Banner */}
@@ -185,7 +225,7 @@ function App() {
                 <FlavorText
                     cps={effectiveCps}
                     totalBaked={gameState.stats.totalBaked}
-                    isGoldenActive={cakeLogic.globalMultiplier > 1}
+                    isGoldenActive={isBuffActive}
                     has67Pattern={upgradeSystem.has67Pattern}
                 />
             </div>
@@ -223,12 +263,61 @@ function App() {
                 isActive={eventSystem.isEventActive}
                 position={eventSystem.eventPosition}
                 onClick={eventSystem.clickEvent}
+                type={eventSystem.activeEvent}
             />
-            <MultiplierIndicator
-                multiplier={eventSystem.multiplier}
-                timeRemaining={eventSystem.timeRemaining}
-                isActive={cakeLogic.globalMultiplier > 1}
-            />
+
+            {/* Instant Event Notification */}
+            {instantNotification && (
+                <div
+                    className="multiplier-active"
+                    role="status"
+                    aria-live="polite"
+                    style={{
+                        flexDirection: 'column',
+                        gap: '4px',
+                        background: `linear-gradient(135deg, ${instantNotification.color}, ${instantNotification.filling})`,
+                        color: isLightColor(instantNotification.color) ? '#333333' : '#FFFFFF',
+                        textShadow: isLightColor(instantNotification.color) ? '0 1px 2px rgba(255,255,255,0.5)' : '0 2px 4px rgba(0,0,0,0.8)',
+                        border: '2px solid rgba(255,255,255,0.8)'
+                    }}
+                >
+                    <div style={{ fontSize: '1.2rem', textTransform: 'uppercase', letterSpacing: '1px' }}>{instantNotification.name}</div>
+                    <div style={{ fontSize: '0.9rem', fontWeight: 'normal', opacity: 1 }}>{instantNotification.desc}</div>
+                </div>
+            )}
+
+            {/* Persistent Buff Indicator (shows for 2s after activation) */}
+            {!instantNotification && showBuffNotification && currentBuffInfo && (
+                <div
+                    className="multiplier-active"
+                    role="status"
+                    aria-live="polite"
+                    style={{
+                        flexDirection: 'column',
+                        gap: '4px',
+                        background: currentBuffInfo
+                            ? `linear-gradient(135deg, ${currentBuffInfo.color}, ${currentBuffInfo.filling})`
+                            : undefined,
+                        color: currentBuffInfo
+                            ? (isLightColor(currentBuffInfo.color) ? '#333333' : '#FFFFFF')
+                            : undefined,
+                        textShadow: currentBuffInfo
+                            ? (isLightColor(currentBuffInfo.color) ? '0 1px 2px rgba(255,255,255,0.5)' : '0 2px 4px rgba(0,0,0,0.8)')
+                            : undefined,
+                        border: currentBuffInfo ? '2px solid rgba(255,255,255,0.8)' : undefined
+                    }}
+                >
+                    {currentBuffInfo && (
+                        <div style={{ fontSize: '1.2rem', textTransform: 'uppercase', marginBottom: '2px' }}>
+                            {currentBuffInfo.name}
+                        </div>
+                    )}
+                    <div style={{ fontSize: '0.9rem', fontWeight: 'normal' }}>
+                        ✨ {currentBuffInfo?.description || 'BONUS ACTIVE!'}
+                    </div>
+                </div>
+            )}
+
             {/* Audio Engine Disabled for v1.4.0 (Pending Assets) */}
             {/* <AudioController cakesPerSecond={effectiveCps} /> */}
             <AchievementPopup
@@ -238,13 +327,11 @@ function App() {
             <VersionSplash
                 version={packageJson.version}
                 features={[
-                    '📱 NEW: Mobile-first responsive design with tab navigation!',
+                    '🥐 NEW: "Your Patisserie" rebranding!',
+                    '🍪 NEW: 10 Types of Golden Macarons with unique buffs!',
+                    '📱 NEW: Streamlined specific-stats panel (No scrolling!)',
                     '👆 Swipe left/right to switch between tabs on mobile',
-                    '🎯 Optimized touch targets for better mobile UX',
-                    '🎨 Smoother balance counter - updates only 4 times per second',
-                    '📝 Improved flavor text timing - shows for 10s, then hides for 3 min',
                     '🛒 Buy in bulk with ×67 and ×6767 quantity buttons',
-                    '🚫 Quantity buttons auto-disable when unaffordable',
                     '🏆 Achievement popups now auto-dismiss after 3 seconds'
                 ]}
                 isVisible={versionSplash.isVisible}

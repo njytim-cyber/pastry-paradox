@@ -146,37 +146,497 @@
     {
       "id": "upgrade_reality_dough",
       "prompt": "cosmic portal with dough spiral"
+    },
+    {
+      "id": "the_vibe_check",
+      "prompt": "The Vibe Check icon. Palms up. Palms down. The dough understands.. High quality game asset."
+    },
+    {
+      "id": "butter_blessing",
+      "prompt": "Butter Blessing icon. European butter hits different.. High quality game asset."
+    },
+    {
+      "id": "flour_power",
+      "prompt": "Flour Power icon. Ban refined flour. Go whole wheat. Just kidding.. High quality game asset."
+    },
+    {
+      "id": "sugar_rush",
+      "prompt": "Sugar Rush icon. Your apprentices vibrate with energy.. High quality game asset."
+    },
+    {
+      "id": "grandmas_approval",
+      "prompt": "Grandma's Approval icon. She finally admits the recipe needed updating.. High quality game asset."
+    },
+    {
+      "id": "preheated",
+      "prompt": "Always Preheated icon. Ovens so ready they predict your thoughts.. High quality game asset."
+    },
+    {
+      "id": "turbo_whisk",
+      "prompt": "Turbo Whisk icon. The sound breaks windows.. High quality game asset."
+    },
+    {
+      "id": "viral_resonance",
+      "prompt": "Viral Resonance icon. Your fame reaches the golden dimension.. High quality game asset."
+    },
+    {
+      "id": "click_mastery",
+      "prompt": "Click Mastery icon. Your fingers move faster than sound.. High quality game asset."
+    },
+    {
+      "id": "double_tap",
+      "prompt": "Double Tap icon. Each click counts twice. It just does.. High quality game asset."
+    },
+    {
+      "id": "franchise_fever",
+      "prompt": "Franchise Fever icon. Open bakeries in your sleep.. High quality game asset."
+    },
+    {
+      "id": "factory_overdrive",
+      "prompt": "Factory Overdrive icon. OSHA? Never heard of them.. High quality game asset."
+    },
+    {
+      "id": "frosting_flood",
+      "prompt": "Frosting Flood icon. A deluge of deliciousness.. High quality game asset."
+    },
+    {
+      "id": "printer_perfection",
+      "prompt": "Printer Perfection icon. 4K resolution cakes. Yes, really.. High quality game asset."
+    },
+    {
+      "id": "robot_uprising",
+      "prompt": "Robot Uprising (Good Kind) icon. They only want to bake.. High quality game asset."
+    },
+    {
+      "id": "clone_perfection",
+      "prompt": "Clone Perfection icon. Each copy improves upon the last.. High quality game asset."
+    },
+    {
+      "id": "zero_g_frosting",
+      "prompt": "Zero-G Frosting icon. Perfect spherical layers.. High quality game asset."
+    },
+    {
+      "id": "nano_swarm",
+      "prompt": "Nano Swarm icon. They're everywhere. EVERYWHERE.. High quality game asset."
+    },
+    {
+      "id": "temporal_baking",
+      "prompt": "Temporal Baking icon. The cake was ready yesterday.. High quality game asset."
+    },
+    {
+      "id": "reality_dough",
+      "prompt": "Reality Dough icon. The universe is your ingredient list.. High quality game asset."
+    },
+    {
+      "id": "apprentice_baker_upgrade_1",
+      "prompt": "Sturdy Apprentice Baker icon. Reinforced foundation. Apprentice Bakers production x2.. High quality game asset."
+    },
+    {
+      "id": "apprentice_baker_upgrade_2",
+      "prompt": "Efficient Apprentice Baker icon. Improved efficiency. Apprentice Bakers production x2.. High quality game asset."
+    },
+    {
+      "id": "apprentice_baker_upgrade_3",
+      "prompt": "Advanced Apprentice Baker icon. High-tech integration. Apprentice Bakers production x2.. High quality game asset."
+    },
+    {
+      "id": "apprentice_baker_upgrade_4",
+      "prompt": "Super Apprentice Baker icon. Maximum overdrive. Apprentice Bakers production x2.. High quality game asset."
+    },
+    {
+      "id": "apprentice_baker_upgrade_5",
+      "prompt": "Mega Apprentice Baker icon. Quantum enhancement. Apprentice Bakers production x2.. High quality game asset."
+    },
+    {
+      "id": "apprentice_baker_upgrade_6",
+      "prompt": "Hyper Apprentice Baker icon. Divine perfection. Apprentice Bakers production x2.. High quality game asset."
+    },
+    {
+      "id": "grandmas_secret_recipe_upgrade_1",
+      "prompt": "Sturdy Grandma's Secret Recipe icon. Reinforced foundation. Grandma's Secret Recipes production x2.. High quality game asset."
+    },
+    {
+      "id": "grandmas_secret_recipe_upgrade_2",
+      "prompt": "Efficient Grandma's Secret Recipe icon. Improved efficiency. Grandma's Secret Recipes production x2.. High quality game asset."
+    },
+    {
+      "id": "grandmas_secret_recipe_upgrade_3",
+      "prompt": "Advanced Grandma's Secret Recipe icon. High-tech integration. Grandma's Secret Recipes production x2.. High quality game asset."
+    },
+    {
+      "id": "grandmas_secret_recipe_upgrade_4",
+      "prompt": "Super Grandma's Secret Recipe icon. Maximum overdrive. Grandma's Secret Recipes production x2.. High quality game asset."
+    },
+    {
+      "id": "grandmas_secret_recipe_upgrade_5",
+      "prompt": "Mega Grandma's Secret Recipe icon. Quantum enhancement. Grandma's Secret Recipes production x2.. High quality game asset."
+    },
+    {
+      "id": "grandmas_secret_recipe_upgrade_6",
+      "prompt": "Hyper Grandma's Secret Recipe icon. Divine perfection. Grandma's Secret Recipes production x2.. High quality game asset."
+    },
+    {
+      "id": "convection_oven_upgrade_1",
+      "prompt": "Sturdy Convection Oven icon. Reinforced foundation. Convection Ovens production x2.. High quality game asset."
+    },
+    {
+      "id": "convection_oven_upgrade_2",
+      "prompt": "Efficient Convection Oven icon. Improved efficiency. Convection Ovens production x2.. High quality game asset."
+    },
+    {
+      "id": "convection_oven_upgrade_3",
+      "prompt": "Advanced Convection Oven icon. High-tech integration. Convection Ovens production x2.. High quality game asset."
+    },
+    {
+      "id": "convection_oven_upgrade_4",
+      "prompt": "Super Convection Oven icon. Maximum overdrive. Convection Ovens production x2.. High quality game asset."
+    },
+    {
+      "id": "convection_oven_upgrade_5",
+      "prompt": "Mega Convection Oven icon. Quantum enhancement. Convection Ovens production x2.. High quality game asset."
+    },
+    {
+      "id": "convection_oven_upgrade_6",
+      "prompt": "Hyper Convection Oven icon. Divine perfection. Convection Ovens production x2.. High quality game asset."
+    },
+    {
+      "id": "professional_mixer_upgrade_1",
+      "prompt": "Sturdy Professional Mixer icon. Reinforced foundation. Professional Mixers production x2.. High quality game asset."
+    },
+    {
+      "id": "professional_mixer_upgrade_2",
+      "prompt": "Efficient Professional Mixer icon. Improved efficiency. Professional Mixers production x2.. High quality game asset."
+    },
+    {
+      "id": "professional_mixer_upgrade_3",
+      "prompt": "Advanced Professional Mixer icon. High-tech integration. Professional Mixers production x2.. High quality game asset."
+    },
+    {
+      "id": "professional_mixer_upgrade_4",
+      "prompt": "Super Professional Mixer icon. Maximum overdrive. Professional Mixers production x2.. High quality game asset."
+    },
+    {
+      "id": "professional_mixer_upgrade_5",
+      "prompt": "Mega Professional Mixer icon. Quantum enhancement. Professional Mixers production x2.. High quality game asset."
+    },
+    {
+      "id": "professional_mixer_upgrade_6",
+      "prompt": "Hyper Professional Mixer icon. Divine perfection. Professional Mixers production x2.. High quality game asset."
+    },
+    {
+      "id": "local_bakery_franchise_upgrade_1",
+      "prompt": "Sturdy Local Bakery Franchise icon. Reinforced foundation. Local Bakery Franchises production x2.. High quality game asset."
+    },
+    {
+      "id": "local_bakery_franchise_upgrade_2",
+      "prompt": "Efficient Local Bakery Franchise icon. Improved efficiency. Local Bakery Franchises production x2.. High quality game asset."
+    },
+    {
+      "id": "local_bakery_franchise_upgrade_3",
+      "prompt": "Advanced Local Bakery Franchise icon. High-tech integration. Local Bakery Franchises production x2.. High quality game asset."
+    },
+    {
+      "id": "local_bakery_franchise_upgrade_4",
+      "prompt": "Super Local Bakery Franchise icon. Maximum overdrive. Local Bakery Franchises production x2.. High quality game asset."
+    },
+    {
+      "id": "local_bakery_franchise_upgrade_5",
+      "prompt": "Mega Local Bakery Franchise icon. Quantum enhancement. Local Bakery Franchises production x2.. High quality game asset."
+    },
+    {
+      "id": "local_bakery_franchise_upgrade_6",
+      "prompt": "Hyper Local Bakery Franchise icon. Divine perfection. Local Bakery Franchises production x2.. High quality game asset."
+    },
+    {
+      "id": "cake_factory_upgrade_1",
+      "prompt": "Sturdy Cake Factory icon. Reinforced foundation. Cake Factorys production x2.. High quality game asset."
+    },
+    {
+      "id": "cake_factory_upgrade_2",
+      "prompt": "Efficient Cake Factory icon. Improved efficiency. Cake Factorys production x2.. High quality game asset."
+    },
+    {
+      "id": "cake_factory_upgrade_3",
+      "prompt": "Advanced Cake Factory icon. High-tech integration. Cake Factorys production x2.. High quality game asset."
+    },
+    {
+      "id": "cake_factory_upgrade_4",
+      "prompt": "Super Cake Factory icon. Maximum overdrive. Cake Factorys production x2.. High quality game asset."
+    },
+    {
+      "id": "cake_factory_upgrade_5",
+      "prompt": "Mega Cake Factory icon. Quantum enhancement. Cake Factorys production x2.. High quality game asset."
+    },
+    {
+      "id": "cake_factory_upgrade_6",
+      "prompt": "Hyper Cake Factory icon. Divine perfection. Cake Factorys production x2.. High quality game asset."
+    },
+    {
+      "id": "industrial_frosting_hose_upgrade_1",
+      "prompt": "Sturdy Industrial Frosting Hose icon. Reinforced foundation. Industrial Frosting Hoses production x2.. High quality game asset."
+    },
+    {
+      "id": "industrial_frosting_hose_upgrade_2",
+      "prompt": "Efficient Industrial Frosting Hose icon. Improved efficiency. Industrial Frosting Hoses production x2.. High quality game asset."
+    },
+    {
+      "id": "industrial_frosting_hose_upgrade_3",
+      "prompt": "Advanced Industrial Frosting Hose icon. High-tech integration. Industrial Frosting Hoses production x2.. High quality game asset."
+    },
+    {
+      "id": "industrial_frosting_hose_upgrade_4",
+      "prompt": "Super Industrial Frosting Hose icon. Maximum overdrive. Industrial Frosting Hoses production x2.. High quality game asset."
+    },
+    {
+      "id": "industrial_frosting_hose_upgrade_5",
+      "prompt": "Mega Industrial Frosting Hose icon. Quantum enhancement. Industrial Frosting Hoses production x2.. High quality game asset."
+    },
+    {
+      "id": "industrial_frosting_hose_upgrade_6",
+      "prompt": "Hyper Industrial Frosting Hose icon. Divine perfection. Industrial Frosting Hoses production x2.. High quality game asset."
+    },
+    {
+      "id": "3d_cake_printer_upgrade_1",
+      "prompt": "Sturdy 3D Cake Printer icon. Reinforced foundation. 3D Cake Printers production x2.. High quality game asset."
+    },
+    {
+      "id": "3d_cake_printer_upgrade_2",
+      "prompt": "Efficient 3D Cake Printer icon. Improved efficiency. 3D Cake Printers production x2.. High quality game asset."
+    },
+    {
+      "id": "3d_cake_printer_upgrade_3",
+      "prompt": "Advanced 3D Cake Printer icon. High-tech integration. 3D Cake Printers production x2.. High quality game asset."
+    },
+    {
+      "id": "3d_cake_printer_upgrade_4",
+      "prompt": "Super 3D Cake Printer icon. Maximum overdrive. 3D Cake Printers production x2.. High quality game asset."
+    },
+    {
+      "id": "3d_cake_printer_upgrade_5",
+      "prompt": "Mega 3D Cake Printer icon. Quantum enhancement. 3D Cake Printers production x2.. High quality game asset."
+    },
+    {
+      "id": "3d_cake_printer_upgrade_6",
+      "prompt": "Hyper 3D Cake Printer icon. Divine perfection. 3D Cake Printers production x2.. High quality game asset."
+    },
+    {
+      "id": "robotic_pastry_chef_upgrade_1",
+      "prompt": "Sturdy Robotic Pastry Chef icon. Reinforced foundation. Robotic Pastry Chefs production x2.. High quality game asset."
+    },
+    {
+      "id": "robotic_pastry_chef_upgrade_2",
+      "prompt": "Efficient Robotic Pastry Chef icon. Improved efficiency. Robotic Pastry Chefs production x2.. High quality game asset."
+    },
+    {
+      "id": "robotic_pastry_chef_upgrade_3",
+      "prompt": "Advanced Robotic Pastry Chef icon. High-tech integration. Robotic Pastry Chefs production x2.. High quality game asset."
+    },
+    {
+      "id": "robotic_pastry_chef_upgrade_4",
+      "prompt": "Super Robotic Pastry Chef icon. Maximum overdrive. Robotic Pastry Chefs production x2.. High quality game asset."
+    },
+    {
+      "id": "robotic_pastry_chef_upgrade_5",
+      "prompt": "Mega Robotic Pastry Chef icon. Quantum enhancement. Robotic Pastry Chefs production x2.. High quality game asset."
+    },
+    {
+      "id": "robotic_pastry_chef_upgrade_6",
+      "prompt": "Hyper Robotic Pastry Chef icon. Divine perfection. Robotic Pastry Chefs production x2.. High quality game asset."
+    },
+    {
+      "id": "cloning_vat_upgrade_1",
+      "prompt": "Sturdy Cloning Vat icon. Reinforced foundation. Cloning Vats production x2.. High quality game asset."
+    },
+    {
+      "id": "cloning_vat_upgrade_2",
+      "prompt": "Efficient Cloning Vat icon. Improved efficiency. Cloning Vats production x2.. High quality game asset."
+    },
+    {
+      "id": "cloning_vat_upgrade_3",
+      "prompt": "Advanced Cloning Vat icon. High-tech integration. Cloning Vats production x2.. High quality game asset."
+    },
+    {
+      "id": "cloning_vat_upgrade_4",
+      "prompt": "Super Cloning Vat icon. Maximum overdrive. Cloning Vats production x2.. High quality game asset."
+    },
+    {
+      "id": "cloning_vat_upgrade_5",
+      "prompt": "Mega Cloning Vat icon. Quantum enhancement. Cloning Vats production x2.. High quality game asset."
+    },
+    {
+      "id": "cloning_vat_upgrade_6",
+      "prompt": "Hyper Cloning Vat icon. Divine perfection. Cloning Vats production x2.. High quality game asset."
+    },
+    {
+      "id": "orbital_bakery_station_upgrade_1",
+      "prompt": "Sturdy Orbital Bakery Station icon. Reinforced foundation. Orbital Bakery Stations production x2.. High quality game asset."
+    },
+    {
+      "id": "orbital_bakery_station_upgrade_2",
+      "prompt": "Efficient Orbital Bakery Station icon. Improved efficiency. Orbital Bakery Stations production x2.. High quality game asset."
+    },
+    {
+      "id": "orbital_bakery_station_upgrade_3",
+      "prompt": "Advanced Orbital Bakery Station icon. High-tech integration. Orbital Bakery Stations production x2.. High quality game asset."
+    },
+    {
+      "id": "orbital_bakery_station_upgrade_4",
+      "prompt": "Super Orbital Bakery Station icon. Maximum overdrive. Orbital Bakery Stations production x2.. High quality game asset."
+    },
+    {
+      "id": "orbital_bakery_station_upgrade_5",
+      "prompt": "Mega Orbital Bakery Station icon. Quantum enhancement. Orbital Bakery Stations production x2.. High quality game asset."
+    },
+    {
+      "id": "orbital_bakery_station_upgrade_6",
+      "prompt": "Hyper Orbital Bakery Station icon. Divine perfection. Orbital Bakery Stations production x2.. High quality game asset."
+    },
+    {
+      "id": "nanobot_yeast_upgrade_1",
+      "prompt": "Sturdy Nanobot Yeast icon. Reinforced foundation. Nanobot Yeasts production x2.. High quality game asset."
+    },
+    {
+      "id": "nanobot_yeast_upgrade_2",
+      "prompt": "Efficient Nanobot Yeast icon. Improved efficiency. Nanobot Yeasts production x2.. High quality game asset."
+    },
+    {
+      "id": "nanobot_yeast_upgrade_3",
+      "prompt": "Advanced Nanobot Yeast icon. High-tech integration. Nanobot Yeasts production x2.. High quality game asset."
+    },
+    {
+      "id": "nanobot_yeast_upgrade_4",
+      "prompt": "Super Nanobot Yeast icon. Maximum overdrive. Nanobot Yeasts production x2.. High quality game asset."
+    },
+    {
+      "id": "nanobot_yeast_upgrade_5",
+      "prompt": "Mega Nanobot Yeast icon. Quantum enhancement. Nanobot Yeasts production x2.. High quality game asset."
+    },
+    {
+      "id": "nanobot_yeast_upgrade_6",
+      "prompt": "Hyper Nanobot Yeast icon. Divine perfection. Nanobot Yeasts production x2.. High quality game asset."
+    },
+    {
+      "id": "time_warp_oven_upgrade_1",
+      "prompt": "Sturdy Time Warp Oven icon. Reinforced foundation. Time Warp Ovens production x2.. High quality game asset."
+    },
+    {
+      "id": "time_warp_oven_upgrade_2",
+      "prompt": "Efficient Time Warp Oven icon. Improved efficiency. Time Warp Ovens production x2.. High quality game asset."
+    },
+    {
+      "id": "time_warp_oven_upgrade_3",
+      "prompt": "Advanced Time Warp Oven icon. High-tech integration. Time Warp Ovens production x2.. High quality game asset."
+    },
+    {
+      "id": "time_warp_oven_upgrade_4",
+      "prompt": "Super Time Warp Oven icon. Maximum overdrive. Time Warp Ovens production x2.. High quality game asset."
+    },
+    {
+      "id": "time_warp_oven_upgrade_5",
+      "prompt": "Mega Time Warp Oven icon. Quantum enhancement. Time Warp Ovens production x2.. High quality game asset."
+    },
+    {
+      "id": "time_warp_oven_upgrade_6",
+      "prompt": "Hyper Time Warp Oven icon. Divine perfection. Time Warp Ovens production x2.. High quality game asset."
+    },
+    {
+      "id": "matter_replicator_upgrade_1",
+      "prompt": "Sturdy Matter Replicator icon. Reinforced foundation. Matter Replicators production x2.. High quality game asset."
+    },
+    {
+      "id": "matter_replicator_upgrade_2",
+      "prompt": "Efficient Matter Replicator icon. Improved efficiency. Matter Replicators production x2.. High quality game asset."
+    },
+    {
+      "id": "matter_replicator_upgrade_3",
+      "prompt": "Advanced Matter Replicator icon. High-tech integration. Matter Replicators production x2.. High quality game asset."
+    },
+    {
+      "id": "matter_replicator_upgrade_4",
+      "prompt": "Super Matter Replicator icon. Maximum overdrive. Matter Replicators production x2.. High quality game asset."
+    },
+    {
+      "id": "matter_replicator_upgrade_5",
+      "prompt": "Mega Matter Replicator icon. Quantum enhancement. Matter Replicators production x2.. High quality game asset."
+    },
+    {
+      "id": "matter_replicator_upgrade_6",
+      "prompt": "Hyper Matter Replicator icon. Divine perfection. Matter Replicators production x2.. High quality game asset."
+    },
+    {
+      "id": "multiverse_portal_upgrade_1",
+      "prompt": "Sturdy Multiverse Portal icon. Reinforced foundation. Multiverse Portals production x2.. High quality game asset."
+    },
+    {
+      "id": "multiverse_portal_upgrade_2",
+      "prompt": "Efficient Multiverse Portal icon. Improved efficiency. Multiverse Portals production x2.. High quality game asset."
+    },
+    {
+      "id": "multiverse_portal_upgrade_3",
+      "prompt": "Advanced Multiverse Portal icon. High-tech integration. Multiverse Portals production x2.. High quality game asset."
+    },
+    {
+      "id": "multiverse_portal_upgrade_4",
+      "prompt": "Super Multiverse Portal icon. Maximum overdrive. Multiverse Portals production x2.. High quality game asset."
+    },
+    {
+      "id": "multiverse_portal_upgrade_5",
+      "prompt": "Mega Multiverse Portal icon. Quantum enhancement. Multiverse Portals production x2.. High quality game asset."
+    },
+    {
+      "id": "multiverse_portal_upgrade_6",
+      "prompt": "Hyper Multiverse Portal icon. Divine perfection. Multiverse Portals production x2.. High quality game asset."
+    },
+    {
+      "id": "click_upgrade_new_1",
+      "prompt": "Plastic Mouse icon. Better than a trackpad.. High quality game asset."
+    },
+    {
+      "id": "click_upgrade_new_2",
+      "prompt": "Mechanic Switch icon. Clicky sounds.. High quality game asset."
+    },
+    {
+      "id": "click_upgrade_new_3",
+      "prompt": "Gaming Mouse icon. RGB boosts FPS.. High quality game asset."
+    },
+    {
+      "id": "click_upgrade_new_4",
+      "prompt": "Macro Script icon. Automated efficiency.. High quality game asset."
+    },
+    {
+      "id": "click_upgrade_new_5",
+      "prompt": "Neural Link icon. Mind over matter.. High quality game asset."
+    },
+    {
+      "id": "click_upgrade_new_6",
+      "prompt": "Cybernetic Finger icon. Steel tendons.. High quality game asset."
+    },
+    {
+      "id": "click_upgrade_new_7",
+      "prompt": "Quantum Click icon. Superposition poking.. High quality game asset."
+    },
+    {
+      "id": "click_upgrade_new_8",
+      "prompt": "Time Clicks icon. Clicking yesterday.. High quality game asset."
+    },
+    {
+      "id": "click_upgrade_new_9",
+      "prompt": "Reality Touch icon. Molding the universe.. High quality game asset."
+    },
+    {
+      "id": "click_upgrade_new_10",
+      "prompt": "God Hand icon. Divine intervention.. High quality game asset."
     }
   ],
   "generated": [
-    {
-      "id": "tier1_apprentice_baker",
-      "path": "assets/icons/tier1_apprentice_baker.png",
-      "status": "skipped"
-    },
     {
       "id": "tier2_grandma_recipe",
       "path": "assets/icons/tier2_grandma_recipe.png",
       "status": "skipped"
     },
     {
-      "id": "tier3_convection_oven",
-      "path": "assets/icons/tier3_convection_oven.png",
-      "status": "skipped"
-    },
-    {
-      "id": "tier4_professional_mixer",
-      "path": "assets/icons/tier4_professional_mixer.png",
-      "status": "skipped"
-    },
-    {
       "id": "tier5_bakery_franchise",
       "path": "assets/icons/tier5_bakery_franchise.png",
-      "status": "skipped"
-    },
-    {
-      "id": "tier6_cake_factory",
-      "path": "assets/icons/tier6_cake_factory.png",
       "status": "skipped"
     },
     {
@@ -195,38 +655,33 @@
       "status": "skipped"
     },
     {
-      "id": "tier10_cloning_vat",
-      "path": "assets/icons/tier10_cloning_vat.png",
-      "status": "skipped"
-    },
-    {
       "id": "tier11_orbital_bakery",
       "path": "assets/icons/tier11_orbital_bakery.png",
       "status": "skipped"
     },
     {
-      "id": "tier12_nanobot_yeast",
-      "path": "assets/icons/tier12_nanobot_yeast.png",
-      "status": "generated"
-    },
-    {
-      "id": "tier13_time_warp_oven",
-      "path": "assets/icons/tier13_time_warp_oven.png",
-      "status": "skipped"
-    },
-    {
-      "id": "tier14_matter_replicator",
-      "path": "assets/icons/tier14_matter_replicator.png",
-      "status": "skipped"
-    },
-    {
-      "id": "tier15_multiverse_portal",
-      "path": "assets/icons/tier15_multiverse_portal.png",
-      "status": "skipped"
-    },
-    {
       "id": "upgrade_vibe_check",
       "path": "assets/icons/upgrade_vibe_check.png",
+      "status": "skipped"
+    },
+    {
+      "id": "bgm_layer_01",
+      "path": "assets/audio/bgm_layer_01.mp3",
+      "status": "placeholder"
+    },
+    {
+      "id": "bgm_layer_02",
+      "path": "assets/audio/bgm_layer_02.mp3",
+      "status": "placeholder"
+    },
+    {
+      "id": "bgm_layer_03",
+      "path": "assets/audio/bgm_layer_03.mp3",
+      "status": "placeholder"
+    },
+    {
+      "id": "upgrade_the_vibe_check",
+      "path": "assets/icons/upgrade_the_vibe_check.png",
       "status": "skipped"
     },
     {
@@ -267,7 +722,7 @@
     {
       "id": "upgrade_click_mastery",
       "path": "assets/icons/upgrade_click_mastery.png",
-      "status": "generated"
+      "status": "skipped"
     },
     {
       "id": "upgrade_double_tap",
@@ -316,8 +771,8 @@
     },
     {
       "id": "upgrade_temporal_baking",
-      "path": "assets/icons/upgrade_temporal_baking.svg",
-      "status": "placeholder"
+      "path": "assets/icons/upgrade_temporal_baking.png",
+      "status": "skipped"
     },
     {
       "id": "upgrade_reality_dough",
@@ -325,19 +780,679 @@
       "status": "skipped"
     },
     {
-      "id": "bgm_layer_01",
-      "path": "assets/audio/bgm_layer_01.mp3",
-      "status": "placeholder"
+      "id": "the_vibe_check",
+      "path": "assets/icons/the_vibe_check.png",
+      "status": "skipped"
     },
     {
-      "id": "bgm_layer_02",
-      "path": "assets/audio/bgm_layer_02.mp3",
-      "status": "placeholder"
+      "id": "butter_blessing",
+      "path": "assets/icons/butter_blessing.png",
+      "status": "skipped"
     },
     {
-      "id": "bgm_layer_03",
-      "path": "assets/audio/bgm_layer_03.mp3",
-      "status": "placeholder"
+      "id": "flour_power",
+      "path": "assets/icons/flour_power.png",
+      "status": "skipped"
+    },
+    {
+      "id": "sugar_rush",
+      "path": "assets/icons/sugar_rush.png",
+      "status": "skipped"
+    },
+    {
+      "id": "grandmas_approval",
+      "path": "assets/icons/grandmas_approval.png",
+      "status": "skipped"
+    },
+    {
+      "id": "preheated",
+      "path": "assets/icons/preheated.png",
+      "status": "skipped"
+    },
+    {
+      "id": "turbo_whisk",
+      "path": "assets/icons/turbo_whisk.png",
+      "status": "skipped"
+    },
+    {
+      "id": "viral_resonance",
+      "path": "assets/icons/viral_resonance.png",
+      "status": "skipped"
+    },
+    {
+      "id": "click_mastery",
+      "path": "assets/icons/click_mastery.png",
+      "status": "skipped"
+    },
+    {
+      "id": "double_tap",
+      "path": "assets/icons/double_tap.png",
+      "status": "skipped"
+    },
+    {
+      "id": "franchise_fever",
+      "path": "assets/icons/franchise_fever.png",
+      "status": "skipped"
+    },
+    {
+      "id": "factory_overdrive",
+      "path": "assets/icons/factory_overdrive.png",
+      "status": "skipped"
+    },
+    {
+      "id": "frosting_flood",
+      "path": "assets/icons/frosting_flood.png",
+      "status": "skipped"
+    },
+    {
+      "id": "printer_perfection",
+      "path": "assets/icons/printer_perfection.png",
+      "status": "skipped"
+    },
+    {
+      "id": "robot_uprising",
+      "path": "assets/icons/robot_uprising.png",
+      "status": "skipped"
+    },
+    {
+      "id": "clone_perfection",
+      "path": "assets/icons/clone_perfection.png",
+      "status": "skipped"
+    },
+    {
+      "id": "zero_g_frosting",
+      "path": "assets/icons/zero_g_frosting.png",
+      "status": "skipped"
+    },
+    {
+      "id": "nano_swarm",
+      "path": "assets/icons/nano_swarm.png",
+      "status": "generated"
+    },
+    {
+      "id": "temporal_baking",
+      "path": "assets/icons/temporal_baking.png",
+      "status": "skipped"
+    },
+    {
+      "id": "reality_dough",
+      "path": "assets/icons/reality_dough.png",
+      "status": "skipped"
+    },
+    {
+      "id": "apprentice_baker_upgrade_1",
+      "path": "assets/icons/apprentice_baker_upgrade_1.png",
+      "status": "skipped"
+    },
+    {
+      "id": "apprentice_baker_upgrade_2",
+      "path": "assets/icons/apprentice_baker_upgrade_2.png",
+      "status": "skipped"
+    },
+    {
+      "id": "apprentice_baker_upgrade_3",
+      "path": "assets/icons/apprentice_baker_upgrade_3.png",
+      "status": "skipped"
+    },
+    {
+      "id": "apprentice_baker_upgrade_4",
+      "path": "assets/icons/apprentice_baker_upgrade_4.png",
+      "status": "generated"
+    },
+    {
+      "id": "apprentice_baker_upgrade_5",
+      "path": "assets/icons/apprentice_baker_upgrade_5.png",
+      "status": "skipped"
+    },
+    {
+      "id": "apprentice_baker_upgrade_6",
+      "path": "assets/icons/apprentice_baker_upgrade_6.png",
+      "status": "skipped"
+    },
+    {
+      "id": "grandmas_secret_recipe_upgrade_1",
+      "path": "assets/icons/grandmas_secret_recipe_upgrade_1.png",
+      "status": "skipped"
+    },
+    {
+      "id": "grandmas_secret_recipe_upgrade_2",
+      "path": "assets/icons/grandmas_secret_recipe_upgrade_2.png",
+      "status": "generated"
+    },
+    {
+      "id": "grandmas_secret_recipe_upgrade_3",
+      "path": "assets/icons/grandmas_secret_recipe_upgrade_3.png",
+      "status": "skipped"
+    },
+    {
+      "id": "grandmas_secret_recipe_upgrade_4",
+      "path": "assets/icons/grandmas_secret_recipe_upgrade_4.png",
+      "status": "skipped"
+    },
+    {
+      "id": "grandmas_secret_recipe_upgrade_5",
+      "path": "assets/icons/grandmas_secret_recipe_upgrade_5.png",
+      "status": "skipped"
+    },
+    {
+      "id": "grandmas_secret_recipe_upgrade_6",
+      "status": "error",
+      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+    },
+    {
+      "id": "convection_oven_upgrade_1",
+      "path": "assets/icons/convection_oven_upgrade_1.png",
+      "status": "skipped"
+    },
+    {
+      "id": "convection_oven_upgrade_2",
+      "path": "assets/icons/convection_oven_upgrade_2.png",
+      "status": "skipped"
+    },
+    {
+      "id": "convection_oven_upgrade_3",
+      "path": "assets/icons/convection_oven_upgrade_3.png",
+      "status": "skipped"
+    },
+    {
+      "id": "convection_oven_upgrade_4",
+      "path": "assets/icons/convection_oven_upgrade_4.png",
+      "status": "generated"
+    },
+    {
+      "id": "convection_oven_upgrade_5",
+      "path": "assets/icons/convection_oven_upgrade_5.png",
+      "status": "skipped"
+    },
+    {
+      "id": "convection_oven_upgrade_6",
+      "path": "assets/icons/convection_oven_upgrade_6.png",
+      "status": "skipped"
+    },
+    {
+      "id": "professional_mixer_upgrade_1",
+      "path": "assets/icons/professional_mixer_upgrade_1.png",
+      "status": "skipped"
+    },
+    {
+      "id": "professional_mixer_upgrade_2",
+      "path": "assets/icons/professional_mixer_upgrade_2.png",
+      "status": "generated"
+    },
+    {
+      "id": "professional_mixer_upgrade_3",
+      "path": "assets/icons/professional_mixer_upgrade_3.png",
+      "status": "skipped"
+    },
+    {
+      "id": "professional_mixer_upgrade_4",
+      "path": "assets/icons/professional_mixer_upgrade_4.png",
+      "status": "skipped"
+    },
+    {
+      "id": "professional_mixer_upgrade_5",
+      "path": "assets/icons/professional_mixer_upgrade_5.png",
+      "status": "skipped"
+    },
+    {
+      "id": "professional_mixer_upgrade_6",
+      "status": "error",
+      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+    },
+    {
+      "id": "local_bakery_franchise_upgrade_1",
+      "path": "assets/icons/local_bakery_franchise_upgrade_1.png",
+      "status": "skipped"
+    },
+    {
+      "id": "local_bakery_franchise_upgrade_2",
+      "path": "assets/icons/local_bakery_franchise_upgrade_2.png",
+      "status": "skipped"
+    },
+    {
+      "id": "local_bakery_franchise_upgrade_3",
+      "path": "assets/icons/local_bakery_franchise_upgrade_3.png",
+      "status": "skipped"
+    },
+    {
+      "id": "local_bakery_franchise_upgrade_4",
+      "path": "assets/icons/local_bakery_franchise_upgrade_4.png",
+      "status": "generated"
+    },
+    {
+      "id": "local_bakery_franchise_upgrade_5",
+      "path": "assets/icons/local_bakery_franchise_upgrade_5.png",
+      "status": "skipped"
+    },
+    {
+      "id": "local_bakery_franchise_upgrade_6",
+      "path": "assets/icons/local_bakery_franchise_upgrade_6.png",
+      "status": "skipped"
+    },
+    {
+      "id": "cake_factory_upgrade_1",
+      "path": "assets/icons/cake_factory_upgrade_1.png",
+      "status": "skipped"
+    },
+    {
+      "id": "cake_factory_upgrade_2",
+      "status": "error",
+      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+    },
+    {
+      "id": "cake_factory_upgrade_3",
+      "path": "assets/icons/cake_factory_upgrade_3.png",
+      "status": "skipped"
+    },
+    {
+      "id": "cake_factory_upgrade_4",
+      "path": "assets/icons/cake_factory_upgrade_4.png",
+      "status": "generated"
+    },
+    {
+      "id": "cake_factory_upgrade_5",
+      "path": "assets/icons/cake_factory_upgrade_5.png",
+      "status": "skipped"
+    },
+    {
+      "id": "cake_factory_upgrade_6",
+      "status": "error",
+      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+    },
+    {
+      "id": "industrial_frosting_hose_upgrade_1",
+      "path": "assets/icons/industrial_frosting_hose_upgrade_1.png",
+      "status": "skipped"
+    },
+    {
+      "id": "industrial_frosting_hose_upgrade_2",
+      "path": "assets/icons/industrial_frosting_hose_upgrade_2.png",
+      "status": "generated"
+    },
+    {
+      "id": "industrial_frosting_hose_upgrade_3",
+      "path": "assets/icons/industrial_frosting_hose_upgrade_3.png",
+      "status": "skipped"
+    },
+    {
+      "id": "industrial_frosting_hose_upgrade_4",
+      "status": "error",
+      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+    },
+    {
+      "id": "industrial_frosting_hose_upgrade_5",
+      "path": "assets/icons/industrial_frosting_hose_upgrade_5.png",
+      "status": "skipped"
+    },
+    {
+      "id": "industrial_frosting_hose_upgrade_6",
+      "path": "assets/icons/industrial_frosting_hose_upgrade_6.png",
+      "status": "generated"
+    },
+    {
+      "id": "3d_cake_printer_upgrade_1",
+      "path": "assets/icons/3d_cake_printer_upgrade_1.png",
+      "status": "skipped"
+    },
+    {
+      "id": "3d_cake_printer_upgrade_2",
+      "status": "error",
+      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+    },
+    {
+      "id": "3d_cake_printer_upgrade_3",
+      "path": "assets/icons/3d_cake_printer_upgrade_3.png",
+      "status": "skipped"
+    },
+    {
+      "id": "3d_cake_printer_upgrade_4",
+      "path": "assets/icons/3d_cake_printer_upgrade_4.png",
+      "status": "generated"
+    },
+    {
+      "id": "3d_cake_printer_upgrade_5",
+      "path": "assets/icons/3d_cake_printer_upgrade_5.png",
+      "status": "skipped"
+    },
+    {
+      "id": "3d_cake_printer_upgrade_6",
+      "status": "error",
+      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+    },
+    {
+      "id": "robotic_pastry_chef_upgrade_1",
+      "path": "assets/icons/robotic_pastry_chef_upgrade_1.png",
+      "status": "skipped"
+    },
+    {
+      "id": "robotic_pastry_chef_upgrade_2",
+      "path": "assets/icons/robotic_pastry_chef_upgrade_2.png",
+      "status": "generated"
+    },
+    {
+      "id": "robotic_pastry_chef_upgrade_3",
+      "path": "assets/icons/robotic_pastry_chef_upgrade_3.png",
+      "status": "skipped"
+    },
+    {
+      "id": "robotic_pastry_chef_upgrade_4",
+      "status": "error",
+      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+    },
+    {
+      "id": "robotic_pastry_chef_upgrade_5",
+      "path": "assets/icons/robotic_pastry_chef_upgrade_5.png",
+      "status": "skipped"
+    },
+    {
+      "id": "robotic_pastry_chef_upgrade_6",
+      "path": "assets/icons/robotic_pastry_chef_upgrade_6.png",
+      "status": "generated"
+    },
+    {
+      "id": "cloning_vat_upgrade_1",
+      "path": "assets/icons/cloning_vat_upgrade_1.png",
+      "status": "skipped"
+    },
+    {
+      "id": "cloning_vat_upgrade_2",
+      "status": "error",
+      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+    },
+    {
+      "id": "cloning_vat_upgrade_3",
+      "path": "assets/icons/cloning_vat_upgrade_3.png",
+      "status": "skipped"
+    },
+    {
+      "id": "cloning_vat_upgrade_4",
+      "path": "assets/icons/cloning_vat_upgrade_4.png",
+      "status": "generated"
+    },
+    {
+      "id": "cloning_vat_upgrade_5",
+      "path": "assets/icons/cloning_vat_upgrade_5.png",
+      "status": "skipped"
+    },
+    {
+      "id": "cloning_vat_upgrade_6",
+      "status": "error",
+      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+    },
+    {
+      "id": "orbital_bakery_station_upgrade_1",
+      "path": "assets/icons/orbital_bakery_station_upgrade_1.png",
+      "status": "skipped"
+    },
+    {
+      "id": "orbital_bakery_station_upgrade_2",
+      "path": "assets/icons/orbital_bakery_station_upgrade_2.png",
+      "status": "generated"
+    },
+    {
+      "id": "orbital_bakery_station_upgrade_3",
+      "path": "assets/icons/orbital_bakery_station_upgrade_3.png",
+      "status": "skipped"
+    },
+    {
+      "id": "orbital_bakery_station_upgrade_4",
+      "status": "error",
+      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+    },
+    {
+      "id": "orbital_bakery_station_upgrade_5",
+      "path": "assets/icons/orbital_bakery_station_upgrade_5.png",
+      "status": "skipped"
+    },
+    {
+      "id": "orbital_bakery_station_upgrade_6",
+      "path": "assets/icons/orbital_bakery_station_upgrade_6.png",
+      "status": "generated"
+    },
+    {
+      "id": "nanobot_yeast_upgrade_1",
+      "path": "assets/icons/nanobot_yeast_upgrade_1.png",
+      "status": "skipped"
+    },
+    {
+      "id": "nanobot_yeast_upgrade_2",
+      "status": "error",
+      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+    },
+    {
+      "id": "nanobot_yeast_upgrade_3",
+      "path": "assets/icons/nanobot_yeast_upgrade_3.png",
+      "status": "skipped"
+    },
+    {
+      "id": "nanobot_yeast_upgrade_4",
+      "path": "assets/icons/nanobot_yeast_upgrade_4.png",
+      "status": "generated"
+    },
+    {
+      "id": "nanobot_yeast_upgrade_5",
+      "path": "assets/icons/nanobot_yeast_upgrade_5.png",
+      "status": "skipped"
+    },
+    {
+      "id": "nanobot_yeast_upgrade_6",
+      "status": "error",
+      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+    },
+    {
+      "id": "time_warp_oven_upgrade_1",
+      "path": "assets/icons/time_warp_oven_upgrade_1.png",
+      "status": "skipped"
+    },
+    {
+      "id": "time_warp_oven_upgrade_2",
+      "path": "assets/icons/time_warp_oven_upgrade_2.png",
+      "status": "generated"
+    },
+    {
+      "id": "time_warp_oven_upgrade_3",
+      "path": "assets/icons/time_warp_oven_upgrade_3.png",
+      "status": "skipped"
+    },
+    {
+      "id": "time_warp_oven_upgrade_4",
+      "path": "assets/icons/time_warp_oven_upgrade_4.png",
+      "status": "skipped"
+    },
+    {
+      "id": "time_warp_oven_upgrade_5",
+      "path": "assets/icons/time_warp_oven_upgrade_5.png",
+      "status": "skipped"
+    },
+    {
+      "id": "time_warp_oven_upgrade_6",
+      "path": "assets/icons/time_warp_oven_upgrade_6.png",
+      "status": "skipped"
+    },
+    {
+      "id": "matter_replicator_upgrade_1",
+      "path": "assets/icons/matter_replicator_upgrade_1.png",
+      "status": "skipped"
+    },
+    {
+      "id": "matter_replicator_upgrade_2",
+      "path": "assets/icons/matter_replicator_upgrade_2.png",
+      "status": "skipped"
+    },
+    {
+      "id": "matter_replicator_upgrade_3",
+      "path": "assets/icons/matter_replicator_upgrade_3.png",
+      "status": "generated"
+    },
+    {
+      "id": "matter_replicator_upgrade_4",
+      "path": "assets/icons/matter_replicator_upgrade_4.png",
+      "status": "skipped"
+    },
+    {
+      "id": "matter_replicator_upgrade_5",
+      "path": "assets/icons/matter_replicator_upgrade_5.png",
+      "status": "skipped"
+    },
+    {
+      "id": "matter_replicator_upgrade_6",
+      "path": "assets/icons/matter_replicator_upgrade_6.png",
+      "status": "skipped"
+    },
+    {
+      "id": "multiverse_portal_upgrade_1",
+      "path": "assets/icons/multiverse_portal_upgrade_1.png",
+      "status": "skipped"
+    },
+    {
+      "id": "multiverse_portal_upgrade_2",
+      "path": "assets/icons/multiverse_portal_upgrade_2.png",
+      "status": "skipped"
+    },
+    {
+      "id": "multiverse_portal_upgrade_3",
+      "path": "assets/icons/multiverse_portal_upgrade_3.png",
+      "status": "skipped"
+    },
+    {
+      "id": "multiverse_portal_upgrade_4",
+      "path": "assets/icons/multiverse_portal_upgrade_4.png",
+      "status": "generated"
+    },
+    {
+      "id": "multiverse_portal_upgrade_5",
+      "path": "assets/icons/multiverse_portal_upgrade_5.png",
+      "status": "skipped"
+    },
+    {
+      "id": "multiverse_portal_upgrade_6",
+      "path": "assets/icons/multiverse_portal_upgrade_6.png",
+      "status": "skipped"
+    },
+    {
+      "id": "click_upgrade_new_1",
+      "path": "assets/icons/click_upgrade_new_1.png",
+      "status": "skipped"
+    },
+    {
+      "id": "click_upgrade_new_2",
+      "status": "error",
+      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+    },
+    {
+      "id": "click_upgrade_new_3",
+      "path": "assets/icons/click_upgrade_new_3.png",
+      "status": "skipped"
+    },
+    {
+      "id": "click_upgrade_new_4",
+      "path": "assets/icons/click_upgrade_new_4.png",
+      "status": "generated"
+    },
+    {
+      "id": "click_upgrade_new_5",
+      "path": "assets/icons/click_upgrade_new_5.png",
+      "status": "skipped"
+    },
+    {
+      "id": "click_upgrade_new_6",
+      "status": "error",
+      "error": "[VertexAI.ClientError]: got status: 429 Too Many Requests. {\"error\":{\"code\":429,\"message\":\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\"status\":\"RESOURCE_EXHAUSTED\"}}"
+    },
+    {
+      "id": "click_upgrade_new_7",
+      "path": "assets/icons/click_upgrade_new_7.png",
+      "status": "skipped"
+    },
+    {
+      "id": "click_upgrade_new_8",
+      "path": "assets/icons/click_upgrade_new_8.png",
+      "status": "skipped"
+    },
+    {
+      "id": "click_upgrade_new_9",
+      "path": "assets/icons/click_upgrade_new_9.png",
+      "status": "generated"
+    },
+    {
+      "id": "click_upgrade_new_10",
+      "path": "assets/icons/click_upgrade_new_10.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier1_apprentice_baker",
+      "path": "assets/icons/tier1_apprentice_baker.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier2_grandmas_secret_recipe",
+      "path": "assets/icons/tier2_grandmas_secret_recipe.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier3_convection_oven",
+      "path": "assets/icons/tier3_convection_oven.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier4_professional_mixer",
+      "path": "assets/icons/tier4_professional_mixer.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier5_local_bakery_franchise",
+      "path": "assets/icons/tier5_local_bakery_franchise.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier6_cake_factory",
+      "path": "assets/icons/tier6_cake_factory.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier7_industrial_frosting_hose",
+      "path": "assets/icons/tier7_industrial_frosting_hose.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier8_3d_cake_printer",
+      "path": "assets/icons/tier8_3d_cake_printer.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier9_robotic_pastry_chef",
+      "path": "assets/icons/tier9_robotic_pastry_chef.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier10_cloning_vat",
+      "path": "assets/icons/tier10_cloning_vat.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier11_orbital_bakery_station",
+      "path": "assets/icons/tier11_orbital_bakery_station.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier12_nanobot_yeast",
+      "path": "assets/icons/tier12_nanobot_yeast.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier13_time_warp_oven",
+      "path": "assets/icons/tier13_time_warp_oven.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier14_matter_replicator",
+      "path": "assets/icons/tier14_matter_replicator.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier15_multiverse_portal",
+      "path": "assets/icons/tier15_multiverse_portal.png",
+      "status": "skipped"
     }
   ],
   "achievements": [

@@ -4,6 +4,7 @@
  */
 import React, { useState } from 'react';
 import { formatNumberWord } from '../../cake/logic/useCakeLogic';
+import { Tooltip } from '../../shared/ui/Tooltip';
 import balanceData from '@data/balance.json';
 
 // Import all icons from assets folder
@@ -128,23 +129,15 @@ export function UpgradeGrid({
 
     const hasAffordableUpgrades = visibleUpgrades.some(u => canPurchase?.(u.id, balance));
 
-    // Tooltip state
-    const [hoveredUpgrade, setHoveredUpgrade] = useState(null);
-    const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
-    const handleMouseMove = (e) => {
-        setMousePos({ x: e.clientX, y: e.clientY });
-    };
-
     return (
         <div className="panel upgrade-panel">
             <div className="panel-header">
-                <h2 className="panel-title">Upgrades</h2>
+                <h2 className="panel-title">Secret Ingredients</h2>
                 {hasAffordableUpgrades && (
                     <button
                         className="btn btn--small"
                         onClick={handleBuyAll}
-                        title="Buy all affordable upgrades"
+                        title="Buy all affordable secret ingredients"
                     >
                         Buy All
                     </button>
@@ -154,52 +147,40 @@ export function UpgradeGrid({
             <div className="upgrade-grid-content" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(60px, 1fr))', gap: '8px', padding: '10px' }}>
                 {visibleUpgrades.length === 0 && (
                     <div style={{ gridColumn: '1 / -1', fontStyle: 'italic', color: 'var(--ink-secondary)' }}>
-                        No upgrades available right now. Bake more cakes!
+                        No secret ingredients available right now. Bake more cakes!
                     </div>
                 )}
 
                 {visibleUpgrades.map(upgrade => {
                     const canAfford = canPurchase?.(upgrade.id, balance);
+
+                    const tooltipContent = (
+                        <>
+                            <div className="tooltip-rich-header">{upgrade.name}</div>
+                            <div className="tooltip-rich-body">{upgrade.description}</div>
+                            <div className="tooltip-rich-stats">
+                                <span className={balance >= upgrade.cost ? 'tooltip-stat-cost affordable' : 'tooltip-stat-cost expensive'}>
+                                    Cost: {formatNumberWord(upgrade.cost)}
+                                </span>
+                                {upgrade.isPurchased && <span style={{ color: 'var(--color-mint)' }}>Purchased</span>}
+                            </div>
+                        </>
+                    );
+
                     return (
-                        <button
-                            key={upgrade.id}
-                            className={`upgrade-card ${canAfford ? '' : 'upgrade-card--expensive'}`}
-                            onClick={() => onPurchase?.(upgrade.id)}
-                            disabled={!canAfford}
-                            onMouseEnter={(e) => {
-                                setHoveredUpgrade(upgrade);
-                                handleMouseMove(e);
-                            }}
-                            onMouseLeave={() => setHoveredUpgrade(null)}
-                            onMouseMove={handleMouseMove}
-                            aria-label={`Buy ${upgrade.name}`}
-                        >
-                            <UpgradeIcon upgrade={upgrade} isPurchased={upgrade.isPurchased} />
-                        </button>
+                        <Tooltip key={upgrade.id} content={tooltipContent}>
+                            <button
+                                className={`upgrade-card ${canAfford ? '' : 'upgrade-card--expensive'}`}
+                                onClick={() => onPurchase?.(upgrade.id)}
+                                disabled={!canAfford}
+                                aria-label={`Buy ${upgrade.name}`}
+                            >
+                                <UpgradeIcon upgrade={upgrade} isPurchased={upgrade.isPurchased} />
+                            </button>
+                        </Tooltip>
                     );
                 })}
             </div>
-
-            {hoveredUpgrade && (
-                <div
-                    className="upgrade-tooltip-fixed"
-                    style={{
-                        top: mousePos.y + 15,
-                        left: mousePos.x - 125,
-                        zIndex: 1000
-                    }}
-                >
-                    <div className="tooltip-header">
-                        <strong>{hoveredUpgrade.name}</strong>
-                    </div>
-                    <div className="tooltip-body">
-                        {hoveredUpgrade.description}
-                    </div>
-                    <div className={`tooltip-cost ${balance >= hoveredUpgrade.cost ? 'affordable' : 'expensive'}`}>
-                        Cost: {formatNumberWord(hoveredUpgrade.cost)}
-                    </div>
-                </div>
-            )}
         </div>
     );
 }

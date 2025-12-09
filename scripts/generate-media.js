@@ -249,8 +249,9 @@ async function generateImage(assetId, prompt, style) {
             console.error(`   ⚠️  Imagen 4.0 failed:`, imagenError.message);
         }
 
-        console.log('   Creating SVG placeholder...');
-        return createPlaceholderIcon(assetId, prompt);
+        console.log('   ⚠️  Skipping SVG placeholder generation (User Request).');
+        // return createPlaceholderIcon(assetId, prompt);
+        return { id: assetId, status: 'error', error: error.message };
     }
 }
 
@@ -294,8 +295,8 @@ async function generateAll(type, manifest) {
         } else {
             result = await generateImage(item.id, item.prompt, style);
         }
-        // Rate limiting - wait 30 seconds between requests for Audio (Lyria likely has low QPM)
-        const delay = type === 'audio' ? 30000 : 2000;
+        // Rate limiting - wait 30 seconds between requests for Audio, 15s for images
+        const delay = type === 'audio' ? 30000 : 15000;
         await new Promise(resolve => setTimeout(resolve, delay));
         results.push(result);
     }

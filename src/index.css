@@ -142,6 +142,9 @@ h4 {
     "left center right";
   min-height: 100vh;
   gap: 0;
+  /* Prevent accidental text selection */
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 /* ─── Mobile Tabbed Layout (Option A) ─── */
@@ -369,7 +372,13 @@ h4 {
     repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 2px, transparent 2px, transparent 30px),
     linear-gradient(180deg, #5A7FB5 0%, #7A9FCF 50%, #5A7FB5 100%);
   padding: var(--space-lg);
-  overflow-y: auto;
+  overflow: hidden;
+  /* Prevent parent scrolling */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  /* Explicit height to constrain children */
+  height: calc(100vh - var(--flavor-height));
 }
 
 /* ─── Right Pane (Store) - MD3 Expressive with High Contrast ─── */

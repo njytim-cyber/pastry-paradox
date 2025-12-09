@@ -2,10 +2,10 @@
 
 ```yaml
 - generic [ref=e3]:
-  - paragraph [ref=e6]: Your first cake was technically a soup.
+  - paragraph [ref=e6]: You accidentally baked a shoe. It tasted okay.
   - generic [ref=e9]:
     - generic [ref=e10]:
-      - heading "My Patisserie" [level=1] [ref=e12] [cursor=pointer]
+      - heading "Your Patisserie" [level=1] [ref=e12] [cursor=pointer]
       - generic [ref=e13]:
         - generic [ref=e15]: "0"
         - generic [ref=e16]: Delicious Cakes
@@ -18,37 +18,31 @@
     - button "Stats" [ref=e45] [cursor=pointer]:
       - img [ref=e46]: 📊
       - generic [ref=e47]: Stats
-    - button "Store" [ref=e48] [cursor=pointer]:
+    - button "Market" [ref=e48] [cursor=pointer]:
       - img [ref=e49]: 🛒
-      - generic [ref=e50]: Store
+      - generic [ref=e50]: Market
   - generic [ref=e52]:
     - generic [ref=e53]:
-      - heading "🎉 What's New in v1.3.0" [level=1] [ref=e54]
+      - heading "🎉 What's New in v1.4.0" [level=1] [ref=e54]
       - button "Close" [ref=e55] [cursor=pointer]: ×
     - list [ref=e57]:
       - listitem [ref=e58]:
         - generic [ref=e59]: ✨
-        - text: "📱 NEW: Mobile-first responsive design with tab navigation!"
+        - text: "🥐 NEW: \"Your Patisserie\" rebranding!"
       - listitem [ref=e60]:
         - generic [ref=e61]: ✨
-        - text: 👆 Swipe left/right to switch between tabs on mobile
+        - text: "🍪 NEW: 10 Types of Golden Macarons with unique buffs!"
       - listitem [ref=e62]:
         - generic [ref=e63]: ✨
-        - text: 🎯 Optimized touch targets for better mobile UX
+        - text: "📱 NEW: Streamlined specific-stats panel (No scrolling!)"
       - listitem [ref=e64]:
         - generic [ref=e65]: ✨
-        - text: 🎨 Smoother balance counter - updates only 4 times per second
+        - text: 👆 Swipe left/right to switch between tabs on mobile
       - listitem [ref=e66]:
         - generic [ref=e67]: ✨
-        - text: 📝 Improved flavor text timing - shows for 10s, then hides for 3 min
+        - text: 🛒 Buy in bulk with ×67 and ×6767 quantity buttons
       - listitem [ref=e68]:
         - generic [ref=e69]: ✨
-        - text: 🛒 Buy in bulk with ×67 and ×6767 quantity buttons
-      - listitem [ref=e70]:
-        - generic [ref=e71]: ✨
-        - text: 🚫 Quantity buttons auto-disable when unaffordable
-      - listitem [ref=e72]:
-        - generic [ref=e73]: ✨
         - text: 🏆 Achievement popups now auto-dismiss after 3 seconds
-    - button "Start Baking!" [ref=e75] [cursor=pointer]
+    - button "Start Baking!" [ref=e71] [cursor=pointer]
 ```

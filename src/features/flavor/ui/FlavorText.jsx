@@ -16,13 +16,13 @@ const MESSAGES = {
     early: [
         "A local squirrel stole a muffin. It is now their king.",
         "You found a way to bake water. Physicists are concerned.",
-        "The health inspector accepted a bribe of three croissants.",
+        "The health inspector couldn't resist a gift of three croissants.",
         "Your mixer produces a low hum that causes hallucinations.",
         "Cakes per second? We need Cakes per EON.",
     ],
     mid: [
         "News reports a shortage of gravity due to local cake density.",
-        "You have been sued by a dentist. You settled in cupcakes.",
+        "A local dentist has requested a payment in cupcakes.",
         "The 67th dimension has requested a delivery. Do not be late.",
         "Your employees are actually just 400 raccoons in a trench coat.",
         "Somewhere, a quantum physicist cries into a donut.",
