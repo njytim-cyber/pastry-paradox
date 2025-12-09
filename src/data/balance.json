@@ -1,0 +1,170 @@
+{
+    "version": "1.0",
+    "globalConfig": {
+        "universalConstant": 67,
+        "currencyName": "Delicious Cakes",
+        "fps": 60,
+        "costMultiplier": 1.15
+    },
+    "productionTiers": [
+        {
+            "id": "apprentice_baker",
+            "tier": 1,
+            "name": "Apprentice Baker",
+            "description": "He creates cakes with the power of the 67 gesture.",
+            "baseCost": 15,
+            "baseCps": 0.1
+        },
+        {
+            "id": "grandmas_secret_recipe",
+            "tier": 2,
+            "name": "Grandma's Secret Recipe",
+            "description": "A family tradition passed down through generations.",
+            "baseCost": 100,
+            "baseCps": 1
+        },
+        {
+            "id": "convection_oven",
+            "tier": 3,
+            "name": "Convection Oven",
+            "description": "Circulating heat for perfectly even bakes.",
+            "baseCost": 1100,
+            "baseCps": 8
+        },
+        {
+            "id": "professional_mixer",
+            "tier": 4,
+            "name": "Professional Mixer",
+            "description": "Industrial-strength mixing for massive batches.",
+            "baseCost": 12000,
+            "baseCps": 47
+        },
+        {
+            "id": "local_bakery_franchise",
+            "tier": 5,
+            "name": "Local Bakery Franchise",
+            "description": "Expand your reach to the entire neighborhood.",
+            "baseCost": 130000,
+            "baseCps": 260
+        },
+        {
+            "id": "cake_factory",
+            "tier": 6,
+            "name": "Cake Factory",
+            "description": "Assembly lines of confectionery perfection.",
+            "baseCost": 1400000,
+            "baseCps": 1400
+        },
+        {
+            "id": "industrial_frosting_hose",
+            "tier": 7,
+            "name": "Industrial Frosting Hose",
+            "description": "Gallons of frosting per second.",
+            "baseCost": 20000000,
+            "baseCps": 7800
+        },
+        {
+            "id": "3d_cake_printer",
+            "tier": 8,
+            "name": "3D Cake Printer",
+            "description": "Prints complex geometric pastries layer by layer.",
+            "baseCost": 330000000,
+            "baseCps": 44000
+        },
+        {
+            "id": "robotic_pastry_chef",
+            "tier": 9,
+            "name": "Robotic Pastry Chef",
+            "description": "AI-powered precision with a dash of soul.",
+            "baseCost": 5100000000,
+            "baseCps": 260000
+        },
+        {
+            "id": "cloning_vat",
+            "tier": 10,
+            "name": "Cloning Vat",
+            "description": "Duplicate your most successful creations infinitely.",
+            "baseCost": 75000000000,
+            "baseCps": 1600000
+        },
+        {
+            "id": "orbital_bakery_station",
+            "tier": 11,
+            "name": "Orbital Bakery Station",
+            "description": "Zero-gravity baking achieves impossible textures.",
+            "baseCost": 1000000000000,
+            "baseCps": 10000000
+        },
+        {
+            "id": "nanobot_yeast",
+            "tier": 12,
+            "name": "Nanobot Yeast",
+            "description": "Microscopic machines that ferment at molecular speed.",
+            "baseCost": 14000000000000,
+            "baseCps": 65000000
+        },
+        {
+            "id": "time_warp_oven",
+            "tier": 13,
+            "name": "Time Warp Oven",
+            "description": "Bakes for hours in mere seconds.",
+            "baseCost": 170000000000000,
+            "baseCps": 430000000
+        },
+        {
+            "id": "matter_replicator",
+            "tier": 14,
+            "name": "Matter Replicator",
+            "description": "Converts pure energy into delicious matter.",
+            "baseCost": 2100000000000000,
+            "baseCps": 2900000000
+        },
+        {
+            "id": "multiverse_portal",
+            "tier": 15,
+            "name": "Multiverse Portal",
+            "description": "Stealing cakes from other dimensions.",
+            "baseCost": 75000000000000000,
+            "baseCps": 21000000000
+        }
+    ],
+    "upgrades": {
+        "theVibeCheck": {
+            "id": "the_vibe_check",
+            "name": "The Vibe Check",
+            "description": "Palms up. Palms down. The dough understands.",
+            "cost": 670,
+            "effect": {
+                "type": "cpsMultiplier",
+                "value": 1.67
+            }
+        },
+        "viralResonance": {
+            "id": "viral_resonance",
+            "name": "Viral Resonance",
+            "description": "Your fame reaches the golden dimension.",
+            "cost": 67670,
+            "effect": {
+                "type": "unlockEvent",
+                "value": "goldenCroissant"
+            }
+        }
+    },
+    "events": {
+        "goldenCroissant": {
+            "id": "golden_croissant",
+            "name": "Golden Croissant",
+            "description": "A mystical pastry from another realm!",
+            "spawnIntervalMin": 67,
+            "spawnIntervalMax": 120,
+            "duration": 30,
+            "multiplier": 67
+        }
+    },
+    "entities": {
+        "player": {
+            "baseClickPower": 1,
+            "baseSpeed": 10
+        }
+    }
+}
