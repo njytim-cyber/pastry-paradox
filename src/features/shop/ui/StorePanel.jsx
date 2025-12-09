@@ -11,30 +11,46 @@
 import React from 'react';
 import { formatNumber } from '../../cake/logic/useCakeLogic';
 
-// Placeholder icons for generators
-const GeneratorIcon = ({ tier, isMystery }) => {
-    const colors = [
-        '#F5D89A', '#E8D5C4', '#C4956A', '#A8D5BA', '#7B8CDE',
-        '#E8A0A0', '#B24C63', '#FFB6C1', '#9B59B6', '#3498DB',
-        '#1ABC9C', '#F39C12', '#E74C3C', '#9B59B6', '#2ECC71',
-    ];
+// Map tier ID to icon file
+const tierIdMap = [
+    'tier1_apprentice_baker',
+    'tier2_grandma_recipe',
+    'tier3_convection_oven',
+    'tier4_professional_mixer',
+    'tier5_bakery_franchise',
+    'tier6_cake_factory',
+    'tier7_frosting_hose',
+    'tier8_3d_printer',
+    'tier9_robotic_chef',
+    'tier10_cloning_vat',
+    'tier11_orbital_bakery',
+    'tier12_nanobot_yeast',
+    'tier13_time_warp_oven',
+    'tier14_matter_replicator',
+    'tier15_multiverse_portal',
+];
 
+// Generator icon using external SVG files
+const GeneratorIcon = ({ tier, isMystery }) => {
     if (isMystery) {
         return (
-            <svg viewBox="0 0 48 48" className="shop-item__icon shop-item__icon--mystery" aria-hidden="true">
-                <circle cx="24" cy="24" r="20" fill="#555" stroke="#333" strokeWidth="2" />
-                <text x="24" y="30" textAnchor="middle" fontSize="16" fontWeight="bold" fill="#888">?</text>
+            <svg viewBox="0 0 64 64" className="shop-item__icon shop-item__icon--mystery" aria-hidden="true">
+                <rect width="64" height="64" fill="#444" rx="8" />
+                <text x="32" y="42" textAnchor="middle" fontSize="24" fontWeight="bold" fill="#777">?</text>
             </svg>
         );
     }
 
+    const iconId = tierIdMap[tier - 1] || `tier${tier}`;
+
     return (
-        <svg viewBox="0 0 48 48" className="shop-item__icon" aria-hidden="true">
-            <circle cx="24" cy="24" r="20" fill={colors[tier - 1] || '#DDD'} stroke="#5D3A1A" strokeWidth="2" />
-            <text x="24" y="28" textAnchor="middle" fontSize="14" fontWeight="bold" fill="#5D3A1A">
-                {tier}
-            </text>
-        </svg>
+        <img
+            src={`/assets/icons/${iconId}.svg`}
+            alt={`Tier ${tier}`}
+            className="shop-item__icon"
+            width="40"
+            height="40"
+        />
     );
 };
 
