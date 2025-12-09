@@ -180,10 +180,12 @@ h4 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--space-lg);
+  justify-content: center;
+  padding: var(--space-md);
   border-right: 4px solid var(--color-chocolate);
   position: relative;
   overflow: hidden;
+  height: calc(100vh - var(--flavor-height));
 }
 
 /* Radial glow behind cake */
@@ -210,14 +212,15 @@ h4 {
   overflow-y: auto;
 }
 
-/* ─── Right Pane (Store) ─── */
+/* ─── Right Pane (Store) - MD3 Expressive with High Contrast ─── */
 .pane-right {
   grid-area: right;
-  background: var(--color-chocolate);
+  background: linear-gradient(180deg, #2C1810 0%, #3D2419 50%, #2C1810 100%);
   display: flex;
   flex-direction: column;
-  border-left: 4px solid var(--color-chocolate-light);
+  border-left: 4px solid #5D3A1A;
   overflow-y: auto;
+  height: calc(100vh - var(--flavor-height));
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -422,31 +425,45 @@ h4 {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   STATS PANEL (Center Pane)
+   STATS PANEL (Center Pane) - Compact MD3 Expressive
    ═══════════════════════════════════════════════════════════════════════════ */
 
 .stats-panel {
   background: rgba(255, 248, 240, 0.95);
-  max-width: 500px;
-  margin: 0 auto;
+  max-width: 100%;
+  padding: var(--space-sm) var(--space-md);
 }
 
 .stats-grid {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
 }
 
 .stats-section {
   background: var(--color-cream);
   border: var(--border-light);
   border-radius: 8px;
-  padding: var(--space-md);
+  padding: var(--space-sm);
 }
 
 .stats-section--legacy {
   background: linear-gradient(135deg, var(--color-butter) 0%, var(--color-cream) 100%);
   border-color: var(--color-gold);
+}
+
+.stats-section-title {
+  font-size: 0.7rem;
+  margin-bottom: var(--space-xs);
+}
+
+.stat-row {
+  padding: 2px 0;
+  font-size: 0.75rem;
+}
+
+.stat-value {
+  font-size: 0.8rem;
 }
 
 .stats-section-title {

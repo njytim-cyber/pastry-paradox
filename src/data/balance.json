@@ -129,17 +129,81 @@
         }
     ],
     "upgrades": {
-        "theVibeCheck": {
+        "the_vibe_check": {
             "id": "the_vibe_check",
             "name": "The Vibe Check",
             "description": "Palms up. Palms down. The dough understands.",
-            "cost": 670,
+            "cost": 100,
             "effect": {
                 "type": "cpsMultiplier",
                 "value": 1.67
             }
         },
-        "viralResonance": {
+        "butter_blessing": {
+            "id": "butter_blessing",
+            "name": "Butter Blessing",
+            "description": "European butter hits different.",
+            "cost": 500,
+            "effect": {
+                "type": "cpsMultiplier",
+                "value": 1.5
+            }
+        },
+        "flour_power": {
+            "id": "flour_power",
+            "name": "Flour Power",
+            "description": "Ban refined flour. Go whole wheat. Just kidding.",
+            "cost": 1000,
+            "effect": {
+                "type": "cpsMultiplier",
+                "value": 1.4
+            }
+        },
+        "sugar_rush": {
+            "id": "sugar_rush",
+            "name": "Sugar Rush",
+            "description": "Your apprentices vibrate with energy.",
+            "cost": 5000,
+            "effect": {
+                "type": "tierBonus",
+                "tier": 1,
+                "value": 2.0
+            }
+        },
+        "grandmas_approval": {
+            "id": "grandmas_approval",
+            "name": "Grandma's Approval",
+            "description": "She finally admits the recipe needed updating.",
+            "cost": 10000,
+            "effect": {
+                "type": "tierBonus",
+                "tier": 2,
+                "value": 2.0
+            }
+        },
+        "preheated": {
+            "id": "preheated",
+            "name": "Always Preheated",
+            "description": "Ovens so ready they predict your thoughts.",
+            "cost": 50000,
+            "effect": {
+                "type": "tierBonus",
+                "tier": 3,
+                "value": 2.0
+            }
+        },
+        "turbo_whisk": {
+            "id": "turbo_whisk",
+            "name": "Turbo Whisk",
+            "description": "The sound breaks windows.",
+            "cost": 100000,
+            "effect": {
+                "type": "tierBonus",
+                "tier": 4,
+                "value": 2.0
+            }
+        },
+        "viral_resonance": {
             "id": "viral_resonance",
             "name": "Viral Resonance",
             "description": "Your fame reaches the golden dimension.",
@@ -147,6 +211,135 @@
             "effect": {
                 "type": "unlockEvent",
                 "value": "goldenCroissant"
+            }
+        },
+        "click_mastery": {
+            "id": "click_mastery",
+            "name": "Click Mastery",
+            "description": "Your fingers move faster than sound.",
+            "cost": 200000,
+            "effect": {
+                "type": "clickPowerMultiplier",
+                "value": 2.0
+            }
+        },
+        "double_tap": {
+            "id": "double_tap",
+            "name": "Double Tap",
+            "description": "Each click counts twice. It just does.",
+            "cost": 500000,
+            "effect": {
+                "type": "clickPowerMultiplier",
+                "value": 2.0
+            }
+        },
+        "franchise_fever": {
+            "id": "franchise_fever",
+            "name": "Franchise Fever",
+            "description": "Open bakeries in your sleep.",
+            "cost": 1000000,
+            "effect": {
+                "type": "tierBonus",
+                "tier": 5,
+                "value": 2.0
+            }
+        },
+        "factory_overdrive": {
+            "id": "factory_overdrive",
+            "name": "Factory Overdrive",
+            "description": "OSHA? Never heard of them.",
+            "cost": 5000000,
+            "effect": {
+                "type": "tierBonus",
+                "tier": 6,
+                "value": 2.0
+            }
+        },
+        "frosting_flood": {
+            "id": "frosting_flood",
+            "name": "Frosting Flood",
+            "description": "A deluge of deliciousness.",
+            "cost": 20000000,
+            "effect": {
+                "type": "tierBonus",
+                "tier": 7,
+                "value": 2.0
+            }
+        },
+        "printer_perfection": {
+            "id": "printer_perfection",
+            "name": "Printer Perfection",
+            "description": "4K resolution cakes. Yes, really.",
+            "cost": 100000000,
+            "effect": {
+                "type": "tierBonus",
+                "tier": 8,
+                "value": 2.0
+            }
+        },
+        "robot_uprising": {
+            "id": "robot_uprising",
+            "name": "Robot Uprising (Good Kind)",
+            "description": "They only want to bake.",
+            "cost": 500000000,
+            "effect": {
+                "type": "tierBonus",
+                "tier": 9,
+                "value": 2.0
+            }
+        },
+        "clone_perfection": {
+            "id": "clone_perfection",
+            "name": "Clone Perfection",
+            "description": "Each copy improves upon the last.",
+            "cost": 5000000000,
+            "effect": {
+                "type": "tierBonus",
+                "tier": 10,
+                "value": 2.0
+            }
+        },
+        "zero_g_frosting": {
+            "id": "zero_g_frosting",
+            "name": "Zero-G Frosting",
+            "description": "Perfect spherical layers.",
+            "cost": 50000000000,
+            "effect": {
+                "type": "tierBonus",
+                "tier": 11,
+                "value": 2.0
+            }
+        },
+        "nano_swarm": {
+            "id": "nano_swarm",
+            "name": "Nano Swarm",
+            "description": "They're everywhere. EVERYWHERE.",
+            "cost": 500000000000,
+            "effect": {
+                "type": "tierBonus",
+                "tier": 12,
+                "value": 2.0
+            }
+        },
+        "temporal_baking": {
+            "id": "temporal_baking",
+            "name": "Temporal Baking",
+            "description": "The cake was ready yesterday.",
+            "cost": 5000000000000,
+            "effect": {
+                "type": "tierBonus",
+                "tier": 13,
+                "value": 2.0
+            }
+        },
+        "reality_dough": {
+            "id": "reality_dough",
+            "name": "Reality Dough",
+            "description": "The universe is your ingredient list.",
+            "cost": 50000000000000,
+            "effect": {
+                "type": "cpsMultiplier",
+                "value": 67.0
             }
         }
     },
