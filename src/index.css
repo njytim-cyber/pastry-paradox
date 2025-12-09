@@ -344,6 +344,8 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
+  background: transparent;
 }
 
 .cake {
@@ -353,7 +355,9 @@ h4 {
   transition: transform var(--transition-fast);
   filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4));
   cursor: pointer;
-  animation: cake-idle-spin 20s linear infinite, cake-glow 3s ease-in-out infinite alternate;
+  animation: cake-glow 3s ease-in-out infinite alternate;
+  border: none;
+  background: transparent;
 }
 
 @keyframes cake-idle-spin {
@@ -577,10 +581,11 @@ h4 {
   border: none;
   border-radius: 3px;
   background: transparent;
-  color: var(--color-cream);
+  color: #FFF8F0;
   cursor: pointer;
   transition: all var(--transition-fast);
-  opacity: 0.7;
+  opacity: 0.8;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .store-mode-btn:hover {
@@ -611,13 +616,15 @@ h4 {
   font-family: var(--font-display);
   font-size: 0.8rem;
   padding: var(--space-xs) var(--space-sm);
-  border: 1px solid var(--color-cream);
+  border: 2px solid #FFF8F0;
   border-radius: 4px;
-  background: transparent;
-  color: var(--color-cream);
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFF8F0;
   cursor: pointer;
   transition: all var(--transition-fast);
-  min-width: 40px;
+  min-width: 50px;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .quantity-btn:hover {
@@ -688,8 +695,10 @@ h4 {
 }
 
 .shop-item__cost {
-  font-size: 0.75rem;
-  color: var(--color-butter);
+  font-size: 0.8rem;
+  color: #FFE4A0;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .shop-item__cost--sell {

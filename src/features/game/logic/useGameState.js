@@ -2,7 +2,7 @@
  * useGameState - Central game state management
  * Handles: prestige, bakery naming, stats tracking, sell mode
  */
-import { useState, useCallback, useEffect, useMemo } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import balanceData from '@data/balance.json';
 
 const { globalConfig } = balanceData;

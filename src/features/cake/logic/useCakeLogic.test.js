@@ -7,6 +7,11 @@ import { renderHook, act } from '@testing-library/react';
 import { useCakeLogic } from '@features/cake/logic/useCakeLogic';
 
 describe('useCakeLogic', () => {
+    // Clear localStorage before each test to prevent state pollution
+    beforeEach(() => {
+        localStorage.clear();
+    });
+
     describe('Initial State', () => {
         it('starts with 0 balance', () => {
             const { result } = renderHook(() => useCakeLogic());

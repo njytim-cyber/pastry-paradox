@@ -73,19 +73,6 @@ export function MainCake({
 
     return (
         <div className="cake-container game-area">
-            {/* Currency Display */}
-            <div className="currency-display">
-                <span className="currency-amount" aria-live="polite">
-                    {formatNumber(balance)}
-                </span>
-                <span className="currency-label">{currencyName}</span>
-                {cps > 0 && (
-                    <span className="cps-display">
-                        per second: {formatNumber(cps)}
-                    </span>
-                )}
-            </div>
-
             {/* Clickable Cake */}
             <div className="cake-wrapper">
                 <div

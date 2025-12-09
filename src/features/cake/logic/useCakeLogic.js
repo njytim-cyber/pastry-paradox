@@ -10,6 +10,36 @@ import balanceData from '@data/balance.json';
 const { globalConfig, productionTiers } = balanceData;
 const COST_MULTIPLIER = globalConfig.costMultiplier || 1.15;
 const BASE_CLICK_POWER = balanceData.entities?.player?.baseClickPower || 1;
+const SAVE_KEY = 'pastry_paradox_save';
+
+/**
+ * Load saved game state from localStorage
+ */
+function loadSavedState() {
+    try {
+        const saved = localStorage.getItem(SAVE_KEY);
+        if (saved) {
+            return JSON.parse(saved);
+        }
+    } catch (e) {
+        console.warn('Failed to load save:', e);
+    }
+    return null;
+}
+
+/**
+ * Save game state to localStorage
+ */
+function saveGameState(state) {
+    try {
+        localStorage.setItem(SAVE_KEY, JSON.stringify({
+            ...state,
+            savedAt: Date.now(),
+        }));
+    } catch (e) {
+        console.warn('Failed to save:', e);
+    }
+}
 
 /**
  * Calculate the current price for a generator tier
@@ -43,17 +73,24 @@ export function formatNumber(num) {
 /**
  * Main cake logic hook
  * Manages: balance, CpS, click events, generators
+ * Includes localStorage persistence
  */
 export function useCakeLogic() {
-    // Core state
-    const [balance, setBalance] = useState(0);
-    const [totalBaked, setTotalBaked] = useState(0);
-    const [clickPower, setClickPower] = useState(BASE_CLICK_POWER);
-    const [cpsMultiplier, setCpsMultiplier] = useState(1);
-    const [globalMultiplier, setGlobalMultiplier] = useState(1);
+    // Load saved state
+    const savedState = loadSavedState();
+
+    // Core state (with saved values or defaults)
+    const [balance, setBalance] = useState(savedState?.balance || 0);
+    const [totalBaked, setTotalBaked] = useState(savedState?.totalBaked || 0);
+    const [clickPower, setClickPower] = useState(savedState?.clickPower || BASE_CLICK_POWER);
+    const [cpsMultiplier, setCpsMultiplier] = useState(savedState?.cpsMultiplier || 1);
+    const [globalMultiplier, setGlobalMultiplier] = useState(savedState?.globalMultiplier || 1);
 
     // Generator ownership: { [tierId]: count }
     const [generators, setGenerators] = useState(() => {
+        if (savedState?.generators) {
+            return savedState.generators;
+        }
         const initial = {};
         productionTiers.forEach(tier => {
             initial[tier.id] = 0;
@@ -156,6 +193,40 @@ export function useCakeLogic() {
             contribution: tier.baseCps * owned * cpsMultiplier * globalMultiplier,
         };
     }, [generators, cpsMultiplier, globalMultiplier]);
+
+    // Auto-save every 10 seconds and on page unload
+    useEffect(() => {
+        const saveInterval = setInterval(() => {
+            saveGameState({
+                balance,
+                totalBaked,
+                clickPower,
+                cpsMultiplier,
+                globalMultiplier,
+                generators,
+            });
+        }, 10000);
+
+        const handleBeforeUnload = () => {
+            saveGameState({
+                balance,
+                totalBaked,
+                clickPower,
+                cpsMultiplier,
+                globalMultiplier,
+                generators,
+            });
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => {
+            clearInterval(saveInterval);
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+            // Save on cleanup
+            handleBeforeUnload();
+        };
+    }, [balance, totalBaked, clickPower, cpsMultiplier, globalMultiplier, generators]);
 
     return {
         // State
