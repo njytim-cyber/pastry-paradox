@@ -21,6 +21,9 @@ import { BakeryHeader } from '@features/bakery/ui/BakeryHeader';
 import { FlavorText } from '@features/flavor/ui/FlavorText';
 import { useAchievementSystem } from '@features/achievements/logic/useAchievementSystem';
 import { AchievementPopup } from '@features/achievements/ui/AchievementPopup';
+import { useVersionSplash } from '@features/splash/logic/useVersionSplash';
+import { VersionSplash } from '@features/splash/ui/VersionSplash';
+import packageJson from '../package.json';
 
 const { globalConfig } = balanceData;
 
@@ -51,6 +54,9 @@ function App() {
         generators: cakeLogic.productionTiers
     });
 
+    // Initialize Version Splash
+    const versionSplash = useVersionSplash(packageJson.version);
+
     // Enhanced click handler with stats tracking
     const handleCakeClick = useCallback((event) => {
         const earned = cakeLogic.handleClick(event);
@@ -59,10 +65,15 @@ function App() {
     }, [cakeLogic, gameState]);
 
     // Handle generator purchase with stats tracking
-    const handlePurchase = useCallback((tierId) => {
+    const handlePurchase = useCallback((tierId, quantity = 1) => {
         const info = cakeLogic.getGeneratorInfo(tierId);
-        if (info && cakeLogic.purchaseGenerator(tierId)) {
-            gameState.recordSpent(info.currentPrice);
+        if (info && cakeLogic.purchaseGenerator(tierId, quantity)) {
+            // Calculate total cost for stats tracking
+            let totalCost = 0;
+            for (let i = 0; i < quantity; i++) {
+                totalCost += info.currentPrice * Math.pow(1.15, i);
+            }
+            gameState.recordSpent(totalCost);
         }
     }, [cakeLogic, gameState]);
 
@@ -142,18 +153,8 @@ function App() {
                     onPrestige={handlePrestige}
                     achievements={achievementSystem.allAchievements}
                     unlockedIds={achievementSystem.unlockedIds}
+                    upgrades={upgradeSystem.upgradeList}
                 />
-
-                {/* Dev: Unlock golden croissant for testing */}
-                {!eventSystem.isEventUnlocked && (
-                    <button
-                        className="btn"
-                        onClick={eventSystem.unlockEvent}
-                        style={{ marginTop: '1rem' }}
-                    >
-                        🔓 Unlock Golden Croissant (Dev)
-                    </button>
-                )}
             </div>
 
             {/* Right Pane: Store */}
@@ -190,6 +191,23 @@ function App() {
             <AchievementPopup
                 queue={achievementSystem.newUnlockQueue}
                 onDismiss={achievementSystem.popNotification}
+            />
+
+            {/* Version Splash */}
+            <VersionSplash
+                version={packageJson.version}
+                features={[
+                    '🎉 NEW: Version splash screen to showcase updates',
+                    '🎨 Smoother balance counter - updates only 4 times per second',
+                    '📝 Improved flavor text timing - shows for 10s, then hides for 3 min',
+                    '🛒 Buy in bulk with ×67 and ×6767 quantity buttons',
+                    '🚫 Quantity buttons auto-disable when unaffordable',
+                    '🏆 Achievement popups now auto-dismiss after 3 seconds',
+                    '🐛 Fixed Details view crash',
+                    '✨ Various UI polish and bug fixes'
+                ]}
+                isVisible={versionSplash.isVisible}
+                onClose={versionSplash.onClose}
             />
         </div>
     );

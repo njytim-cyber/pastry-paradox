@@ -1,0 +1,124 @@
+/* Version Splash Overlay */
+.version-splash-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    animation: fade-in 0.3s ease-out;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Version Splash Card */
+.version-splash {
+    background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-butter) 100%);
+    border: var(--border-sketch);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    animation: slide-up 0.4s ease-out;
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Header */
+.version-splash__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-lg);
+    border-bottom: var(--border-light);
+}
+
+.version-splash__title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--color-chocolate);
+    margin: 0;
+}
+
+.version-splash__close {
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: var(--color-chocolate);
+    cursor: pointer;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s ease;
+}
+
+.version-splash__close:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Content */
+.version-splash__content {
+    padding: var(--space-lg);
+}
+
+.version-splash__features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.version-splash__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+    font-size: 1rem;
+    color: var(--ink-primary);
+    line-height: 1.5;
+}
+
+.version-splash__icon {
+    flex-shrink: 0;
+    font-size: 1.2rem;
+}
+
+/* Footer */
+.version-splash__footer {
+    padding: var(--space-lg);
+    border-top: var(--border-light);
+    display: flex;
+    justify-content: center;
+}
+
+.version-splash__footer .btn {
+    font-size: 1.1rem;
+    padding: var(--space-sm) var(--space-xl);
+}

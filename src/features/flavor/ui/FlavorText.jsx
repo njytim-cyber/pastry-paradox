@@ -87,7 +87,13 @@ export function FlavorText({
         [cps, totalBaked, isGoldenActive, has67Pattern]
     );
 
-    // Rotate messages
+    // Message timing: 10s visible, 3 min hidden, repeat
+    const VISIBLE_DURATION = 10000;   // 10 seconds visible
+    const HIDDEN_DURATION = 180000;   // 3 minutes hidden
+
+    const [isVisible, setIsVisible] = useState(true);
+
+    // Rotate messages with show/hide cycle
     useEffect(() => {
         const pickNewMessage = () => {
             const newMessage = messagePool[Math.floor(Math.random() * messagePool.length)];
@@ -96,14 +102,20 @@ export function FlavorText({
             setTimeout(() => {
                 setCurrentMessage(newMessage);
                 setIsTransitioning(false);
+                setIsVisible(true);
             }, 300);
+
+            // Hide after VISIBLE_DURATION
+            setTimeout(() => {
+                setIsVisible(false);
+            }, VISIBLE_DURATION);
         };
 
         // Initial message
         pickNewMessage();
 
-        // Rotate every 60 seconds (User request - "too fast")
-        const interval = setInterval(pickNewMessage, 60000);
+        // Full cycle: visible + hidden duration
+        const interval = setInterval(pickNewMessage, VISIBLE_DURATION + HIDDEN_DURATION);
         return () => clearInterval(interval);
     }, [messagePool]);
 
@@ -115,7 +127,8 @@ export function FlavorText({
     }, [isGoldenActive]);
 
     return (
-        <div className={`flavor-text ${isTransitioning ? 'flavor-text--fade' : ''} ${isGoldenActive ? 'flavor-text--golden' : ''}`}>
+        <div className={`flavor-text ${isTransitioning ? 'flavor-text--fade' : ''} ${isGoldenActive ? 'flavor-text--golden' : ''}`}
+            style={{ opacity: isVisible || isGoldenActive ? 1 : 0, transition: 'opacity 0.5s ease' }}>
             <p className="flavor-text__message">{currentMessage}</p>
         </div>
     );

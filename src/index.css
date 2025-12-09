@@ -683,7 +683,7 @@ h4 {
   margin: 0;
 }
 
-/* Buy/Sell Toggle */
+/* Buy/Sell Toggle - Matches .btn style */
 .store-mode-toggle {
   display: flex;
   gap: 4px;
@@ -693,27 +693,25 @@ h4 {
 
 .store-mode-btn {
   font-family: var(--font-display);
-  font-size: 0.8rem;
-  padding: 4px 12px;
-  border: 1px solid var(--color-caramel);
-  border-radius: 4px;
-  background: var(--color-cream);
-  color: var(--color-chocolate);
+  font-size: 0.85rem;
+  padding: var(--space-xs) var(--space-md);
+  border: var(--border-sketch);
+  border-radius: 8px;
+  background: var(--color-butter);
+  color: var(--ink-primary);
   cursor: pointer;
   transition: all var(--transition-fast);
-  opacity: 1;
+  box-shadow: var(--shadow-soft);
 }
 
 .store-mode-btn:hover {
-  background: var(--color-parchment);
-  border-color: var(--color-chocolate);
+  transform: translateY(-1px);
 }
 
 .store-mode-btn--active {
-  background: var(--color-mint);
+  background: var(--color-caramel);
+  color: var(--color-cream);
   border-color: var(--color-chocolate);
-  color: var(--ink-primary);
-  font-weight: 600;
 }
 
 .store-mode-btn--active.store-mode-btn--sell {
@@ -722,44 +720,53 @@ h4 {
   border-color: #c0392b;
 }
 
-/* Quantity Selector - Cleaner Lighter Look */
+/* Quantity Selector - Matches .btn style */
 .quantity-selector {
   display: flex;
   justify-content: center;
   gap: var(--space-sm);
   padding: 0 0 var(--space-sm) 0;
   background: transparent;
-  /* Removed dark background */
-  border-bottom: 2px solid var(--color-caramel);
-  /* Separator */
+  border-bottom: var(--border-light);
   margin-bottom: var(--space-sm);
 }
 
 .quantity-btn {
   font-family: var(--font-display);
   font-size: 0.9rem;
-  padding: 4px 16px;
-  border: 2px solid var(--color-caramel);
-  border-radius: 6px;
-  background: var(--color-cream);
-  color: var(--color-chocolate);
+  padding: var(--space-xs) var(--space-md);
+  border: var(--border-sketch);
+  border-radius: 8px;
+  background: var(--color-butter);
+  color: var(--ink-primary);
   cursor: pointer;
   transition: all var(--transition-fast);
   min-width: 60px;
-  font-weight: 600;
+  box-shadow: var(--shadow-soft);
 }
 
 .quantity-btn:hover {
-  background: var(--color-parchment);
   transform: translateY(-1px);
 }
 
 .quantity-btn--active {
-  background: var(--color-gold);
-  /* Gold active state */
+  background: var(--color-caramel);
+  color: var(--color-cream);
   border-color: var(--color-chocolate);
-  color: var(--color-chocolate);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.quantity-btn--disabled,
+.quantity-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: var(--ink-light);
+  color: var(--ink-secondary);
+  border-color: var(--ink-light);
+}
+
+.quantity-btn--disabled:hover,
+.quantity-btn:disabled:hover {
+  transform: none;
 }
 
 /* Shop List */
@@ -777,8 +784,8 @@ h4 {
   align-items: center;
   gap: var(--space-sm);
   padding: var(--space-sm);
-  border: none;
-  border-radius: 4px;
+  border: var(--border-light);
+  border-radius: 8px;
   background: var(--color-cream);
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -787,7 +794,9 @@ h4 {
 }
 
 .shop-item:hover:not(.shop-item--disabled) {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--color-butter);
+  transform: translateY(-1px);
+  border-color: var(--color-caramel);
 }
 
 .shop-item--disabled {
@@ -812,8 +821,8 @@ h4 {
 
 .shop-item__name {
   font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 0.95rem;
+  font-weight: 600;
   color: var(--color-chocolate);
   white-space: normal;
   overflow: visible;
@@ -821,33 +830,16 @@ h4 {
   margin-bottom: 2px;
 }
 
+/* Shop Item Cost - Matches stat-value styling */
 .shop-item__cost {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  color: #4CAF50;
-  /* Green for cost */
-  font-weight: 400;
-  /* Unbolded per user request */
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-primary);
 }
 
 .shop-item--disabled .shop-item__cost {
-  color: #E74C3C;
-  /* Red if cant afford */
-}
-
-.shop-item__owned {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  color: rgba(93, 58, 26, 0.2);
-  margin-left: var(--space-sm);
-  font-weight: 700;
-}
-
-.shop-item__cost {
-  font-size: 0.8rem;
-  color: var(--color-chocolate);
-  font-weight: 600;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  color: var(--ink-secondary);
 }
 
 .shop-item__cost--sell {
@@ -858,25 +850,25 @@ h4 {
   opacity: 0.7;
 }
 
+/* Shop Item Owned Count - Matches stat-value styling */
 .shop-item__owned {
   font-family: var(--font-display);
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--ink-secondary);
-  opacity: 0.8;
   min-width: 40px;
   text-align: right;
   line-height: 1;
 }
 
-/* Mystery Tier */
+/* Mystery Tier - Uses warm palette to match design language */
 .shop-item--mystery {
-  background: rgba(30, 30, 30, 0.5);
-  border: 1px dashed rgba(255, 255, 255, 0.2);
+  background: var(--color-parchment);
+  border: 2px dashed var(--color-caramel);
 }
 
 .shop-item__name--mystery {
-  color: #888;
+  color: var(--color-caramel);
   font-style: italic;
 }
 

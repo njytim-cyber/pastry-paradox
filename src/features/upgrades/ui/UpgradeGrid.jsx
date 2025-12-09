@@ -153,9 +153,8 @@ export function UpgradeGrid({
 
             <div className="upgrade-grid-content" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(60px, 1fr))', gap: '8px', padding: '10px' }}>
                 {visibleUpgrades.length === 0 && (
-                    <div className="empty-state">
-                        <p>No upgrades available right now.</p>
-                        <small>Bake more cakes!</small>
+                    <div style={{ gridColumn: '1 / -1', fontStyle: 'italic', color: 'var(--ink-secondary)' }}>
+                        No upgrades available right now. Bake more cakes!
                     </div>
                 )}
 

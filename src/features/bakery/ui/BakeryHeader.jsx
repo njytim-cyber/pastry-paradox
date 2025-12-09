@@ -19,7 +19,20 @@ export function BakeryHeader({
     const [editName, setEditName] = useState(bakeryName);
     const inputRef = useRef(null);
 
-    const { value: balanceValue, suffix: balanceSuffix } = formatNumberParts(balance);
+    // Throttle display updates to reduce flickering - use interval instead of effect
+    const [displayBalance, setDisplayBalance] = useState(balance);
+    const balanceRef = useRef(balance);
+    balanceRef.current = balance; // Always track latest
+
+    useEffect(() => {
+        // Update display every 500ms from the latest balance
+        const interval = setInterval(() => {
+            setDisplayBalance(balanceRef.current);
+        }, 500);
+        return () => clearInterval(interval);
+    }, []); // Empty deps - interval runs forever
+
+    const { value: balanceValue, suffix: balanceSuffix } = formatNumberParts(displayBalance);
 
     useEffect(() => {
         if (isEditing && inputRef.current) {

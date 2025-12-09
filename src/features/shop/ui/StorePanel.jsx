@@ -9,7 +9,7 @@
  * - Hide all other tiers
  */
 import React from 'react';
-import { formatNumberWord } from '../../cake/logic/useCakeLogic';
+import { formatNumber, formatNumberWord } from '../../cake/logic/useCakeLogic';
 
 // Placeholder icons for generators - inline SVGs
 // Import all icons from assets folder
@@ -125,6 +125,11 @@ export function StorePanel({
 }) {
     const { visible, mystery } = getVisibleTiers(generators, getGeneratorInfo);
 
+    // Check if ANY item can be afforded at a given quantity
+    const canAffordAtQuantity = (qty) => {
+        return visible.some(tier => canAfford?.(tier.id, qty));
+    };
+
     return (
         <div className="panel store-panel">
             {/* Header with Buy/Sell Toggle */}
@@ -149,15 +154,19 @@ export function StorePanel({
             {/* Quantity Selector - 67 themed! */}
             {shopMode === 'buy' && (
                 <div className="quantity-selector">
-                    {[1, 67, 6767].map((qty) => (
-                        <button
-                            key={qty}
-                            className={`quantity-btn ${buyQuantity === qty ? 'quantity-btn--active' : ''}`}
-                            onClick={() => setBuyQuantity?.(qty)}
-                        >
-                            {qty}
-                        </button>
-                    ))}
+                    {[1, 67, 6767].map((qty) => {
+                        const isAffordable = canAffordAtQuantity(qty);
+                        return (
+                            <button
+                                key={qty}
+                                className={`quantity-btn ${buyQuantity === qty ? 'quantity-btn--active' : ''} ${!isAffordable ? 'quantity-btn--disabled' : ''}`}
+                                onClick={() => setBuyQuantity?.(qty)}
+                                disabled={!isAffordable}
+                            >
+                                {qty}
+                            </button>
+                        );
+                    })}
                 </div>
             )}
 
@@ -169,7 +178,7 @@ export function StorePanel({
                     const owned = info.owned || 0;
 
                     if (shopMode === 'buy') {
-                        const affordable = canAfford?.(tier.id) ?? false;
+                        const affordable = canAfford?.(tier.id, buyQuantity) ?? false;
 
                         return (
                             <button

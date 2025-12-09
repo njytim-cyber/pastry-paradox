@@ -5,6 +5,18 @@
 import React, { useState, useEffect } from 'react';
 import { formatNumber } from '../../cake/logic/useCakeLogic';
 
+// Import all icons from assets folder
+const iconAssets = import.meta.glob('@assets/icons/*.{png,svg}', { eager: true, import: 'default' });
+
+/**
+ * Get the icon URL for a given upgrade ID
+ * @param {string} id - Upgrade ID
+ */
+const getIconResult = (id) => {
+    const match = Object.keys(iconAssets).find(path => path.includes(id + '.') || path.includes(id));
+    return match ? iconAssets[match] : null;
+};
+
 /**
  * Stats Panel Component
  */
@@ -17,7 +29,8 @@ export function StatsPanel({
     canPrestige = false,
     onPrestige,
     achievements = [],
-    unlockedIds = []
+    unlockedIds = [],
+    upgrades = []
 }) {
     const [showDetails, setShowDetails] = useState(false);
 
@@ -115,8 +128,52 @@ export function StatsPanel({
                     {/* UPGRADES SECTION */}
                     <div className="details-section" style={{ marginTop: '1rem' }}>
                         <h3>⚡ Upgrades</h3>
-                        <div className="upgrade-list-text" style={{ fontSize: '0.9rem', opacity: 0.8, fontStyle: 'italic' }}>
-                            <p>Active upgrades are listed in the Upgrade Grid.</p>
+                        <div className="upgrade-list-text" style={{
+                            fontSize: '0.9rem',
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            gap: '8px',
+                            maxHeight: '200px',
+                            overflowY: 'auto',
+                            padding: '8px',
+                            background: 'rgba(0,0,0,0.05)',
+                            borderRadius: '8px'
+                        }}>
+                            {upgrades.filter(u => u.isPurchased).length === 0 ? (
+                                <p style={{ opacity: 0.8, fontStyle: 'italic', width: '100%' }}>
+                                    Active upgrades are listed in the Upgrade Grid. Buy some!
+                                </p>
+                            ) : (
+                                upgrades.filter(u => u.isPurchased).map(u => {
+                                    const iconUrl = getIconResult(u.id);
+                                    return (
+                                        <div
+                                            key={u.id}
+                                            className="upgrade-icon-small"
+                                            title={`${u.name}\n${u.description}`}
+                                            style={{
+                                                width: '40px',
+                                                height: '40px',
+                                                background: 'var(--color-cream)',
+                                                border: '2px solid var(--color-caramel)',
+                                                borderRadius: '8px',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                cursor: 'help',
+                                                fontSize: '1.5rem',
+                                                overflow: 'hidden'
+                                            }}
+                                        >
+                                            {iconUrl ? (
+                                                <img src={iconUrl} alt={u.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                            ) : (
+                                                '⚡'
+                                            )}
+                                        </div>
+                                    );
+                                })
+                            )}
                         </div>
                     </div>
                 </div>

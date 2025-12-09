@@ -22,26 +22,39 @@ export function AchievementPopup({
     const [current, setCurrent] = useState(null);
     const [isExiting, setIsExiting] = useState(false);
 
+    // When queue changes or current is cleared, show next item
     useEffect(() => {
-        if (!current && queue.length > 0) {
+        // If we have items in queue but nothing showing, show the first one
+        if (queue.length > 0 && !current) {
             setCurrent(queue[0]);
             setIsExiting(false);
-
-            // Auto dismiss after 3 seconds (User request)
-            const timer = setTimeout(() => {
-                handleDismiss();
-            }, 3000);
-
-            return () => clearTimeout(timer);
         }
     }, [queue, current]);
 
-    const handleDismiss = () => {
+    // Auto-dismiss timer
+    useEffect(() => {
+        if (!current) return;
+
+        const timer = setTimeout(() => {
+            setIsExiting(true);
+
+            // After exit animation, clear current and pop from queue
+            setTimeout(() => {
+                setCurrent(null);
+                onDismiss?.();
+            }, 500);
+        }, 3000);
+
+        return () => clearTimeout(timer);
+    }, [current, onDismiss]);
+
+    const handleClick = () => {
+        // Manual dismiss on click
         setIsExiting(true);
         setTimeout(() => {
             setCurrent(null);
             onDismiss?.();
-        }, 500); // Wait for exit animation
+        }, 500);
     };
 
     if (!current) return null;
@@ -49,7 +62,11 @@ export function AchievementPopup({
     const iconUrl = getIconResult(current.id);
 
     return (
-        <div className={`achievement-popup ${isExiting ? 'achievement-popup--exit' : ''}`}>
+        <div
+            className={`achievement-popup ${isExiting ? 'achievement-popup--exit' : ''}`}
+            onClick={handleClick}
+            style={{ cursor: 'pointer' }}
+        >
             <div className="achievement-popup__icon">
                 {iconUrl ? (
                     <img src={iconUrl} alt="Trohpy" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />

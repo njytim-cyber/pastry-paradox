@@ -43,9 +43,9 @@ test.describe('Pastry Paradox - Core Game Flow', () => {
     });
 
     test('should increase balance when clicking the cake', async ({ page }) => {
-        // Find the cake
-        const cake = page.locator('.cake');
-        await expect(cake).toBeVisible();
+        // Find the cake wrapper (the clickable element)
+        const cakeWrapper = page.locator('.cake-wrapper');
+        await expect(cakeWrapper).toBeVisible();
 
         // Get initial balance
         const balance = page.locator('.bakery-balance');
@@ -53,7 +53,7 @@ test.describe('Pastry Paradox - Core Game Flow', () => {
 
         // Click cake multiple times
         for (let i = 0; i < 5; i++) {
-            await cake.click();
+            await cakeWrapper.click();
         }
 
         // Verify balance increased

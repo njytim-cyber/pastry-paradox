@@ -242,14 +242,20 @@ export function useCakeLogic(options = {}) {
         return true;
     }, [balance, generators]);
 
-    // Check if can afford generator
-    const canAfford = useCallback((tierId) => {
+    // Check if can afford generator (single or bulk)
+    const canAfford = useCallback((tierId, quantity = 1) => {
         const tier = productionTiers.find(t => t.id === tierId);
         if (!tier) return false;
 
         const owned = generators[tierId] || 0;
-        const price = calculatePrice(tier.baseCost, owned);
-        return balance >= price;
+
+        // Calculate total cost for bulk purchase
+        let totalCost = 0;
+        for (let i = 0; i < quantity; i++) {
+            totalCost += calculatePrice(tier.baseCost, owned + i);
+        }
+
+        return balance >= totalCost;
     }, [balance, generators]);
 
     // Get generator info
