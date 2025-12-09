@@ -44,17 +44,40 @@ export function UpgradeGrid({
         return null;
     }
 
-    // Filter to only show available upgrades (not purchased, or affordable)
-    const visibleUpgrades = upgrades.filter(u => !u.isPurchased || balance >= u.cost * 0.5);
+    // Progressive unlocking: show upgrade when you have at least 50% of its cost
+    // Hide purchased upgrades to reduce clutter
+    const visibilityThreshold = 0.5; // 50% of cost required to see
+    const visibleUpgrades = upgrades.filter(u => {
+        if (u.isPurchased) return false; // Hide purchased
+        return balance >= u.cost * visibilityThreshold; // Show if >= 50% of cost
+    });
 
-    if (visibleUpgrades.length === 0) {
-        return null;
-    }
+    // Buy All: purchase from first to last until can't afford
+    const handleBuyAll = () => {
+        // Sort by cost ascending so we buy cheapest first
+        const affordableUpgrades = visibleUpgrades
+            .filter(u => canPurchase?.(u.id, balance))
+            .sort((a, b) => a.cost - b.cost);
+
+        affordableUpgrades.forEach(upgrade => {
+            onPurchase?.(upgrade.id);
+        });
+    };
+
+    const hasAffordableUpgrades = visibleUpgrades.some(u => canPurchase?.(u.id, balance));
 
     return (
         <div className="panel upgrade-panel">
-            <div className="panel-header">
+            <div className="panel-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <h2 className="panel-title">✨ Upgrades</h2>
+                {hasAffordableUpgrades && (
+                    <button
+                        className="upgrade-buy-all"
+                        onClick={handleBuyAll}
+                    >
+                        Buy All
+                    </button>
+                )}
             </div>
 
             <div className="upgrade-grid">
@@ -65,7 +88,7 @@ export function UpgradeGrid({
                         <button
                             key={upgrade.id}
                             className={`upgrade-card ${upgrade.isPurchased ? 'upgrade-card--owned' :
-                                    !affordable ? 'upgrade-card--disabled' : ''
+                                !affordable ? 'upgrade-card--disabled' : ''
                                 }`}
                             onClick={() => !upgrade.isPurchased && affordable && onPurchase?.(upgrade.id)}
                             disabled={upgrade.isPurchased || !affordable}

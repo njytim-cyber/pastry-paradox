@@ -408,10 +408,10 @@ h4 {
   position: fixed;
   pointer-events: none;
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.8rem;
   font-weight: 700;
-  color: var(--color-butter);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  color: var(--color-chocolate);
+  text-shadow: 2px 2px 0 white, -1px -1px 0 white;
   animation: particle-float 0.8s ease-out forwards;
   z-index: 1000;
 }
@@ -426,6 +426,94 @@ h4 {
     opacity: 0;
     transform: translateY(-60px) scale(0.6);
   }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   UPGRADE PANEL
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.upgrade-panel {
+  background: rgba(255, 248, 240, 0.95);
+  padding: var(--space-sm) var(--space-md);
+}
+
+.upgrade-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.upgrade-card {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  background: var(--color-cream);
+  border: 2px solid var(--color-caramel);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upgrade-card:hover:not(.upgrade-card--disabled) {
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+.upgrade-card--owned {
+  opacity: 0.5;
+  background: #EEE;
+}
+
+.upgrade-card--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.upgrade-card__tooltip {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-cream);
+  color: var(--color-chocolate);
+  padding: var(--space-sm);
+  border-radius: 8px;
+  border: 2px solid var(--color-caramel);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+  z-index: 100;
+  font-size: 0.85rem;
+}
+
+.upgrade-card:hover .upgrade-card__tooltip {
+  display: block;
+}
+
+.upgrade-buy-all {
+  margin-top: var(--space-sm);
+  padding: var(--space-xs) var(--space-md);
+  background: var(--color-mint);
+  color: var(--color-chocolate);
+  border: 2px solid var(--color-chocolate);
+  border-radius: 6px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.upgrade-buy-all:hover:not(:disabled) {
+  transform: scale(1.05);
+  background: #8DD7BE;
+}
+
+.upgrade-buy-all:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
