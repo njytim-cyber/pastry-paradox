@@ -35,10 +35,10 @@ const MESSAGES = {
         "We are all just ingredients in the cosmic batter.",
     ],
     prestige: [
-        "Expanding the brand to the multiverse. Bold strategy.",
-        "Franchising: Because one reality isn't enough.",
-        "Your reputation precedes you, even in standard gravity.",
-        "Opening a flagship store in the 67th dimension.",
+        "The universe collapses under the weight of your pastry.",
+        "Time for a fresh batch of reality.",
+        "Dark Matter tastes suspiciously like burnt sugar.",
+        "Compressing space-time into a single dense muffin.",
     ],
     goldenActive: [
         "🥐 THE GOLDEN CROISSANT SUMMONS YOU! 🥐",
@@ -102,8 +102,8 @@ export function FlavorText({
         // Initial message
         pickNewMessage();
 
-        // Rotate every 30 seconds (User request)
-        const interval = setInterval(pickNewMessage, 30000);
+        // Rotate every 60 seconds (User request - "too fast")
+        const interval = setInterval(pickNewMessage, 60000);
         return () => clearInterval(interval);
     }, [messagePool]);
 

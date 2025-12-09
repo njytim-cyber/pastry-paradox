@@ -8,8 +8,12 @@ import './AchievementPopup.css';
 // Asset helper removed for now
 // import { getAssetPath } from '@assets/asset_helper';
 
-// NOTE: We don't have getAssetPath yet, so we will use inline SVGs/images or passed URLs
-// For now, assume iconUrl is passed
+// Import icons
+const iconAssets = import.meta.glob('@assets/icons/*.{png,svg}', { eager: true, import: 'default' });
+const getIconResult = (id) => {
+    const match = Object.keys(iconAssets).find(path => path.includes(id + '.') || path.includes(id));
+    return match ? iconAssets[match] : null;
+};
 
 export function AchievementPopup({
     queue = [],
@@ -42,11 +46,16 @@ export function AchievementPopup({
 
     if (!current) return null;
 
+    const iconUrl = getIconResult(current.id);
+
     return (
         <div className={`achievement-popup ${isExiting ? 'achievement-popup--exit' : ''}`}>
             <div className="achievement-popup__icon">
-                {/* Placeholder or real icon */}
-                🏆
+                {iconUrl ? (
+                    <img src={iconUrl} alt="Trohpy" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                ) : (
+                    '🏆'
+                )}
             </div>
             <div className="achievement-popup__content">
                 <div className="achievement-popup__title">Achievement Unlocked!</div>

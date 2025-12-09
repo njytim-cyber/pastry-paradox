@@ -251,10 +251,13 @@ async function main() {
         results = await generateAll('generators', manifest);
     } else if (target === 'upgrades') {
         results = await generateAll('upgrades', manifest);
+    } else if (target === 'achievements') {
+        results = await generateAll('achievements', manifest);
     } else if (target === 'all') {
         results = [
             ...await generateAll('generators', manifest),
             ...await generateAll('upgrades', manifest),
+            ...await generateAll('achievements', manifest),
         ];
     } else {
         // Find specific asset

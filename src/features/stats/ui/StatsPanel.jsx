@@ -92,9 +92,9 @@ export function StatsPanel({
 
                     {/* Legacy Stats */}
                     <div className="stats-section stats-section--legacy">
-                        <h3 className="stats-section-title">🌟 Franchise History</h3>
+                        <h3 className="stats-section-title">🌟 Cosmic History</h3>
                         <div className="stat-row">
-                            <span className="stat-label">Reputation</span>
+                            <span className="stat-label">Dark Matter</span>
                             <span className="stat-value stat-value--gold">{legacyPoints}</span>
                         </div>
                         <div className="stat-row">
@@ -102,7 +102,7 @@ export function StatsPanel({
                             <span className="stat-value stat-value--gold">+{Math.round((legacyMultiplier - 1) * 100)}%</span>
                         </div>
                         <div className="stat-row">
-                            <span className="stat-label">Prestiges</span>
+                            <span className="stat-label">Universe Resets</span>
                             <span className="stat-value">{stats.prestigeCount || 0}</span>
                         </div>
                     </div>
@@ -112,46 +112,6 @@ export function StatsPanel({
                 <div className="details-view">
 
                     {/* ACHIEVEMENTS SECTION */}
-                    <div className="details-section">
-                        <h3>🏆 Achievements ({unlockedIds.length}/{achievements.length})</h3>
-                        <div className="achievement-grid" style={{
-                            maxHeight: '200px',
-                            overflowY: 'auto',
-                            display: 'grid',
-                            gridTemplateColumns: 'repeat(auto-fill, minmax(40px, 1fr))',
-                            gap: '8px',
-                            padding: '8px',
-                            background: 'rgba(0,0,0,0.05)',
-                            borderRadius: '8px'
-                        }}>
-                            {achievements.map(ach => {
-                                const isUnlocked = unlockedIds.includes(ach.id);
-                                return (
-                                    <div
-                                        key={ach.id}
-                                        className={`achievement-icon ${isUnlocked ? 'unlocked' : 'locked'}`}
-                                        title={isUnlocked ? `${ach.name}\n${ach.description}` : 'Locked'}
-                                        style={{
-                                            width: '40px',
-                                            height: '40px',
-                                            background: isUnlocked ? 'var(--color-gold)' : '#ccc',
-                                            borderRadius: '50%',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            fontSize: '1.2rem',
-                                            opacity: isUnlocked ? 1 : 0.3,
-                                            cursor: 'help',
-                                            border: '2px solid rgba(0,0,0,0.1)'
-                                        }}
-                                    >
-                                        {isUnlocked ? (ach.material === 'Gold' ? '🥇' : ach.material === 'Silver' ? '🥈' : '🥉') : '🔒'}
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </div>
-
                     {/* UPGRADES SECTION */}
                     <div className="details-section" style={{ marginTop: '1rem' }}>
                         <h3>⚡ Upgrades</h3>
@@ -168,11 +128,11 @@ export function StatsPanel({
                     <div className="prestige-info">
                         {canPrestige ? (
                             <span className="prestige-available">
-                                🌟 Franchise now for <strong>+{potentialLegacyPoints}</strong> Reputation!
+                                🌌 Trigger <strong>The Big Crunch</strong> for <strong>+{potentialLegacyPoints}</strong> Dark Matter!
                             </span>
                         ) : (
                             <span className="prestige-requirement">
-                                Bake 1 trillion cakes to unlock Franchising
+                                Bake 1 trillion cakes to collapse the universe
                             </span>
                         )}
                     </div>
@@ -181,7 +141,7 @@ export function StatsPanel({
                         onClick={onPrestige}
                         disabled={!canPrestige}
                     >
-                        🔄 Franchise
+                        💥 The Big Crunch
                     </button>
                 </div>
             )}

@@ -324,5 +324,467 @@
       "path": "assets/icons/upgrade_reality_dough.png",
       "status": "skipped"
     }
+  ],
+  "achievements": [
+    {
+      "id": "ach_build_apprentice_baker_1",
+      "prompt": "Bronze medal featuring Apprentice Baker icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_apprentice_baker_10",
+      "prompt": "Silver medal featuring Apprentice Baker icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_apprentice_baker_25",
+      "prompt": "Gold medal featuring Apprentice Baker icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_apprentice_baker_50",
+      "prompt": "Diamond medal featuring Apprentice Baker icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_apprentice_baker_100",
+      "prompt": "Neon medal featuring Apprentice Baker icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_apprentice_baker_200",
+      "prompt": "Cosmic medal featuring Apprentice Baker icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_apprentice_baker_500",
+      "prompt": "Ethereal medal featuring Apprentice Baker icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_grandmas_secret_recipe_1",
+      "prompt": "Bronze medal featuring Grandma's Secret Recipe icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_grandmas_secret_recipe_10",
+      "prompt": "Silver medal featuring Grandma's Secret Recipe icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_grandmas_secret_recipe_25",
+      "prompt": "Gold medal featuring Grandma's Secret Recipe icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_grandmas_secret_recipe_50",
+      "prompt": "Diamond medal featuring Grandma's Secret Recipe icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_grandmas_secret_recipe_100",
+      "prompt": "Neon medal featuring Grandma's Secret Recipe icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_grandmas_secret_recipe_200",
+      "prompt": "Cosmic medal featuring Grandma's Secret Recipe icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_grandmas_secret_recipe_500",
+      "prompt": "Ethereal medal featuring Grandma's Secret Recipe icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_convection_oven_1",
+      "prompt": "Bronze medal featuring Convection Oven icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_convection_oven_10",
+      "prompt": "Silver medal featuring Convection Oven icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_convection_oven_25",
+      "prompt": "Gold medal featuring Convection Oven icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_convection_oven_50",
+      "prompt": "Diamond medal featuring Convection Oven icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_convection_oven_100",
+      "prompt": "Neon medal featuring Convection Oven icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_convection_oven_200",
+      "prompt": "Cosmic medal featuring Convection Oven icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_convection_oven_500",
+      "prompt": "Ethereal medal featuring Convection Oven icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_professional_mixer_1",
+      "prompt": "Bronze medal featuring Professional Mixer icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_professional_mixer_10",
+      "prompt": "Silver medal featuring Professional Mixer icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_professional_mixer_25",
+      "prompt": "Gold medal featuring Professional Mixer icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_professional_mixer_50",
+      "prompt": "Diamond medal featuring Professional Mixer icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_professional_mixer_100",
+      "prompt": "Neon medal featuring Professional Mixer icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_professional_mixer_200",
+      "prompt": "Cosmic medal featuring Professional Mixer icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_professional_mixer_500",
+      "prompt": "Ethereal medal featuring Professional Mixer icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_local_bakery_franchise_1",
+      "prompt": "Bronze medal featuring Local Bakery Franchise icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_local_bakery_franchise_10",
+      "prompt": "Silver medal featuring Local Bakery Franchise icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_local_bakery_franchise_25",
+      "prompt": "Gold medal featuring Local Bakery Franchise icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_local_bakery_franchise_50",
+      "prompt": "Diamond medal featuring Local Bakery Franchise icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_local_bakery_franchise_100",
+      "prompt": "Neon medal featuring Local Bakery Franchise icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_local_bakery_franchise_200",
+      "prompt": "Cosmic medal featuring Local Bakery Franchise icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_local_bakery_franchise_500",
+      "prompt": "Ethereal medal featuring Local Bakery Franchise icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_cake_factory_1",
+      "prompt": "Bronze medal featuring Cake Factory icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_cake_factory_10",
+      "prompt": "Silver medal featuring Cake Factory icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_cake_factory_25",
+      "prompt": "Gold medal featuring Cake Factory icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_cake_factory_50",
+      "prompt": "Diamond medal featuring Cake Factory icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_cake_factory_100",
+      "prompt": "Neon medal featuring Cake Factory icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_cake_factory_200",
+      "prompt": "Cosmic medal featuring Cake Factory icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_cake_factory_500",
+      "prompt": "Ethereal medal featuring Cake Factory icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_industrial_frosting_hose_1",
+      "prompt": "Bronze medal featuring Industrial Frosting Hose icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_industrial_frosting_hose_10",
+      "prompt": "Silver medal featuring Industrial Frosting Hose icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_industrial_frosting_hose_25",
+      "prompt": "Gold medal featuring Industrial Frosting Hose icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_industrial_frosting_hose_50",
+      "prompt": "Diamond medal featuring Industrial Frosting Hose icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_industrial_frosting_hose_100",
+      "prompt": "Neon medal featuring Industrial Frosting Hose icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_industrial_frosting_hose_200",
+      "prompt": "Cosmic medal featuring Industrial Frosting Hose icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_industrial_frosting_hose_500",
+      "prompt": "Ethereal medal featuring Industrial Frosting Hose icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_3d_cake_printer_1",
+      "prompt": "Bronze medal featuring 3D Cake Printer icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_3d_cake_printer_10",
+      "prompt": "Silver medal featuring 3D Cake Printer icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_3d_cake_printer_25",
+      "prompt": "Gold medal featuring 3D Cake Printer icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_3d_cake_printer_50",
+      "prompt": "Diamond medal featuring 3D Cake Printer icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_3d_cake_printer_100",
+      "prompt": "Neon medal featuring 3D Cake Printer icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_3d_cake_printer_200",
+      "prompt": "Cosmic medal featuring 3D Cake Printer icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_3d_cake_printer_500",
+      "prompt": "Ethereal medal featuring 3D Cake Printer icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_robotic_pastry_chef_1",
+      "prompt": "Bronze medal featuring Robotic Pastry Chef icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_robotic_pastry_chef_10",
+      "prompt": "Silver medal featuring Robotic Pastry Chef icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_robotic_pastry_chef_25",
+      "prompt": "Gold medal featuring Robotic Pastry Chef icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_robotic_pastry_chef_50",
+      "prompt": "Diamond medal featuring Robotic Pastry Chef icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_robotic_pastry_chef_100",
+      "prompt": "Neon medal featuring Robotic Pastry Chef icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_robotic_pastry_chef_200",
+      "prompt": "Cosmic medal featuring Robotic Pastry Chef icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_robotic_pastry_chef_500",
+      "prompt": "Ethereal medal featuring Robotic Pastry Chef icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_cloning_vat_1",
+      "prompt": "Bronze medal featuring Cloning Vat icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_cloning_vat_10",
+      "prompt": "Silver medal featuring Cloning Vat icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_cloning_vat_25",
+      "prompt": "Gold medal featuring Cloning Vat icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_cloning_vat_50",
+      "prompt": "Diamond medal featuring Cloning Vat icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_cloning_vat_100",
+      "prompt": "Neon medal featuring Cloning Vat icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_cloning_vat_200",
+      "prompt": "Cosmic medal featuring Cloning Vat icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_cloning_vat_500",
+      "prompt": "Ethereal medal featuring Cloning Vat icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_orbital_bakery_station_1",
+      "prompt": "Bronze medal featuring Orbital Bakery Station icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_orbital_bakery_station_10",
+      "prompt": "Silver medal featuring Orbital Bakery Station icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_orbital_bakery_station_25",
+      "prompt": "Gold medal featuring Orbital Bakery Station icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_orbital_bakery_station_50",
+      "prompt": "Diamond medal featuring Orbital Bakery Station icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_orbital_bakery_station_100",
+      "prompt": "Neon medal featuring Orbital Bakery Station icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_orbital_bakery_station_200",
+      "prompt": "Cosmic medal featuring Orbital Bakery Station icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_orbital_bakery_station_500",
+      "prompt": "Ethereal medal featuring Orbital Bakery Station icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_nanobot_yeast_1",
+      "prompt": "Bronze medal featuring Nanobot Yeast icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_nanobot_yeast_10",
+      "prompt": "Silver medal featuring Nanobot Yeast icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_nanobot_yeast_25",
+      "prompt": "Gold medal featuring Nanobot Yeast icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_nanobot_yeast_50",
+      "prompt": "Diamond medal featuring Nanobot Yeast icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_nanobot_yeast_100",
+      "prompt": "Neon medal featuring Nanobot Yeast icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_nanobot_yeast_200",
+      "prompt": "Cosmic medal featuring Nanobot Yeast icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_nanobot_yeast_500",
+      "prompt": "Ethereal medal featuring Nanobot Yeast icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_time_warp_oven_1",
+      "prompt": "Bronze medal featuring Time Warp Oven icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_time_warp_oven_10",
+      "prompt": "Silver medal featuring Time Warp Oven icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_time_warp_oven_25",
+      "prompt": "Gold medal featuring Time Warp Oven icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_time_warp_oven_50",
+      "prompt": "Diamond medal featuring Time Warp Oven icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_time_warp_oven_100",
+      "prompt": "Neon medal featuring Time Warp Oven icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_time_warp_oven_200",
+      "prompt": "Cosmic medal featuring Time Warp Oven icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_time_warp_oven_500",
+      "prompt": "Ethereal medal featuring Time Warp Oven icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_matter_replicator_1",
+      "prompt": "Bronze medal featuring Matter Replicator icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_matter_replicator_10",
+      "prompt": "Silver medal featuring Matter Replicator icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_matter_replicator_25",
+      "prompt": "Gold medal featuring Matter Replicator icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_matter_replicator_50",
+      "prompt": "Diamond medal featuring Matter Replicator icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_matter_replicator_100",
+      "prompt": "Neon medal featuring Matter Replicator icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_matter_replicator_200",
+      "prompt": "Cosmic medal featuring Matter Replicator icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_matter_replicator_500",
+      "prompt": "Ethereal medal featuring Matter Replicator icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_multiverse_portal_1",
+      "prompt": "Bronze medal featuring Multiverse Portal icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_multiverse_portal_10",
+      "prompt": "Silver medal featuring Multiverse Portal icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_multiverse_portal_25",
+      "prompt": "Gold medal featuring Multiverse Portal icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_multiverse_portal_50",
+      "prompt": "Diamond medal featuring Multiverse Portal icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_multiverse_portal_100",
+      "prompt": "Neon medal featuring Multiverse Portal icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_multiverse_portal_200",
+      "prompt": "Cosmic medal featuring Multiverse Portal icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_build_multiverse_portal_500",
+      "prompt": "Ethereal medal featuring Multiverse Portal icon, 3d render, game icon style"
+    },
+    {
+      "id": "ach_bake_0",
+      "prompt": "Bronze trophy cup, 3d render, game icon style"
+    },
+    {
+      "id": "ach_bake_1",
+      "prompt": "Silver trophy cup, 3d render, game icon style"
+    },
+    {
+      "id": "ach_bake_2",
+      "prompt": "Gold trophy cup, 3d render, game icon style"
+    },
+    {
+      "id": "ach_bake_3",
+      "prompt": "Diamond trophy cup, 3d render, game icon style"
+    },
+    {
+      "id": "ach_bake_4",
+      "prompt": "Neon trophy cup, 3d render, game icon style"
+    },
+    {
+      "id": "ach_bake_5",
+      "prompt": "Cosmic trophy cup, 3d render, game icon style"
+    },
+    {
+      "id": "ach_click_0",
+      "prompt": "Bronze cursor medal, 3d render, game icon style"
+    },
+    {
+      "id": "ach_click_1",
+      "prompt": "Silver cursor medal, 3d render, game icon style"
+    },
+    {
+      "id": "ach_click_2",
+      "prompt": "Gold cursor medal, 3d render, game icon style"
+    },
+    {
+      "id": "ach_click_3",
+      "prompt": "Diamond cursor medal, 3d render, game icon style"
+    }
   ]
 }
