@@ -7,48 +7,48 @@ import React, { useState, useEffect, useMemo } from 'react';
 // Message pools based on game state
 const MESSAGES = {
     start: [
-        "You feel like making cakes. But nobody wants to eat your cakes.",
-        "The oven is cold. Your dreams are warm.",
-        "A single cake sits on the counter, judging you.",
-        "The flour awaits your command.",
-        "67 is just a number... for now.",
+        "You accidentally baked a shoe. It tasted okay.",
+        "The flour is plotting something. You can feel it.",
+        "Your first cake was technically a soup.",
+        "Grandma is watching. She is always watching.",
+        "67 is just a number. Or is it a coordinate?",
     ],
     early: [
-        "The butter is getting excited.",
-        "Your kitchen smells like ambition.",
-        "Grandma would be proud. Probably.",
-        "The mixer hums a tune of progress.",
-        "Cakes per second? More like cakes per LEGEND.",
+        "A local squirrel stole a muffin. It is now their king.",
+        "You found a way to bake water. Physicists are concerned.",
+        "The health inspector accepted a bribe of three croissants.",
+        "Your mixer produces a low hum that causes hallucinations.",
+        "Cakes per second? We need Cakes per EON.",
     ],
     mid: [
-        "The factory workers have unionized. They want more frosting breaks.",
-        "Your cakes have achieved local fame.",
-        "Scientists are studying your flour technique.",
-        "The 67 gesture becomes muscle memory.",
-        "Somewhere, a croissant weeps with jealousy.",
+        "News reports a shortage of gravity due to local cake density.",
+        "You have been sued by a dentist. You settled in cupcakes.",
+        "The 67th dimension has requested a delivery. Do not be late.",
+        "Your employees are actually just 400 raccoons in a trench coat.",
+        "Somewhere, a quantum physicist cries into a donut.",
     ],
     late: [
-        "Reality itself bends to your baking prowess.",
-        "Philosophers debate the meaning of your cakes.",
-        "Time is relative. Cake is absolute.",
-        "The universe was created from leftover frosting.",
-        "You've transcended mere baking. You are become cake.",
+        "Space-time is just layers of sponge cake.",
+        "You high-fived a deity. They had frosting on their hands.",
+        "The stars are sprinkles. The void is chocolate.",
+        "You have conquered death. Death is now a baker.",
+        "We are all just ingredients in the cosmic batter.",
     ],
     prestige: [
-        "You reset everything, yet the cakes remember.",
-        "Legacy points taste like victory... and vanilla.",
-        "Ascension complete. The flour is pleased.",
-        "Your past self would be confused, but impressed.",
+        "Expanding the brand to the multiverse. Bold strategy.",
+        "Franchising: Because one reality isn't enough.",
+        "Your reputation precedes you, even in standard gravity.",
+        "Opening a flagship store in the 67th dimension.",
     ],
     goldenActive: [
-        "🥐 THE GOLDEN CROISSANT BLESSES YOU! 🥐",
-        "67x EVERYTHING! BAKE LIKE THERE'S NO TOMORROW!",
-        "The croissant gods smile upon your bakery!",
+        "🥐 THE GOLDEN CROISSANT SUMMONS YOU! 🥐",
+        "67x REALITY WARPING! BAKE IT 'TIL YOU MAKE IT!",
+        "THE DOUGH KNOWS. THE DOUGH COMPELS.",
     ],
     milestone67: [
-        "67! The sacred number appears!",
-        "Palms up. Palms down. The dough understands.",
-        "The weighing gesture resonates through dimensions.",
+        "67! The sacred number vibrates!",
+        "Palms up. Palms down. The geometry is perfect.",
+        "It was always 67. It will always be 67.",
     ],
 };
 
@@ -102,8 +102,8 @@ export function FlavorText({
         // Initial message
         pickNewMessage();
 
-        // Rotate every 10-20 seconds
-        const interval = setInterval(pickNewMessage, 10000 + Math.random() * 10000);
+        // Rotate every 30 seconds (User request)
+        const interval = setInterval(pickNewMessage, 30000);
         return () => clearInterval(interval);
     }, [messagePool]);
 

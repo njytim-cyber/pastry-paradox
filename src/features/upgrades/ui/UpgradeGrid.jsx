@@ -2,26 +2,82 @@
  * UpgradeGrid - Display and purchase upgrades
  * View Component (NO LOGIC)
  */
-import React from 'react';
-import { formatNumber } from '../../cake/logic/useCakeLogic';
+import React, { useState } from 'react';
+import { formatNumberWord } from '../../cake/logic/useCakeLogic';
+import balanceData from '@data/balance.json';
+
+// Import all icons from assets folder
+// Import all icons from assets folder
+const iconAssets = import.meta.glob('@assets/icons/*.{png,svg}', { eager: true, import: 'default' });
+
+/**
+ * Get the icon URL for a given upgrade ID
+ * @param {string} id - Upgrade ID
+ */
+const getIconResult = (id) => {
+    // Check if any asset contains the ID in its name
+    // Upgrades seem to have 'upgrade_' prefix in assets sometimes, or not.
+    // We check looser match.
+    // e.g. ID 'butter_blessing' -> file 'upgrade_butter_blessing.png'
+    const match = Object.keys(iconAssets).find(path => path.includes(id + '.') || path.includes(id));
+    return match ? iconAssets[match] : null;
+};
+
+// Fallback icons map to ensure uniqueness
+// Fallback icons map to ensure uniqueness
+const FALLBACK_ICONS = {
+    'the_vibe_check': '🙌',
+    'butter_blessing': '🧈',
+    'flour_power': '🌾',
+    'sugar_rush': '⚡',
+    'grandmas_approval': '👵',
+    'preheated': '🔥',
+    'turbo_whisk': '🥣',
+    'viral_resonance': '🥐',
+    'click_mastery': '👆',
+    'double_tap': '✌️',
+    'franchise_fever': '🏪',
+    'factory_overdrive': '🏭',
+    'frosting_flood': '🌊',
+    'printer_perfection': '🖨️',
+    'robot_uprising': '🤖',
+    'clone_perfection': '🧬',
+    'zero_g_frosting': '🪐',
+    'nano_swarm': '🦠',
+    'temporal_baking': '⏳',
+    'reality_dough': '🌌'
+};
 
 // Upgrade icon based on type
 const UpgradeIcon = ({ upgrade, isPurchased }) => {
-    const getEmoji = () => {
-        if (upgrade.id === 'the_vibe_check') return '🙌';
-        if (upgrade.id === 'viral_resonance') return '🥐';
-        return '⬆️';
-    };
+    const iconUrl = getIconResult(upgrade.id);
+
+    if (iconUrl) {
+        return (
+            <img
+                src={iconUrl}
+                alt={upgrade.name}
+                className="upgrade-card__icon"
+                style={{
+                    width: '42px',
+                    height: '42px',
+                    objectFit: 'contain',
+                    opacity: isPurchased ? 0.6 : 1,
+                    // Removed filter to avoid coloring issues
+                }}
+            />
+        );
+    }
 
     return (
         <div
             className="upgrade-card__icon"
             style={{
-                fontSize: '1.5rem',
+                fontSize: '2rem',
                 opacity: isPurchased ? 0.6 : 1,
             }}
         >
-            {getEmoji()}
+            {FALLBACK_ICONS[upgrade.id] || '⬆️'}
         </div>
     );
 };
@@ -44,12 +100,18 @@ export function UpgradeGrid({
         return null;
     }
 
+    // View Mode: 'available' | 'owned'
+    const [viewMode, setViewMode] = useState('available');
+
     // Progressive unlocking: show upgrade when you have at least 50% of its cost
-    // Hide purchased upgrades to reduce clutter
-    const visibilityThreshold = 0.5; // 50% of cost required to see
+    const visibilityThreshold = balanceData.globalConfig?.upgradeVisibilityThreshold || 0.5;
+
     const visibleUpgrades = upgrades.filter(u => {
-        if (u.isPurchased) return false; // Hide purchased
-        return balance >= u.cost * visibilityThreshold; // Show if >= 50% of cost
+        if (viewMode === 'owned') {
+            return u.isPurchased;
+        }
+        // 'available' mode: show unpurchased that are visible
+        return !u.isPurchased && (balance >= u.cost * visibilityThreshold);
     });
 
     // Buy All: purchase from first to last until can't afford
@@ -66,46 +128,79 @@ export function UpgradeGrid({
 
     const hasAffordableUpgrades = visibleUpgrades.some(u => canPurchase?.(u.id, balance));
 
+    // Tooltip state
+    const [hoveredUpgrade, setHoveredUpgrade] = useState(null);
+    const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+    const handleMouseMove = (e) => {
+        setMousePos({ x: e.clientX, y: e.clientY });
+    };
+
     return (
         <div className="panel upgrade-panel">
-            <div className="panel-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h2 className="panel-title">✨ Upgrades</h2>
+            <div className="panel-header">
+                <h2 className="panel-title">Upgrades</h2>
                 {hasAffordableUpgrades && (
                     <button
-                        className="upgrade-buy-all"
+                        className="btn btn--small"
                         onClick={handleBuyAll}
+                        title="Buy all affordable upgrades"
                     >
                         Buy All
                     </button>
                 )}
             </div>
 
-            <div className="upgrade-grid">
-                {visibleUpgrades.map(upgrade => {
-                    const affordable = canPurchase?.(upgrade.id, balance) ?? false;
+            <div className="upgrade-grid-content" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(60px, 1fr))', gap: '8px', padding: '10px' }}>
+                {visibleUpgrades.length === 0 && (
+                    <div className="empty-state">
+                        <p>No upgrades available right now.</p>
+                        <small>Bake more cakes!</small>
+                    </div>
+                )}
 
+                {visibleUpgrades.map(upgrade => {
+                    const canAfford = canPurchase?.(upgrade.id, balance);
                     return (
                         <button
                             key={upgrade.id}
-                            className={`upgrade-card ${upgrade.isPurchased ? 'upgrade-card--owned' :
-                                !affordable ? 'upgrade-card--disabled' : ''
-                                }`}
-                            onClick={() => !upgrade.isPurchased && affordable && onPurchase?.(upgrade.id)}
-                            disabled={upgrade.isPurchased || !affordable}
+                            className={`upgrade-card ${canAfford ? '' : 'upgrade-card--expensive'}`}
+                            onClick={() => onPurchase?.(upgrade.id)}
+                            disabled={!canAfford}
+                            onMouseEnter={(e) => {
+                                setHoveredUpgrade(upgrade);
+                                handleMouseMove(e);
+                            }}
+                            onMouseLeave={() => setHoveredUpgrade(null)}
+                            onMouseMove={handleMouseMove}
+                            aria-label={`Buy ${upgrade.name}`}
                         >
                             <UpgradeIcon upgrade={upgrade} isPurchased={upgrade.isPurchased} />
-
-                            <div className="upgrade-card__tooltip">
-                                <strong>{upgrade.name}</strong>
-                                <br />
-                                {upgrade.description}
-                                <br />
-                                <em>Cost: {formatNumber(upgrade.cost)}</em>
-                            </div>
                         </button>
                     );
                 })}
             </div>
+
+            {hoveredUpgrade && (
+                <div
+                    className="upgrade-tooltip-fixed"
+                    style={{
+                        top: mousePos.y + 15,
+                        left: mousePos.x - 125,
+                        zIndex: 1000
+                    }}
+                >
+                    <div className="tooltip-header">
+                        <strong>{hoveredUpgrade.name}</strong>
+                    </div>
+                    <div className="tooltip-body">
+                        {hoveredUpgrade.description}
+                    </div>
+                    <div className={`tooltip-cost ${balance >= hoveredUpgrade.cost ? 'affordable' : 'expensive'}`}>
+                        Cost: {formatNumberWord(hoveredUpgrade.cost)}
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

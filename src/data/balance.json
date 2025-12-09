@@ -4,7 +4,13 @@
         "universalConstant": 67,
         "currencyName": "Delicious Cakes",
         "fps": 60,
-        "costMultiplier": 1.15
+        "costMultiplier": 1.15,
+        "sellRefundRate": 0.25,
+        "upgradeVisibilityThreshold": 1.0
+    },
+    "prestige": {
+        "requiredBaked": 1000000000000,
+        "cpsBonusPerPoint": 0.01
     },
     "productionTiers": [
         {

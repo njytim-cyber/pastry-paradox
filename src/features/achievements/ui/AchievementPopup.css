@@ -1,0 +1,80 @@
+.achievement-popup {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid var(--color-gold);
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 2000;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    min-width: 300px;
+}
+
+.achievement-popup--exit {
+    animation: slideDown 0.5s ease-in forwards;
+}
+
+.achievement-popup__icon {
+    font-size: 2.5rem;
+    animation: bounce 1s infinite alternate;
+}
+
+.achievement-popup__title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.achievement-popup__name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 2px 0;
+}
+
+.achievement-popup__desc {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateX(-50%) translateY(100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(-50%) translateY(100px);
+        opacity: 0;
+    }
+}
+
+@keyframes bounce {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}

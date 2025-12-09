@@ -3,7 +3,7 @@
  * View Component (NO LOGIC)
  */
 import React, { useState, useRef, useEffect } from 'react';
-import { formatNumber } from '../../cake/logic/useCakeLogic';
+import { formatNumberWord, formatNumberParts } from '../../cake/logic/useCakeLogic';
 
 /**
  * Bakery Header Component
@@ -18,6 +18,8 @@ export function BakeryHeader({
     const [isEditing, setIsEditing] = useState(false);
     const [editName, setEditName] = useState(bakeryName);
     const inputRef = useRef(null);
+
+    const { value: balanceValue, suffix: balanceSuffix } = formatNumberParts(balance);
 
     useEffect(() => {
         if (isEditing && inputRef.current) {
@@ -72,10 +74,13 @@ export function BakeryHeader({
 
             {/* Currency Display */}
             <div className="bakery-currency">
-                <span className="bakery-balance">{formatNumber(balance)}</span>
+                <div className="bakery-balance-container">
+                    <span className="bakery-balance">{balanceValue}</span>
+                    {balanceSuffix && <div className="bakery-balance-suffix">{balanceSuffix}</div>}
+                </div>
                 <span className="bakery-currency-name">{currencyName}</span>
                 {cps > 0 && (
-                    <span className="bakery-cps">per second: {formatNumber(cps)}</span>
+                    <span className="bakery-cps">per second: {formatNumberWord(cps)}</span>
                 )}
             </div>
         </div>

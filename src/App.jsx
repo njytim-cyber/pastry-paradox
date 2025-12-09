@@ -19,6 +19,8 @@ import { GoldenFloater, MultiplierIndicator } from '@features/events/ui/GoldenFl
 import { StatsPanel } from '@features/stats/ui/StatsPanel';
 import { BakeryHeader } from '@features/bakery/ui/BakeryHeader';
 import { FlavorText } from '@features/flavor/ui/FlavorText';
+import { useAchievementSystem } from '@features/achievements/logic/useAchievementSystem';
+import { AchievementPopup } from '@features/achievements/ui/AchievementPopup';
 
 const { globalConfig } = balanceData;
 
@@ -26,8 +28,10 @@ function App() {
     // Initialize game state (prestige, stats, shop mode)
     const gameState = useGameState();
 
-    // Initialize core game logic
-    const cakeLogic = useCakeLogic();
+    // Initialize core game logic with stats sync
+    const cakeLogic = useCakeLogic({
+        onTick: (amount) => gameState.recordBaked(amount)
+    });
 
     // Initialize upgrade system (connected to cake logic)
     const upgradeSystem = useUpgradeSystem({
@@ -38,6 +42,13 @@ function App() {
     // Initialize event system (connected to multiplier)
     const eventSystem = useEventSpawner({
         setGlobalMultiplier: cakeLogic.setGlobalMultiplier,
+    });
+
+    // Initialize Achievement System
+    const achievementSystem = useAchievementSystem({
+        totalBaked: gameState.stats.totalBaked,
+        totalClicks: gameState.stats.totalClicks,
+        generators: cakeLogic.productionTiers
     });
 
     // Enhanced click handler with stats tracking
@@ -129,6 +140,8 @@ function App() {
                     potentialLegacyPoints={gameState.potentialLegacyPoints}
                     canPrestige={gameState.canPrestige}
                     onPrestige={handlePrestige}
+                    achievements={achievementSystem.allAchievements}
+                    unlockedIds={achievementSystem.unlockedIds}
                 />
 
                 {/* Dev: Unlock golden croissant for testing */}
@@ -171,6 +184,12 @@ function App() {
                 multiplier={eventSystem.multiplier}
                 timeRemaining={eventSystem.timeRemaining}
                 isActive={cakeLogic.globalMultiplier > 1}
+            />
+
+            {/* Achievement Toast */}
+            <AchievementPopup
+                queue={achievementSystem.newUnlockQueue}
+                onDismiss={achievementSystem.popNotification}
             />
         </div>
     );

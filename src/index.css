@@ -305,12 +305,32 @@ h4 {
   align-items: center;
 }
 
+.bakery-balance-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: var(--space-xs);
+}
+
 .bakery-balance {
   font-family: var(--font-display);
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
   color: var(--color-cream);
   text-shadow: 2px 2px 0 var(--color-chocolate);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.bakery-balance-suffix {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--color-butter);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 4px;
+  font-weight: 600;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
 }
 
 .bakery-currency-name {
@@ -381,11 +401,11 @@ h4 {
 }
 
 .cake:hover {
-  animation-play-state: paused;
+  /* animation-play-state: paused; REMOVED to keep spinning */
   transform: scale(1.05);
 }
 
-.cake.clicked {
+.cake-wrapper.clicked {
   animation: cake-squish 150ms ease-out;
 }
 
@@ -426,6 +446,22 @@ h4 {
     opacity: 0;
     transform: translateY(-60px) scale(0.6);
   }
+}
+
+/* Upgrade Tooltip - Fixed Position to avoid clipping */
+.upgrade-tooltip-fixed {
+  position: fixed;
+  z-index: 10000;
+  background: var(--color-cream);
+  color: var(--color-chocolate);
+  padding: var(--space-sm);
+  border-radius: 8px;
+  border: 2px solid var(--color-caramel);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+  font-size: 0.85rem;
+  max-width: 250px;
+  /* Positioned via inline styles in JS */
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -550,28 +586,12 @@ h4 {
 }
 
 .stat-row {
-  padding: 2px 0;
-  font-size: 0.75rem;
-}
-
-.stat-value {
-  font-size: 0.8rem;
-}
-
-.stats-section-title {
-  font-family: var(--font-display);
-  font-size: 0.9rem;
-  color: var(--color-chocolate);
-  margin-bottom: var(--space-sm);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.stat-row {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: var(--space-xs) 0;
   border-bottom: 1px dashed var(--ink-light);
+  gap: var(--space-sm);
 }
 
 .stat-row:last-child {
@@ -581,12 +601,15 @@ h4 {
 .stat-label {
   color: var(--ink-secondary);
   font-size: 0.85rem;
+  flex: 1;
 }
 
 .stat-value {
   font-family: var(--font-display);
   font-weight: 600;
   color: var(--ink-primary);
+  white-space: nowrap;
+  text-align: right;
 }
 
 .stat-value--gold {
@@ -630,10 +653,10 @@ h4 {
    ═══════════════════════════════════════════════════════════════════════════ */
 
 .store-panel {
-  background: transparent;
+  background: rgba(255, 248, 240, 0.95);
   border: none;
   border-radius: 0;
-  padding: 0;
+  padding: var(--space-sm) var(--space-md);
   box-shadow: none;
   height: 100%;
   display: flex;
@@ -641,54 +664,61 @@ h4 {
 }
 
 .store-header {
-  background: var(--color-chocolate-light);
-  padding: var(--space-md);
-  margin: 0;
+  background: transparent;
+  padding: 0;
+  margin-bottom: var(--space-sm);
   border-bottom: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
   gap: var(--space-sm);
 }
 
 .store-header .panel-title {
-  color: var(--color-cream);
+  color: var(--color-chocolate);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  /* Match UpgradeGrid h2 */
 }
 
 /* Buy/Sell Toggle */
 .store-mode-toggle {
   display: flex;
-  gap: 2px;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-  padding: 2px;
+  gap: 4px;
+  background: transparent;
+  padding: 0;
 }
 
 .store-mode-btn {
   font-family: var(--font-display);
   font-size: 0.8rem;
-  padding: var(--space-xs) var(--space-md);
-  border: none;
-  border-radius: 3px;
-  background: transparent;
-  color: #FFF8F0;
+  padding: 4px 12px;
+  border: 1px solid var(--color-caramel);
+  border-radius: 4px;
+  background: var(--color-cream);
+  color: var(--color-chocolate);
   cursor: pointer;
   transition: all var(--transition-fast);
-  opacity: 0.8;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  opacity: 1;
 }
 
 .store-mode-btn:hover {
-  opacity: 1;
+  background: var(--color-parchment);
+  border-color: var(--color-chocolate);
 }
 
 .store-mode-btn--active {
   background: var(--color-mint);
+  border-color: var(--color-chocolate);
   color: var(--ink-primary);
-  opacity: 1;
+  font-weight: 600;
 }
 
 .store-mode-btn--active.store-mode-btn--sell {
   background: var(--color-sell);
   color: white;
+  border-color: #c0392b;
 }
 
 /* Quantity Selector */
@@ -774,12 +804,35 @@ h4 {
 
 .shop-item__name {
   font-family: var(--font-display);
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--color-chocolate);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: visible;
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+
+.shop-item__cost {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: #4CAF50;
+  /* Green for cost */
+  font-weight: 400;
+  /* Unbolded per user request */
+}
+
+.shop-item--disabled .shop-item__cost {
+  color: #E74C3C;
+  /* Red if cant afford */
+}
+
+.shop-item__owned {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: rgba(93, 58, 26, 0.2);
+  margin-left: var(--space-sm);
+  font-weight: 700;
 }
 
 .shop-item__cost {
@@ -799,11 +852,13 @@ h4 {
 
 .shop-item__owned {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--color-cream);
-  min-width: 1.5rem;
+  color: var(--ink-secondary);
+  opacity: 0.8;
+  min-width: 40px;
   text-align: right;
+  line-height: 1;
 }
 
 /* Mystery Tier */
@@ -1033,4 +1088,20 @@ h4 {
 .shop-list::-webkit-scrollbar-thumb {
   background: var(--color-caramel);
   border-radius: 3px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ICON POLISH
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Remove white backgrounds via blending */
+.shop-item__icon img,
+.upgrade-card__icon {
+  mix-blend-mode: multiply;
+  display: block;
+}
+
+/* Ensure mystery icon doesn't blend if it's SVG */
+.shop-item__icon--mystery {
+  mix-blend-mode: normal;
 }

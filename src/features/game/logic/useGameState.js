@@ -5,8 +5,7 @@
 import { useState, useCallback, useMemo } from 'react';
 import balanceData from '@data/balance.json';
 
-const { globalConfig } = balanceData;
-const SELL_REFUND_RATE = 0.25; // 25% refund when selling
+const { globalConfig, prestige } = balanceData;
 
 /**
  * Main game state hook
@@ -35,16 +34,17 @@ export function useGameState() {
 
     // Calculate legacy points earned from reset
     const calculateLegacyPoints = useCallback((totalBaked) => {
-        // Formula: 1 legacy point per 1 trillion baked, minimum 1 trillion to prestige
-        const trillion = 1e12;
-        if (totalBaked < trillion) return 0;
-        return Math.floor(Math.sqrt(totalBaked / trillion));
+        // Formula: 1 legacy point per X amount baked
+        const required = prestige?.requiredBaked || 1000000000000;
+        if (totalBaked < required) return 0;
+        return Math.floor(Math.cbrt(totalBaked / required));
     }, []);
 
     // Calculate legacy multiplier from points
     const calculateLegacyMultiplier = useCallback((points) => {
-        // Each legacy point = +2% CpS
-        return 1 + (points * 0.02);
+        // Each legacy point = +X% CpS
+        const bonus = prestige?.cpsBonusPerPoint || 0.02;
+        return 1 + (points * bonus);
     }, []);
 
     // Track a click
@@ -76,9 +76,10 @@ export function useGameState() {
     const getSellPrice = useCallback((baseCost, owned) => {
         if (owned <= 0) return 0;
         const costMultiplier = globalConfig.costMultiplier || 1.15;
+        const refundRate = globalConfig.sellRefundRate || 0.25;
         // Sell price is the cost of the last purchased unit * refund rate
         const lastPurchasePrice = Math.floor(baseCost * Math.pow(costMultiplier, owned - 1));
-        return Math.floor(lastPurchasePrice * SELL_REFUND_RATE);
+        return Math.floor(lastPurchasePrice * refundRate);
     }, []);
 
     // Perform prestige reset

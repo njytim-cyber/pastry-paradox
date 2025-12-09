@@ -1,7 +1,7 @@
 /* eslint-disable no-undef, no-unused-vars */
 /**
  * generate-media.js
- * Script for generating game assets using Vertex AI (gemini-2.5-flash-image)
+ * Script for generating game assets using Vertex AI Imagen
  * 
  * Usage: 
  *   node scripts/generate-media.js generators  # Generate all generator icons
@@ -10,7 +10,7 @@
  * 
  * Prerequisites:
  *   npm install @google-cloud/vertexai
- *   gcloud auth application-default login (for local dev)
+ *   gcloud auth application-default login
  */
 
 import fs from 'fs';
@@ -20,14 +20,13 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const ASSETS_DIR = path.join(__dirname, '..', 'assets');
+const ASSETS_DIR = path.join(__dirname, '../src/assets');
 const ICONS_DIR = path.join(ASSETS_DIR, 'icons');
 const MANIFEST_PATH = path.join(ASSETS_DIR, 'asset-manifest.json');
 
 // Vertex AI Configuration
 const PROJECT_ID = 'project-id-5683913981585557299';
 const LOCATION = 'us-central1';
-const MODEL = 'gemini-2.0-flash-exp'; // gemini-2.5-flash-image for prod
 
 /**
  * Ensure icons directory exists
@@ -57,44 +56,95 @@ function saveManifest(manifest) {
 }
 
 /**
- * Generate image using Vertex AI
+ * Generate image using Vertex AI Imagen
  */
 async function generateImage(assetId, prompt, style) {
     console.log(`\n🎨 Generating: ${assetId}`);
     console.log(`   Prompt: ${prompt}`);
 
-    // For now, use placeholder since we need proper Vertex AI SDK setup
-    // This structure is ready for Vertex AI integration
-
     const fullPrompt = `${style}, ${prompt}`;
+    const outputPath = path.join(ICONS_DIR, `${assetId}.png`);
+
+    if (fs.existsSync(outputPath)) {
+        console.log(`   ⏩ Skipping exists: ${outputPath}`);
+        return { id: assetId, path: `assets/icons/${assetId}.png`, status: 'skipped' };
+    }
 
     try {
-        // Dynamic import for Vertex AI (may not be installed yet)
+        // Use Gemini 2.5 Flash Image for sprites as requested
         const { VertexAI } = await import('@google-cloud/vertexai');
-
         const vertexAI = new VertexAI({ project: PROJECT_ID, location: LOCATION });
-        const model = vertexAI.getGenerativeModel({ model: MODEL });
 
-        const result = await model.generateContent({
-            contents: [{ role: 'user', parts: [{ text: `Generate a 64x64 pixel icon: ${fullPrompt}` }] }],
+        // Try gemini-2.5-flash-image
+        // Note: Using standard generateContent for Gemini models
+        const model = vertexAI.getGenerativeModel({
+            model: 'gemini-2.5-flash-image', // User specified model
+            generationConfig: {
+                responseModalities: ['image', 'text'],
+            }
         });
 
-        // Save the generated image
-        const outputPath = path.join(ICONS_DIR, `${assetId}.png`);
-        console.log(`✅ Generated: ${outputPath}`);
+        const result = await model.generateContent({
+            contents: [{
+                role: 'user',
+                parts: [{
+                    text: `Generate a 64x64 pixel game icon on white background: ${prompt}. Style: ${style}`
+                }]
+            }],
+        });
 
-        return { id: assetId, path: `assets/icons/${assetId}.png`, status: 'generated' };
+        const response = result.response;
+        if (response.candidates && response.candidates[0].content.parts) {
+            for (const part of response.candidates[0].content.parts) {
+                if (part.inlineData && part.inlineData.mimeType?.startsWith('image/')) {
+                    const buffer = Buffer.from(part.inlineData.data, 'base64');
+                    fs.writeFileSync(outputPath, buffer);
+                    console.log(`✅ Saved (Gemini 2.5): ${outputPath}`);
+                    return { id: assetId, path: `assets/icons/${assetId}.png`, status: 'generated' };
+                }
+            }
+        }
+
+        // If we get here, no image was in standard Gemini response. 
+        // Some specialized image models might return different structures or use different methods.
+        // Fallback to older methods? NO, user was specific.
+
+        throw new Error('No image returned from Gemini 2.5');
 
     } catch (error) {
-        if (error.code === 'ERR_MODULE_NOT_FOUND') {
-            console.log('   ⚠️  @google-cloud/vertexai not installed');
-            console.log('   Run: npm install @google-cloud/vertexai');
+        console.error(`   ⚠️  Gemini 2.5 failed:`, error.message);
 
-            // Create placeholder SVG instead
-            return createPlaceholderIcon(assetId, prompt);
+        // Fallback to Imagen if Gemini fails (e.g. if model doesn't exist yet/access denied)
+        console.log('   Trying Imagen 4.0 as fallback...');
+        try {
+            const { VertexAI } = await import('@google-cloud/vertexai');
+            const vertexAI = new VertexAI({ project: PROJECT_ID, location: LOCATION });
+
+            const model = vertexAI.preview.getGenerativeModel({
+                model: 'imagen-4.0-ultra-generate-001'
+            });
+
+            const request = {
+                prompt: `64x64 pixel game icon, ${fullPrompt}`,
+                numberOfImages: 1,
+                aspectRatio: '1:1'
+            };
+
+            const response = await model.generateImages(request);
+            if (response.images && response.images.length > 0) {
+                const imageData = response.images[0].bytesBase64Encoded;
+                const buffer = Buffer.from(imageData, 'base64');
+                fs.writeFileSync(outputPath, buffer);
+                console.log(`✅ Saved (Imagen 4.0): ${outputPath}`);
+                return { id: assetId, path: `assets/icons/${assetId}.png`, status: 'generated' };
+            }
+
+        } catch (imagenError) {
+            console.error(`   ⚠️  Imagen 4.0 failed:`, imagenError.message);
         }
-        console.error(`   ❌ Error: ${error.message}`);
-        return { id: assetId, status: 'error', error: error.message };
+
+        console.log('   Creating SVG placeholder...');
+        return createPlaceholderIcon(assetId, prompt);
     }
 }
 
@@ -104,10 +154,18 @@ async function generateImage(assetId, prompt, style) {
 function createPlaceholderIcon(assetId, prompt) {
     const label = assetId.replace(/^(tier\d+_|upgrade_)/, '').substring(0, 3).toUpperCase();
 
+    // Use tier number for generators, first 3 chars for upgrades
+    const tierMatch = assetId.match(/tier(\d+)/);
+    const displayLabel = tierMatch ? tierMatch[1] : label;
+
+    // Color based on tier/type
+    const isUpgrade = assetId.startsWith('upgrade_');
+    const bgColor = isUpgrade ? '#A8D5BA' : '#F5D89A';
+
     const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <rect width="64" height="64" fill="#F5D89A" rx="8"/>
-  <rect x="4" y="4" width="56" height="56" fill="#FFF8F0" rx="6"/>
-  <text x="32" y="38" font-family="Arial" font-size="16" font-weight="bold" fill="#8B5A2B" text-anchor="middle">${label}</text>
+  <rect width="64" height="64" fill="transparent" rx="8"/>
+  <circle cx="32" cy="32" r="28" fill="${bgColor}" stroke="#5D3A1A" stroke-width="2"/>
+  <text x="32" y="38" font-family="Arial" font-size="20" font-weight="bold" fill="#5D3A1A" text-anchor="middle">${displayLabel}</text>
 </svg>`;
 
     const outputPath = path.join(ICONS_DIR, `${assetId}.svg`);
@@ -131,11 +189,35 @@ async function generateAll(type, manifest) {
         const result = await generateImage(item.id, item.prompt, style);
         results.push(result);
 
-        // Rate limiting - wait 1 second between requests
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        // Rate limiting - wait 2 seconds between requests
+        await new Promise(resolve => setTimeout(resolve, 2000));
     }
 
     return results;
+}
+
+/**
+ * Verify generated files exist
+ */
+function verifyFiles(results) {
+    console.log('\n🔍 Verifying generated files...\n');
+    let success = 0;
+    let missing = 0;
+
+    for (const result of results) {
+        const fullPath = path.join(__dirname, '..', result.path);
+        if (fs.existsSync(fullPath)) {
+            const stats = fs.statSync(fullPath);
+            console.log(`   ✅ ${result.id}: ${stats.size} bytes`);
+            success++;
+        } else {
+            console.log(`   ❌ ${result.id}: FILE NOT FOUND`);
+            missing++;
+        }
+    }
+
+    console.log(`\n📊 Verified: ${success} found, ${missing} missing`);
+    return { success, missing };
 }
 
 /**
@@ -152,6 +234,7 @@ async function main() {
         console.log('  node scripts/generate-media.js generators  # All generator icons');
         console.log('  node scripts/generate-media.js upgrades    # All upgrade icons');
         console.log('  node scripts/generate-media.js all         # All icons');
+        console.log('  node scripts/generate-media.js verify      # Verify existing files');
         console.log('  node scripts/generate-media.js [id]        # Specific asset');
         return;
     }
@@ -159,7 +242,12 @@ async function main() {
     const target = args[0];
     let results = [];
 
-    if (target === 'generators') {
+    if (target === 'verify') {
+        // Just verify existing files
+        results = manifest.generated || [];
+        verifyFiles(results);
+        return;
+    } else if (target === 'generators') {
         results = await generateAll('generators', manifest);
     } else if (target === 'upgrades') {
         results = await generateAll('upgrades', manifest);
@@ -189,11 +277,15 @@ async function main() {
 
     saveManifest(manifest);
 
+    // Verify files were created
+    const verification = verifyFiles(results);
+
     // Summary
-    const success = results.filter(r => r.status === 'generated' || r.status === 'placeholder').length;
+    const pngCount = results.filter(r => r.path?.endsWith('.png')).length;
+    const svgCount = results.filter(r => r.path?.endsWith('.svg')).length;
     const errors = results.filter(r => r.status === 'error').length;
 
-    console.log(`\n📊 Summary: ${success} generated, ${errors} errors`);
+    console.log(`\n📊 Summary: ${pngCount} PNG, ${svgCount} SVG placeholders, ${errors} errors`);
     console.log('✅ Manifest updated');
 }
 

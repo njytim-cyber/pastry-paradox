@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <rect width="64" height="64" fill="#F5D89A" rx="8"/>
-  <rect x="4" y="4" width="56" height="56" fill="#FFF8F0" rx="6"/>
-  <text x="32" y="38" font-family="Arial" font-size="16" font-weight="bold" fill="#8B5A2B" text-anchor="middle">CLI</text>
-</svg>

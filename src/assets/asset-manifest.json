@@ -1,0 +1,328 @@
+{
+  "defaults": {
+    "project_id": "pastry-paradox",
+    "model": "gemini-2.5-flash-image",
+    "style": "watercolor illustration, vintage patisserie, soft cream and butter tones, hand-painted aesthetic, 64x64 game icon, white background"
+  },
+  "generators": [
+    {
+      "id": "tier1_apprentice_baker",
+      "prompt": "cute young baker apprentice in chef's hat making dough"
+    },
+    {
+      "id": "tier2_grandmas_secret_recipe",
+      "prompt": "vintage recipe book with wooden spoon and reading glasses"
+    },
+    {
+      "id": "tier3_convection_oven",
+      "prompt": "copper and brass convection oven with warm glow inside"
+    },
+    {
+      "id": "tier4_professional_mixer",
+      "prompt": "professional stand mixer with whisk attachment spinning"
+    },
+    {
+      "id": "tier5_local_bakery_franchise",
+      "prompt": "charming small bakery storefront with striped awning"
+    },
+    {
+      "id": "tier6_cake_factory",
+      "prompt": "industrial factory with cake conveyor belt and smokestacks"
+    },
+    {
+      "id": "tier7_industrial_frosting_hose",
+      "prompt": "industrial frosting hose spraying colorful icing"
+    },
+    {
+      "id": "tier8_3d_cake_printer",
+      "prompt": "futuristic 3D printer creating layered cake"
+    },
+    {
+      "id": "tier9_robotic_pastry_chef",
+      "prompt": "cute robot chef with chef hat and whisk arms"
+    },
+    {
+      "id": "tier10_cloning_vat",
+      "prompt": "sci-fi cloning vat with floating cakes inside green liquid"
+    },
+    {
+      "id": "tier11_orbital_bakery_station",
+      "prompt": "space station bakery orbiting Earth with cake windows"
+    },
+    {
+      "id": "tier12_nanobot_yeast",
+      "prompt": "microscopic nanobots shaped like yeast cells"
+    },
+    {
+      "id": "tier13_time_warp_oven",
+      "prompt": "magical oven with clock hands and time vortex"
+    },
+    {
+      "id": "tier14_matter_replicator",
+      "prompt": "star trek style replicator creating cake from energy"
+    },
+    {
+      "id": "tier15_multiverse_portal",
+      "prompt": "swirling portal showing cakes from alternate dimensions"
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "upgrade_the_vibe_check",
+      "prompt": "hands doing 67 weighing gesture palms up palms down"
+    },
+    {
+      "id": "upgrade_butter_blessing",
+      "prompt": "golden butter dish with halo glow"
+    },
+    {
+      "id": "upgrade_flour_power",
+      "prompt": "flour bag with power symbol"
+    },
+    {
+      "id": "upgrade_sugar_rush",
+      "prompt": "sparkling sugar cube with lightning"
+    },
+    {
+      "id": "upgrade_grandmas_approval",
+      "prompt": "grandma portrait with thumbs up in ornate frame"
+    },
+    {
+      "id": "upgrade_preheated",
+      "prompt": "oven temperature dial at maximum"
+    },
+    {
+      "id": "upgrade_turbo_whisk",
+      "prompt": "whisk spinning so fast it's blurred"
+    },
+    {
+      "id": "upgrade_viral_resonance",
+      "prompt": "golden spiral with social media icons"
+    },
+    {
+      "id": "upgrade_click_mastery",
+      "prompt": "glowing finger pointing down"
+    },
+    {
+      "id": "upgrade_double_tap",
+      "prompt": "two fingers with x2 symbol"
+    },
+    {
+      "id": "upgrade_franchise_fever",
+      "prompt": "map with multiple bakery pins"
+    },
+    {
+      "id": "upgrade_factory_overdrive",
+      "prompt": "industrial gears on fire"
+    },
+    {
+      "id": "upgrade_frosting_flood",
+      "prompt": "tidal wave of colorful frosting"
+    },
+    {
+      "id": "upgrade_printer_perfection",
+      "prompt": "3D printer nozzle with perfect detail"
+    },
+    {
+      "id": "upgrade_robot_uprising",
+      "prompt": "happy robot chef army"
+    },
+    {
+      "id": "upgrade_clone_perfection",
+      "prompt": "DNA helix made of cake layers"
+    },
+    {
+      "id": "upgrade_zero_g_frosting",
+      "prompt": "floating frosting bubbles in space"
+    },
+    {
+      "id": "upgrade_nano_swarm",
+      "prompt": "cloud of tiny sparkly particles"
+    },
+    {
+      "id": "upgrade_temporal_baking",
+      "prompt": "clock with cake slice hands"
+    },
+    {
+      "id": "upgrade_reality_dough",
+      "prompt": "cosmic portal with dough spiral"
+    }
+  ],
+  "generated": [
+    {
+      "id": "tier1_apprentice_baker",
+      "path": "assets/icons/tier1_apprentice_baker.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier2_grandma_recipe",
+      "path": "assets/icons/tier2_grandma_recipe.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier3_convection_oven",
+      "path": "assets/icons/tier3_convection_oven.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier4_professional_mixer",
+      "path": "assets/icons/tier4_professional_mixer.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier5_bakery_franchise",
+      "path": "assets/icons/tier5_bakery_franchise.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier6_cake_factory",
+      "path": "assets/icons/tier6_cake_factory.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier7_frosting_hose",
+      "path": "assets/icons/tier7_frosting_hose.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier8_3d_printer",
+      "path": "assets/icons/tier8_3d_printer.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier9_robotic_chef",
+      "path": "assets/icons/tier9_robotic_chef.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier10_cloning_vat",
+      "path": "assets/icons/tier10_cloning_vat.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier11_orbital_bakery",
+      "path": "assets/icons/tier11_orbital_bakery.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier12_nanobot_yeast",
+      "path": "assets/icons/tier12_nanobot_yeast.png",
+      "status": "generated"
+    },
+    {
+      "id": "tier13_time_warp_oven",
+      "path": "assets/icons/tier13_time_warp_oven.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier14_matter_replicator",
+      "path": "assets/icons/tier14_matter_replicator.png",
+      "status": "skipped"
+    },
+    {
+      "id": "tier15_multiverse_portal",
+      "path": "assets/icons/tier15_multiverse_portal.png",
+      "status": "skipped"
+    },
+    {
+      "id": "upgrade_vibe_check",
+      "path": "assets/icons/upgrade_vibe_check.png",
+      "status": "skipped"
+    },
+    {
+      "id": "upgrade_butter_blessing",
+      "path": "assets/icons/upgrade_butter_blessing.png",
+      "status": "skipped"
+    },
+    {
+      "id": "upgrade_flour_power",
+      "path": "assets/icons/upgrade_flour_power.png",
+      "status": "skipped"
+    },
+    {
+      "id": "upgrade_sugar_rush",
+      "path": "assets/icons/upgrade_sugar_rush.png",
+      "status": "skipped"
+    },
+    {
+      "id": "upgrade_grandmas_approval",
+      "path": "assets/icons/upgrade_grandmas_approval.png",
+      "status": "skipped"
+    },
+    {
+      "id": "upgrade_preheated",
+      "path": "assets/icons/upgrade_preheated.png",
+      "status": "skipped"
+    },
+    {
+      "id": "upgrade_turbo_whisk",
+      "path": "assets/icons/upgrade_turbo_whisk.png",
+      "status": "skipped"
+    },
+    {
+      "id": "upgrade_viral_resonance",
+      "path": "assets/icons/upgrade_viral_resonance.png",
+      "status": "skipped"
+    },
+    {
+      "id": "upgrade_click_mastery",
+      "path": "assets/icons/upgrade_click_mastery.png",
+      "status": "generated"
+    },
+    {
+      "id": "upgrade_double_tap",
+      "path": "assets/icons/upgrade_double_tap.png",
+      "status": "skipped"
+    },
+    {
+      "id": "upgrade_franchise_fever",
+      "path": "assets/icons/upgrade_franchise_fever.png",
+      "status": "skipped"
+    },
+    {
+      "id": "upgrade_factory_overdrive",
+      "path": "assets/icons/upgrade_factory_overdrive.png",
+      "status": "skipped"
+    },
+    {
+      "id": "upgrade_frosting_flood",
+      "path": "assets/icons/upgrade_frosting_flood.png",
+      "status": "skipped"
+    },
+    {
+      "id": "upgrade_printer_perfection",
+      "path": "assets/icons/upgrade_printer_perfection.png",
+      "status": "skipped"
+    },
+    {
+      "id": "upgrade_robot_uprising",
+      "path": "assets/icons/upgrade_robot_uprising.png",
+      "status": "skipped"
+    },
+    {
+      "id": "upgrade_clone_perfection",
+      "path": "assets/icons/upgrade_clone_perfection.png",
+      "status": "skipped"
+    },
+    {
+      "id": "upgrade_zero_g_frosting",
+      "path": "assets/icons/upgrade_zero_g_frosting.png",
+      "status": "skipped"
+    },
+    {
+      "id": "upgrade_nano_swarm",
+      "path": "assets/icons/upgrade_nano_swarm.png",
+      "status": "skipped"
+    },
+    {
+      "id": "upgrade_temporal_baking",
+      "path": "assets/icons/upgrade_temporal_baking.svg",
+      "status": "placeholder"
+    },
+    {
+      "id": "upgrade_reality_dough",
+      "path": "assets/icons/upgrade_reality_dough.png",
+      "status": "skipped"
+    }
+  ]
+}

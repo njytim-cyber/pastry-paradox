@@ -9,10 +9,27 @@
  * - Hide all other tiers
  */
 import React from 'react';
-import { formatNumber } from '../../cake/logic/useCakeLogic';
+import { formatNumberWord } from '../../cake/logic/useCakeLogic';
 
 // Placeholder icons for generators - inline SVGs
-const GeneratorIcon = ({ tier, isMystery }) => {
+// Import all icons from assets folder
+const iconAssets = import.meta.glob('@assets/icons/*.{png,svg}', { eager: true, import: 'default' });
+
+/**
+ * Get the icon URL for a given tier ID
+ * @param {string} id - Tier ID (e.g. tier1_apprentice_baker)
+ */
+const getIconResult = (id) => {
+    // Match if path contains the ID.
+    // Files are like: .../tier1_apprentice_baker.png
+    // ID is: apprentice_baker
+    // So we check if path includes the ID.
+    const match = Object.keys(iconAssets).find(path => path.includes(id + '.'));
+    return match ? iconAssets[match] : null;
+};
+
+// Generator Icon Component
+const GeneratorIcon = ({ tier, id, isMystery }) => {
     const colors = [
         '#F5D89A', '#E8D5C4', '#C4956A', '#A8D5BA', '#7B8CDE',
         '#E8A0A0', '#B24C63', '#FFB6C1', '#9B59B6', '#3498DB',
@@ -25,6 +42,19 @@ const GeneratorIcon = ({ tier, isMystery }) => {
                 <circle cx="24" cy="24" r="20" fill="#555" stroke="#333" strokeWidth="2" />
                 <text x="24" y="30" textAnchor="middle" fontSize="16" fontWeight="bold" fill="#888">?</text>
             </svg>
+        );
+    }
+
+    const iconUrl = id ? getIconResult(id) : null;
+
+    if (iconUrl) {
+        return (
+            <img
+                src={iconUrl}
+                alt={`Tier ${tier}`}
+                className="shop-item__icon"
+                style={{ borderRadius: '50%', objectFit: 'cover' }}
+            />
         );
     }
 
@@ -146,19 +176,17 @@ export function StorePanel({
                                 key={tier.id}
                                 className={`shop-item ${!affordable ? 'shop-item--disabled' : ''}`}
                                 onClick={() => {
-                                    for (let i = 0; i < buyQuantity; i++) {
-                                        if (!canAfford?.(tier.id)) break;
-                                        onPurchase?.(tier.id);
-                                    }
+                                    // Make atomic bulk purchase
+                                    onPurchase?.(tier.id, buyQuantity);
                                 }}
                                 disabled={!affordable}
                                 title={tier.description}
                             >
-                                <GeneratorIcon tier={tier.tierIndex + 1} />
+                                <GeneratorIcon tier={tier.tierIndex + 1} id={tier.id} />
                                 <div className="shop-item__info">
                                     <div className="shop-item__name">{tier.name}</div>
                                     <div className="shop-item__cost">
-                                        🍰 {formatNumber(info.currentPrice || tier.baseCost)}
+                                        🍰 {(info.currentPrice || tier.baseCost).toLocaleString()}
                                         {buyQuantity > 1 && (
                                             <span className="shop-item__bulk"> (×{buyQuantity})</span>
                                         )}
@@ -180,7 +208,7 @@ export function StorePanel({
                                 disabled={!canSell}
                                 title={`Sell for ${formatNumber(sellPrice)} cakes`}
                             >
-                                <GeneratorIcon tier={tier.tierIndex + 1} />
+                                <GeneratorIcon tier={tier.tierIndex + 1} id={tier.id} />
                                 <div className="shop-item__info">
                                     <div className="shop-item__name">{tier.name}</div>
                                     <div className="shop-item__cost shop-item__cost--sell">
@@ -199,7 +227,7 @@ export function StorePanel({
                         <GeneratorIcon tier={mystery.tierIndex + 1} isMystery />
                         <div className="shop-item__info">
                             <div className="shop-item__name shop-item__name--mystery">???</div>
-                            <div className="shop-item__cost">🍰 {formatNumber(mystery.baseCost)}</div>
+                            <div className="shop-item__cost">🍰 {(mystery.baseCost).toLocaleString()}</div>
                         </div>
                         <div className="shop-item__owned">0</div>
                     </div>

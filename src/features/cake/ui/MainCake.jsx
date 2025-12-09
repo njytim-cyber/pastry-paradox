@@ -3,7 +3,7 @@
  * View Component (NO LOGIC)
  */
 import React, { useState, useCallback } from 'react';
-import { formatNumber } from '../logic/useCakeLogic';
+import { formatNumberWord } from '../logic/useCakeLogic';
 
 // Placeholder cake SVG until assets are generated
 const PlaceholderCake = () => (
@@ -74,15 +74,15 @@ export function MainCake({
     return (
         <div className="cake-container game-area">
             {/* Clickable Cake */}
-            <div className="cake-wrapper">
-                <div
-                    className={`cake ${isClicked ? 'clicked' : ''}`}
-                    onClick={handleClick}
-                    role="button"
-                    tabIndex={0}
-                    aria-label="Click to bake cakes"
-                    onKeyDown={(e) => e.key === 'Enter' && handleClick(e)}
-                >
+            <div
+                className={`cake-wrapper ${isClicked ? 'clicked' : ''}`}
+                onClick={handleClick}
+                role="button"
+                tabIndex={0}
+                aria-label="Click to bake cakes"
+                onKeyDown={(e) => e.key === 'Enter' && handleClick(e)}
+            >
+                <div className="cake">
                     <PlaceholderCake />
                 </div>
             </div>
@@ -97,7 +97,7 @@ export function MainCake({
                         top: particle.y,
                     }}
                 >
-                    +{formatNumber(particle.value)}
+                    +{formatNumberWord(particle.value)}
                 </span>
             ))}
         </div>

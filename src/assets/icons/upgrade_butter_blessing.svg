@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="transparent" rx="8"/>
+  <circle cx="32" cy="32" r="28" fill="#A8D5BA" stroke="#5D3A1A" stroke-width="2"/>
+  <text x="32" y="38" font-family="Arial" font-size="20" font-weight="bold" fill="#5D3A1A" text-anchor="middle">BUT</text>
+</svg>

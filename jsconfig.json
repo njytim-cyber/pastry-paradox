@@ -12,26 +12,7 @@
         "moduleResolution": "bundler",
         "resolveJsonModule": true,
         "isolatedModules": true,
-        "noEmit": true,
-        "jsx": "react-jsx",
-        "strict": false,
-        "noUnusedLocals": false,
-        "noUnusedParameters": false,
-        "baseUrl": ".",
-        "paths": {
-            "@/*": [
-                "src/*"
-            ],
-            "@data/*": [
-                "src/data/*"
-            ],
-            "@features/*": [
-                "src/features/*"
-            ],
-            "@assets/*": [
-                "assets/*"
-            ]
-        }
+        "noEmit": true
     },
     "include": [
         "src"

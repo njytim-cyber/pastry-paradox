@@ -1,0 +1,13 @@
+
+> pastry-paradox@1.2.0 test
+> vitest run tests/integrity/asset_coverage.test.js
+
+
+[1m[46m RUN [49m[22m [36mv4.0.15 [39m[90mC:/Users/njyti/Desktop/Google-Antigravity/pastry-paradox[39m
+
+No test files found, exiting with code 1
+
+filter: tests/integrity/asset_coverage.test.js
+include: src/**/*.{test,spec}.{js,jsx}
+exclude:  **/node_modules/**, **/.git/**
+
