@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import balanceData from './data/balance.json';
 
-const ASSETS_DIR = path.resolve(process.cwd(), 'src/assets/icons');
+const ASSETS_DIR = path.resolve(process.cwd(), 'src/assets/icons-optimized');
 
 describe('Asset Coverage', () => {
     // Helper to check if file exists with supported extensions

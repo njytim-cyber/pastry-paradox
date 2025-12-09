@@ -1,6 +1,6 @@
 # Balance Schema
 
-> Auto-generated on 2025-12-09T08:12:46.858Z
+> Auto-generated on 2025-12-09T21:48:49.774Z
 > Source: `src/data/balance.json`
 
 ## Version
@@ -38,7 +38,7 @@ Total tiers: 15
 | 15 | `multiverse_portal` | Multiverse Portal | 75,000,000,000,000,000 | 21,000,000,000 |
 
 ## Upgrades
-Total upgrades: 20
+Total upgrades: 120
 
 ### The Vibe Check
 - **ID**: `the_vibe_check`
@@ -159,6 +159,606 @@ Total upgrades: 20
 - **Cost**: 50,000,000,000,000
 - **Effect**: cpsMultiplier - 67x
 - **Description**: The universe is your ingredient list.
+
+### Sturdy Apprentice Baker
+- **ID**: `apprentice_baker_upgrade_1`
+- **Cost**: 75
+- **Effect**: tierBonus (Tier 1) - 2x
+- **Description**: Reinforced foundation. Apprentice Bakers production x2.
+
+### Efficient Apprentice Baker
+- **ID**: `apprentice_baker_upgrade_2`
+- **Cost**: 750
+- **Effect**: tierBonus (Tier 1) - 2x
+- **Description**: Improved efficiency. Apprentice Bakers production x2.
+
+### Advanced Apprentice Baker
+- **ID**: `apprentice_baker_upgrade_3`
+- **Cost**: 7,500
+- **Effect**: tierBonus (Tier 1) - 2x
+- **Description**: High-tech integration. Apprentice Bakers production x2.
+
+### Super Apprentice Baker
+- **ID**: `apprentice_baker_upgrade_4`
+- **Cost**: 75,000
+- **Effect**: tierBonus (Tier 1) - 2x
+- **Description**: Maximum overdrive. Apprentice Bakers production x2.
+
+### Mega Apprentice Baker
+- **ID**: `apprentice_baker_upgrade_5`
+- **Cost**: 750,000
+- **Effect**: tierBonus (Tier 1) - 2x
+- **Description**: Quantum enhancement. Apprentice Bakers production x2.
+
+### Hyper Apprentice Baker
+- **ID**: `apprentice_baker_upgrade_6`
+- **Cost**: 7,500,000
+- **Effect**: tierBonus (Tier 1) - 2x
+- **Description**: Divine perfection. Apprentice Bakers production x2.
+
+### Sturdy Grandma's Secret Recipe
+- **ID**: `grandmas_secret_recipe_upgrade_1`
+- **Cost**: 500
+- **Effect**: tierBonus (Tier 2) - 2x
+- **Description**: Reinforced foundation. Grandma's Secret Recipes production x2.
+
+### Efficient Grandma's Secret Recipe
+- **ID**: `grandmas_secret_recipe_upgrade_2`
+- **Cost**: 5,000
+- **Effect**: tierBonus (Tier 2) - 2x
+- **Description**: Improved efficiency. Grandma's Secret Recipes production x2.
+
+### Advanced Grandma's Secret Recipe
+- **ID**: `grandmas_secret_recipe_upgrade_3`
+- **Cost**: 50,000
+- **Effect**: tierBonus (Tier 2) - 2x
+- **Description**: High-tech integration. Grandma's Secret Recipes production x2.
+
+### Super Grandma's Secret Recipe
+- **ID**: `grandmas_secret_recipe_upgrade_4`
+- **Cost**: 500,000
+- **Effect**: tierBonus (Tier 2) - 2x
+- **Description**: Maximum overdrive. Grandma's Secret Recipes production x2.
+
+### Mega Grandma's Secret Recipe
+- **ID**: `grandmas_secret_recipe_upgrade_5`
+- **Cost**: 5,000,000
+- **Effect**: tierBonus (Tier 2) - 2x
+- **Description**: Quantum enhancement. Grandma's Secret Recipes production x2.
+
+### Hyper Grandma's Secret Recipe
+- **ID**: `grandmas_secret_recipe_upgrade_6`
+- **Cost**: 50,000,000
+- **Effect**: tierBonus (Tier 2) - 2x
+- **Description**: Divine perfection. Grandma's Secret Recipes production x2.
+
+### Sturdy Convection Oven
+- **ID**: `convection_oven_upgrade_1`
+- **Cost**: 5,500
+- **Effect**: tierBonus (Tier 3) - 2x
+- **Description**: Reinforced foundation. Convection Ovens production x2.
+
+### Efficient Convection Oven
+- **ID**: `convection_oven_upgrade_2`
+- **Cost**: 55,000
+- **Effect**: tierBonus (Tier 3) - 2x
+- **Description**: Improved efficiency. Convection Ovens production x2.
+
+### Advanced Convection Oven
+- **ID**: `convection_oven_upgrade_3`
+- **Cost**: 550,000
+- **Effect**: tierBonus (Tier 3) - 2x
+- **Description**: High-tech integration. Convection Ovens production x2.
+
+### Super Convection Oven
+- **ID**: `convection_oven_upgrade_4`
+- **Cost**: 5,500,000
+- **Effect**: tierBonus (Tier 3) - 2x
+- **Description**: Maximum overdrive. Convection Ovens production x2.
+
+### Mega Convection Oven
+- **ID**: `convection_oven_upgrade_5`
+- **Cost**: 55,000,000
+- **Effect**: tierBonus (Tier 3) - 2x
+- **Description**: Quantum enhancement. Convection Ovens production x2.
+
+### Hyper Convection Oven
+- **ID**: `convection_oven_upgrade_6`
+- **Cost**: 550,000,000
+- **Effect**: tierBonus (Tier 3) - 2x
+- **Description**: Divine perfection. Convection Ovens production x2.
+
+### Sturdy Professional Mixer
+- **ID**: `professional_mixer_upgrade_1`
+- **Cost**: 60,000
+- **Effect**: tierBonus (Tier 4) - 2x
+- **Description**: Reinforced foundation. Professional Mixers production x2.
+
+### Efficient Professional Mixer
+- **ID**: `professional_mixer_upgrade_2`
+- **Cost**: 600,000
+- **Effect**: tierBonus (Tier 4) - 2x
+- **Description**: Improved efficiency. Professional Mixers production x2.
+
+### Advanced Professional Mixer
+- **ID**: `professional_mixer_upgrade_3`
+- **Cost**: 6,000,000
+- **Effect**: tierBonus (Tier 4) - 2x
+- **Description**: High-tech integration. Professional Mixers production x2.
+
+### Super Professional Mixer
+- **ID**: `professional_mixer_upgrade_4`
+- **Cost**: 60,000,000
+- **Effect**: tierBonus (Tier 4) - 2x
+- **Description**: Maximum overdrive. Professional Mixers production x2.
+
+### Mega Professional Mixer
+- **ID**: `professional_mixer_upgrade_5`
+- **Cost**: 600,000,000
+- **Effect**: tierBonus (Tier 4) - 2x
+- **Description**: Quantum enhancement. Professional Mixers production x2.
+
+### Hyper Professional Mixer
+- **ID**: `professional_mixer_upgrade_6`
+- **Cost**: 6,000,000,000
+- **Effect**: tierBonus (Tier 4) - 2x
+- **Description**: Divine perfection. Professional Mixers production x2.
+
+### Sturdy Local Bakery Franchise
+- **ID**: `local_bakery_franchise_upgrade_1`
+- **Cost**: 650,000
+- **Effect**: tierBonus (Tier 5) - 2x
+- **Description**: Reinforced foundation. Local Bakery Franchises production x2.
+
+### Efficient Local Bakery Franchise
+- **ID**: `local_bakery_franchise_upgrade_2`
+- **Cost**: 6,500,000
+- **Effect**: tierBonus (Tier 5) - 2x
+- **Description**: Improved efficiency. Local Bakery Franchises production x2.
+
+### Advanced Local Bakery Franchise
+- **ID**: `local_bakery_franchise_upgrade_3`
+- **Cost**: 65,000,000
+- **Effect**: tierBonus (Tier 5) - 2x
+- **Description**: High-tech integration. Local Bakery Franchises production x2.
+
+### Super Local Bakery Franchise
+- **ID**: `local_bakery_franchise_upgrade_4`
+- **Cost**: 650,000,000
+- **Effect**: tierBonus (Tier 5) - 2x
+- **Description**: Maximum overdrive. Local Bakery Franchises production x2.
+
+### Mega Local Bakery Franchise
+- **ID**: `local_bakery_franchise_upgrade_5`
+- **Cost**: 6,500,000,000
+- **Effect**: tierBonus (Tier 5) - 2x
+- **Description**: Quantum enhancement. Local Bakery Franchises production x2.
+
+### Hyper Local Bakery Franchise
+- **ID**: `local_bakery_franchise_upgrade_6`
+- **Cost**: 65,000,000,000
+- **Effect**: tierBonus (Tier 5) - 2x
+- **Description**: Divine perfection. Local Bakery Franchises production x2.
+
+### Sturdy Cake Factory
+- **ID**: `cake_factory_upgrade_1`
+- **Cost**: 7,000,000
+- **Effect**: tierBonus (Tier 6) - 2x
+- **Description**: Reinforced foundation. Cake Factorys production x2.
+
+### Efficient Cake Factory
+- **ID**: `cake_factory_upgrade_2`
+- **Cost**: 70,000,000
+- **Effect**: tierBonus (Tier 6) - 2x
+- **Description**: Improved efficiency. Cake Factorys production x2.
+
+### Advanced Cake Factory
+- **ID**: `cake_factory_upgrade_3`
+- **Cost**: 700,000,000
+- **Effect**: tierBonus (Tier 6) - 2x
+- **Description**: High-tech integration. Cake Factorys production x2.
+
+### Super Cake Factory
+- **ID**: `cake_factory_upgrade_4`
+- **Cost**: 7,000,000,000
+- **Effect**: tierBonus (Tier 6) - 2x
+- **Description**: Maximum overdrive. Cake Factorys production x2.
+
+### Mega Cake Factory
+- **ID**: `cake_factory_upgrade_5`
+- **Cost**: 70,000,000,000
+- **Effect**: tierBonus (Tier 6) - 2x
+- **Description**: Quantum enhancement. Cake Factorys production x2.
+
+### Hyper Cake Factory
+- **ID**: `cake_factory_upgrade_6`
+- **Cost**: 700,000,000,000
+- **Effect**: tierBonus (Tier 6) - 2x
+- **Description**: Divine perfection. Cake Factorys production x2.
+
+### Sturdy Industrial Frosting Hose
+- **ID**: `industrial_frosting_hose_upgrade_1`
+- **Cost**: 100,000,000
+- **Effect**: tierBonus (Tier 7) - 2x
+- **Description**: Reinforced foundation. Industrial Frosting Hoses production x2.
+
+### Efficient Industrial Frosting Hose
+- **ID**: `industrial_frosting_hose_upgrade_2`
+- **Cost**: 1,000,000,000
+- **Effect**: tierBonus (Tier 7) - 2x
+- **Description**: Improved efficiency. Industrial Frosting Hoses production x2.
+
+### Advanced Industrial Frosting Hose
+- **ID**: `industrial_frosting_hose_upgrade_3`
+- **Cost**: 10,000,000,000
+- **Effect**: tierBonus (Tier 7) - 2x
+- **Description**: High-tech integration. Industrial Frosting Hoses production x2.
+
+### Super Industrial Frosting Hose
+- **ID**: `industrial_frosting_hose_upgrade_4`
+- **Cost**: 100,000,000,000
+- **Effect**: tierBonus (Tier 7) - 2x
+- **Description**: Maximum overdrive. Industrial Frosting Hoses production x2.
+
+### Mega Industrial Frosting Hose
+- **ID**: `industrial_frosting_hose_upgrade_5`
+- **Cost**: 1,000,000,000,000
+- **Effect**: tierBonus (Tier 7) - 2x
+- **Description**: Quantum enhancement. Industrial Frosting Hoses production x2.
+
+### Hyper Industrial Frosting Hose
+- **ID**: `industrial_frosting_hose_upgrade_6`
+- **Cost**: 10,000,000,000,000
+- **Effect**: tierBonus (Tier 7) - 2x
+- **Description**: Divine perfection. Industrial Frosting Hoses production x2.
+
+### Sturdy 3D Cake Printer
+- **ID**: `3d_cake_printer_upgrade_1`
+- **Cost**: 1,650,000,000
+- **Effect**: tierBonus (Tier 8) - 2x
+- **Description**: Reinforced foundation. 3D Cake Printers production x2.
+
+### Efficient 3D Cake Printer
+- **ID**: `3d_cake_printer_upgrade_2`
+- **Cost**: 16,500,000,000
+- **Effect**: tierBonus (Tier 8) - 2x
+- **Description**: Improved efficiency. 3D Cake Printers production x2.
+
+### Advanced 3D Cake Printer
+- **ID**: `3d_cake_printer_upgrade_3`
+- **Cost**: 165,000,000,000
+- **Effect**: tierBonus (Tier 8) - 2x
+- **Description**: High-tech integration. 3D Cake Printers production x2.
+
+### Super 3D Cake Printer
+- **ID**: `3d_cake_printer_upgrade_4`
+- **Cost**: 1,650,000,000,000
+- **Effect**: tierBonus (Tier 8) - 2x
+- **Description**: Maximum overdrive. 3D Cake Printers production x2.
+
+### Mega 3D Cake Printer
+- **ID**: `3d_cake_printer_upgrade_5`
+- **Cost**: 16,500,000,000,000
+- **Effect**: tierBonus (Tier 8) - 2x
+- **Description**: Quantum enhancement. 3D Cake Printers production x2.
+
+### Hyper 3D Cake Printer
+- **ID**: `3d_cake_printer_upgrade_6`
+- **Cost**: 165,000,000,000,000
+- **Effect**: tierBonus (Tier 8) - 2x
+- **Description**: Divine perfection. 3D Cake Printers production x2.
+
+### Sturdy Robotic Pastry Chef
+- **ID**: `robotic_pastry_chef_upgrade_1`
+- **Cost**: 25,500,000,000
+- **Effect**: tierBonus (Tier 9) - 2x
+- **Description**: Reinforced foundation. Robotic Pastry Chefs production x2.
+
+### Efficient Robotic Pastry Chef
+- **ID**: `robotic_pastry_chef_upgrade_2`
+- **Cost**: 255,000,000,000
+- **Effect**: tierBonus (Tier 9) - 2x
+- **Description**: Improved efficiency. Robotic Pastry Chefs production x2.
+
+### Advanced Robotic Pastry Chef
+- **ID**: `robotic_pastry_chef_upgrade_3`
+- **Cost**: 2,550,000,000,000
+- **Effect**: tierBonus (Tier 9) - 2x
+- **Description**: High-tech integration. Robotic Pastry Chefs production x2.
+
+### Super Robotic Pastry Chef
+- **ID**: `robotic_pastry_chef_upgrade_4`
+- **Cost**: 25,500,000,000,000
+- **Effect**: tierBonus (Tier 9) - 2x
+- **Description**: Maximum overdrive. Robotic Pastry Chefs production x2.
+
+### Mega Robotic Pastry Chef
+- **ID**: `robotic_pastry_chef_upgrade_5`
+- **Cost**: 255,000,000,000,000
+- **Effect**: tierBonus (Tier 9) - 2x
+- **Description**: Quantum enhancement. Robotic Pastry Chefs production x2.
+
+### Hyper Robotic Pastry Chef
+- **ID**: `robotic_pastry_chef_upgrade_6`
+- **Cost**: 2,550,000,000,000,000
+- **Effect**: tierBonus (Tier 9) - 2x
+- **Description**: Divine perfection. Robotic Pastry Chefs production x2.
+
+### Sturdy Cloning Vat
+- **ID**: `cloning_vat_upgrade_1`
+- **Cost**: 375,000,000,000
+- **Effect**: tierBonus (Tier 10) - 2x
+- **Description**: Reinforced foundation. Cloning Vats production x2.
+
+### Efficient Cloning Vat
+- **ID**: `cloning_vat_upgrade_2`
+- **Cost**: 3,750,000,000,000
+- **Effect**: tierBonus (Tier 10) - 2x
+- **Description**: Improved efficiency. Cloning Vats production x2.
+
+### Advanced Cloning Vat
+- **ID**: `cloning_vat_upgrade_3`
+- **Cost**: 37,500,000,000,000
+- **Effect**: tierBonus (Tier 10) - 2x
+- **Description**: High-tech integration. Cloning Vats production x2.
+
+### Super Cloning Vat
+- **ID**: `cloning_vat_upgrade_4`
+- **Cost**: 375,000,000,000,000
+- **Effect**: tierBonus (Tier 10) - 2x
+- **Description**: Maximum overdrive. Cloning Vats production x2.
+
+### Mega Cloning Vat
+- **ID**: `cloning_vat_upgrade_5`
+- **Cost**: 3,750,000,000,000,000
+- **Effect**: tierBonus (Tier 10) - 2x
+- **Description**: Quantum enhancement. Cloning Vats production x2.
+
+### Hyper Cloning Vat
+- **ID**: `cloning_vat_upgrade_6`
+- **Cost**: 37,500,000,000,000,000
+- **Effect**: tierBonus (Tier 10) - 2x
+- **Description**: Divine perfection. Cloning Vats production x2.
+
+### Sturdy Orbital Bakery Station
+- **ID**: `orbital_bakery_station_upgrade_1`
+- **Cost**: 5,000,000,000,000
+- **Effect**: tierBonus (Tier 11) - 2x
+- **Description**: Reinforced foundation. Orbital Bakery Stations production x2.
+
+### Efficient Orbital Bakery Station
+- **ID**: `orbital_bakery_station_upgrade_2`
+- **Cost**: 50,000,000,000,000
+- **Effect**: tierBonus (Tier 11) - 2x
+- **Description**: Improved efficiency. Orbital Bakery Stations production x2.
+
+### Advanced Orbital Bakery Station
+- **ID**: `orbital_bakery_station_upgrade_3`
+- **Cost**: 500,000,000,000,000
+- **Effect**: tierBonus (Tier 11) - 2x
+- **Description**: High-tech integration. Orbital Bakery Stations production x2.
+
+### Super Orbital Bakery Station
+- **ID**: `orbital_bakery_station_upgrade_4`
+- **Cost**: 5,000,000,000,000,000
+- **Effect**: tierBonus (Tier 11) - 2x
+- **Description**: Maximum overdrive. Orbital Bakery Stations production x2.
+
+### Mega Orbital Bakery Station
+- **ID**: `orbital_bakery_station_upgrade_5`
+- **Cost**: 50,000,000,000,000,000
+- **Effect**: tierBonus (Tier 11) - 2x
+- **Description**: Quantum enhancement. Orbital Bakery Stations production x2.
+
+### Hyper Orbital Bakery Station
+- **ID**: `orbital_bakery_station_upgrade_6`
+- **Cost**: 500,000,000,000,000,000
+- **Effect**: tierBonus (Tier 11) - 2x
+- **Description**: Divine perfection. Orbital Bakery Stations production x2.
+
+### Sturdy Nanobot Yeast
+- **ID**: `nanobot_yeast_upgrade_1`
+- **Cost**: 70,000,000,000,000
+- **Effect**: tierBonus (Tier 12) - 2x
+- **Description**: Reinforced foundation. Nanobot Yeasts production x2.
+
+### Efficient Nanobot Yeast
+- **ID**: `nanobot_yeast_upgrade_2`
+- **Cost**: 700,000,000,000,000
+- **Effect**: tierBonus (Tier 12) - 2x
+- **Description**: Improved efficiency. Nanobot Yeasts production x2.
+
+### Advanced Nanobot Yeast
+- **ID**: `nanobot_yeast_upgrade_3`
+- **Cost**: 7,000,000,000,000,000
+- **Effect**: tierBonus (Tier 12) - 2x
+- **Description**: High-tech integration. Nanobot Yeasts production x2.
+
+### Super Nanobot Yeast
+- **ID**: `nanobot_yeast_upgrade_4`
+- **Cost**: 70,000,000,000,000,000
+- **Effect**: tierBonus (Tier 12) - 2x
+- **Description**: Maximum overdrive. Nanobot Yeasts production x2.
+
+### Mega Nanobot Yeast
+- **ID**: `nanobot_yeast_upgrade_5`
+- **Cost**: 700,000,000,000,000,000
+- **Effect**: tierBonus (Tier 12) - 2x
+- **Description**: Quantum enhancement. Nanobot Yeasts production x2.
+
+### Hyper Nanobot Yeast
+- **ID**: `nanobot_yeast_upgrade_6`
+- **Cost**: 7,000,000,000,000,000,000
+- **Effect**: tierBonus (Tier 12) - 2x
+- **Description**: Divine perfection. Nanobot Yeasts production x2.
+
+### Sturdy Time Warp Oven
+- **ID**: `time_warp_oven_upgrade_1`
+- **Cost**: 850,000,000,000,000
+- **Effect**: tierBonus (Tier 13) - 2x
+- **Description**: Reinforced foundation. Time Warp Ovens production x2.
+
+### Efficient Time Warp Oven
+- **ID**: `time_warp_oven_upgrade_2`
+- **Cost**: 8,500,000,000,000,000
+- **Effect**: tierBonus (Tier 13) - 2x
+- **Description**: Improved efficiency. Time Warp Ovens production x2.
+
+### Advanced Time Warp Oven
+- **ID**: `time_warp_oven_upgrade_3`
+- **Cost**: 85,000,000,000,000,000
+- **Effect**: tierBonus (Tier 13) - 2x
+- **Description**: High-tech integration. Time Warp Ovens production x2.
+
+### Super Time Warp Oven
+- **ID**: `time_warp_oven_upgrade_4`
+- **Cost**: 850,000,000,000,000,000
+- **Effect**: tierBonus (Tier 13) - 2x
+- **Description**: Maximum overdrive. Time Warp Ovens production x2.
+
+### Mega Time Warp Oven
+- **ID**: `time_warp_oven_upgrade_5`
+- **Cost**: 8,500,000,000,000,000,000
+- **Effect**: tierBonus (Tier 13) - 2x
+- **Description**: Quantum enhancement. Time Warp Ovens production x2.
+
+### Hyper Time Warp Oven
+- **ID**: `time_warp_oven_upgrade_6`
+- **Cost**: 85,000,000,000,000,000,000
+- **Effect**: tierBonus (Tier 13) - 2x
+- **Description**: Divine perfection. Time Warp Ovens production x2.
+
+### Sturdy Matter Replicator
+- **ID**: `matter_replicator_upgrade_1`
+- **Cost**: 10,500,000,000,000,000
+- **Effect**: tierBonus (Tier 14) - 2x
+- **Description**: Reinforced foundation. Matter Replicators production x2.
+
+### Efficient Matter Replicator
+- **ID**: `matter_replicator_upgrade_2`
+- **Cost**: 105,000,000,000,000,000
+- **Effect**: tierBonus (Tier 14) - 2x
+- **Description**: Improved efficiency. Matter Replicators production x2.
+
+### Advanced Matter Replicator
+- **ID**: `matter_replicator_upgrade_3`
+- **Cost**: 1,050,000,000,000,000,000
+- **Effect**: tierBonus (Tier 14) - 2x
+- **Description**: High-tech integration. Matter Replicators production x2.
+
+### Super Matter Replicator
+- **ID**: `matter_replicator_upgrade_4`
+- **Cost**: 10,500,000,000,000,000,000
+- **Effect**: tierBonus (Tier 14) - 2x
+- **Description**: Maximum overdrive. Matter Replicators production x2.
+
+### Mega Matter Replicator
+- **ID**: `matter_replicator_upgrade_5`
+- **Cost**: 105,000,000,000,000,000,000
+- **Effect**: tierBonus (Tier 14) - 2x
+- **Description**: Quantum enhancement. Matter Replicators production x2.
+
+### Hyper Matter Replicator
+- **ID**: `matter_replicator_upgrade_6`
+- **Cost**: 1,050,000,000,000,000,000,000
+- **Effect**: tierBonus (Tier 14) - 2x
+- **Description**: Divine perfection. Matter Replicators production x2.
+
+### Sturdy Multiverse Portal
+- **ID**: `multiverse_portal_upgrade_1`
+- **Cost**: 375,000,000,000,000,000
+- **Effect**: tierBonus (Tier 15) - 2x
+- **Description**: Reinforced foundation. Multiverse Portals production x2.
+
+### Efficient Multiverse Portal
+- **ID**: `multiverse_portal_upgrade_2`
+- **Cost**: 3,750,000,000,000,000,000
+- **Effect**: tierBonus (Tier 15) - 2x
+- **Description**: Improved efficiency. Multiverse Portals production x2.
+
+### Advanced Multiverse Portal
+- **ID**: `multiverse_portal_upgrade_3`
+- **Cost**: 37,500,000,000,000,000,000
+- **Effect**: tierBonus (Tier 15) - 2x
+- **Description**: High-tech integration. Multiverse Portals production x2.
+
+### Super Multiverse Portal
+- **ID**: `multiverse_portal_upgrade_4`
+- **Cost**: 375,000,000,000,000,000,000
+- **Effect**: tierBonus (Tier 15) - 2x
+- **Description**: Maximum overdrive. Multiverse Portals production x2.
+
+### Mega Multiverse Portal
+- **ID**: `multiverse_portal_upgrade_5`
+- **Cost**: 3,750,000,000,000,000,000,000
+- **Effect**: tierBonus (Tier 15) - 2x
+- **Description**: Quantum enhancement. Multiverse Portals production x2.
+
+### Hyper Multiverse Portal
+- **ID**: `multiverse_portal_upgrade_6`
+- **Cost**: 37,500,000,000,000,000,000,000
+- **Effect**: tierBonus (Tier 15) - 2x
+- **Description**: Divine perfection. Multiverse Portals production x2.
+
+### Plastic Mouse
+- **ID**: `click_upgrade_new_1`
+- **Cost**: 500
+- **Effect**: clickPowerMultiplier - 2x
+- **Description**: Better than a trackpad.
+
+### Mechanic Switch
+- **ID**: `click_upgrade_new_2`
+- **Cost**: 5,000
+- **Effect**: clickPowerMultiplier - 2x
+- **Description**: Clicky sounds.
+
+### Gaming Mouse
+- **ID**: `click_upgrade_new_3`
+- **Cost**: 50,000
+- **Effect**: clickPowerMultiplier - 2x
+- **Description**: RGB boosts FPS.
+
+### Macro Script
+- **ID**: `click_upgrade_new_4`
+- **Cost**: 1,000,000
+- **Effect**: clickPowerMultiplier - 2x
+- **Description**: Automated efficiency.
+
+### Neural Link
+- **ID**: `click_upgrade_new_5`
+- **Cost**: 50,000,000
+- **Effect**: clickPowerMultiplier - 2x
+- **Description**: Mind over matter.
+
+### Cybernetic Finger
+- **ID**: `click_upgrade_new_6`
+- **Cost**: 1,000,000,000
+- **Effect**: clickPowerMultiplier - 2x
+- **Description**: Steel tendons.
+
+### Quantum Click
+- **ID**: `click_upgrade_new_7`
+- **Cost**: 50,000,000,000
+- **Effect**: clickPowerMultiplier - 2x
+- **Description**: Superposition poking.
+
+### Time Clicks
+- **ID**: `click_upgrade_new_8`
+- **Cost**: 1,000,000,000,000
+- **Effect**: clickPowerMultiplier - 2x
+- **Description**: Clicking yesterday.
+
+### Reality Touch
+- **ID**: `click_upgrade_new_9`
+- **Cost**: 50,000,000,000,000
+- **Effect**: clickPowerMultiplier - 2x
+- **Description**: Molding the universe.
+
+### God Hand
+- **ID**: `click_upgrade_new_10`
+- **Cost**: 1,000,000,000,000,000
+- **Effect**: clickPowerMultiplier - 2x
+- **Description**: Divine intervention.
 
 ## Events
 ### Golden Croissant

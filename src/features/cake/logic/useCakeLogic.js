@@ -13,7 +13,8 @@ const BASE_CLICK_POWER = balanceData.entities?.player?.baseClickPower || 1;
 const SAVE_KEY = 'pastry_paradox_save';
 
 // Number suffix constants (DRY - single source of truth)
-const NUMBER_SUFFIXES_SHORT = ['', 'K', 'M', 'B', 'T', 'Q'];
+// Extended to avoid scientific notation fallback for better UX
+const NUMBER_SUFFIXES_SHORT = ['', 'K', 'M', 'B', 'T', 'Qa', 'Qi', 'Sx', 'Sp', 'Oc', 'No', 'De'];
 const NUMBER_SUFFIXES_WORD = [
     '', ' Thousand', ' Million', ' Billion', ' Trillion', ' Quadrillion',
     ' Quintillion', ' Sextillion', ' Septillion', ' Octillion', ' Nonillion', ' Decillion'
@@ -98,6 +99,28 @@ export function formatNumberWord(num) {
     const scaled = num / Math.pow(1000, tier);
     const formatted = scaled.toFixed(2).replace(/\.00$/, '').replace(/(\.[0-9])0$/, '$1');
     return formatted + NUMBER_SUFFIXES_WORD[tier];
+}
+
+/**
+ * Format numbers for compact display (lowercase, integer rounded)
+ * Used in Market/Store panel for consistent, space-efficient display
+ * @param {number} num - Number to format
+ * @returns {string} Formatted string (e.g., "717 sextillion")
+ */
+export function formatNumberWordCompact(num) {
+    if (num < 1000) return Math.floor(num).toLocaleString();
+
+    const tier = Math.floor(Math.log10(Math.abs(num)) / 3);
+
+    if (tier >= NUMBER_SUFFIXES_WORD.length) {
+        return num.toExponential(0);
+    }
+
+    const scaled = num / Math.pow(1000, tier);
+    const formatted = Math.round(scaled).toString();
+    const suffix = NUMBER_SUFFIXES_WORD[tier].toLowerCase();
+
+    return formatted + suffix;
 }
 
 /**

@@ -49,7 +49,7 @@ function App() {
     // Responsive & Mobile Navigation
     const isMobile = useIsMobile();
     const mobileNav = useMobileNav({
-        initialTab: 'bakery',
+        initialTab: 'store',
         enableSwipe: true,
         persist: true
     });
@@ -230,34 +230,25 @@ function App() {
                 />
             </div>
 
-            {/* Mobile Tabbed Layout */}
+            {/* Mobile Split Viewport Layout */}
             {isMobile ? (
                 <>
-                    <div className="mobile-content" {...mobileNav.swipeHandlers}>
-                        <div className={mobileNav.activeTab === 'bakery' ? 'active' : ''}>
+                    <div className="mobile-content">
+                        {/* Fixed Clicker Zone (always visible - 35%) */}
+                        <div className="clicker-zone">
                             {renderBakeryPane()}
                         </div>
-                        <div className={mobileNav.activeTab === 'stats' ? 'active' : ''}>
-                            {renderStatsPane()}
-                        </div>
-                        <div className={mobileNav.activeTab === 'store' ? 'active' : ''}>
-                            {renderStorePane()}
+
+                        {/* Scrollable Management Zone (65%) - tabbed content */}
+                        <div className="management-zone" {...mobileNav.swipeHandlers}>
+                            {mobileNav.activeTab === 'stats' && renderStatsPane()}
+                            {mobileNav.activeTab === 'store' && renderStorePane()}
                         </div>
                     </div>
                     <MobileTabBar
                         activeTab={mobileNav.activeTab}
                         onTabChange={mobileNav.setActiveTab}
                     />
-                    {/* Floating Mini-Cake FAB - visible when not on bakery tab */}
-                    {mobileNav.activeTab !== 'bakery' && (
-                        <button
-                            className="floating-cake-fab"
-                            onClick={handleCakeClick}
-                            aria-label="Click to bake cakes"
-                        >
-                            🎂
-                        </button>
-                    )}
                 </>
             ) : (
                 /* Desktop 3-Pane Layout */
@@ -277,56 +268,60 @@ function App() {
             />
 
             {/* Instant Event Notification */}
-            {instantNotification && (
-                <div
-                    className="multiplier-active"
-                    role="status"
-                    aria-live="polite"
-                    style={{
-                        flexDirection: 'column',
-                        gap: '4px',
-                        background: `linear-gradient(135deg, ${instantNotification.color}, ${instantNotification.filling})`,
-                        color: isLightColor(instantNotification.color) ? '#333333' : '#FFFFFF',
-                        textShadow: isLightColor(instantNotification.color) ? '0 1px 2px rgba(255,255,255,0.5)' : '0 2px 4px rgba(0,0,0,0.8)',
-                        border: '2px solid rgba(255,255,255,0.8)'
-                    }}
-                >
-                    <div style={{ fontSize: '1.2rem', textTransform: 'uppercase', letterSpacing: '1px' }}>{instantNotification.name}</div>
-                    <div style={{ fontSize: '0.9rem', fontWeight: 'normal', opacity: 1 }}>{instantNotification.desc}</div>
-                </div>
-            )}
+            {
+                instantNotification && (
+                    <div
+                        className="multiplier-active"
+                        role="status"
+                        aria-live="polite"
+                        style={{
+                            flexDirection: 'column',
+                            gap: '4px',
+                            background: `linear-gradient(135deg, ${instantNotification.color}, ${instantNotification.filling})`,
+                            color: isLightColor(instantNotification.color) ? '#333333' : '#FFFFFF',
+                            textShadow: isLightColor(instantNotification.color) ? '0 1px 2px rgba(255,255,255,0.5)' : '0 2px 4px rgba(0,0,0,0.8)',
+                            border: '2px solid rgba(255,255,255,0.8)'
+                        }}
+                    >
+                        <div style={{ fontSize: '1.2rem', textTransform: 'uppercase', letterSpacing: '1px' }}>{instantNotification.name}</div>
+                        <div style={{ fontSize: '0.9rem', fontWeight: 'normal', opacity: 1 }}>{instantNotification.desc}</div>
+                    </div>
+                )
+            }
 
             {/* Persistent Buff Indicator (shows for 2s after activation) */}
-            {!instantNotification && showBuffNotification && currentBuffInfo && (
-                <div
-                    className="multiplier-active"
-                    role="status"
-                    aria-live="polite"
-                    style={{
-                        flexDirection: 'column',
-                        gap: '4px',
-                        background: currentBuffInfo
-                            ? `linear-gradient(135deg, ${currentBuffInfo.color}, ${currentBuffInfo.filling})`
-                            : undefined,
-                        color: currentBuffInfo
-                            ? (isLightColor(currentBuffInfo.color) ? '#333333' : '#FFFFFF')
-                            : undefined,
-                        textShadow: currentBuffInfo
-                            ? (isLightColor(currentBuffInfo.color) ? '0 1px 2px rgba(255,255,255,0.5)' : '0 2px 4px rgba(0,0,0,0.8)')
-                            : undefined,
-                        border: currentBuffInfo ? '2px solid rgba(255,255,255,0.8)' : undefined
-                    }}
-                >
-                    {currentBuffInfo && (
-                        <div style={{ fontSize: '1.2rem', textTransform: 'uppercase', marginBottom: '2px' }}>
-                            {currentBuffInfo.name}
+            {
+                !instantNotification && showBuffNotification && currentBuffInfo && (
+                    <div
+                        className="multiplier-active"
+                        role="status"
+                        aria-live="polite"
+                        style={{
+                            flexDirection: 'column',
+                            gap: '4px',
+                            background: currentBuffInfo
+                                ? `linear-gradient(135deg, ${currentBuffInfo.color}, ${currentBuffInfo.filling})`
+                                : undefined,
+                            color: currentBuffInfo
+                                ? (isLightColor(currentBuffInfo.color) ? '#333333' : '#FFFFFF')
+                                : undefined,
+                            textShadow: currentBuffInfo
+                                ? (isLightColor(currentBuffInfo.color) ? '0 1px 2px rgba(255,255,255,0.5)' : '0 2px 4px rgba(0,0,0,0.8)')
+                                : undefined,
+                            border: currentBuffInfo ? '2px solid rgba(255,255,255,0.8)' : undefined
+                        }}
+                    >
+                        {currentBuffInfo && (
+                            <div style={{ fontSize: '1.2rem', textTransform: 'uppercase', marginBottom: '2px' }}>
+                                {currentBuffInfo.name}
+                            </div>
+                        )}
+                        <div style={{ fontSize: '0.9rem', fontWeight: 'normal' }}>
+                            ✨ {currentBuffInfo?.description || 'BONUS ACTIVE!'}
                         </div>
-                    )}
-                    <div style={{ fontSize: '0.9rem', fontWeight: 'normal' }}>
-                        ✨ {currentBuffInfo?.description || 'BONUS ACTIVE!'}
                     </div>
-                </div>
-            )}
+                )
+            }
 
             {/* Audio Engine Disabled for v1.4.0 (Pending Assets) */}
             {/* <AudioController cakesPerSecond={effectiveCps} /> */}
@@ -347,7 +342,7 @@ function App() {
                 isVisible={versionSplash.isVisible}
                 onClose={versionSplash.onClose}
             />
-        </div>
+        </div >
     );
 }
 

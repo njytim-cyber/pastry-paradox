@@ -22,7 +22,7 @@ describe('UpgradeGrid', () => {
 
     it('renders upgrades grid', () => {
         render(<UpgradeGrid upgrades={mockUpgrades} balance={100} />);
-        expect(screen.getByRole('heading', { name: /upgrades/i })).toBeInTheDocument();
+        expect(screen.getByRole('heading', { name: /secret ingredients/i })).toBeInTheDocument();
     });
 
     it('shows only available upgrades (not purchased)', () => {

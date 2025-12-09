@@ -172,29 +172,46 @@ h4 {
     /* Dynamic viewport height for mobile browsers */
   }
 
-  /* Mobile Content Area (Single Pane Shown at a Time) */
+  /* Mobile Content Area - Split Viewport Pattern */
   .mobile-content {
     grid-area: content;
-    position: relative;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
     height: calc(100vh - var(--flavor-height) - var(--mobile-tab-bar-height));
     height: calc(100dvh - var(--flavor-height) - var(--mobile-tab-bar-height));
+    overflow: hidden;
   }
 
-  .mobile-content>div {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+  /* Clicker Zone - Fixed top 42% (calculated: 223px for full cake visibility) */
+  .clicker-zone {
+    flex: 0 0 42%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    padding: var(--space-xs);
+  }
+
+  .clicker-zone .pane-left {
     height: 100%;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+    border-right: none;
   }
 
-  .mobile-content>div.active {
-    opacity: 1;
-    visibility: visible;
+  /* Management Zone - Scrollable bottom 58% */
+  .management-zone {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+  }
+
+  .management-zone>div {
+    width: 100%;
+    min-height: 100%;
   }
 
   /* Reposition panes for mobile tabs */
@@ -215,42 +232,72 @@ h4 {
     padding-bottom: env(safe-area-inset-bottom);
   }
 
-  /* Optimize touch targets */
+  /* MOBILE ONLY: Remove blue tap flash on cake */
+  .cake-wrapper,
+  .cake-wrapper:focus,
+  .cake-wrapper:focus-visible,
+  .cake-wrapper:active {
+    outline: none !important;
+    box-shadow: none !important;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Compact touch targets for mobile */
   .upgrade-card {
-    min-width: 56px;
-    min-height: 56px;
+    min-width: 48px;
+    min-height: 48px;
   }
 
   .quantity-btn,
   .store-mode-btn {
-    min-height: 44px;
-    min-width: 50px;
-    font-size: 0.95rem;
-    padding: var(--space-sm) var(--space-md);
+    min-height: 36px;
+    min-width: 44px;
+    font-size: 0.85rem;
+    padding: var(--space-xs) var(--space-sm);
   }
 
   .shop-item {
-    min-height: 68px;
-    padding: var(--space-md);
+    min-height: 48px;
+    padding: var(--space-xs) var(--space-sm);
+  }
+
+  .shop-item__info {
+    gap: 2px;
+  }
+
+  .shop-item__name {
+    font-size: 0.9rem;
+  }
+
+  .shop-item__cost {
+    font-size: 0.8rem;
   }
 
   .btn {
-    min-height: 44px;
-    padding: var(--space-sm) var(--space-lg);
+    min-height: 36px;
+    padding: var(--space-xs) var(--space-md);
   }
 
   /* Scale down elements for smaller screens */
   .cake-wrapper {
-    width: 180px;
-    height: 180px;
+    width: 120px;
+    height: 120px;
   }
 
   .bakery-balance {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .bakery-name {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
+  }
+
+  .bakery-header {
+    margin-bottom: var(--space-xs);
+  }
+
+  .bakery-cps {
+    font-size: 0.75rem;
   }
 
   /* Flavor banner optimization */
@@ -313,6 +360,63 @@ h4 {
     100% {
       transform: scale(1) rotate(0deg);
     }
+  }
+}
+
+/* ─── Phone-Only Layout (≤480px) ─── */
+@media (max-width: 480px) {
+
+  /* Increase clicker zone for phones - space saved from compact controls */
+  .clicker-zone {
+    flex: 0 0 60%;
+  }
+
+  /* Compact store header with single-line controls */
+  .store-header--compact {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-xs) var(--space-sm);
+  }
+
+  .store-header--compact .panel-title {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .store-compact-controls {
+    display: flex;
+    gap: var(--space-xs);
+  }
+
+  .store-compact-btn {
+    padding: var(--space-xs) var(--space-sm);
+    min-width: 44px;
+    min-height: 32px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 2px solid var(--color-caramel);
+    border-radius: 6px;
+    background: var(--color-cream);
+    color: var(--ink-primary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .store-compact-btn:active {
+    transform: scale(0.95);
+  }
+
+  .store-compact-btn--sell {
+    background: var(--color-sell);
+    color: white;
+    border-color: var(--color-sell);
+  }
+
+  /* Shrink cake for phones (77px = 40% smaller than tablet 120px) */
+  .cake-wrapper {
+    width: 77px;
+    height: 77px;
   }
 }
 
@@ -431,6 +535,7 @@ h4 {
   flex-direction: column;
   border-left: 4px solid #5D3A1A;
   overflow-y: auto;
+  overflow-x: hidden;
   height: calc(100vh - var(--flavor-height));
 }
 
@@ -690,6 +795,10 @@ h4 {
 .upgrade-panel {
   background: rgba(255, 248, 240, 0.95);
   padding: var(--space-sm) var(--space-md);
+  /* Limit to ~2 rows of 48px icons + gaps + header */
+  max-height: 215px;
+  overflow-y: auto;
+  flex-shrink: 0;
 }
 
 .upgrade-grid {

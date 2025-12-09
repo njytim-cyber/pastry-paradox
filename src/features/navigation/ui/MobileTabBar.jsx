@@ -10,15 +10,14 @@ import './MobileTabBar.css';
 
 /**
  * @typedef {Object} MobileTabBarProps
- * @property {'bakery'|'stats'|'store'} activeTab - Currently active tab
+ * @property {'stats'|'store'} activeTab - Currently active tab
  * @property {(tab: string) => void} onTabChange - Tab change callback
  * @property {boolean} [visible=true] - Show/hide tab bar
  */
 
 const TAB_CONFIG = [
-    { id: 'bakery', label: 'Bakery', icon: '🎂' },
-    { id: 'stats', label: 'Stats', icon: '📊' },
     { id: 'store', label: 'Market', icon: '🛒' },
+    { id: 'stats', label: 'Stats', icon: '📊' },
 ];
 
 /**

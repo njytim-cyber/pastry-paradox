@@ -9,7 +9,7 @@
  * - Hide all other tiers
  */
 import React from 'react';
-import { formatNumber, formatNumberWord } from '../../cake/logic/useCakeLogic';
+import { formatNumber, formatNumberWord, formatNumberWordCompact } from '../../cake/logic/useCakeLogic';
 import { Tooltip } from '../../shared/ui/Tooltip';
 
 // Placeholder icons for generators - inline SVGs
@@ -126,6 +126,24 @@ export function StorePanel({
 }) {
     const { visible, mystery } = getVisibleTiers(generators, getGeneratorInfo);
 
+    // Phone detection for compact layout (tablets use full layout)
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 480;
+
+    // Quantity options for cycling
+    const quantityOptions = [1, 67, 6767];
+
+    // Cycle to next quantity
+    const cycleQuantity = () => {
+        const currentIndex = quantityOptions.indexOf(buyQuantity);
+        const nextIndex = (currentIndex + 1) % quantityOptions.length;
+        setBuyQuantity?.(quantityOptions[nextIndex]);
+    };
+
+    // Toggle buy/sell mode
+    const toggleMode = () => {
+        setShopMode?.(shopMode === 'buy' ? 'sell' : 'buy');
+    };
+
     // Check if quantity is valid for current mode
     const canUseQuantity = (qty) => {
         if (shopMode === 'buy') {
@@ -140,42 +158,64 @@ export function StorePanel({
 
     return (
         <div className="panel store-panel">
-            {/* Header with Buy/Sell Toggle */}
-            <div className="panel-header store-header">
-                <h2 className="panel-title">🧁 Market</h2>
-                <div className="store-mode-toggle">
-                    <button
-                        className={`store-mode-btn ${shopMode === 'buy' ? 'store-mode-btn--active' : ''}`}
-                        onClick={() => setShopMode?.('buy')}
-                    >
-                        Buy
-                    </button>
-                    <button
-                        className={`store-mode-btn ${shopMode === 'sell' ? 'store-mode-btn--active store-mode-btn--sell' : ''}`}
-                        onClick={() => setShopMode?.('sell')}
-                    >
-                        Sell
-                    </button>
-                </div>
-            </div>
-
-            {/* Quantity Selector - 67 themed! */}
-            {/* Quantity Selector (Available for Buy AND Sell) */}
-            <div className="quantity-selector">
-                {[1, 67, 6767].map((qty) => {
-                    const isAvailable = canUseQuantity(qty);
-                    return (
+            {/* Mobile: Compact single-line header */}
+            {isMobile ? (
+                <div className="panel-header store-header store-header--compact">
+                    <h2 className="panel-title">🧁 Market</h2>
+                    <div className="store-compact-controls">
                         <button
-                            key={qty}
-                            className={`quantity-btn ${buyQuantity === qty ? 'quantity-btn--active' : ''} ${!isAvailable ? 'quantity-btn--disabled' : ''}`}
-                            onClick={() => setBuyQuantity?.(qty)}
-                            disabled={!isAvailable}
+                            className={`store-compact-btn ${shopMode === 'sell' ? 'store-compact-btn--sell' : ''}`}
+                            onClick={toggleMode}
                         >
-                            {qty}
+                            {shopMode === 'buy' ? 'Buy' : 'Sell'}
                         </button>
-                    );
-                })}
-            </div>
+                        <button
+                            className="store-compact-btn"
+                            onClick={cycleQuantity}
+                        >
+                            ×{buyQuantity}
+                        </button>
+                    </div>
+                </div>
+            ) : (
+                /* Desktop: Original two-row layout */
+                <>
+                    <div className="panel-header store-header">
+                        <h2 className="panel-title">🧁 Market</h2>
+                        <div className="store-mode-toggle">
+                            <button
+                                className={`store-mode-btn ${shopMode === 'buy' ? 'store-mode-btn--active' : ''}`}
+                                onClick={() => setShopMode?.('buy')}
+                            >
+                                Buy
+                            </button>
+                            <button
+                                className={`store-mode-btn ${shopMode === 'sell' ? 'store-mode-btn--active store-mode-btn--sell' : ''}`}
+                                onClick={() => setShopMode?.('sell')}
+                            >
+                                Sell
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Quantity Selector (Desktop only) */}
+                    <div className="quantity-selector">
+                        {quantityOptions.map((qty) => {
+                            const isAvailable = canUseQuantity(qty);
+                            return (
+                                <button
+                                    key={qty}
+                                    className={`quantity-btn ${buyQuantity === qty ? 'quantity-btn--active' : ''} ${!isAvailable ? 'quantity-btn--disabled' : ''}`}
+                                    onClick={() => setBuyQuantity?.(qty)}
+                                    disabled={!isAvailable}
+                                >
+                                    {qty}
+                                </button>
+                            );
+                        })}
+                    </div>
+                </>
+            )}
 
 
             {/* Generator List */}
@@ -195,13 +235,13 @@ export function StorePanel({
                                     <div className="tooltip-rich-body">{tier.description}</div>
                                     <div className="tooltip-rich-stats">
                                         <span className={affordable ? 'tooltip-stat-cost affordable' : 'tooltip-stat-cost expensive'}>
-                                            🍰 {formatNumber(info.currentPrice || tier.baseCost)}
+                                            🍰 {formatNumberWordCompact(info.currentPrice || tier.baseCost)}
                                         </span>
                                         <span>Owned: {owned}</span>
                                     </div>
                                     {tier.baseCps > 0 && (
                                         <div style={{ fontSize: '0.8rem', marginTop: '4px', color: 'var(--ink-secondary)' }}>
-                                            Total: {formatNumber(tier.baseCps * owned)} CpS
+                                            Total: {formatNumberWordCompact(tier.baseCps * owned)} CpS
                                         </div>
                                     )}
                                 </>
@@ -219,7 +259,7 @@ export function StorePanel({
                                     <div className="shop-item__info">
                                         <div className="shop-item__name">{tier.name}</div>
                                         <div className="shop-item__cost">
-                                            🍰 {(info.currentPrice || tier.baseCost).toLocaleString()}
+                                            {formatNumberWordCompact(info.currentPrice || tier.baseCost)}
                                             {buyQuantity > 1 && (
                                                 <span className="shop-item__bulk"> (×{buyQuantity})</span>
                                             )}
@@ -238,7 +278,7 @@ export function StorePanel({
                             <button
                                 key={tier.id}
                                 className={`shop-item shop-item--sell ${!canSell ? 'shop-item--disabled' : ''}`}
-                                onClick={() => canSell && onSell?.(tier.id)}
+                                onClick={() => canSell && onSell?.(tier.id, buyQuantity)}
                                 disabled={!canSell}
                                 title={`Sell for ${formatNumber(sellPrice)} cakes`}
                             >

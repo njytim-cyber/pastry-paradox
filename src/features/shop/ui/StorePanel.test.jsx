@@ -30,10 +30,12 @@ describe('StorePanel', () => {
     };
 
     it('renders buy mode correctly', () => {
-        render(<StorePanel {...mockProps} />);
+        const { container } = render(<StorePanel {...mockProps} />);
         expect(screen.getByText('🧁 Market')).toBeInTheDocument();
-        expect(screen.getByText('Buy')).toHaveClass('active');
-        expect(screen.getByText('1')).toHaveClass('active');
+        expect(screen.getByText('Buy')).toHaveClass('store-mode-btn--active');
+        // Find quantity button '1' specifically within quantity-selector
+        const quantityBtn = container.querySelector('.quantity-selector .quantity-btn--active');
+        expect(quantityBtn).toHaveTextContent('1');
         // Quantity buttons visible in buy mode
         expect(screen.getByText('67')).toBeInTheDocument();
     });
