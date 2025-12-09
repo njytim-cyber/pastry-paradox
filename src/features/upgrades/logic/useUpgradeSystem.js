@@ -7,6 +7,11 @@ import balanceData from '@data/balance.json';
 
 const { upgrades } = balanceData;
 
+// Pre-build Map for O(1) lookup by ID (instead of O(n) find on every call)
+const upgradeById = new Map(
+    Object.values(upgrades).map(upgrade => [upgrade.id, upgrade])
+);
+
 /**
  * Main upgrade system hook
  */
@@ -22,9 +27,9 @@ export function useUpgradeSystem({ totalBaked, setCpsMultiplier }) {
         }));
     }, [purchasedUpgrades]);
 
-    // Purchase an upgrade
+    // Purchase an upgrade - O(1) lookup using pre-built Map
     const purchaseUpgrade = useCallback((upgradeId, balance, setBalance) => {
-        const upgrade = upgrades[Object.keys(upgrades).find(k => upgrades[k].id === upgradeId)];
+        const upgrade = upgradeById.get(upgradeId);
         if (!upgrade) return false;
         if (purchasedUpgrades[upgradeId]) return false;
         if (balance < upgrade.cost) return false;
@@ -58,9 +63,9 @@ export function useUpgradeSystem({ totalBaked, setCpsMultiplier }) {
         return true;
     }, [purchasedUpgrades, setCpsMultiplier]);
 
-    // Check if upgrade is available (can afford + not purchased)
+    // Check if upgrade is available (can afford + not purchased) - O(1) lookup
     const canPurchaseUpgrade = useCallback((upgradeId, balance) => {
-        const upgrade = upgrades[Object.keys(upgrades).find(k => upgrades[k].id === upgradeId)];
+        const upgrade = upgradeById.get(upgradeId);
         if (!upgrade) return false;
         if (purchasedUpgrades[upgradeId]) return false;
         return balance >= upgrade.cost;

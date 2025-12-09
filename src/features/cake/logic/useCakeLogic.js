@@ -4,13 +4,20 @@
  * 
  * Imports from @data/balance.json per Data-Driven Law
  */
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import balanceData from '@data/balance.json';
 
 const { globalConfig, productionTiers } = balanceData;
 const COST_MULTIPLIER = globalConfig.costMultiplier || 1.15;
 const BASE_CLICK_POWER = balanceData.entities?.player?.baseClickPower || 1;
 const SAVE_KEY = 'pastry_paradox_save';
+
+// Number suffix constants (DRY - single source of truth)
+const NUMBER_SUFFIXES_SHORT = ['', 'K', 'M', 'B', 'T', 'Q'];
+const NUMBER_SUFFIXES_WORD = [
+    '', ' Thousand', ' Million', ' Billion', ' Trillion', ' Quadrillion',
+    ' Quintillion', ' Sextillion', ' Septillion', ' Octillion', ' Nonillion', ' Decillion'
+];
 
 /**
  * Load saved game state from localStorage
@@ -63,15 +70,14 @@ export function formatNumber(num) {
     }
     if (num < 1000) return Math.floor(num).toString();
 
-    const suffixes = ['', 'K', 'M', 'B', 'T', 'Q'];
     const tier = Math.floor(Math.log10(Math.abs(num)) / 3);
 
-    if (tier >= suffixes.length) {
+    if (tier >= NUMBER_SUFFIXES_SHORT.length) {
         return num.toExponential(2);
     }
 
     const scaled = num / Math.pow(1000, tier);
-    return scaled.toFixed(scaled >= 100 ? 0 : scaled >= 10 ? 1 : 2) + suffixes[tier];
+    return scaled.toFixed(scaled >= 100 ? 0 : scaled >= 10 ? 1 : 2) + NUMBER_SUFFIXES_SHORT[tier];
 }
 
 /**
@@ -82,29 +88,16 @@ export function formatNumber(num) {
 export function formatNumberWord(num) {
     if (num < 1000) return Math.floor(num).toLocaleString();
 
-    const suffixes = [
-        '', ' Thousand', ' Million', ' Billion', ' Trillion', ' Quadrillion',
-        ' Quintillion', ' Sextillion', ' Septillion', ' Octillion', ' Nonillion', ' Decillion'
-    ];
-
     // Tier 1 = Thousand (10^3), Tier 2 = Million (10^6), etc.
     const tier = Math.floor(Math.log10(Math.abs(num)) / 3);
 
-    if (tier >= suffixes.length) {
+    if (tier >= NUMBER_SUFFIXES_WORD.length) {
         return num.toExponential(2);
     }
 
     const scaled = num / Math.pow(1000, tier);
-    // Show up to 2 decimal places, but remove trailing zeros like .00
-    // If it's an integer, don't show decimals.
-    // e.g. 1.5 Million, 2 Million, 500 Thousand
-
-    // Logic: 
-    // If >= 100, show 0 or 1 decimal? Users usually like "250 Million"
-    // If < 10, show 2? "1.25 Million"
-
     const formatted = scaled.toFixed(2).replace(/\.00$/, '').replace(/(\.[0-9])0$/, '$1');
-    return formatted + suffixes[tier];
+    return formatted + NUMBER_SUFFIXES_WORD[tier];
 }
 
 /**
@@ -137,21 +130,16 @@ export function calculateBulkPrice(baseCost, owned, quantity) {
 export function formatNumberParts(num) {
     if (num < 1000) return { value: Math.floor(num).toLocaleString(), suffix: '' };
 
-    const suffixes = [
-        '', ' Thousand', ' Million', ' Billion', ' Trillion', ' Quadrillion',
-        ' Quintillion', ' Sextillion', ' Septillion', ' Octillion', ' Nonillion', ' Decillion'
-    ];
-
     const tier = Math.floor(Math.log10(Math.abs(num)) / 3);
 
-    if (tier >= suffixes.length) {
+    if (tier >= NUMBER_SUFFIXES_WORD.length) {
         return { value: num.toExponential(2), suffix: '' };
     }
 
     const scaled = num / Math.pow(1000, tier);
     const formatted = scaled.toFixed(2).replace(/\.00$/, '').replace(/(\.[0-9])0$/, '$1');
 
-    return { value: formatted, suffix: suffixes[tier] };
+    return { value: formatted, suffix: NUMBER_SUFFIXES_WORD[tier] };
 }
 
 /**
@@ -210,11 +198,14 @@ export function useCakeLogic(options = {}) {
         }, durationSeconds * 1000);
     }, []);
 
-    // Calculate CpS (Cakes Per Second)
-    const cps = productionTiers.reduce((total, tier) => {
-        const owned = generators[tier.id] || 0;
-        return total + (tier.baseCps * owned);
-    }, 0) * cpsMultiplier * globalMultiplier * modifiers.production * modifiers.global;
+    // Calculate CpS (Cakes Per Second) - memoized to avoid recalc on every render
+    const cps = useMemo(() => {
+        const baseCps = productionTiers.reduce((total, tier) => {
+            const owned = generators[tier.id] || 0;
+            return total + (tier.baseCps * owned);
+        }, 0);
+        return baseCps * cpsMultiplier * globalMultiplier * modifiers.production * modifiers.global;
+    }, [generators, cpsMultiplier, globalMultiplier, modifiers.production, modifiers.global]);
 
     // Instant Resource Helper
     const grantResources = useCallback((secondsOfProduction) => {
