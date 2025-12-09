@@ -27,8 +27,12 @@ const ICONS_DIR = path.join(ASSETS_DIR, 'icons');
 const AUDIO_DIR = path.join(ASSETS_DIR, 'audio');
 const MANIFEST_PATH = path.join(ASSETS_DIR, 'asset-manifest.json');
 
-// Vertex AI Configuration
-const PROJECT_ID = 'project-id-5683913981585557299';
+// Vertex AI Configuration - Use environment variable or fallback for local dev
+const PROJECT_ID = process.env.GOOGLE_CLOUD_PROJECT || process.env.PROJECT_ID;
+if (!PROJECT_ID) {
+    console.error('❌ ERROR: Set GOOGLE_CLOUD_PROJECT or PROJECT_ID environment variable');
+    process.exit(1);
+}
 const LOCATION = 'us-central1';
 
 /**
