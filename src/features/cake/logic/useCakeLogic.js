@@ -20,6 +20,10 @@ const NUMBER_SUFFIXES_WORD = [
     ' Quintillion', ' Sextillion', ' Septillion', ' Octillion', ' Nonillion', ' Decillion'
 ];
 
+// Safety Caps
+const MAX_OWNED = 4000; // Cap to prevent Math.pow overflow
+const MAX_BALANCE = 1e300; // Near Number.MAX_VALUE
+
 /**
  * Load saved game state from localStorage
  */
@@ -133,14 +137,19 @@ export function calculateBulkPrice(baseCost, owned, quantity) {
     if (quantity <= 0) return 0;
     if (quantity === 1) return calculatePrice(baseCost, owned);
 
-    const r = 1.15; // Hardcoded multiplier for consistency with balance.json
+    const r = COST_MULTIPLIER; // Use consistent multiplier from balance.json (currently 1.16)
 
     // First term cost: a * r^k
     const firstTerm = baseCost * Math.pow(r, owned);
 
     // Sum of geometric series: firstTerm * (1 - r^n) / (1 - r)
     // Since r > 1, we can flip signs: firstTerm * (r^n - 1) / (r - 1)
-    const sum = firstTerm * (Math.pow(r, quantity) - 1) / (r - 1);
+    let sum = firstTerm * (Math.pow(r, quantity) - 1) / (r - 1);
+
+    // Overflow check
+    if (!Number.isFinite(sum) || sum > MAX_BALANCE) {
+        return Number.MAX_VALUE; // Sentinel for "Too Expensive"
+    }
 
     return Math.floor(sum);
 }
@@ -192,6 +201,34 @@ export function useCakeLogic(options = {}) {
         });
         return initial;
     });
+
+    // CORRUPTION CHECK / SAFETY RESET
+    useEffect(() => {
+        // Check for NaN, Infinity, or impossible values
+        const isCorrupted =
+            !Number.isFinite(balance) ||
+            balance > MAX_BALANCE ||
+            !Number.isFinite(totalBaked) ||
+            Object.values(generators).some(count => count > 5000); // 5000 is hard integrity limit
+
+        if (isCorrupted) {
+            console.error("⚠️ DATA CORRUPTION DETECTED: Timeline destabilized. Initiating Forced Big Crunch.");
+            // Reset core values
+            setBalance(0);
+            setTotalBaked(0);
+
+            // Refund/Reset generators
+            const initial = {};
+            productionTiers.forEach(tier => {
+                initial[tier.id] = 0;
+            });
+            setGenerators(initial);
+
+            // Optional: Alert user (basic js alert for now, or Toast if available later)
+            // setTimeout(() => alert("Your bakery timeline destabilized! A Forced Big Crunch has restored balance."), 500);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []); // Run ONCE on mount
 
     // Temporary Modifiers (Buffs)
     const [modifiers, setModifiers] = useState({
@@ -297,10 +334,17 @@ export function useCakeLogic(options = {}) {
 
     // Purchase a generator (single or bulk)
     const purchaseGenerator = useCallback((tierId, quantity = 1) => {
+        // Validation: Positive integers only
+        if (!Number.isInteger(quantity) || quantity <= 0) return false;
+
         const tier = productionTiers.find(t => t.id === tierId);
         if (!tier) return false;
 
         const owned = generators[tierId] || 0;
+
+        // Validation: Hard Cap
+        if (owned + quantity > MAX_OWNED) return false;
+
         // Calculate total cost using O(1) formula
         let totalCost = calculateBulkPrice(tier.baseCost, owned, quantity);
 
@@ -337,6 +381,18 @@ export function useCakeLogic(options = {}) {
 
         return balance >= totalCost;
     }, [balance, generators, modifiers.costScale]);
+
+    // Get exact cost for UI display
+    const getBulkCost = useCallback((tierId, quantity = 1) => {
+        const tier = productionTiers.find(t => t.id === tierId);
+        if (!tier) return 0;
+        const owned = generators[tierId] || 0;
+        let totalCost = calculateBulkPrice(tier.baseCost, owned, quantity);
+        if (modifiers.costScale !== 1) {
+            totalCost = Math.floor(totalCost * modifiers.costScale);
+        }
+        return totalCost;
+    }, [generators, modifiers.costScale]);
 
     // Get generator info
     const getGeneratorInfo = useCallback((tierId) => {
@@ -389,6 +445,9 @@ export function useCakeLogic(options = {}) {
 
     // Sell a generator (single or bulk)
     const sellGenerator = useCallback((tierId, quantity = 1) => {
+        // Validation: Positive integers only
+        if (!Number.isInteger(quantity) || quantity <= 0) return false;
+
         const tier = productionTiers.find(t => t.id === tierId);
         if (!tier) return false;
 
@@ -416,6 +475,20 @@ export function useCakeLogic(options = {}) {
         return true;
     }, [generators]);
 
+    // Added: Explicit reset for Prestige
+    const resetProgress = useCallback(() => {
+        setBalance(0);
+        setTotalBaked(0);
+        setClickPower(BASE_CLICK_POWER);
+
+        const initial = {};
+        productionTiers.forEach(tier => {
+            initial[tier.id] = 0;
+        });
+        setGenerators(initial);
+        // Persistence will overwrite on next tick
+    }, []);
+
     return {
         // State
         balance,
@@ -432,7 +505,10 @@ export function useCakeLogic(options = {}) {
         purchaseGenerator,
         sellGenerator,
         canAfford,
+        getBulkCost,
         getGeneratorInfo,
+        formatNumber,
+        resetProgress,
 
         // Upgrade setters (for upgrade system to use)
         setClickPower,
