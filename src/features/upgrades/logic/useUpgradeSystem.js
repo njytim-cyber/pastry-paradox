@@ -2,7 +2,7 @@
  * useUpgradeSystem - "67" pattern detection and upgrade effects
  * Container Component (NO UI)
  */
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo, useEffect } from 'react';
 import balanceData from '@data/balance.json';
 
 const { upgrades } = balanceData;
@@ -16,8 +16,28 @@ const upgradeById = new Map(
  * Main upgrade system hook
  */
 export function useUpgradeSystem({ totalBaked, setCpsMultiplier }) {
-    // Track purchased upgrades
-    const [purchasedUpgrades, setPurchasedUpgrades] = useState({});
+    // Persistence Key
+    const SAVE_KEY = 'pastry_paradox_upgrades';
+
+    // Track purchased upgrades (Load from localStorage on init)
+    const [purchasedUpgrades, setPurchasedUpgrades] = useState(() => {
+        try {
+            const saved = localStorage.getItem(SAVE_KEY);
+            return saved ? JSON.parse(saved) : {};
+        } catch (e) {
+            console.warn('Failed to load upgrades:', e);
+            return {};
+        }
+    });
+
+    // Save to localStorage whenever purchased upgrades change
+    useEffect(() => {
+        try {
+            localStorage.setItem(SAVE_KEY, JSON.stringify(purchasedUpgrades));
+        } catch (e) {
+            console.warn('Failed to save upgrades:', e);
+        }
+    }, [purchasedUpgrades]);
 
     // Convert upgrades object to array for easier rendering
     const upgradeList = useMemo(() => {
