@@ -13,7 +13,25 @@
                 "currencyName": "Dopamine Hits",
                 "currencyPerSec": "Rot/sec",
                 "resetBtnLabel": "LOBOTOMIZE (Prestige)",
-                "marketTitle": "6️⃣7️⃣ Market"
+                "marketTitle": "6️⃣7️⃣ Market",
+                "flavorText": [
+                    "No cap, this cake is bussin' fr fr 💀",
+                    "POV: you're grinding aura points at 3am",
+                    "This slaps different when you're on that sigma grind",
+                    "Erm... what the skibidi? 🚽",
+                    "It's giving main character energy rn",
+                    "Slay 💅 That's so rizz coded",
+                    "Living rent free in the algorithm's head",
+                    "Not me doomscrolling through cake upgrades",
+                    "Real ones know 67 is the only number that matters",
+                    "This hits harder than a vine boom at 2am",
+                    "Caught in 4K baking when I should be sleeping",
+                    "Your vibe is immaculate bestie",
+                    "Ohio-level cake production detected",
+                    "That's cap. Unless... 👀",
+                    "Lowkey this is fire. Highkey I'm addicted.",
+                    "We stay silly. We stay baking. 🗿"
+                ]
             },
             "mechanics": {
                 "doomScrollDecayRate": 0.05,

@@ -292,11 +292,9 @@ function App() {
                             const month = new Date().getMonth();
                             let seasonalEventId = 'event_christmas_2025'; // Dec-Jan default
                             if (month >= 9 && month <= 10) seasonalEventId = 'event_halloween_2025'; // Oct-Nov (placeholder)
-                            // Toggle: if already active, deactivate; else activate
+                            // Only activate if not already active (use default button to deactivate)
                             const current = useEventStore.getState().config?.eventId;
-                            if (current === seasonalEventId) {
-                                useEventStore.setState({ isActive: false, config: null });
-                            } else {
+                            if (current !== seasonalEventId) {
                                 useEventStore.getState().initEvent(seasonalEventId);
                             }
                         }}
@@ -327,10 +325,9 @@ function App() {
                     <button
                         id="theme-toggle-brainrot"
                         onClick={() => {
+                            // Only activate if not already active (use default button to deactivate)
                             const current = useEventStore.getState().config?.eventId;
-                            if (current === 'event_brain_rot_v1') {
-                                useEventStore.setState({ isActive: false, config: null });
-                            } else {
+                            if (current !== 'event_brain_rot_v1') {
                                 useEventStore.getState().initEvent('event_brain_rot_v1');
                             }
                         }}
