@@ -8,23 +8,18 @@ import { Tooltip } from '../../shared/ui/Tooltip';
 import balanceData from '@data/balance.json';
 
 // Import all icons from assets folder
-// Import all icons from assets folder
+// Pre-compute icon map for O(1) lookup
 const iconAssets = import.meta.glob('@assets/icons-optimized/*.{webp,png,svg}', { eager: true, import: 'default' });
 
-/**
- * Get the icon URL for a given upgrade ID
- * @param {string} id - Upgrade ID
- */
-const getIconResult = (id) => {
-    // Check if any asset contains the ID in its name
-    // Upgrades seem to have 'upgrade_' prefix in assets sometimes, or not.
-    // We check looser match.
-    // e.g. ID 'butter_blessing' -> file 'upgrade_butter_blessing.png'
-    const match = Object.keys(iconAssets).find(path => path.includes(id + '.') || path.includes(id));
-    return match ? iconAssets[match] : null;
-};
+const ICON_MAP = Object.keys(iconAssets).reduce((acc, path) => {
+    // Extract ID from path: .../upgrade_butter_blessing.png -> butter_blessing
+    const fileName = path.split('/').pop().split('.')[0];
+    // Handle "upgrade_" prefix if present
+    const id = fileName.replace(/^upgrade_/, '');
+    acc[id] = iconAssets[path];
+    return acc;
+}, {});
 
-// Fallback icons map to ensure uniqueness
 // Fallback icons map to ensure uniqueness
 const FALLBACK_ICONS = {
     'the_vibe_check': '🙌',
@@ -49,22 +44,21 @@ const FALLBACK_ICONS = {
     'reality_dough': '🌌'
 };
 
-// Upgrade icon based on type
-const UpgradeIcon = ({ upgrade, isPurchased }) => {
-    const iconUrl = getIconResult(upgrade.id);
+// Memoized Icon Component
+const UpgradeIcon = React.memo(({ id, isPurchased, name }) => {
+    const iconUrl = ICON_MAP[id];
 
     if (iconUrl) {
         return (
             <img
                 src={iconUrl}
-                alt={upgrade.name}
+                alt={name}
                 className="upgrade-card__icon"
                 style={{
                     width: '42px',
                     height: '42px',
                     objectFit: 'contain',
                     opacity: isPurchased ? 0.6 : 1,
-                    // Removed filter to avoid coloring issues
                 }}
             />
         );
@@ -78,10 +72,64 @@ const UpgradeIcon = ({ upgrade, isPurchased }) => {
                 opacity: isPurchased ? 0.6 : 1,
             }}
         >
-            {FALLBACK_ICONS[upgrade.id] || '⬆️'}
+            {FALLBACK_ICONS[id] || '⬆️'}
         </div>
     );
-};
+});
+UpgradeIcon.displayName = 'UpgradeIcon';
+
+// Memoized Card Component to prevent tooltip churn
+const UpgradeCard = React.memo(({ upgrade, balance, onPurchase, canPurchase }) => {
+    const canAfford = canPurchase?.(upgrade.id, balance);
+    const isAffordable = balance >= upgrade.cost;
+
+    const tooltipContent = (
+        <>
+            <div className="tooltip-rich-header">{upgrade.name}</div>
+            <div className="tooltip-rich-body">{upgrade.description}</div>
+            <div className="tooltip-rich-stats">
+                <span className={isAffordable ? 'tooltip-stat-cost affordable' : 'tooltip-stat-cost expensive'}>
+                    Cost: {formatNumberWord(upgrade.cost)}
+                </span>
+                {upgrade.isPurchased && <span style={{ color: 'var(--color-mint)' }}>Purchased</span>}
+            </div>
+        </>
+    );
+
+    return (
+        <Tooltip content={tooltipContent}>
+            <button
+                className={`upgrade-card ${canAfford ? '' : 'upgrade-card--expensive'}`}
+                onClick={() => onPurchase(upgrade.id)}
+                disabled={!canAfford}
+                aria-label={`Buy ${upgrade.name}`}
+            >
+                <UpgradeIcon id={upgrade.id} isPurchased={upgrade.isPurchased} name={upgrade.name} />
+            </button>
+        </Tooltip>
+    );
+}, (prev, next) => {
+    // Custom comparison for performance
+    // Only re-render if:
+    // 1. Purchased state changes
+    // 2. Affordability status changes (crossing the cost threshold)
+    // 3. canPurchase result changes (redundant with 2 usually, but safe to keep)
+
+    // Check if affordability bucket changed (switching between affordable/expensive class)
+    const prevCanAfford = prev.canPurchase(prev.upgrade.id, prev.balance);
+    const nextCanAfford = next.canPurchase(next.upgrade.id, next.balance);
+
+    // Check if visual "Cost" color class needs to change
+    const prevAffordable = prev.balance >= prev.upgrade.cost;
+    const nextAffordable = next.balance >= next.upgrade.cost;
+
+    return (
+        prev.upgrade.isPurchased === next.upgrade.isPurchased &&
+        prevCanAfford === nextCanAfford &&
+        prevAffordable === nextAffordable
+    );
+});
+UpgradeCard.displayName = 'UpgradeCard';
 
 /**
  * Upgrade Grid Component
@@ -98,26 +146,32 @@ export function UpgradeGrid({
     onPurchase,
 }) {
     // View Mode: 'available' | 'owned' - must be before any early returns (rules-of-hooks)
-    const [viewMode, setViewMode] = useState('available');
+    const [viewMode] = useState('available');
 
     // Progressive unlocking: show upgrade when you have at least 50% of its cost
     const visibilityThreshold = balanceData.globalConfig?.upgradeVisibilityThreshold || 0.5;
+
+    // Memoize the filtered list to avoid O(N) filter on every tick if balance changes small amounts
+    // Note: We depend on 'balance' but the filtering condition is broad (threshold), 
+    // so it might still run often. However, the child UpgradeCard is memoized, so re-rendering the list is cheap.
+    const visibleUpgrades = React.useMemo(() => {
+        if (upgrades.length === 0) return [];
+
+        return upgrades.filter(u => {
+            if (viewMode === 'owned') {
+                return u.isPurchased;
+            }
+            // 'available' mode: show unpurchased that are visible
+            return !u.isPurchased && (balance >= u.cost * visibilityThreshold);
+        });
+    }, [upgrades, viewMode, balance, visibilityThreshold]);
 
     if (upgrades.length === 0) {
         return null;
     }
 
-    const visibleUpgrades = upgrades.filter(u => {
-        if (viewMode === 'owned') {
-            return u.isPurchased;
-        }
-        // 'available' mode: show unpurchased that are visible
-        return !u.isPurchased && (balance >= u.cost * visibilityThreshold);
-    });
-
-    // Buy All: purchase from first to last until can't afford
+    // Buy All Logic
     const handleBuyAll = () => {
-        // Sort by cost ascending so we buy cheapest first
         const affordableUpgrades = visibleUpgrades
             .filter(u => canPurchase?.(u.id, balance))
             .sort((a, b) => a.cost - b.cost);
@@ -151,35 +205,15 @@ export function UpgradeGrid({
                     </div>
                 )}
 
-                {visibleUpgrades.map(upgrade => {
-                    const canAfford = canPurchase?.(upgrade.id, balance);
-
-                    const tooltipContent = (
-                        <>
-                            <div className="tooltip-rich-header">{upgrade.name}</div>
-                            <div className="tooltip-rich-body">{upgrade.description}</div>
-                            <div className="tooltip-rich-stats">
-                                <span className={balance >= upgrade.cost ? 'tooltip-stat-cost affordable' : 'tooltip-stat-cost expensive'}>
-                                    Cost: {formatNumberWord(upgrade.cost)}
-                                </span>
-                                {upgrade.isPurchased && <span style={{ color: 'var(--color-mint)' }}>Purchased</span>}
-                            </div>
-                        </>
-                    );
-
-                    return (
-                        <Tooltip key={upgrade.id} content={tooltipContent}>
-                            <button
-                                className={`upgrade-card ${canAfford ? '' : 'upgrade-card--expensive'}`}
-                                onClick={() => onPurchase?.(upgrade.id)}
-                                disabled={!canAfford}
-                                aria-label={`Buy ${upgrade.name}`}
-                            >
-                                <UpgradeIcon upgrade={upgrade} isPurchased={upgrade.isPurchased} />
-                            </button>
-                        </Tooltip>
-                    );
-                })}
+                {visibleUpgrades.map(upgrade => (
+                    <UpgradeCard
+                        key={upgrade.id}
+                        upgrade={upgrade}
+                        balance={balance}
+                        canPurchase={canPurchase}
+                        onPurchase={onPurchase}
+                    />
+                ))}
             </div>
         </div>
     );

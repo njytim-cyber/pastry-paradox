@@ -9,8 +9,10 @@ import { UpgradeGrid } from './UpgradeGrid';
 vi.mock('@data/balance.json', () => ({
     default: {
         globalConfig: {
-            upgradeVisibilityThreshold: 1.0
-        }
+            upgradeVisibilityThreshold: 1.0,
+            costMultiplier: 1.15
+        },
+        productionTiers: [] // Prevent crash in useCakeLogic if it iterates this
     }
 }));
 
