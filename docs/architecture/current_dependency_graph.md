@@ -1,6 +1,6 @@
 # Current Dependency Graph
 
-> Auto-generated based on source imports. Last updated: 2025-12-10T16:39:00Z
+> Auto-generated based on source imports. Last updated: 2025-12-10T19:23:00Z
 
 ```mermaid
 graph TD
@@ -36,6 +36,7 @@ graph TD
         App --> AchievementPopup[AchievementPopup.jsx]
         App --> VersionSplash[VersionSplash.jsx]
         App --> DarkMatterTree[DarkMatterTree.jsx]
+        App --> AudioController[AudioController.jsx]
     end
 
     subgraph Shared_UI
@@ -53,10 +54,12 @@ graph TD
         StorePanel --> useEventStore
         FlavorText --> useEventStore
         EventOverlay --> useEventStore
+        BrainRotComponents --> useEventStore
     end
 
     subgraph Prestige_System
         DarkMatterTree --> balanceData[balance.json]
+        DarkMatterTree --> formatNumberWord[useCakeLogic.js]
         useGameState --> balanceData
     end
 
@@ -67,6 +70,7 @@ graph TD
         useEventSpawner --> macaronConstants[macaronConstants.js]
         useAchievementSystem --> balanceData
         UpgradeGrid --> balanceData
+        App --> balanceData
     end
 ```
 
@@ -74,3 +78,10 @@ graph TD
 
 - **Solid arrows (-->)**: Direct import dependency
 - **Subgraphs**: Logical groupings by feature or layer
+
+## Recent Changes
+
+- Added `AudioController` to App's UI components
+- Added `BrainRotComponents --> useEventStore` dependency
+- Added `DarkMatterTree --> formatNumberWord` (uses formatting from useCakeLogic)
+- Added `App --> balanceData` direct import

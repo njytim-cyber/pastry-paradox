@@ -1,32 +1,51 @@
 # Component Glossary
 
-> Auto-generated on 2025-12-10T08:43:46.398Z
+> Auto-generated on 2025-12-10T19:23:00Z
 
-## Components
+## UI Components
 
-- **App** - `src/App.jsx`
-- **App.test** - `src/App.test.jsx`
-- **crash_repro.test** - `src/crash_repro.test.jsx`
-- **AchievementPopup** - `src/features/achievements/ui/AchievementPopup.jsx`
-- **AudioController** - `src/features/audio/ui/AudioController.jsx`
-- **BakeryHeader** - `src/features/bakery/ui/BakeryHeader.jsx`
-- **BigCrunchButton** - `src/features/bakery/ui/BigCrunchButton.jsx`
-- **BigCrunchImplosion** - `src/features/bakery/ui/BigCrunchImplosion.jsx`
-- **MainCake** - `src/features/cake/ui/MainCake.jsx`
-- **BrainRotComponents** - `src/features/events/ui/BrainRotComponents.jsx`
-- **EventOverlay** - `src/features/events/ui/EventOverlay.jsx`
-- **GoldenFloater** - `src/features/events/ui/GoldenFloater.jsx`
-- **FlavorText** - `src/features/flavor/ui/FlavorText.jsx`
-- **MobileTabBar** - `src/features/navigation/ui/MobileTabBar.jsx`
-- **MobileTabBar.test** - `src/features/navigation/ui/MobileTabBar.test.jsx`
-- **DarkMatterTree** - `src/features/prestige/ui/DarkMatterTree.jsx`
-- **Tooltip** - `src/features/shared/ui/Tooltip.jsx`
-- **Tooltip.test** - `src/features/shared/ui/Tooltip.test.jsx`
-- **StorePanel** - `src/features/shop/ui/StorePanel.jsx`
-- **StorePanel.test** - `src/features/shop/ui/StorePanel.test.jsx`
-- **VersionSplash** - `src/features/splash/ui/VersionSplash.jsx`
-- **VersionSplash.test** - `src/features/splash/ui/VersionSplash.test.jsx`
-- **StatsPanel** - `src/features/stats/ui/StatsPanel.jsx`
-- **UpgradeGrid** - `src/features/upgrades/ui/UpgradeGrid.jsx`
-- **UpgradeGrid.test** - `src/features/upgrades/ui/UpgradeGrid.test.jsx`
-- **main** - `src/main.jsx`
+- **App** - `src/App.jsx` - Main game composition with 3-pane layout and mobile responsive
+- **MainCake** - `src/features/cake/ui/MainCake.jsx` - Clickable cake with animation effects
+- **StorePanel** - `src/features/shop/ui/StorePanel.jsx` - Building/generator purchase panel
+- **UpgradeGrid** - `src/features/upgrades/ui/UpgradeGrid.jsx` - Secret Ingredients upgrade display
+- **StatsPanel** - `src/features/stats/ui/StatsPanel.jsx` - Statistics and prestige panel
+- **BakeryHeader** - `src/features/bakery/ui/BakeryHeader.jsx` - Balance display with flavor text
+- **FlavorText** - `src/features/flavor/ui/FlavorText.jsx` - Context-aware funny messages
+- **GoldenFloater** - `src/features/events/ui/GoldenFloater.jsx` - Golden croissant spawn
+- **AchievementPopup** - `src/features/achievements/ui/AchievementPopup.jsx` - Achievement notifications
+- **VersionSplash** - `src/features/splash/ui/VersionSplash.jsx` - Version changelog modal
+- **DarkMatterTree** - `src/features/prestige/ui/DarkMatterTree.jsx` - Prestige skill tree with pan/zoom
+- **MobileTabBar** - `src/features/navigation/ui/MobileTabBar.jsx` - Mobile tab navigation
+- **AudioController** - `src/features/audio/ui/AudioController.jsx` - Audio settings UI
+- **Tooltip** - `src/features/shared/ui/Tooltip.jsx` - Reusable tooltip component
+- **BigCrunchButton** - `src/features/bakery/ui/BigCrunchButton.jsx` - Prestige trigger button
+- **BigCrunchImplosion** - `src/features/bakery/ui/BigCrunchImplosion.jsx` - Prestige animation
+
+## Event Components
+
+- **EventOverlay** - `src/features/events/ui/EventOverlay.jsx` - Event wrapper with theme application
+- **BrainRotComponents** - `src/features/events/ui/BrainRotComponents.jsx` - Brain Rot theme UI (DoomScrollBar)
+
+## Logic Hooks
+
+- **useCakeLogic** - `src/features/cake/logic/useCakeLogic.js` - Core clicker economy
+- **useUpgradeSystem** - `src/features/upgrades/logic/useUpgradeSystem.js` - Upgrade purchasing
+- **useEventSpawner** - `src/features/events/logic/useEventSpawner.js` - Golden event spawning
+- **useEventStore** - `src/features/events/logic/useEventStore.js` - Theme/event state (cosmetic only)
+- **useGameState** - `src/features/game/logic/useGameState.js` - Game state persistence
+- **useAchievementSystem** - `src/features/achievements/logic/useAchievementSystem.js` - Achievement tracking
+- **useVersionSplash** - `src/features/splash/logic/useVersionSplash.js` - Version detection
+- **useDarkMatter** - `src/features/prestige/logic/useDarkMatter.js` - Prestige currency
+- **useAudioSystem** - `src/features/audio/logic/useAudioSystem.js` - Audio management
+
+## Utility Hooks
+
+- **useIsMobile** - `src/hooks/useMediaQuery.js` - Responsive breakpoint detection
+- **useMobileNav** - `src/hooks/useMobileNav.js` - Mobile tab state management
+
+## Data
+
+- **balance.json** - `src/data/balance.json` - All game balance constants
+- **events.json** - `src/data/events.json` - Event/theme configurations
+- **event_config_schema.js** - `src/data/event_config_schema.js` - Event schema validation
+- **macaronConstants.js** - `src/features/events/logic/macaronConstants.js` - Event constants
