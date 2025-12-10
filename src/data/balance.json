@@ -12,6 +12,13 @@
         "requiredBaked": 1000000000000,
         "cpsBonusPerPoint": 0.01
     },
+    "events": {
+        "goldenCroissant": {
+            "spawnIntervalMin": 60,
+            "spawnIntervalMax": 300,
+            "duration": 13
+        }
+    },
     "productionTiers": [
         {
             "id": "apprentice_baker",
