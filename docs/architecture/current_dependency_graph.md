@@ -1,17 +1,19 @@
 # Current Dependency Graph
 
-> Auto-generated based on source imports. Last updated: 2025-12-09T23:02:00Z
+> Auto-generated based on source imports. Last updated: 2025-12-10T16:39:00Z
 
 ```mermaid
 graph TD
     subgraph App_Entry
-        main[main.jsx] --> App[App.jsx]
+        main[main.jsx] --> EventOverlay[EventOverlay.jsx]
+        EventOverlay --> App[App.jsx]
     end
 
     subgraph Logic_Hooks
         App --> useCakeLogic[useCakeLogic.js]
         App --> useUpgradeSystem[useUpgradeSystem.js]
         App --> useEventSpawner[useEventSpawner.js]
+        App --> useEventStore[useEventStore.js]
         App --> useGameState[useGameState.js]
         App --> useAchievementSystem[useAchievementSystem.js]
         App --> useVersionSplash[useVersionSplash.js]
@@ -33,7 +35,7 @@ graph TD
         App --> GoldenFloater[GoldenFloater.jsx]
         App --> AchievementPopup[AchievementPopup.jsx]
         App --> VersionSplash[VersionSplash.jsx]
-        App --> AudioController[AudioController.jsx]
+        App --> DarkMatterTree[DarkMatterTree.jsx]
     end
 
     subgraph Shared_UI
@@ -46,27 +48,29 @@ graph TD
         AudioController --> useAudioSystem[useAudioSystem.js]
     end
 
-    subgraph Data
-        useCakeLogic --> balanceData[balance.json]
-        useUpgradeSystem --> balanceData
+    subgraph Event_System
+        MainCake --> useEventStore
+        StorePanel --> useEventStore
+        FlavorText --> useEventStore
+        EventOverlay --> useEventStore
+    end
+
+    subgraph Prestige_System
+        DarkMatterTree --> balanceData[balance.json]
         useGameState --> balanceData
+    end
+
+    subgraph Data
+        useCakeLogic --> balanceData
+        useUpgradeSystem --> balanceData
         useEventSpawner --> balanceData
         useEventSpawner --> macaronConstants[macaronConstants.js]
         useAchievementSystem --> balanceData
         UpgradeGrid --> balanceData
-    end
-
-    subgraph Cross_Feature_Dependencies
-        StorePanel -.-> useCakeLogic
-        StatsPanel -.-> useCakeLogic
-        MainCake -.-> useCakeLogic
-        BakeryHeader -.-> useCakeLogic
-        UpgradeGrid -.-> useCakeLogic
     end
 ```
 
 ## Legend
 
 - **Solid arrows (-->)**: Direct import dependency
-- **Dashed arrows (-.->)**: Props passed down from App (indirect dependency)
 - **Subgraphs**: Logical groupings by feature or layer
