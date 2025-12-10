@@ -9,7 +9,7 @@
  * - Hide all other tiers
  */
 import React from 'react';
-import { formatNumber, formatNumberWord, formatNumberWordCompact } from '../../cake/logic/useCakeLogic';
+import { formatNumber, formatNumberWordCompact } from '../../cake/logic/useCakeLogic';
 import { Tooltip } from '../../shared/ui/Tooltip';
 
 // Placeholder icons for generators - inline SVGs
@@ -123,6 +123,7 @@ export function StorePanel({
     buyQuantity = 1,
     setBuyQuantity,
     getSellPrice,
+    getBulkCost
 }) {
     const { visible, mystery } = getVisibleTiers(generators, getGeneratorInfo);
 
@@ -227,6 +228,7 @@ export function StorePanel({
 
                     if (shopMode === 'buy') {
                         const affordable = canAfford?.(tier.id, buyQuantity) ?? false;
+                        const displayCost = getBulkCost?.(tier.id, buyQuantity) || info.currentPrice || tier.baseCost;
 
                         return (
                             <Tooltip key={tier.id} content={
@@ -235,7 +237,7 @@ export function StorePanel({
                                     <div className="tooltip-rich-body">{tier.description}</div>
                                     <div className="tooltip-rich-stats">
                                         <span className={affordable ? 'tooltip-stat-cost affordable' : 'tooltip-stat-cost expensive'}>
-                                            🍰 {formatNumberWordCompact(info.currentPrice || tier.baseCost)}
+                                            🍰 {formatNumberWordCompact(displayCost)}
                                         </span>
                                         <span>Owned: {owned}</span>
                                     </div>
@@ -259,10 +261,7 @@ export function StorePanel({
                                     <div className="shop-item__info">
                                         <div className="shop-item__name">{tier.name}</div>
                                         <div className="shop-item__cost">
-                                            {formatNumberWordCompact(info.currentPrice || tier.baseCost)}
-                                            {buyQuantity > 1 && (
-                                                <span className="shop-item__bulk"> (×{buyQuantity})</span>
-                                            )}
+                                            {formatNumberWordCompact(displayCost)}
                                         </div>
                                     </div>
                                     <div className="shop-item__owned">{owned}</div>
