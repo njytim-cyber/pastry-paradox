@@ -1535,23 +1535,24 @@ h4 {
   }
 }
 
-/* --- Phase 3: Panel Styling (No Gold Borders) --- */
+/* --- Phase 3: Panel Styling (Gold Borders) --- */
 .event-event_christmas_2025 .upgrade-panel {
   background: rgba(253, 246, 227, 0.95);
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 2px solid #d4af37;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .event-event_christmas_2025 .panel.stats-panel {
   background: rgba(253, 246, 227, 0.95);
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 2px solid #d4af37;
   border-radius: 12px;
   color: #3e2723;
 }
 
 .event-event_christmas_2025 .panel.store-panel {
   background: rgba(253, 246, 227, 0.95);
+  border: 2px solid #d4af37;
   border-radius: 12px;
 }
 
@@ -1666,7 +1667,7 @@ h4 {
 /* --- Prestige Section --- */
 .event-event_christmas_2025 .prestige-section {
   background: rgba(253, 246, 227, 0.95);
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 2px solid #d4af37;
   border-radius: 12px;
   padding: 12px;
 }
