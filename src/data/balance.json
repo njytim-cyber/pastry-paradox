@@ -14,9 +14,13 @@
     },
     "events": {
         "goldenCroissant": {
-            "spawnIntervalMin": 60,
-            "spawnIntervalMax": 300,
-            "duration": 13
+            "id": "golden_croissant",
+            "name": "Golden Croissant",
+            "description": "A mystical pastry from another realm!",
+            "spawnIntervalMin": 67,
+            "spawnIntervalMax": 120,
+            "duration": 30,
+            "multiplier": 67
         }
     },
     "productionTiers": [
@@ -1455,17 +1459,6 @@
             }
         }
     },
-    "events": {
-        "goldenCroissant": {
-            "id": "golden_croissant",
-            "name": "Golden Croissant",
-            "description": "A mystical pastry from another realm!",
-            "spawnIntervalMin": 67,
-            "spawnIntervalMax": 120,
-            "duration": 30,
-            "multiplier": 67
-        }
-    },
     "entities": {
         "player": {
             "baseClickPower": 1,
@@ -1494,8 +1487,8 @@
             "description": "Tier 1 Matter enhancement.",
             "cost": 22,
             "position": {
-                "x": -120,
-                "y": -40
+                "x": 120,
+                "y": 0
             },
             "parent": "dark_core",
             "branch": "matter",
@@ -1510,8 +1503,8 @@
             "description": "Tier 1 Matter enhancement.",
             "cost": 48,
             "position": {
-                "x": -240,
-                "y": 40
+                "x": 206,
+                "y": 64
             },
             "parent": "dark_matter_1",
             "branch": "matter",
@@ -1526,8 +1519,8 @@
             "description": "Tier 1 Matter enhancement.",
             "cost": 106,
             "position": {
-                "x": -360,
-                "y": -40
+                "x": 258,
+                "y": 176
             },
             "parent": "dark_matter_2",
             "branch": "matter",
@@ -1542,8 +1535,8 @@
             "description": "Tier 1 Matter enhancement.",
             "cost": 234,
             "position": {
-                "x": -480,
-                "y": 40
+                "x": 254,
+                "y": 320
             },
             "parent": "dark_matter_3",
             "branch": "matter",
@@ -1558,8 +1551,8 @@
             "description": "Tier 1 Matter enhancement.",
             "cost": 515,
             "position": {
-                "x": -600,
-                "y": -40
+                "x": 183,
+                "y": 470
             },
             "parent": "dark_matter_4",
             "branch": "matter",
@@ -1574,8 +1567,8 @@
             "description": "Tier 2 Matter enhancement.",
             "cost": 1133,
             "position": {
-                "x": -720,
-                "y": 40
+                "x": 42,
+                "y": 598
             },
             "parent": "dark_matter_5",
             "branch": "matter",
@@ -1590,8 +1583,8 @@
             "description": "Tier 2 Matter enhancement.",
             "cost": 2494,
             "position": {
-                "x": -840,
-                "y": -40
+                "x": -158,
+                "y": 678
             },
             "parent": "dark_matter_6",
             "branch": "matter",
@@ -1606,8 +1599,8 @@
             "description": "Tier 2 Matter enhancement.",
             "cost": 5487,
             "position": {
-                "x": -960,
-                "y": 40
+                "x": -400,
+                "y": 684
             },
             "parent": "dark_matter_7",
             "branch": "matter",
@@ -1622,8 +1615,8 @@
             "description": "Tier 2 Matter enhancement.",
             "cost": 12072,
             "position": {
-                "x": -1080,
-                "y": -40
+                "x": -655,
+                "y": 600
             },
             "parent": "dark_matter_8",
             "branch": "matter",
@@ -1638,8 +1631,8 @@
             "description": "Tier 2 Matter enhancement.",
             "cost": 26559,
             "position": {
-                "x": -1200,
-                "y": 40
+                "x": -890,
+                "y": 421
             },
             "parent": "dark_matter_9",
             "branch": "matter",
@@ -1654,8 +1647,8 @@
             "description": "Tier 3 Matter enhancement.",
             "cost": 58431,
             "position": {
-                "x": -1320,
-                "y": -40
+                "x": -1069,
+                "y": 152
             },
             "parent": "dark_matter_10",
             "branch": "matter",
@@ -1670,8 +1663,8 @@
             "description": "Tier 3 Matter enhancement.",
             "cost": 128550,
             "position": {
-                "x": -1440,
-                "y": 40
+                "x": -1161,
+                "y": -186
             },
             "parent": "dark_matter_11",
             "branch": "matter",
@@ -1686,8 +1679,8 @@
             "description": "Tier 3 Matter enhancement.",
             "cost": 282810,
             "position": {
-                "x": -1560,
-                "y": -40
+                "x": -1141,
+                "y": -563
             },
             "parent": "dark_matter_12",
             "branch": "matter",
@@ -1702,8 +1695,8 @@
             "description": "Tier 3 Matter enhancement.",
             "cost": 622182,
             "position": {
-                "x": -1680,
-                "y": 40
+                "x": -993,
+                "y": -941
             },
             "parent": "dark_matter_13",
             "branch": "matter",
@@ -1718,8 +1711,8 @@
             "description": "Tier 3 Matter enhancement.",
             "cost": 1368800,
             "position": {
-                "x": -1800,
-                "y": -40
+                "x": -718,
+                "y": -1276
             },
             "parent": "dark_matter_14",
             "branch": "matter",
@@ -1734,8 +1727,8 @@
             "description": "Tier 4 Matter enhancement.",
             "cost": 3011361,
             "position": {
-                "x": -1920,
-                "y": 40
+                "x": -329,
+                "y": -1525
             },
             "parent": "dark_matter_15",
             "branch": "matter",
@@ -1750,8 +1743,8 @@
             "description": "Tier 4 Matter enhancement.",
             "cost": 6624995,
             "position": {
-                "x": -2040,
-                "y": -40
+                "x": 145,
+                "y": -1650
             },
             "parent": "dark_matter_16",
             "branch": "matter",
@@ -1766,8 +1759,8 @@
             "description": "Tier 4 Matter enhancement.",
             "cost": 14574989,
             "position": {
-                "x": -2160,
-                "y": 40
+                "x": 662,
+                "y": -1622
             },
             "parent": "dark_matter_17",
             "branch": "matter",
@@ -1782,8 +1775,8 @@
             "description": "Tier 4 Matter enhancement.",
             "cost": 32064977,
             "position": {
-                "x": -2280,
-                "y": -40
+                "x": 1173,
+                "y": -1428
             },
             "parent": "dark_matter_18",
             "branch": "matter",
@@ -1798,8 +1791,8 @@
             "description": "Tier 4 Matter enhancement.",
             "cost": 70542949,
             "position": {
-                "x": -2400,
-                "y": 40
+                "x": 1623,
+                "y": -1071
             },
             "parent": "dark_matter_19",
             "branch": "matter",
@@ -1814,8 +1807,8 @@
             "description": "Tier 5 Matter enhancement.",
             "cost": 155194489,
             "position": {
-                "x": -2520,
-                "y": -40
+                "x": 1959,
+                "y": -570
             },
             "parent": "dark_matter_20",
             "branch": "matter",
@@ -1830,8 +1823,8 @@
             "description": "Tier 5 Matter enhancement.",
             "cost": 341427877,
             "position": {
-                "x": -2640,
-                "y": 40
+                "x": 2136,
+                "y": 36
             },
             "parent": "dark_matter_21",
             "branch": "matter",
@@ -1846,8 +1839,8 @@
             "description": "Tier 5 Matter enhancement.",
             "cost": 751141330,
             "position": {
-                "x": -2760,
-                "y": -40
+                "x": 2121,
+                "y": 695
             },
             "parent": "dark_matter_22",
             "branch": "matter",
@@ -1862,8 +1855,8 @@
             "description": "Tier 5 Matter enhancement.",
             "cost": 1652510926,
             "position": {
-                "x": -2880,
-                "y": 40
+                "x": 1899,
+                "y": 1347
             },
             "parent": "dark_matter_23",
             "branch": "matter",
@@ -1878,8 +1871,8 @@
             "description": "Tier 5 Matter enhancement.",
             "cost": 3635524038,
             "position": {
-                "x": -3000,
-                "y": -40
+                "x": 1475,
+                "y": 1924
             },
             "parent": "dark_matter_24",
             "branch": "matter",
@@ -1894,8 +1887,8 @@
             "description": "Tier 1 Time enhancement.",
             "cost": 22,
             "position": {
-                "x": 120,
-                "y": -40
+                "x": -120,
+                "y": 0
             },
             "parent": "dark_core",
             "branch": "time",
@@ -1910,8 +1903,8 @@
             "description": "Tier 1 Time enhancement.",
             "cost": 48,
             "position": {
-                "x": 240,
-                "y": 40
+                "x": -206,
+                "y": -64
             },
             "parent": "dark_time_1",
             "branch": "time",
@@ -1926,8 +1919,8 @@
             "description": "Tier 1 Time enhancement.",
             "cost": 106,
             "position": {
-                "x": 360,
-                "y": -40
+                "x": -258,
+                "y": -176
             },
             "parent": "dark_time_2",
             "branch": "time",
@@ -1942,8 +1935,8 @@
             "description": "Tier 1 Time enhancement.",
             "cost": 234,
             "position": {
-                "x": 480,
-                "y": 40
+                "x": -254,
+                "y": -320
             },
             "parent": "dark_time_3",
             "branch": "time",
@@ -1958,8 +1951,8 @@
             "description": "Tier 1 Time enhancement.",
             "cost": 515,
             "position": {
-                "x": 600,
-                "y": -40
+                "x": -183,
+                "y": -470
             },
             "parent": "dark_time_4",
             "branch": "time",
@@ -1974,8 +1967,8 @@
             "description": "Tier 2 Time enhancement.",
             "cost": 1133,
             "position": {
-                "x": 720,
-                "y": 40
+                "x": -42,
+                "y": -598
             },
             "parent": "dark_time_5",
             "branch": "time",
@@ -1990,8 +1983,8 @@
             "description": "Tier 2 Time enhancement.",
             "cost": 2494,
             "position": {
-                "x": 840,
-                "y": -40
+                "x": 158,
+                "y": -678
             },
             "parent": "dark_time_6",
             "branch": "time",
@@ -2006,8 +1999,8 @@
             "description": "Tier 2 Time enhancement.",
             "cost": 5487,
             "position": {
-                "x": 960,
-                "y": 40
+                "x": 400,
+                "y": -684
             },
             "parent": "dark_time_7",
             "branch": "time",
@@ -2022,8 +2015,8 @@
             "description": "Tier 2 Time enhancement.",
             "cost": 12072,
             "position": {
-                "x": 1080,
-                "y": -40
+                "x": 655,
+                "y": -600
             },
             "parent": "dark_time_8",
             "branch": "time",
@@ -2038,8 +2031,8 @@
             "description": "Tier 2 Time enhancement.",
             "cost": 26559,
             "position": {
-                "x": 1200,
-                "y": 40
+                "x": 890,
+                "y": -421
             },
             "parent": "dark_time_9",
             "branch": "time",
@@ -2054,8 +2047,8 @@
             "description": "Tier 3 Time enhancement.",
             "cost": 58431,
             "position": {
-                "x": 1320,
-                "y": -40
+                "x": 1069,
+                "y": -152
             },
             "parent": "dark_time_10",
             "branch": "time",
@@ -2070,8 +2063,8 @@
             "description": "Tier 3 Time enhancement.",
             "cost": 128550,
             "position": {
-                "x": 1440,
-                "y": 40
+                "x": 1161,
+                "y": 186
             },
             "parent": "dark_time_11",
             "branch": "time",
@@ -2086,8 +2079,8 @@
             "description": "Tier 3 Time enhancement.",
             "cost": 282810,
             "position": {
-                "x": 1560,
-                "y": -40
+                "x": 1141,
+                "y": 563
             },
             "parent": "dark_time_12",
             "branch": "time",
@@ -2102,8 +2095,8 @@
             "description": "Tier 3 Time enhancement.",
             "cost": 622182,
             "position": {
-                "x": 1680,
-                "y": 40
+                "x": 993,
+                "y": 941
             },
             "parent": "dark_time_13",
             "branch": "time",
@@ -2118,8 +2111,8 @@
             "description": "Tier 3 Time enhancement.",
             "cost": 1368800,
             "position": {
-                "x": 1800,
-                "y": -40
+                "x": 718,
+                "y": 1276
             },
             "parent": "dark_time_14",
             "branch": "time",
@@ -2134,8 +2127,8 @@
             "description": "Tier 4 Time enhancement.",
             "cost": 3011361,
             "position": {
-                "x": 1920,
-                "y": 40
+                "x": 329,
+                "y": 1525
             },
             "parent": "dark_time_15",
             "branch": "time",
@@ -2150,8 +2143,8 @@
             "description": "Tier 4 Time enhancement.",
             "cost": 6624995,
             "position": {
-                "x": 2040,
-                "y": -40
+                "x": -145,
+                "y": 1650
             },
             "parent": "dark_time_16",
             "branch": "time",
@@ -2166,8 +2159,8 @@
             "description": "Tier 4 Time enhancement.",
             "cost": 14574989,
             "position": {
-                "x": 2160,
-                "y": 40
+                "x": -662,
+                "y": 1622
             },
             "parent": "dark_time_17",
             "branch": "time",
@@ -2182,8 +2175,8 @@
             "description": "Tier 4 Time enhancement.",
             "cost": 32064977,
             "position": {
-                "x": 2280,
-                "y": -40
+                "x": -1173,
+                "y": 1428
             },
             "parent": "dark_time_18",
             "branch": "time",
@@ -2198,8 +2191,8 @@
             "description": "Tier 4 Time enhancement.",
             "cost": 70542949,
             "position": {
-                "x": 2400,
-                "y": 40
+                "x": -1623,
+                "y": 1071
             },
             "parent": "dark_time_19",
             "branch": "time",
@@ -2214,8 +2207,8 @@
             "description": "Tier 5 Time enhancement.",
             "cost": 155194489,
             "position": {
-                "x": 2520,
-                "y": -40
+                "x": -1959,
+                "y": 570
             },
             "parent": "dark_time_20",
             "branch": "time",
@@ -2230,8 +2223,8 @@
             "description": "Tier 5 Time enhancement.",
             "cost": 341427877,
             "position": {
-                "x": 2640,
-                "y": 40
+                "x": -2136,
+                "y": -36
             },
             "parent": "dark_time_21",
             "branch": "time",
@@ -2246,8 +2239,8 @@
             "description": "Tier 5 Time enhancement.",
             "cost": 751141330,
             "position": {
-                "x": 2760,
-                "y": -40
+                "x": -2121,
+                "y": -695
             },
             "parent": "dark_time_22",
             "branch": "time",
@@ -2262,8 +2255,8 @@
             "description": "Tier 5 Time enhancement.",
             "cost": 1652510926,
             "position": {
-                "x": 2880,
-                "y": 40
+                "x": -1899,
+                "y": -1347
             },
             "parent": "dark_time_23",
             "branch": "time",
@@ -2278,8 +2271,8 @@
             "description": "Tier 5 Time enhancement.",
             "cost": 3635524038,
             "position": {
-                "x": 3000,
-                "y": -40
+                "x": -1475,
+                "y": -1924
             },
             "parent": "dark_time_24",
             "branch": "time",
@@ -3086,6 +3079,806 @@
             "effect": {
                 "type": "passiveDarkMatter",
                 "value": 0.25
+            }
+        },
+        "dark_energy_1": {
+            "id": "dark_energy_1",
+            "name": "Energy Node 1",
+            "description": "Tier 1 Energy enhancement.",
+            "cost": 22,
+            "position": {
+                "x": 0,
+                "y": 120
+            },
+            "parent": "dark_core",
+            "branch": "energy",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 1.1500000000000001
+            }
+        },
+        "dark_energy_2": {
+            "id": "dark_energy_2",
+            "name": "Energy Node 2",
+            "description": "Tier 1 Energy enhancement.",
+            "cost": 48,
+            "position": {
+                "x": -64,
+                "y": 206
+            },
+            "parent": "dark_energy_1",
+            "branch": "energy",
+            "effect": {
+                "type": "globalCostScale",
+                "value": 0.978
+            }
+        },
+        "dark_energy_3": {
+            "id": "dark_energy_3",
+            "name": "Energy Node 3",
+            "description": "Tier 1 Energy enhancement.",
+            "cost": 106,
+            "position": {
+                "x": -176,
+                "y": 258
+            },
+            "parent": "dark_energy_2",
+            "branch": "energy",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 1.25
+            }
+        },
+        "dark_energy_4": {
+            "id": "dark_energy_4",
+            "name": "Energy Node 4",
+            "description": "Tier 1 Energy enhancement.",
+            "cost": 234,
+            "position": {
+                "x": -320,
+                "y": 254
+            },
+            "parent": "dark_energy_3",
+            "branch": "energy",
+            "effect": {
+                "type": "globalCostScale",
+                "value": 0.97
+            }
+        },
+        "dark_energy_5": {
+            "id": "dark_energy_5",
+            "name": "Energy Node 5",
+            "description": "Tier 1 Energy enhancement.",
+            "cost": 515,
+            "position": {
+                "x": -470,
+                "y": 183
+            },
+            "parent": "dark_energy_4",
+            "branch": "energy",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 1.35
+            }
+        },
+        "dark_energy_6": {
+            "id": "dark_energy_6",
+            "name": "Energy Node 6",
+            "description": "Tier 2 Energy enhancement.",
+            "cost": 1133,
+            "position": {
+                "x": -598,
+                "y": 42
+            },
+            "parent": "dark_energy_5",
+            "branch": "energy",
+            "effect": {
+                "type": "globalCostScale",
+                "value": 0.962
+            }
+        },
+        "dark_energy_7": {
+            "id": "dark_energy_7",
+            "name": "Energy Node 7",
+            "description": "Tier 2 Energy enhancement.",
+            "cost": 2494,
+            "position": {
+                "x": -678,
+                "y": -158
+            },
+            "parent": "dark_energy_6",
+            "branch": "energy",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 1.4500000000000002
+            }
+        },
+        "dark_energy_8": {
+            "id": "dark_energy_8",
+            "name": "Energy Node 8",
+            "description": "Tier 2 Energy enhancement.",
+            "cost": 5487,
+            "position": {
+                "x": -684,
+                "y": -400
+            },
+            "parent": "dark_energy_7",
+            "branch": "energy",
+            "effect": {
+                "type": "globalCostScale",
+                "value": 0.954
+            }
+        },
+        "dark_energy_9": {
+            "id": "dark_energy_9",
+            "name": "Energy Node 9",
+            "description": "Tier 2 Energy enhancement.",
+            "cost": 12072,
+            "position": {
+                "x": -600,
+                "y": -655
+            },
+            "parent": "dark_energy_8",
+            "branch": "energy",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 1.55
+            }
+        },
+        "dark_energy_10": {
+            "id": "dark_energy_10",
+            "name": "Energy Node 10",
+            "description": "Tier 2 Energy enhancement.",
+            "cost": 26559,
+            "position": {
+                "x": -421,
+                "y": -890
+            },
+            "parent": "dark_energy_9",
+            "branch": "energy",
+            "effect": {
+                "type": "globalCostScale",
+                "value": 0.946
+            }
+        },
+        "dark_energy_11": {
+            "id": "dark_energy_11",
+            "name": "Energy Node 11",
+            "description": "Tier 3 Energy enhancement.",
+            "cost": 58431,
+            "position": {
+                "x": -152,
+                "y": -1069
+            },
+            "parent": "dark_energy_10",
+            "branch": "energy",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 1.6500000000000001
+            }
+        },
+        "dark_energy_12": {
+            "id": "dark_energy_12",
+            "name": "Energy Node 12",
+            "description": "Tier 3 Energy enhancement.",
+            "cost": 128550,
+            "position": {
+                "x": 186,
+                "y": -1161
+            },
+            "parent": "dark_energy_11",
+            "branch": "energy",
+            "effect": {
+                "type": "globalCostScale",
+                "value": 0.938
+            }
+        },
+        "dark_energy_13": {
+            "id": "dark_energy_13",
+            "name": "Energy Node 13",
+            "description": "Tier 3 Energy enhancement.",
+            "cost": 282810,
+            "position": {
+                "x": 563,
+                "y": -1141
+            },
+            "parent": "dark_energy_12",
+            "branch": "energy",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 1.75
+            }
+        },
+        "dark_energy_14": {
+            "id": "dark_energy_14",
+            "name": "Energy Node 14",
+            "description": "Tier 3 Energy enhancement.",
+            "cost": 622182,
+            "position": {
+                "x": 941,
+                "y": -993
+            },
+            "parent": "dark_energy_13",
+            "branch": "energy",
+            "effect": {
+                "type": "globalCostScale",
+                "value": 0.9299999999999999
+            }
+        },
+        "dark_energy_15": {
+            "id": "dark_energy_15",
+            "name": "Energy Node 15",
+            "description": "Tier 3 Energy enhancement.",
+            "cost": 1368801,
+            "position": {
+                "x": 1276,
+                "y": -718
+            },
+            "parent": "dark_energy_14",
+            "branch": "energy",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 1.85
+            }
+        },
+        "dark_energy_16": {
+            "id": "dark_energy_16",
+            "name": "Energy Node 16",
+            "description": "Tier 4 Energy enhancement.",
+            "cost": 3011363,
+            "position": {
+                "x": 1525,
+                "y": -329
+            },
+            "parent": "dark_energy_15",
+            "branch": "energy",
+            "effect": {
+                "type": "globalCostScale",
+                "value": 0.9219999999999999
+            }
+        },
+        "dark_energy_17": {
+            "id": "dark_energy_17",
+            "name": "Energy Node 17",
+            "description": "Tier 4 Energy enhancement.",
+            "cost": 6625001,
+            "position": {
+                "x": 1650,
+                "y": 145
+            },
+            "parent": "dark_energy_16",
+            "branch": "energy",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 1.9500000000000002
+            }
+        },
+        "dark_energy_18": {
+            "id": "dark_energy_18",
+            "name": "Energy Node 18",
+            "description": "Tier 4 Energy enhancement.",
+            "cost": 14575002,
+            "position": {
+                "x": 1622,
+                "y": 662
+            },
+            "parent": "dark_energy_17",
+            "branch": "energy",
+            "effect": {
+                "type": "globalCostScale",
+                "value": 0.9139999999999999
+            }
+        },
+        "dark_energy_19": {
+            "id": "dark_energy_19",
+            "name": "Energy Node 19",
+            "description": "Tier 4 Energy enhancement.",
+            "cost": 32065005,
+            "position": {
+                "x": 1428,
+                "y": 1173
+            },
+            "parent": "dark_energy_18",
+            "branch": "energy",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 2.0500000000000003
+            }
+        },
+        "dark_energy_20": {
+            "id": "dark_energy_20",
+            "name": "Energy Node 20",
+            "description": "Tier 4 Energy enhancement.",
+            "cost": 70543011,
+            "position": {
+                "x": 1071,
+                "y": 1623
+            },
+            "parent": "dark_energy_19",
+            "branch": "energy",
+            "effect": {
+                "type": "globalCostScale",
+                "value": 0.906
+            }
+        },
+        "dark_energy_21": {
+            "id": "dark_energy_21",
+            "name": "Energy Node 21",
+            "description": "Tier 5 Energy enhancement.",
+            "cost": 155194225,
+            "position": {
+                "x": 570,
+                "y": 1959
+            },
+            "parent": "dark_energy_20",
+            "branch": "energy",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 2.1500000000000004
+            }
+        },
+        "dark_energy_22": {
+            "id": "dark_energy_22",
+            "name": "Energy Node 22",
+            "description": "Tier 5 Energy enhancement.",
+            "cost": 341427295,
+            "position": {
+                "x": -36,
+                "y": 2136
+            },
+            "parent": "dark_energy_21",
+            "branch": "energy",
+            "effect": {
+                "type": "globalCostScale",
+                "value": 0.898
+            }
+        },
+        "dark_energy_23": {
+            "id": "dark_energy_23",
+            "name": "Energy Node 23",
+            "description": "Tier 5 Energy enhancement.",
+            "cost": 751140049,
+            "position": {
+                "x": -695,
+                "y": 2121
+            },
+            "parent": "dark_energy_22",
+            "branch": "energy",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 2.25
+            }
+        },
+        "dark_energy_24": {
+            "id": "dark_energy_24",
+            "name": "Energy Node 24",
+            "description": "Tier 5 Energy enhancement.",
+            "cost": 1652508108,
+            "position": {
+                "x": -1347,
+                "y": 1899
+            },
+            "parent": "dark_energy_23",
+            "branch": "energy",
+            "effect": {
+                "type": "globalCostScale",
+                "value": 0.89
+            }
+        },
+        "dark_energy_25": {
+            "id": "dark_energy_25",
+            "name": "Energy Node 25",
+            "description": "Tier 5 Energy enhancement.",
+            "cost": 3635517838,
+            "position": {
+                "x": -1924,
+                "y": 1475
+            },
+            "parent": "dark_energy_24",
+            "branch": "energy",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 2.35
+            }
+        },
+        "dark_click_1": {
+            "id": "dark_click_1",
+            "name": "Click Node 1",
+            "description": "Tier 1 Click enhancement.",
+            "cost": 22,
+            "position": {
+                "x": 0,
+                "y": -120
+            },
+            "parent": "dark_core",
+            "branch": "click",
+            "effect": {
+                "type": "clickPowerMult",
+                "value": 1.25
+            }
+        },
+        "dark_click_2": {
+            "id": "dark_click_2",
+            "name": "Click Node 2",
+            "description": "Tier 1 Click enhancement.",
+            "cost": 48,
+            "position": {
+                "x": 64,
+                "y": -206
+            },
+            "parent": "dark_click_1",
+            "branch": "click",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 1.1800000000000002
+            }
+        },
+        "dark_click_3": {
+            "id": "dark_click_3",
+            "name": "Click Node 3",
+            "description": "Tier 1 Click enhancement.",
+            "cost": 106,
+            "position": {
+                "x": 176,
+                "y": -258
+            },
+            "parent": "dark_click_2",
+            "branch": "click",
+            "effect": {
+                "type": "clickPowerMult",
+                "value": 1.35
+            }
+        },
+        "dark_click_4": {
+            "id": "dark_click_4",
+            "name": "Click Node 4",
+            "description": "Tier 1 Click enhancement.",
+            "cost": 234,
+            "position": {
+                "x": 320,
+                "y": -254
+            },
+            "parent": "dark_click_3",
+            "branch": "click",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 1.26
+            }
+        },
+        "dark_click_5": {
+            "id": "dark_click_5",
+            "name": "Click Node 5",
+            "description": "Tier 1 Click enhancement.",
+            "cost": 515,
+            "position": {
+                "x": 470,
+                "y": -183
+            },
+            "parent": "dark_click_4",
+            "branch": "click",
+            "effect": {
+                "type": "clickPowerMult",
+                "value": 1.45
+            }
+        },
+        "dark_click_6": {
+            "id": "dark_click_6",
+            "name": "Click Node 6",
+            "description": "Tier 2 Click enhancement.",
+            "cost": 1133,
+            "position": {
+                "x": 598,
+                "y": -42
+            },
+            "parent": "dark_click_5",
+            "branch": "click",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 1.34
+            }
+        },
+        "dark_click_7": {
+            "id": "dark_click_7",
+            "name": "Click Node 7",
+            "description": "Tier 2 Click enhancement.",
+            "cost": 2494,
+            "position": {
+                "x": 678,
+                "y": 158
+            },
+            "parent": "dark_click_6",
+            "branch": "click",
+            "effect": {
+                "type": "clickPowerMult",
+                "value": 1.55
+            }
+        },
+        "dark_click_8": {
+            "id": "dark_click_8",
+            "name": "Click Node 8",
+            "description": "Tier 2 Click enhancement.",
+            "cost": 5487,
+            "position": {
+                "x": 684,
+                "y": 400
+            },
+            "parent": "dark_click_7",
+            "branch": "click",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 1.4200000000000002
+            }
+        },
+        "dark_click_9": {
+            "id": "dark_click_9",
+            "name": "Click Node 9",
+            "description": "Tier 2 Click enhancement.",
+            "cost": 12072,
+            "position": {
+                "x": 600,
+                "y": 655
+            },
+            "parent": "dark_click_8",
+            "branch": "click",
+            "effect": {
+                "type": "clickPowerMult",
+                "value": 1.65
+            }
+        },
+        "dark_click_10": {
+            "id": "dark_click_10",
+            "name": "Click Node 10",
+            "description": "Tier 2 Click enhancement.",
+            "cost": 26559,
+            "position": {
+                "x": 421,
+                "y": 890
+            },
+            "parent": "dark_click_9",
+            "branch": "click",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 1.5
+            }
+        },
+        "dark_click_11": {
+            "id": "dark_click_11",
+            "name": "Click Node 11",
+            "description": "Tier 3 Click enhancement.",
+            "cost": 58431,
+            "position": {
+                "x": 152,
+                "y": 1069
+            },
+            "parent": "dark_click_10",
+            "branch": "click",
+            "effect": {
+                "type": "clickPowerMult",
+                "value": 1.75
+            }
+        },
+        "dark_click_12": {
+            "id": "dark_click_12",
+            "name": "Click Node 12",
+            "description": "Tier 3 Click enhancement.",
+            "cost": 128550,
+            "position": {
+                "x": -186,
+                "y": 1161
+            },
+            "parent": "dark_click_11",
+            "branch": "click",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 1.58
+            }
+        },
+        "dark_click_13": {
+            "id": "dark_click_13",
+            "name": "Click Node 13",
+            "description": "Tier 3 Click enhancement.",
+            "cost": 282810,
+            "position": {
+                "x": -563,
+                "y": 1141
+            },
+            "parent": "dark_click_12",
+            "branch": "click",
+            "effect": {
+                "type": "clickPowerMult",
+                "value": 1.85
+            }
+        },
+        "dark_click_14": {
+            "id": "dark_click_14",
+            "name": "Click Node 14",
+            "description": "Tier 3 Click enhancement.",
+            "cost": 622182,
+            "position": {
+                "x": -941,
+                "y": 993
+            },
+            "parent": "dark_click_13",
+            "branch": "click",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 1.6600000000000001
+            }
+        },
+        "dark_click_15": {
+            "id": "dark_click_15",
+            "name": "Click Node 15",
+            "description": "Tier 3 Click enhancement.",
+            "cost": 1368801,
+            "position": {
+                "x": -1276,
+                "y": 718
+            },
+            "parent": "dark_click_14",
+            "branch": "click",
+            "effect": {
+                "type": "clickPowerMult",
+                "value": 1.95
+            }
+        },
+        "dark_click_16": {
+            "id": "dark_click_16",
+            "name": "Click Node 16",
+            "description": "Tier 4 Click enhancement.",
+            "cost": 3011363,
+            "position": {
+                "x": -1525,
+                "y": 329
+            },
+            "parent": "dark_click_15",
+            "branch": "click",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 1.7400000000000002
+            }
+        },
+        "dark_click_17": {
+            "id": "dark_click_17",
+            "name": "Click Node 17",
+            "description": "Tier 4 Click enhancement.",
+            "cost": 6625001,
+            "position": {
+                "x": -1650,
+                "y": -145
+            },
+            "parent": "dark_click_16",
+            "branch": "click",
+            "effect": {
+                "type": "clickPowerMult",
+                "value": 2.05
+            }
+        },
+        "dark_click_18": {
+            "id": "dark_click_18",
+            "name": "Click Node 18",
+            "description": "Tier 4 Click enhancement.",
+            "cost": 14575002,
+            "position": {
+                "x": -1622,
+                "y": -662
+            },
+            "parent": "dark_click_17",
+            "branch": "click",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 1.82
+            }
+        },
+        "dark_click_19": {
+            "id": "dark_click_19",
+            "name": "Click Node 19",
+            "description": "Tier 4 Click enhancement.",
+            "cost": 32065005,
+            "position": {
+                "x": -1428,
+                "y": -1173
+            },
+            "parent": "dark_click_18",
+            "branch": "click",
+            "effect": {
+                "type": "clickPowerMult",
+                "value": 2.15
+            }
+        },
+        "dark_click_20": {
+            "id": "dark_click_20",
+            "name": "Click Node 20",
+            "description": "Tier 4 Click enhancement.",
+            "cost": 70543011,
+            "position": {
+                "x": -1071,
+                "y": -1623
+            },
+            "parent": "dark_click_19",
+            "branch": "click",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 1.9000000000000001
+            }
+        },
+        "dark_click_21": {
+            "id": "dark_click_21",
+            "name": "Click Node 21",
+            "description": "Tier 5 Click enhancement.",
+            "cost": 155194225,
+            "position": {
+                "x": -570,
+                "y": -1959
+            },
+            "parent": "dark_click_20",
+            "branch": "click",
+            "effect": {
+                "type": "clickPowerMult",
+                "value": 2.25
+            }
+        },
+        "dark_click_22": {
+            "id": "dark_click_22",
+            "name": "Click Node 22",
+            "description": "Tier 5 Click enhancement.",
+            "cost": 341427295,
+            "position": {
+                "x": 36,
+                "y": -2136
+            },
+            "parent": "dark_click_21",
+            "branch": "click",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 1.98
+            }
+        },
+        "dark_click_23": {
+            "id": "dark_click_23",
+            "name": "Click Node 23",
+            "description": "Tier 5 Click enhancement.",
+            "cost": 751140049,
+            "position": {
+                "x": 695,
+                "y": -2121
+            },
+            "parent": "dark_click_22",
+            "branch": "click",
+            "effect": {
+                "type": "clickPowerMult",
+                "value": 2.35
+            }
+        },
+        "dark_click_24": {
+            "id": "dark_click_24",
+            "name": "Click Node 24",
+            "description": "Tier 5 Click enhancement.",
+            "cost": 1652508108,
+            "position": {
+                "x": 1347,
+                "y": -1899
+            },
+            "parent": "dark_click_23",
+            "branch": "click",
+            "effect": {
+                "type": "globalProductionMult",
+                "value": 2.06
+            }
+        },
+        "dark_click_25": {
+            "id": "dark_click_25",
+            "name": "Click Node 25",
+            "description": "Tier 5 Click enhancement.",
+            "cost": 3635517838,
+            "position": {
+                "x": 1924,
+                "y": -1475
+            },
+            "parent": "dark_click_24",
+            "branch": "click",
+            "effect": {
+                "type": "clickPowerMult",
+                "value": 2.45
             }
         }
     }

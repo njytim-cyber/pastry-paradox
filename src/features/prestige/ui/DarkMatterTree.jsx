@@ -43,32 +43,55 @@ export function DarkMatterTree({ darkMatter, darkUpgrades, onBuy, totalGlobalMul
         return { minX, maxX, minY, maxY, width: maxX - minX, height: maxY - minY };
     }, [nodes]);
 
-    // Auto-fit to show all nodes on mount
+
+    // Smart zoom: Focus on unlocked/affordable nodes instead of showing everything
     const fitToView = useCallback(() => {
-        if (!containerRef.current) return;
+        if (!containerRef.current || nodes.length === 0) return;
         const container = containerRef.current;
         const { offsetWidth, offsetHeight } = container;
-        const padding = 100;
 
-        // Calculate scale to fit
-        const scaleX = (offsetWidth - padding * 2) / treeBounds.width;
-        const scaleY = (offsetHeight - padding * 2) / treeBounds.height;
-        const fitScale = Math.min(scaleX, scaleY, 1); // Don't zoom in past 1x
+        // Find unlocked and affordable nodes
+        const relevantNodes = nodes.filter(node => {
+            const isPurchased = darkUpgrades?.includes(node.id);
+            const canAfford = darkMatter >= node.cost;
+            return isPurchased || canAfford;
+        });
 
-        // Center the tree
-        const centerX = (treeBounds.minX + treeBounds.maxX) / 2;
-        const centerY = (treeBounds.minY + treeBounds.maxY) / 2;
+        // If no relevant nodes (first visit), show core + first ring
+        const nodesToShow = relevantNodes.length > 0 ? relevantNodes : nodes.slice(0, Math.min(5, nodes.length));
 
-        setScale(Math.max(0.25, Math.min(fitScale, 1)));
+        if (nodesToShow.length === 0) return;
+
+        // Calculate bounds of relevant area
+        const xs = nodesToShow.map(n => n.position.x);
+        const ys = nodesToShow.map(n => n.position.y);
+        const minX = Math.min(...xs) - NODE_SIZE * 2;
+        const maxX = Math.max(...xs) + NODE_SIZE * 2;
+        const minY = Math.min(...ys) - NODE_SIZE * 2;
+        const maxY = Math.max(...ys) + NODE_SIZE * 2;
+
+        const width = maxX - minX;
+        const height = maxY - minY;
+        const padding = 150;
+
+        // Calculate scale to fit relevant area
+        const scaleX = (offsetWidth - padding * 2) / width;
+        const scaleY = (offsetHeight - padding * 2) / height;
+        const fitScale = Math.min(scaleX, scaleY, 1.5); // Allow zoom in up to 1.5x
+
+        // Center on relevant area
+        const centerX = (minX + maxX) / 2;
+        const centerY = (minY + maxY) / 2;
+
+        setScale(Math.max(0.4, Math.min(fitScale, 1.5)));
         setPan({
             x: offsetWidth / 2 - centerX * fitScale,
             y: offsetHeight / 2 - centerY * fitScale
         });
-    }, [treeBounds]);
+    }, [nodes, darkUpgrades, darkMatter]);
 
-    // Center the view on mount
+    // Re-center when unlocks change
     useEffect(() => {
-        // Small delay to ensure container is measured
         const timer = setTimeout(fitToView, 100);
         return () => clearTimeout(timer);
     }, [fitToView]);
