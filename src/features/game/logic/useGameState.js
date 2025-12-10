@@ -8,6 +8,17 @@ import balanceData from '@data/balance.json';
 
 const { globalConfig, prestige } = balanceData;
 
+// Load saved state from localStorage (called once during initialization)
+const loadSavedState = () => {
+    try {
+        const saved = localStorage.getItem('pastry_paradox_gamestate');
+        return saved ? JSON.parse(saved) : null;
+    } catch (e) {
+        console.warn('Failed to load gamestate:', e);
+        return null;
+    }
+};
+
 /**
  * Main game state hook
  */
@@ -15,18 +26,8 @@ export function useGameState() {
     // Persistence Key
     const SAVE_KEY_GAMESTATE = 'pastry_paradox_gamestate';
 
-    // Load saved state helper
-    const loadSavedState = () => {
-        try {
-            const saved = localStorage.getItem(SAVE_KEY_GAMESTATE);
-            return saved ? JSON.parse(saved) : null;
-        } catch (e) {
-            console.warn('Failed to load gamestate:', e);
-            return null;
-        }
-    };
-
-    const savedState = loadSavedState();
+    // Lazy initialization: only parse localStorage once on mount
+    const [savedState] = useState(loadSavedState);
 
     // Bakery name
     const [bakeryName, setBakeryName] = useState(savedState?.bakeryName || "Your Patisserie");
@@ -41,7 +42,6 @@ export function useGameState() {
         prestigeCount: 0,
     });
 
-    // Prestige system
     // Prestige system (Dark Matter)
     const [darkMatter, setDarkMatter] = useState(savedState?.darkMatter || 0);
     const [darkUpgrades, setDarkUpgrades] = useState(savedState?.darkUpgrades || []);
@@ -53,8 +53,7 @@ export function useGameState() {
     const [shopMode, setShopMode] = useState('buy'); // 'buy' | 'sell'
     const [buyQuantity, setBuyQuantity] = useState(1); // 1, 10, 100
 
-    // Calculate legacy points earned from reset
-    // Calculate legacy points (Dark Matter) earned from reset
+    // Calculate Dark Matter earned from reset
     const calculateDarkMatter = useCallback((totalBaked) => {
         // Formula: 1 dark matter per X amount baked (1 Trillion base)
         const required = prestige?.requiredBaked || 1000000000000;
@@ -201,10 +200,9 @@ export function useGameState() {
         };
     }, [bakeryName, stats, darkMatter, darkUpgrades, legacyMultiplier]);
 
-    // Time played this session
-    const sessionTime = useMemo(() => {
-        return Date.now() - stats.sessionStart;
-    }, [stats.sessionStart]);
+    // Time played this session (computed dynamically, not memoized as it changes constantly)
+    // Note: This will be stale - use getSessionTime() for live value
+    const getSessionTime = useCallback(() => Date.now() - stats.sessionStart, [stats.sessionStart]);
 
     return {
         // Bakery
@@ -216,7 +214,7 @@ export function useGameState() {
         recordClick,
         recordBaked,
         recordSpent,
-        sessionTime,
+        getSessionTime,
 
         // Shop mode
         shopMode,

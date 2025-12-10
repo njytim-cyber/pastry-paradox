@@ -34,3 +34,6 @@ npm-debug.log*
 test-results/
 playwright-report/
 .playwright/
+
+# Local Netlify folder
+.netlify
