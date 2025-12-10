@@ -1,6 +1,6 @@
 # Balance Schema
 
-> Auto-generated on 2025-12-09T23:14:50.143Z
+> Auto-generated on 2025-12-10T05:10:17.691Z
 > Source: `src/data/balance.json`
 
 ## Version
@@ -12,7 +12,7 @@
 | Universal Constant | 67 | The sacred number 67 |
 | Currency Name | Delicious Cakes | In-game currency |
 | FPS | 4 | Game loop frame rate |
-| Cost Multiplier | 1.15 | Price scaling factor |
+| Cost Multiplier | 1.16 | Price scaling factor |
 | Sell Refund Rate | 0.25 | Percentage refunded on sale |
 | Upgrade Visibility Threshold | 1 | When upgrades become visible |
 
@@ -38,7 +38,7 @@ Total tiers: 15
 | 15 | `multiverse_portal` | Multiverse Portal | 75,000,000,000,000,000 | 21,000,000,000 |
 
 ## Upgrades
-Total upgrades: 120
+Total upgrades: 121
 
 ### The Vibe Check
 - **ID**: `the_vibe_check`
@@ -135,6 +135,12 @@ Total upgrades: 120
 - **Cost**: 5,000,000,000
 - **Effect**: tierBonus (Tier 10) - 2x
 - **Description**: Each copy improves upon the last.
+
+### The End is Nigh
+- **ID**: `the_end_is_nigh`
+- **Cost**: 1,000,000,000,000
+- **Effect**: bigCrunch
+- **Description**: Unlock the secrets of the Universe's collapse.
 
 ### Zero-G Frosting
 - **ID**: `zero_g_frosting`

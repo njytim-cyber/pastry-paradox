@@ -46,6 +46,14 @@ export const useEventStore = create(
             },
 
             /**
+             * Deactivate any active event (return to default theme)
+             */
+            deactivateEvent: () => {
+                console.log('Event System: Deactivated.');
+                set({ isActive: false, config: null, mechanicValue: 1.0, currentMultiplier: 1.0 });
+            },
+
+            /**
              * Update the generic mechanic value (e.g. scrolling adds to the meter)
              * @param {number} delta - Positive or negative change
              */

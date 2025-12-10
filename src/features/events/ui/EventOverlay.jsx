@@ -41,6 +41,33 @@ export function EventOverlay({ children }) {
 
     }, [isActive, config]);
 
+    // Apply CSS variables to document root for global theming
+    // Must be before early return to run when theme changes
+    useEffect(() => {
+        const root = document.documentElement;
+
+        if (isActive && config?.theme?.cssVars) {
+            console.log('🎨 Applying theme CSS vars:', config.theme.cssVars);
+            Object.entries(config.theme.cssVars).forEach(([key, value]) => {
+                root.style.setProperty(key, value);
+            });
+            // Add event class for additional CSS hooks
+            root.classList.add('event-active', `event-${config.eventId}`);
+        }
+
+        return () => {
+            // Cleanup: remove CSS variables and classes
+            if (config?.theme?.cssVars) {
+                Object.keys(config.theme.cssVars).forEach(key => {
+                    root.style.removeProperty(key);
+                });
+            }
+            if (config?.eventId) {
+                root.classList.remove('event-active', `event-${config.eventId}`);
+            }
+        };
+    }, [isActive, config]);
+
     if (!isActive || !config) return <>{children}</>;
 
     const themeStyle = {

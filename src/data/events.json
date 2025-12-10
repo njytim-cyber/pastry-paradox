@@ -12,7 +12,8 @@
             "localization": {
                 "currencyName": "Dopamine Hits",
                 "currencyPerSec": "Rot/sec",
-                "resetBtnLabel": "LOBOTOMIZE (Prestige)"
+                "resetBtnLabel": "LOBOTOMIZE (Prestige)",
+                "marketTitle": "6️⃣7️⃣ Market"
             },
             "mechanics": {
                 "doomScrollDecayRate": 0.05,
@@ -115,15 +116,55 @@
         "event_christmas_2025": {
             "name": "Pastry Paradox: Holiday Special",
             "theme": {
-                "fontFamily": "'Mountains of Christmas', cursive",
-                "primaryColor": "#D42426",
+                "fontFamily": "'Mountains of Christmas', 'Berkshire Swash', cursive",
+                "primaryColor": "#bb0a1e",
                 "secondaryColor": "#165B33",
-                "bgFilter": "brightness(1.1) contrast(1.1)"
+                "accentColor": "#d4af37",
+                "bgColor": "#1a2f4b",
+                "panelBg": "#fdf6e3",
+                "panelBorder": "#d4af37",
+                "bgFilter": "brightness(1.0)",
+                "cssVars": {
+                    "--bg-primary": "#1a2f4b",
+                    "--bg-secondary": "#0f1d2d",
+                    "--bg-left-pane": "linear-gradient(180deg, #1a2f4b 0%, #2a4a6b 50%, #1a2f4b 100%)",
+                    "--bg-center-pane": "linear-gradient(180deg, #2a4a6b 0%, #3a5a7b 50%, #2a4a6b 100%)",
+                    "--bg-right-pane": "linear-gradient(180deg, #2c1810 0%, #3d2419 50%, #2c1810 100%)",
+                    "--panel-bg": "#fdf6e3",
+                    "--panel-border": "#d4af37",
+                    "--header-bg": "#165b33",
+                    "--header-text": "#fdf6e3",
+                    "--accent-primary": "#bb0a1e",
+                    "--accent-secondary": "#d4af37",
+                    "--color-chocolate": "#165B33",
+                    "--color-caramel": "#bb0a1e",
+                    "--color-butter": "#fdf6e3",
+                    "--color-cream": "#fdf6e3",
+                    "--color-gold": "#d4af37",
+                    "--color-gold-glow": "#ffd700",
+                    "--ink-primary": "#3e2723",
+                    "--ink-secondary": "#5d4037",
+                    "--ink-header": "#fdf6e3",
+                    "--font-display": "'Mountains of Christmas', 'Berkshire Swash', cursive"
+                }
             },
             "localization": {
                 "currencyName": "Cookies",
                 "currencyPerSec": "Joy/sec",
-                "resetBtnLabel": "WRAP GIFTS (Prestige)"
+                "resetBtnLabel": "🎁 WRAP GIFTS (Prestige)",
+                "marketTitle": "🎄 Christmas Market",
+                "flavorText": [
+                    "The aroma of fresh gingerbread fills the air.",
+                    "A dusting of snow makes everything magical.",
+                    "You hear distant sleigh bells ringing.",
+                    "Hot cocoa warms the soul and the hands.",
+                    "Every cookie is baked with a little bit of love.",
+                    "The bakery glows with the warmth of the season.",
+                    "Sharing sweets is the best way to spread cheer.",
+                    "May your days be merry and your cakes be sweet.",
+                    "A gentle peace settles over the patisserie.",
+                    "Twinkling lights make the night feel warm."
+                ]
             },
             "mechanics": {
                 "holidayCheerDecay": 0.02,
@@ -133,42 +174,112 @@
                 "buildings": [
                     {
                         "originalId": "apprentice_baker",
-                        "newName": "Candy Cane",
-                        "newDescription": "Sweet stick for tapping joy.",
-                        "newIconUrl": "/assets/events/christmas/icons/candy_cane.png",
+                        "newName": "🍬 Candy Cane",
+                        "newDescription": "Sweet striped sticks spreading holiday cheer.",
+                        "newIconUrl": "candy_cane",
                         "productionModifier": 1.1
                     },
                     {
                         "originalId": "grandmas_secret_recipe",
-                        "newName": "Mrs. Claus",
-                        "newDescription": "Baking cookies with North Pole magic.",
-                        "newIconUrl": "/assets/events/christmas/icons/mrs_claus.png",
+                        "newName": "🤶 Mrs. Claus",
+                        "newDescription": "Baking cookies with North Pole magic since forever.",
+                        "newIconUrl": "mrs_claus",
                         "productionModifier": 1.5
                     },
                     {
                         "originalId": "convection_oven",
-                        "newName": "Reindeer Stable",
-                        "newDescription": "Where the magic flight begins.",
-                        "newIconUrl": "/assets/events/christmas/icons/reindeer.png",
+                        "newName": "🦌 Reindeer Stable",
+                        "newDescription": "Where the magic flight preparations begin.",
+                        "newIconUrl": "reindeer",
                         "productionModifier": 2.0
                     },
                     {
                         "originalId": "professional_mixer",
-                        "newName": "Coal Mine",
-                        "newDescription": "Digging for the naughty list.",
-                        "newIconUrl": "/assets/events/christmas/icons/coal.png",
+                        "newName": "🪨 Coal Mine",
+                        "newDescription": "Digging for the naughty list. Someone's gotta do it.",
+                        "newIconUrl": "coal",
                         "productionModifier": 1.2
                     },
                     {
-                        "originalId": "cake_factory",
-                        "newName": "Toy Workshop",
-                        "newDescription": "Elves working overtime.",
-                        "newIconUrl": "/assets/events/christmas/icons/workshop.png",
+                        "originalId": "local_bakery_franchise",
+                        "newName": "🎁 Toy Workshop",
+                        "newDescription": "Elves working overtime to meet quota.",
+                        "newIconUrl": "workshop",
                         "productionModifier": 2.5
+                    },
+                    {
+                        "originalId": "cake_factory",
+                        "newName": "🏭 Cookie Factory",
+                        "newDescription": "Mass-producing gingerbread by the billions.",
+                        "newIconUrl": "workshop",
+                        "productionModifier": 2.0
+                    },
+                    {
+                        "originalId": "industrial_frosting_hose",
+                        "newName": "☕ Hot Cocoa Fountain",
+                        "newDescription": "Rivers of chocolatey warmth with marshmallow rapids.",
+                        "newIconUrl": "hot_cocoa",
+                        "productionModifier": 1.8
+                    },
+                    {
+                        "originalId": "3d_cake_printer",
+                        "newName": "❄️ Snowflake Machine",
+                        "newDescription": "No two cookies are exactly alike. Probably.",
+                        "newIconUrl": "snowflake_machine",
+                        "productionModifier": 2.2
+                    },
+                    {
+                        "originalId": "robotic_pastry_chef",
+                        "newName": "🧝 Elf Brigade",
+                        "newDescription": "Pointy hats, pointy ears, pointed productivity.",
+                        "newIconUrl": "elf",
+                        "productionModifier": 2.0
+                    },
+                    {
+                        "originalId": "cloning_vat",
+                        "newName": "🎀 Gift Wrapping Station",
+                        "newDescription": "Infinite bows, infinite ribbons, infinite joy.",
+                        "newIconUrl": "gift_wrap",
+                        "productionModifier": 2.5
+                    },
+                    {
+                        "originalId": "orbital_bakery_station",
+                        "newName": "🛷 Santa's Sleigh",
+                        "newDescription": "Delivering cookies across the globe in one night.",
+                        "newIconUrl": "sleigh",
+                        "productionModifier": 3.0
+                    },
+                    {
+                        "originalId": "nanobot_yeast",
+                        "newName": "✨ Magic Snowflakes",
+                        "newDescription": "Each flake contains a wish. And sugar.",
+                        "newIconUrl": "snowflakes",
+                        "productionModifier": 2.5
+                    },
+                    {
+                        "originalId": "time_warp_oven",
+                        "newName": "⏰ Christmas Countdown",
+                        "newDescription": "Time moves faster when you're having fun.",
+                        "newIconUrl": "countdown",
+                        "productionModifier": 3.0
+                    },
+                    {
+                        "originalId": "matter_replicator",
+                        "newName": "⭐ Star of Wonder",
+                        "newDescription": "Guiding wise bakers to the perfect recipe.",
+                        "newIconUrl": "star",
+                        "productionModifier": 3.5
+                    },
+                    {
+                        "originalId": "multiverse_portal",
+                        "newName": "🌌 North Pole Portal",
+                        "newDescription": "Direct gateway to Santa's domain. VIP access only.",
+                        "newIconUrl": "portal",
+                        "productionModifier": 4.0
                     }
                 ],
                 "mainClickable": {
-                    "newIconUrl": "/assets/events/christmas/icons/gingerbread_house.png",
+                    "newIconUrl": "gingerbread_house",
                     "scale": 1.2,
                     "spinSpeed": 0.2
                 },

@@ -77,12 +77,28 @@ export function useUpgradeSystem({ totalBaked, setCpsMultiplier }) {
         return totalStr.includes('67');
     }, [totalBaked]);
 
+    // Reset upgrades for prestige (keep permanent unlocks like 'the_end_is_nigh')
+    const resetForPrestige = useCallback(() => {
+        // Keep only permanent prestige unlocks
+        setPurchasedUpgrades(prev => {
+            const kept = {};
+            // Keep the prestige unlock upgrade (permanent)
+            if (prev['the_end_is_nigh']) {
+                kept['the_end_is_nigh'] = true;
+            }
+            return kept;
+        });
+        // Reset CPS multiplier to base
+        setCpsMultiplier(1);
+    }, [setCpsMultiplier]);
+
     return {
         upgradeList,
         purchasedUpgrades,
         purchaseUpgrade,
         canPurchaseUpgrade,
         has67Pattern,
+        resetForPrestige,
     };
 }
 

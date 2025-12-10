@@ -11,6 +11,7 @@
 
 import { formatNumber, formatNumberWordCompact } from '../../cake/logic/useCakeLogic';
 import { Tooltip } from '../../shared/ui/Tooltip';
+import { useEventStore } from '../../events/logic/useEventStore';
 
 // Placeholder icons for generators - inline SVGs
 // Import all icons from assets folder
@@ -29,8 +30,43 @@ const getIconResult = (id) => {
     return match ? iconAssets[match] : null;
 };
 
+// Import Christmas event icons
+const christmasIconAssets = import.meta.glob('@assets/events/christmas/icons/*.{webp,png,svg}', { eager: true, import: 'default' });
+
+/**
+ * Get the icon URL for a Christmas event building
+ * @param {string} iconKey - Icon key (e.g. 'candy_cane')
+ */
+const getChristmasIcon = (iconKey) => {
+    if (!iconKey) return null;
+    const match = Object.keys(christmasIconAssets).find(path => path.includes(iconKey + '.'));
+    return match ? christmasIconAssets[match] : null;
+};
+
+/**
+ * Get building data with event overrides applied
+ * @param {object} tier - Original tier data
+ * @param {boolean} isActive - Is event active
+ * @param {object} config - Event config
+ */
+const getThemedBuildingData = (tier, isActive, config) => {
+    if (!isActive || !config?.overrides?.buildings) {
+        return { name: tier.name, description: tier.description, eventIcon: null };
+    }
+
+    const override = config.overrides.buildings.find(b => b.originalId === tier.id);
+    if (override) {
+        return {
+            name: override.newName || tier.name,
+            description: override.newDescription || tier.description,
+            eventIcon: getChristmasIcon(override.newIconUrl),
+        };
+    }
+    return { name: tier.name, description: tier.description, eventIcon: null };
+};
+
 // Generator Icon Component
-const GeneratorIcon = ({ tier, id, isMystery }) => {
+const GeneratorIcon = ({ tier, id, isMystery, eventIcon }) => {
     const colors = [
         '#F5D89A', '#E8D5C4', '#C4956A', '#A8D5BA', '#7B8CDE',
         '#E8A0A0', '#B24C63', '#FFB6C1', '#9B59B6', '#3498DB',
@@ -46,7 +82,8 @@ const GeneratorIcon = ({ tier, id, isMystery }) => {
         );
     }
 
-    const iconUrl = id ? getIconResult(id) : null;
+    // Event icon takes priority
+    const iconUrl = eventIcon || (id ? getIconResult(id) : null);
 
     if (iconUrl) {
         return (
@@ -127,6 +164,9 @@ export function StorePanel({
 }) {
     const { visible, mystery } = getVisibleTiers(generators, getGeneratorInfo);
 
+    // Get event config for themed building overrides
+    const { isActive, config } = useEventStore();
+
     // Phone detection for compact layout (tablets use full layout)
     const isMobile = typeof window !== 'undefined' && window.innerWidth <= 480;
 
@@ -157,12 +197,15 @@ export function StorePanel({
         }
     };
 
+    // Get themed market title
+    const marketTitle = config?.localization?.marketTitle || '🧁 Market';
+
     return (
         <div className="panel store-panel">
             {/* Mobile: Compact single-line header */}
             {isMobile ? (
                 <div className="panel-header store-header store-header--compact">
-                    <h2 className="panel-title">🧁 Market</h2>
+                    <h2 className="panel-title">{marketTitle}</h2>
                     <div className="store-compact-controls">
                         <button
                             className={`store-compact-btn ${shopMode === 'sell' ? 'store-compact-btn--sell' : ''}`}
@@ -182,7 +225,7 @@ export function StorePanel({
                 /* Desktop: Original two-row layout */
                 <>
                     <div className="panel-header store-header">
-                        <h2 className="panel-title">🧁 Market</h2>
+                        <h2 className="panel-title">{marketTitle}</h2>
                         <div className="store-mode-toggle">
                             <button
                                 className={`store-mode-btn ${shopMode === 'buy' ? 'store-mode-btn--active' : ''}`}
@@ -226,6 +269,9 @@ export function StorePanel({
                     const info = getGeneratorInfo?.(tier.id) || tier;
                     const owned = info.owned || 0;
 
+                    // Get themed data (event overrides if active)
+                    const themed = getThemedBuildingData(tier, isActive, config);
+
                     if (shopMode === 'buy') {
                         const affordable = canAfford?.(tier.id, buyQuantity) ?? false;
                         const displayCost = getBulkCost?.(tier.id, buyQuantity) || info.currentPrice || tier.baseCost;
@@ -233,8 +279,8 @@ export function StorePanel({
                         return (
                             <Tooltip key={tier.id} content={
                                 <>
-                                    <div className="tooltip-rich-header">{tier.name}</div>
-                                    <div className="tooltip-rich-body">{tier.description}</div>
+                                    <div className="tooltip-rich-header">{themed.name}</div>
+                                    <div className="tooltip-rich-body">{themed.description}</div>
                                     <div className="tooltip-rich-stats">
                                         <span className={affordable ? 'tooltip-stat-cost affordable' : 'tooltip-stat-cost expensive'}>
                                             🍰 {formatNumberWordCompact(displayCost)}
@@ -257,9 +303,9 @@ export function StorePanel({
                                     disabled={!affordable}
                                 // Removed native title to allow Tooltip
                                 >
-                                    <GeneratorIcon tier={tier.tierIndex + 1} id={tier.id} />
+                                    <GeneratorIcon tier={tier.tierIndex + 1} id={tier.id} eventIcon={themed.eventIcon} />
                                     <div className="shop-item__info">
-                                        <div className="shop-item__name">{tier.name}</div>
+                                        <div className="shop-item__name">{themed.name}</div>
                                         <div className="shop-item__cost">
                                             {formatNumberWordCompact(displayCost)}
                                         </div>
@@ -281,9 +327,9 @@ export function StorePanel({
                                 disabled={!canSell}
                                 title={`Sell for ${formatNumber(sellPrice)} cakes`}
                             >
-                                <GeneratorIcon tier={tier.tierIndex + 1} id={tier.id} />
+                                <GeneratorIcon tier={tier.tierIndex + 1} id={tier.id} eventIcon={themed.eventIcon} />
                                 <div className="shop-item__info">
-                                    <div className="shop-item__name">{tier.name}</div>
+                                    <div className="shop-item__name">{themed.name}</div>
                                     <div className="shop-item__cost shop-item__cost--sell">
                                         💰 +{formatNumber(sellPrice)}
                                     </div>

@@ -1433,3 +1433,263 @@ h4 {
 .shop-item__icon--mystery {
   mix-blend-mode: normal;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CHRISTMAS THEME - "North Pole Patisserie"
+   Activated when .event-christmas-2025 class is on html element
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* --- Phase 1: Background & Atmosphere --- */
+.event-christmas-2025 body {
+  background: var(--bg-primary, #1a2f4b);
+  background-image: none;
+}
+
+/* Left Pane - Midnight Blue with subtle glow */
+.event-christmas-2025 .pane-left {
+  background: var(--bg-left-pane, linear-gradient(180deg, #1a2f4b 0%, #2a4a6b 50%, #1a2f4b 100%));
+  border-right-color: var(--accent-secondary, #d4af37);
+}
+
+/* Center Pane - Slightly lighter blue */
+.event-christmas-2025 .pane-center {
+  background: var(--bg-center-pane, linear-gradient(180deg, #2a4a6b 0%, #3a5a7b 50%, #2a4a6b 100%));
+}
+
+/* Right Pane - Warm brown (gingerbread house vibe) */
+.event-christmas-2025 .pane-right {
+  background: var(--bg-right-pane, linear-gradient(180deg, #2c1810 0%, #3d2419 50%, #2c1810 100%));
+  border-left-color: var(--accent-secondary, #d4af37);
+}
+
+/* Flavor Banner - Pine Green */
+.event-christmas-2025 .flavor-banner {
+  background: var(--header-bg, #165b33);
+  border-bottom: 2px solid var(--accent-secondary, #d4af37);
+}
+
+/* --- Phase 2: Snowfall Effect --- */
+
+/* Snowflake container - applies to left pane */
+.event-christmas-2025 .pane-left::after,
+.event-christmas-2025 .pane-center::after {
+  content: '❄ ❅ ❆ ✦ ❄ ❅ ❆ ✦ ❄ ❅';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 3rem;
+  line-height: 4rem;
+  word-wrap: break-word;
+  overflow: hidden;
+  animation: snowfall-text 20s linear infinite;
+  opacity: 0.5;
+  z-index: 0;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Second snow layer (slower, larger) */
+.event-christmas-2025 .pane-left::before {
+  content: '❆ ✻ ❄ ❅ ✦ ❆ ✻ ❄';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 5rem;
+  line-height: 6rem;
+  word-wrap: break-word;
+  overflow: hidden;
+  animation: snowfall-text-slow 30s linear infinite;
+  opacity: 0.3;
+  z-index: 0;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes snowfall-text {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes snowfall-text-slow {
+  0% {
+    transform: translateY(-100%) translateX(10px);
+  }
+
+  100% {
+    transform: translateY(100%) translateX(-10px);
+  }
+}
+
+/* --- Phase 3: Panel Styling --- */
+
+/* Upgrade Panel - Parchment with gold border */
+.event-christmas-2025 .upgrade-panel {
+  background: var(--panel-bg, #fdf6e3);
+  border: 2px solid var(--accent-secondary, #d4af37);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Stats Panel - Parchment style */
+.event-christmas-2025 .panel.stats-panel {
+  background: var(--panel-bg, #fdf6e3);
+  border: 2px solid var(--accent-secondary, #d4af37);
+  border-radius: 12px;
+  color: var(--ink-primary, #3e2723);
+}
+
+/* Store Panel - Parchment with pine green header */
+.event-christmas-2025 .panel.store-panel {
+  background: var(--panel-bg, #fdf6e3);
+  border-radius: 12px 12px 0 0;
+}
+
+/* Store Header - Pine Green "Wooden Sign" */
+.event-christmas-2025 .store-header,
+.event-christmas-2025 .store-header--compact {
+  background: var(--header-bg, #165b33);
+  color: var(--ink-header, #fdf6e3);
+  border-radius: 10px 10px 0 0;
+  border-bottom: 3px solid var(--accent-secondary, #d4af37);
+  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.event-christmas-2025 .store-header .panel-title,
+.event-christmas-2025 .store-header--compact .panel-title {
+  color: var(--ink-header, #fdf6e3);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Phase 4: Button Styling --- */
+
+/* Buy/Sell Mode Buttons */
+.event-christmas-2025 .store-mode-btn--active {
+  background: var(--header-bg, #165b33) !important;
+  color: var(--ink-header, #fdf6e3) !important;
+  border-color: var(--accent-secondary, #d4af37) !important;
+}
+
+.event-christmas-2025 .store-mode-btn:not(.store-mode-btn--active) {
+  background: var(--panel-bg, #fdf6e3);
+  color: var(--ink-primary, #3e2723);
+  border-color: var(--header-bg, #165b33);
+}
+
+/* Quantity Buttons */
+.event-christmas-2025 .quantity-btn {
+  background: var(--panel-bg, #fdf6e3);
+  border-color: var(--header-bg, #165b33);
+  color: var(--ink-primary, #3e2723);
+}
+
+.event-christmas-2025 .quantity-btn--active {
+  background: var(--accent-primary, #bb0a1e) !important;
+  color: white !important;
+  border-color: var(--accent-secondary, #d4af37) !important;
+  box-shadow: 0 0 10px rgba(187, 10, 30, 0.5);
+}
+
+/* Shop Items */
+.event-christmas-2025 .shop-item {
+  background: var(--panel-bg, #fdf6e3);
+  border-color: var(--accent-secondary, #d4af37);
+  color: var(--ink-primary, #3e2723);
+}
+
+.event-christmas-2025 .shop-item:hover:not(.shop-item--disabled) {
+  background: linear-gradient(135deg, #fdf6e3, #f5e6c8);
+  border-color: var(--accent-primary, #bb0a1e);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+.event-christmas-2025 .shop-item__name {
+  color: var(--ink-primary, #3e2723);
+}
+
+.event-christmas-2025 .shop-item__cost {
+  color: var(--header-bg, #165b33);
+}
+
+/* Upgrade Cards */
+.event-christmas-2025 .upgrade-card {
+  background: var(--panel-bg, #fdf6e3);
+  border: 2px solid var(--accent-secondary, #d4af37);
+}
+
+.event-christmas-2025 .upgrade-card:hover:not(.upgrade-card--purchased):not(.upgrade-card--locked) {
+  border-color: var(--accent-primary, #bb0a1e);
+  box-shadow: 0 0 12px rgba(187, 10, 30, 0.4);
+}
+
+/* --- Phase 5: Typography --- */
+.event-christmas-2025 h1,
+.event-christmas-2025 h2,
+.event-christmas-2025 h3,
+.event-christmas-2025 .panel-title {
+  font-family: var(--font-display, 'Mountains of Christmas', cursive);
+}
+
+/* Bakery Balance - Gold colored */
+.event-christmas-2025 .bakery-balance {
+  color: var(--accent-secondary, #d4af37);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Bakery Name */
+.event-christmas-2025 .bakery-name {
+  color: var(--color-cream, #fdf6e3);
+}
+
+/* --- Big Crunch Button Christmas Style --- */
+.event-christmas-2025 .big-crunch-btn {
+  background: linear-gradient(135deg, var(--accent-primary, #bb0a1e), #8b0000) !important;
+  border: 3px solid var(--accent-secondary, #d4af37) !important;
+  box-shadow: 0 0 20px rgba(187, 10, 30, 0.6), inset 0 2px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.event-christmas-2025 .big-crunch-btn:hover {
+  box-shadow: 0 0 30px rgba(187, 10, 30, 0.8), inset 0 2px 0 rgba(255, 255, 255, 0.3) !important;
+  transform: scale(1.05);
+}
+
+/* --- Prestige Section Christmas --- */
+.event-christmas-2025 .prestige-section {
+  background: rgba(22, 91, 51, 0.1);
+  border: 2px solid var(--accent-secondary, #d4af37);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+/* --- Tooltip Christmas Style --- */
+.event-christmas-2025 .tooltip-popup {
+  background: var(--panel-bg, #fdf6e3) !important;
+  border: 2px solid var(--accent-secondary, #d4af37) !important;
+  color: var(--ink-primary, #3e2723) !important;
+}
+
+.event-christmas-2025 .tooltip-rich-header {
+  color: var(--header-bg, #165b33) !important;
+}
+
+/* --- Mobile Adjustments --- */
+@media (max-width: 768px) {
+  .event-christmas-2025 .clicker-zone {
+    background: var(--bg-left-pane, linear-gradient(180deg, #1a2f4b 0%, #2a4a6b 50%, #1a2f4b 100%));
+  }
+
+  .event-christmas-2025 .mobile-tab-bar {
+    background: var(--header-bg, #165b33);
+    border-top: 2px solid var(--accent-secondary, #d4af37);
+  }
+
+  .event-christmas-2025 .mobile-tab-bar__tab--active {
+    color: var(--accent-secondary, #d4af37);
+  }
+}

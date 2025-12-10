@@ -3,7 +3,7 @@
  * Unit tests for audio system logic
  */
 import { renderHook, act } from '@testing-library/react';
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { useAudioSystem } from './useAudioSystem';
 
 const STORAGE_KEY = 'pastry_paradox_audio_muted';

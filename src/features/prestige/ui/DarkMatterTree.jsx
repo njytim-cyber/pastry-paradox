@@ -8,6 +8,20 @@ const { darkMatterUpgrades } = balanceData;
 
 
 
+// Import all upgrade icons dynamically
+const upgradeIcons = import.meta.glob('/src/assets/icons/*.{jpeg,jpg,png}', { eager: true, as: 'url' });
+
+const getIconPath = (id) => {
+    // Try to match id with filename (ignoring extension first? No, explicit check)
+    // Keys are like "/src/assets/icons/dark_matter_1.jpeg"
+    const extensions = ['jpeg', 'jpg', 'png'];
+    for (const ext of extensions) {
+        const path = `/src/assets/icons/${id}.${ext}`;
+        if (upgradeIcons[path]) return upgradeIcons[path];
+    }
+    return null;
+};
+
 export function DarkMatterTree({ darkMatter, darkUpgrades, onBuy, totalGlobalMultiplier }) {
     const containerRef = useRef(null);
     const [pan, setPan] = useState({ x: 0, y: 0 });
@@ -161,11 +175,23 @@ export function DarkMatterTree({ darkMatter, darkUpgrades, onBuy, totalGlobalMul
                         >
                             {/* Icon Image if available, else standard char */}
                             <img
-                                src={`/assets/icons/${node.id}.webp`}
-                                onError={(e) => { e.target.onerror = null; e.target.src = '/assets/icons/placeholder.png'; e.target.style.display = 'none'; }}
+                                src={getIconPath(node.id)}
+                                onError={(e) => {
+                                    e.target.style.display = 'none';
+                                }}
                                 alt={node.name}
-                                style={{ width: '80%', height: '80%', borderRadius: '50%', pointerEvents: 'none' }}
+                                style={{
+                                    width: '80%',
+                                    height: '80%',
+                                    borderRadius: '50%',
+                                    pointerEvents: 'none',
+                                    display: getIconPath(node.id) ? 'block' : 'none'
+                                }}
                             />
+                            {/* Fallback visual if image fails/loads */}
+                            <div className="node-fallback" style={{ position: 'absolute', fontSize: '24px', pointerEvents: 'none', zIndex: -1 }}>
+                                🔮
+                            </div>
                             {(!available) && <span style={{ position: 'absolute' }}>🔒</span>}
                         </div>
                     );
@@ -190,6 +216,7 @@ export function DarkMatterTree({ darkMatter, darkUpgrades, onBuy, totalGlobalMul
                         color: '#fff',
                         zIndex: 20
                     }}
+                    onPointerDown={(e) => e.stopPropagation()} // Prevent drag start when clicking panel
                 >
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
                         <h3 style={{ margin: 0, color: '#f39c12' }}>{selectedNode.name}</h3>

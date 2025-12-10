@@ -18,15 +18,8 @@ test.describe('Pastry Paradox - Christmas Event', () => {
 
         // Check for specific Christmas colors or font
         // e.g. Mountains of Christmas font
-        const body = page.locator('body');
-        // This is hard to assert computed style across all browsers confidently without specific element
-        // But we can check for overrides.
-
-        // Check for "Cookies" currency
-        const balanceLabel = page.locator('.bakery-balance');
-        // Actually balance usually just shows number.
-        // But MainCake might show "Cookies".
-        // Or Flavor Banner.
+        // Note: Computed style checks are hard to assert reliably.
+        // Future: Check for "Cookies" currency or specific visual elements.
     });
 
     test('should show Reindeer Stable instead of Farm', async ({ page }) => {

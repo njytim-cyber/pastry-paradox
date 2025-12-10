@@ -4,6 +4,10 @@
  */
 import React, { useState, useCallback } from 'react';
 import { formatNumberWord } from '../logic/useCakeLogic';
+import { useEventStore } from '../../events/logic/useEventStore';
+
+// Import Christmas Yule Log
+// import yuleLogImage from '@assets/events/christmas/yule_log.png'; // Unused now
 
 // Placeholder cake SVG until assets are generated
 const PlaceholderCake = () => (
@@ -45,6 +49,50 @@ const PlaceholderCake = () => (
     </svg>
 );
 
+// Christmas Yule Log Cake SVG (Translucent and Cute)
+const YuleLogSVG = () => (
+    <svg viewBox="0 0 200 200" className="cake christmas-cake" role="img" aria-label="Cute Yule Log Cake">
+        {/* Main Log Body (Chocolate) */}
+        <path d="M40 70 L40 130 C40 150 70 160 100 160 C130 160 160 150 160 130 L160 70" fill="#5D4037" stroke="#3E2723" strokeWidth="3" />
+        <ellipse cx="100" cy="70" rx="60" ry="25" fill="#795548" stroke="#3E2723" strokeWidth="3" />
+
+        {/* Swirl End Cap (Light Cream Spiral) */}
+        <ellipse cx="100" cy="70" rx="50" ry="20" fill="#D7CCC8" />
+        <path d="M100 70 m-35 0 a 35 12 0 1 0 70 0 a 35 12 0 1 0 -70 0" stroke="#5D4037" strokeWidth="4" fill="none" opacity="0.8" />
+        <path d="M100 70 m-20 0 a 20 7 0 1 0 40 0 a 20 7 0 1 0 -40 0" stroke="#5D4037" strokeWidth="4" fill="none" opacity="0.8" />
+
+        {/* Bark Texture Details */}
+        <path d="M50 90 Q60 110 50 130" stroke="#3E2723" strokeWidth="2" fill="none" opacity="0.5" />
+        <path d="M80 100 Q90 120 80 140" stroke="#3E2723" strokeWidth="2" fill="none" opacity="0.5" />
+        <path d="M120 90 Q130 110 120 130" stroke="#3E2723" strokeWidth="2" fill="none" opacity="0.5" />
+        <path d="M150 100 Q140 120 150 140" stroke="#3E2723" strokeWidth="2" fill="none" opacity="0.5" />
+
+        {/* Snow Icing on Top */}
+        <path d="M40 75 Q70 65 100 75 Q130 65 160 75 Q160 90 150 95 Q130 90 120 100 Q100 90 80 100 Q60 90 40 95 Z" fill="#FFF" opacity="0.9" />
+
+        {/* Holly Leaves & Berries */}
+        <path d="M85 65 Q80 50 90 45 Q100 50 95 65 Z" fill="#2E7D32" stroke="#1B5E20" strokeWidth="1" />
+        <path d="M115 65 Q120 50 110 45 Q100 50 105 65 Z" fill="#2E7D32" stroke="#1B5E20" strokeWidth="1" />
+        <circle cx="95" cy="65" r="5" fill="#D32F2F" stroke="#B71C1C" strokeWidth="1" />
+        <circle cx="105" cy="65" r="5" fill="#D32F2F" stroke="#B71C1C" strokeWidth="1" />
+        <circle cx="100" cy="58" r="5" fill="#D32F2F" stroke="#B71C1C" strokeWidth="1" />
+
+        {/* Cute Face */}
+        <circle cx="80" cy="110" r="4" fill="#000" />
+        <circle cx="120" cy="110" r="4" fill="#000" />
+        <path d="M95 115 Q100 120 105 115" stroke="#000" strokeWidth="2" fill="none" />
+        <ellipse cx="75" cy="115" rx="3" ry="1.5" fill="#FFCDD2" opacity="0.6" />
+        <ellipse cx="125" cy="115" rx="3" ry="1.5" fill="#FFCDD2" opacity="0.6" />
+
+        {/* Meringue Mushrooms */}
+        <path d="M50 140 Q60 130 70 140 L65 150 L55 150 Z" fill="#FFF8E1" stroke="#FBC02D" strokeWidth="1" />
+        <ellipse cx="60" cy="140" rx="12" ry="6" fill="#D7CCC8" stroke="#8D6E63" strokeWidth="1" />
+
+        <path d="M140 140 Q150 130 160 140 L155 150 L145 150 Z" fill="#FFF8E1" stroke="#FBC02D" strokeWidth="1" />
+        <ellipse cx="150" cy="140" rx="12" ry="6" fill="#D7CCC8" stroke="#8D6E63" strokeWidth="1" />
+    </svg>
+);
+
 /**
  * MainCake Component
  * @param {Object} props
@@ -62,6 +110,10 @@ export function MainCake({
     currencyName = 'Delicious Cakes'
 }) {
     const [isClicked, setIsClicked] = useState(false);
+    const { isActive, config } = useEventStore();
+
+    // Check if Christmas theme is active
+    const isChristmas = isActive && config?.eventId === 'event_christmas_2025';
 
     const handleClick = useCallback((e) => {
         setIsClicked(true);
@@ -83,7 +135,7 @@ export function MainCake({
                 onKeyDown={(e) => e.key === 'Enter' && handleClick(e)}
             >
                 <div className="cake">
-                    <PlaceholderCake />
+                    {isChristmas ? <YuleLogSVG /> : <PlaceholderCake />}
                 </div>
             </div>
 

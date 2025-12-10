@@ -3,6 +3,7 @@
  * View Component (NO LOGIC)
  */
 import React, { useState, useEffect, useMemo } from 'react';
+import { useEventStore } from '../../events/logic/useEventStore';
 
 // Message pools based on game state
 const MESSAGES = {
@@ -55,9 +56,17 @@ const MESSAGES = {
 /**
  * Get appropriate message pool based on game state
  */
-function getMessagePool(cps, totalBaked, isGoldenActive, has67) {
+function getMessagePool(cps, totalBaked, isGoldenActive, has67, eventConfig) {
+    // Event specific override takes priority if not golden/milestone
+    // (Or maybe event should override everything except golden?)
+    const eventQuotes = eventConfig?.localization?.flavorText;
+
     if (isGoldenActive) return MESSAGES.goldenActive;
     if (has67) return MESSAGES.milestone67;
+
+    if (eventQuotes && Array.isArray(eventQuotes) && eventQuotes.length > 0) {
+        return eventQuotes;
+    }
 
     const trillion = 1e12;
     const billion = 1e9;
@@ -81,10 +90,11 @@ export function FlavorText({
 }) {
     const [currentMessage, setCurrentMessage] = useState('');
     const [isTransitioning, setIsTransitioning] = useState(false);
+    const { config: eventConfig } = useEventStore();
 
     const messagePool = useMemo(() =>
-        getMessagePool(cps, totalBaked, isGoldenActive, has67Pattern),
-        [cps, totalBaked, isGoldenActive, has67Pattern]
+        getMessagePool(cps, totalBaked, isGoldenActive, has67Pattern, eventConfig),
+        [cps, totalBaked, isGoldenActive, has67Pattern, eventConfig]
     );
 
     // Message timing: 10s visible, 3 min hidden, repeat
@@ -96,6 +106,7 @@ export function FlavorText({
     // Rotate messages with show/hide cycle
     useEffect(() => {
         const pickNewMessage = () => {
+            if (!messagePool || messagePool.length === 0) return;
             const newMessage = messagePool[Math.floor(Math.random() * messagePool.length)];
             setIsTransitioning(true);
 

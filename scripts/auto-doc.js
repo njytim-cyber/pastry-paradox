@@ -114,13 +114,14 @@ ${balanceData.productionTiers.map(tier =>
 Total upgrades: ${Object.keys(balanceData.upgrades).length}
 
 ${Object.entries(balanceData.upgrades).map(([_key, upgrade]) => {
-        const effectType = upgrade.effect.type;
-        const effectValue = upgrade.effect.value;
-        const effectTier = upgrade.effect.tier !== undefined ? ` (Tier ${upgrade.effect.tier})` : '';
+        const effectType = upgrade.effect?.type ?? upgrade.unlockFeature ?? 'special';
+        const effectValue = upgrade.effect?.value ?? '';
+        const effectTier = upgrade.effect?.tier !== undefined ? ` (Tier ${upgrade.effect.tier})` : '';
+        const effectDisplay = effectValue ? `${effectType}${effectTier} - ${effectValue}x` : effectType;
         return `### ${upgrade.name}
 - **ID**: \`${upgrade.id}\`
 - **Cost**: ${upgrade.cost.toLocaleString()}
-- **Effect**: ${effectType}${effectTier} - ${effectValue}x
+- **Effect**: ${effectDisplay}
 - **Description**: ${upgrade.description}`;
     }).join('\n\n')}
 

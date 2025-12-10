@@ -254,7 +254,7 @@ export function StatsPanel({
                             </span>
                         ) : (
                             <span className="prestige-requirement">
-                                Bake 1 trillion cakes to unlock the end.
+                                Bake 1 trillion cakes to collapse the universe
                             </span>
                         )}
                     </div>

@@ -124,35 +124,51 @@ export function useGameState() {
     // Perform prestige reset (The Big Crunch)
     const performPrestige = useCallback((totalBaked, resetGame) => {
         const earnedPoints = calculateDarkMatter(totalBaked);
-        // We allow prestige even if 0 points if unlocking something? No, usually require gain.
-        // But for "The Big Crunch" event, maybe we force it?
-        // Let's keep requirement > 0 for now unless overruled.
         if (earnedPoints <= 0) return false;
 
         const newTotalPoints = darkMatter + earnedPoints;
         setDarkMatter(newTotalPoints);
-        // Multiplier updates via effect or derived state
         setLegacyMultiplier(calculateLegacyMultiplier(newTotalPoints));
 
-        // Reset stats but KEEP Lifetime stats if needed?
-        // Usually "Total Baked (This Ascension)" resets, "All Time" keeps going.
-        // We have 'totalBaked' (session/ascension?) and 'allTimeBaked'.
-        // 'recordBaked' updates both.
-        // So we reset 'totalBaked' to 0.
-
+        // Reset stats
         setStats(prev => ({
             ...prev,
             totalClicks: 0,
             totalBaked: 0, // Reset current run baked
-            // totalSpent: 0, // Reset spent? Yes.
             sessionStart: Date.now(),
             prestigeCount: prev.prestigeCount + 1,
         }));
+
+        // Reset bakery name override if it was still default (optional)? 
+        // User requested NOT to touch the name automatically. So we do nothing here.
 
         // Callback to reset the game state (buildings, upgrades, etc)
         resetGame?.();
         return true;
     }, [darkMatter, calculateDarkMatter, calculateLegacyMultiplier]);
+
+    // Buy Dark Matter Upgrade
+    const buyDarkUpgrade = useCallback((upgradeId) => {
+        const upgrade = balanceData.darkMatterUpgrades[upgradeId];
+        if (!upgrade) return false;
+
+        // Check ownership
+        if (darkUpgrades.includes(upgradeId)) return false;
+
+        // Check cost
+        if (darkMatter < upgrade.cost) return false;
+
+        // Check parent (if applicable)
+        if (upgrade.parent && !darkUpgrades.includes(upgrade.parent)) return false;
+
+        // Deduct cost
+        setDarkMatter(prev => prev - upgrade.cost);
+
+        // Add to upgrades
+        setDarkUpgrades(prev => [...prev, upgradeId]);
+
+        return true;
+    }, [darkMatter, darkUpgrades]);
 
     // Potential legacy points if prestige now (Dark Matter)
     // We calculate this in the return object or here if needed for other logic
@@ -219,6 +235,7 @@ export function useGameState() {
         potentialDarkMatter: useMemo(() => calculateDarkMatter(stats.totalBaked), [stats.totalBaked, calculateDarkMatter]),
         performPrestige,
         canPrestige: calculateDarkMatter(stats.totalBaked) > 0,
+        buyDarkUpgrade,
     };
 }
 

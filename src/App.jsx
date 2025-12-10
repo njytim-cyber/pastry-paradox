@@ -30,6 +30,7 @@ import { AchievementPopup } from '@features/achievements/ui/AchievementPopup';
 import { useVersionSplash } from '@features/splash/logic/useVersionSplash';
 import { VersionSplash } from '@features/splash/ui/VersionSplash';
 import { AudioController } from '@features/audio/ui/AudioController';
+import { DarkMatterTree } from '@features/prestige/ui/DarkMatterTree';
 import packageJson from '../package.json';
 
 const { globalConfig } = balanceData;
@@ -131,13 +132,36 @@ function App() {
         cakeLogic.sellGenerator(tierId, quantity);
     }, [cakeLogic]);
 
-    // Handle prestige
+    // Prestige animation and modal state
+    const [showPrestigeAnimation, setShowPrestigeAnimation] = React.useState(false);
+    const [showDarkMatterTree, setShowDarkMatterTree] = React.useState(false);
+
+    // Handle prestige (The Big Crunch / Deliver the Gifts)
     const handlePrestige = useCallback(() => {
-        gameState.performPrestige(gameState.stats.totalBaked, () => {
-            // Reset game state - would need to expose reset in useCakeLogic
-            // For now, just do the prestige tracking
+        const success = gameState.performPrestige(gameState.stats.totalBaked, () => {
+            // Reset cake logic (generators, balance)
+            cakeLogic.resetProgress();
+            // Reset upgrades (keep permanent unlocks)
+            upgradeSystem.resetForPrestige();
         });
-    }, [gameState]);
+
+        if (success) {
+            // Show animation overlay
+            setShowPrestigeAnimation(true);
+
+            // Upgrade bakery name if still default
+            // REMOVED at user request - do not touch user's bakery name
+            // if (gameState.bakeryName === "Your Patisserie") {
+            //     gameState.setBakeryName("Your Multiversal Patisserie");
+            // }
+
+            // After animation, show Dark Matter Tree
+            setTimeout(() => {
+                setShowPrestigeAnimation(false);
+                setShowDarkMatterTree(true);
+            }, 2000);
+        }
+    }, [gameState, cakeLogic, upgradeSystem]);
 
     // Apply legacy multiplier to CpS
     const effectiveCps = cakeLogic.cps * gameState.legacyMultiplier;
@@ -232,6 +256,28 @@ function App() {
 
                 {/* Theme Toggle Icons */}
                 <div style={{ display: 'flex', gap: '8px', marginRight: '12px' }}>
+                    {/* Default Theme (Cupcake) - Deactivates any event */}
+                    <button
+                        id="theme-toggle-default"
+                        onClick={() => {
+                            useEventStore.setState({ isActive: false, config: null });
+                        }}
+                        style={{
+                            background: 'transparent',
+                            border: 'none',
+                            fontSize: '2rem',
+                            cursor: 'pointer',
+                            filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))',
+                            transition: 'transform 0.2s',
+                            lineHeight: 1,
+                            opacity: useEventStore.getState().isActive ? 0.5 : 1
+                        }}
+                        title="Default Theme (Disable Events)"
+                        aria-label="Default theme"
+                    >
+                        🧁
+                    </button>
+
                     {/* Seasonal Theme Toggle (Calendar-aware) */}
                     <button
                         id="theme-toggle-seasonal"
@@ -251,10 +297,11 @@ function App() {
                         style={{
                             background: 'transparent',
                             border: 'none',
-                            fontSize: '1.5rem',
+                            fontSize: '2rem',
                             cursor: 'pointer',
                             filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))',
-                            transition: 'transform 0.2s'
+                            transition: 'transform 0.2s',
+                            lineHeight: 1
                         }}
                         title="Toggle Seasonal Theme"
                         aria-label="Toggle seasonal theme"
@@ -284,20 +331,21 @@ function App() {
                         style={{
                             background: 'linear-gradient(135deg, #ff00ff, #00ff00)',
                             border: 'none',
-                            borderRadius: '4px',
-                            padding: '2px 6px',
-                            fontSize: '1rem',
+                            borderRadius: '8px',
+                            padding: '4px 8px',
+                            fontSize: '1.2rem',
                             fontWeight: 'bold',
                             color: '#000',
                             cursor: 'pointer',
                             fontFamily: "'Comic Sans MS', cursive",
                             filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))',
-                            transition: 'transform 0.2s'
+                            transition: 'transform 0.2s',
+                            lineHeight: 1
                         }}
                         title="Toggle Brain Rot Mode"
                         aria-label="Toggle brain rot theme"
                     >
-                        🫶
+                        67
                     </button>
                 </div>
             </div>
@@ -414,6 +462,81 @@ function App() {
                 isVisible={versionSplash.isVisible}
                 onClose={versionSplash.onClose}
             />
+
+            {/* Prestige Animation Overlay */}
+            {showPrestigeAnimation && (
+                <div
+                    className="prestige-overlay"
+                    style={{
+                        position: 'fixed',
+                        inset: 0,
+                        zIndex: 9999,
+                        background: 'radial-gradient(ellipse at center, #1a1a2e 0%, #000 100%)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        animation: 'prestige-flash 2s ease-out',
+                        color: '#fff'
+                    }}
+                >
+                    <div style={{ fontSize: '4rem', marginBottom: '20px', animation: 'pulse 0.5s infinite alternate' }}>🌌</div>
+                    <h1 style={{ fontSize: '2.5rem', textTransform: 'uppercase', letterSpacing: '8px', margin: 0 }}>THE BIG CRUNCH</h1>
+                    <p style={{ fontSize: '1.2rem', opacity: 0.7, marginTop: '10px' }}>The universe collapses... and rebirths anew.</p>
+                    <p style={{ fontSize: '1.5rem', color: '#f39c12', marginTop: '20px' }}>+{gameState.potentialDarkMatter} Dark Matter Earned!</p>
+                    <style>{`
+                        @keyframes prestige-flash {
+                            0% { opacity: 0; transform: scale(0.8); }
+                            20% { opacity: 1; transform: scale(1.1); background: radial-gradient(ellipse at center, #fff 0%, #1a1a2e 100%); }
+                            100% { opacity: 1; transform: scale(1); }
+                        }
+                    `}</style>
+                </div>
+            )}
+
+            {/* Dark Matter Tree Modal */}
+            {showDarkMatterTree && (
+                <div
+                    className="dark-matter-modal"
+                    style={{
+                        position: 'fixed',
+                        inset: 0,
+                        zIndex: 9998,
+                        background: 'rgba(0,0,0,0.95)',
+                        display: 'flex',
+                        flexDirection: 'column'
+                    }}
+                >
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 24px', borderBottom: '1px solid #333' }}>
+                        <h2 style={{ margin: 0, color: '#f39c12' }}>🌌 Dark Matter Tree</h2>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                            <span style={{ color: '#aaa' }}>Dark Matter: <strong style={{ color: '#f39c12' }}>{gameState.darkMatter}</strong></span>
+                            <button
+                                onClick={() => setShowDarkMatterTree(false)}
+                                style={{
+                                    padding: '8px 16px',
+                                    background: '#27ae60',
+                                    border: 'none',
+                                    borderRadius: '6px',
+                                    color: '#fff',
+                                    fontWeight: 'bold',
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                Continue Baking
+                            </button>
+                        </div>
+                    </div>
+                    <div style={{ flex: 1 }}>
+                        <DarkMatterTree
+                            darkMatter={gameState.darkMatter}
+                            darkUpgrades={gameState.darkUpgrades}
+                            onBuy={gameState.buyDarkUpgrade}
+                            totalGlobalMultiplier={gameState.legacyMultiplier}
+                        />
+                    </div>
+                </div>
+            )}
         </div >
     );
 }
