@@ -103,11 +103,20 @@ function App() {
         }
     });
 
+
+    // Combine generator config with owned counts for achievements
+    const combinedGenerators = React.useMemo(() => {
+        return cakeLogic.productionTiers.map(tier => ({
+            ...tier,
+            owned: cakeLogic.generators[tier.id] || 0
+        }));
+    }, [cakeLogic.productionTiers, cakeLogic.generators]);
+
     // Initialize Achievement System
     const achievementSystem = useAchievementSystem({
         totalBaked: gameState.stats.totalBaked,
         totalClicks: gameState.stats.totalClicks,
-        generators: cakeLogic.productionTiers
+        generators: combinedGenerators
     });
 
     // Initialize Version Splash

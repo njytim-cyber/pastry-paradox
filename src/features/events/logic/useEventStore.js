@@ -6,39 +6,41 @@ import { getActiveEventConfig } from '../../../data/event_config_schema';
  * Handles state for ANY active event (Christmas, Brain Rot, etc.)
  * THEMES ARE COSMETIC ONLY - no production multipliers
  */
-export const useEventStore = create((set, get) => ({
-    isActive: false,
-    config: null,
+import { persist } from 'zustand/middleware';
 
-    // --- Actions ---
+// ... (getActiveEventConfig import)
 
-    /**
-     * Initialize/switch to an event theme
-     * @param {string} [forcedEventId] - Event ID to activate
-     */
-    initEvent: (forcedEventId) => {
-        // Priority: forcedEventId > URL override > default config
-        const params = new URLSearchParams(window.location.search);
-        const urlOverrideId = params.get('event_override');
+export const useEventStore = create(
+    persist(
+        (set, get) => ({
+            isActive: false,
+            config: null,
 
-        // Determine which event ID to use
-        const eventIdToUse = forcedEventId || urlOverrideId || null;
+            // --- Actions ---
 
-        // Get config for the specified event (or default if null)
-        const config = getActiveEventConfig(eventIdToUse);
+            initEvent: (forcedEventId) => {
+                const params = new URLSearchParams(window.location.search);
+                const urlOverrideId = params.get('event_override');
+                const eventIdToUse = forcedEventId || urlOverrideId || null;
+                const config = getActiveEventConfig(eventIdToUse);
 
-        if (config && config.active) {
-            // Only log if switching to a different theme
-            if (!get().isActive || get().config?.eventId !== config.eventId) {
-                console.log(`🎨 Theme Activated: ${config.name}`);
-            }
-            set({ isActive: true, config: config });
-        } else {
-            console.log('Theme: Returning to default.');
-            set({ isActive: false, config: null });
+                if (config && config.active) {
+                    if (!get().isActive || get().config?.eventId !== config.eventId) {
+                        console.log(`🎨 Theme Activated: ${config.name}`);
+                    }
+                    set({ isActive: true, config: config });
+                } else {
+                    console.log('Theme: Returning to default.');
+                    set({ isActive: false, config: null });
+                }
+            },
+        }),
+        {
+            name: 'pastry-event-storage', // unique name
+            partialize: (state) => ({ isActive: state.isActive, config: state.config }), // persist only these
         }
-    },
-}));
+    )
+);
 
 // --- Consumable Hooks ---
 
