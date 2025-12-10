@@ -24,6 +24,26 @@ const NUMBER_SUFFIXES_WORD = [
 const MAX_OWNED = 4000; // Cap to prevent Math.pow overflow
 const MAX_BALANCE = 1e300; // Near Number.MAX_VALUE
 
+// Buff Type Mapping (DRY - single source of truth)
+const BUFF_TYPE_MAP = {
+    'production_multiplier': 'production',
+    'click_multiplier': 'click',
+    'discount': 'costScale',
+    'global_multiplier': 'global'
+};
+
+/**
+ * Get the tier (power of 1000) for a number
+ * @param {number} num - Number to analyze
+ * @returns {{tier: number, scaled: number}} Tier index and scaled value
+ */
+function getNumberTier(num) {
+    if (num < 1000) return { tier: 0, scaled: num };
+    const tier = Math.floor(Math.log10(Math.abs(num)) / 3);
+    const scaled = num / Math.pow(1000, tier);
+    return { tier, scaled };
+}
+
 /**
  * Load saved game state from localStorage
  */
@@ -70,18 +90,16 @@ export function calculatePrice(baseCost, owned) {
  */
 export function formatNumber(num) {
     if (num < 100) {
-        // Show 1 decimal place for small numbers, remove trailing .0
         return parseFloat(num.toFixed(1)).toString();
     }
     if (num < 1000) return Math.floor(num).toString();
 
-    const tier = Math.floor(Math.log10(Math.abs(num)) / 3);
+    const { tier, scaled } = getNumberTier(num);
 
     if (tier >= NUMBER_SUFFIXES_SHORT.length) {
         return num.toExponential(2);
     }
 
-    const scaled = num / Math.pow(1000, tier);
     return scaled.toFixed(scaled >= 100 ? 0 : scaled >= 10 ? 1 : 2) + NUMBER_SUFFIXES_SHORT[tier];
 }
 
@@ -93,14 +111,12 @@ export function formatNumber(num) {
 export function formatNumberWord(num) {
     if (num < 1000) return Math.floor(num).toLocaleString();
 
-    // Tier 1 = Thousand (10^3), Tier 2 = Million (10^6), etc.
-    const tier = Math.floor(Math.log10(Math.abs(num)) / 3);
+    const { tier, scaled } = getNumberTier(num);
 
     if (tier >= NUMBER_SUFFIXES_WORD.length) {
         return num.toExponential(2);
     }
 
-    const scaled = num / Math.pow(1000, tier);
     const formatted = scaled.toFixed(2).replace(/\.00$/, '').replace(/(\.[0-9])0$/, '$1');
     return formatted + NUMBER_SUFFIXES_WORD[tier];
 }
@@ -114,13 +130,12 @@ export function formatNumberWord(num) {
 export function formatNumberWordCompact(num) {
     if (num < 1000) return Math.floor(num).toLocaleString();
 
-    const tier = Math.floor(Math.log10(Math.abs(num)) / 3);
+    const { tier, scaled } = getNumberTier(num);
 
     if (tier >= NUMBER_SUFFIXES_WORD.length) {
         return num.toExponential(0);
     }
 
-    const scaled = num / Math.pow(1000, tier);
     const formatted = Math.round(scaled).toString();
     const suffix = NUMBER_SUFFIXES_WORD[tier].toLowerCase();
 
@@ -162,13 +177,12 @@ export function calculateBulkPrice(baseCost, owned, quantity) {
 export function formatNumberParts(num) {
     if (num < 1000) return { value: Math.floor(num).toLocaleString(), suffix: '' };
 
-    const tier = Math.floor(Math.log10(Math.abs(num)) / 3);
+    const { tier, scaled } = getNumberTier(num);
 
     if (tier >= NUMBER_SUFFIXES_WORD.length) {
         return { value: num.toExponential(2), suffix: '' };
     }
 
-    const scaled = num / Math.pow(1000, tier);
     const formatted = scaled.toFixed(2).replace(/\.00$/, '').replace(/(\.[0-9])0$/, '$1');
 
     return { value: formatted, suffix: NUMBER_SUFFIXES_WORD[tier] };
@@ -240,13 +254,7 @@ export function useCakeLogic(options = {}) {
 
     // Buff Application Helper
     const applyBuff = useCallback((type, value, durationSeconds) => {
-        // Map buff type to modifier key
-        let key = '';
-        if (type === 'production_multiplier') key = 'production';
-        else if (type === 'click_multiplier') key = 'click';
-        else if (type === 'discount') key = 'costScale'; // e.g. 0.5 discount = 0.5 scale
-        else if (type === 'global_multiplier') key = 'global';
-
+        const key = BUFF_TYPE_MAP[type];
         if (!key) return;
 
         // Apply modifier
@@ -281,9 +289,6 @@ export function useCakeLogic(options = {}) {
     // Click particles for animation
     const [particles, setParticles] = useState([]);
     const particleIdRef = useRef(0);
-
-    // Calculate CpS (Cakes Per Second)
-
 
     // Game tick - accumulate CpS
     useEffect(() => {
@@ -443,7 +448,7 @@ export function useCakeLogic(options = {}) {
         };
     }, []); // Empty dependency array ensures this only runs once on mount/unmount
 
-    // Sell a generator (single or bulk)
+    // Sell a generator (single or bulk) - O(1) using geometric series
     const sellGenerator = useCallback((tierId, quantity = 1) => {
         // Validation: Positive integers only
         if (!Number.isInteger(quantity) || quantity <= 0) return false;
@@ -452,19 +457,18 @@ export function useCakeLogic(options = {}) {
         if (!tier) return false;
 
         const owned = generators[tierId] || 0;
-        if (owned < quantity) return false; // Strict sell rule? Or sell max? Strict for now.
+        if (owned < quantity) return false;
 
-        let totalRefund = 0;
         const refundRate = globalConfig.sellRefundRate || 0.25;
+        const r = COST_MULTIPLIER;
 
-        // Calculate total refund iteratively (selling from highest owned down)
-        for (let i = 0; i < quantity; i++) {
-            // Price of the Nth item (where N = owned - i)
-            // If owned=1, we are selling the 1st item (index 0). cost = base * 1.15^0
-            const itemIndex = owned - 1 - i;
-            const originalCost = Math.floor(tier.baseCost * Math.pow(COST_MULTIPLIER, itemIndex));
-            totalRefund += Math.floor(originalCost * refundRate);
-        }
+        // O(1) Sell Refund Calculation using Geometric Series
+        // Sum of costs from index (owned - quantity) to (owned - 1)
+        // = baseCost * r^(owned-quantity) * (r^quantity - 1) / (r - 1)
+        const startIndex = owned - quantity;
+        const firstTerm = tier.baseCost * Math.pow(r, startIndex);
+        const totalOriginalCost = firstTerm * (Math.pow(r, quantity) - 1) / (r - 1);
+        const totalRefund = Math.floor(totalOriginalCost * refundRate);
 
         setBalance(prev => prev + totalRefund);
         setGenerators(prev => ({

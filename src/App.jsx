@@ -13,6 +13,7 @@ import { useMobileNav } from '@hooks/useMobileNav';
 import { useCakeLogic } from '@features/cake/logic/useCakeLogic';
 import { useUpgradeSystem } from '@features/upgrades/logic/useUpgradeSystem';
 import { useEventSpawner } from '@features/events/logic/useEventSpawner';
+import { useEventStore } from '@features/events/logic/useEventStore';
 import { useGameState } from '@features/game/logic/useGameState';
 
 // Feature Views
@@ -177,9 +178,9 @@ function App() {
             <StatsPanel
                 stats={gameState.stats}
                 cps={effectiveCps}
-                legacyPoints={gameState.legacyPoints}
+                legacyPoints={gameState.darkMatter}
                 legacyMultiplier={gameState.legacyMultiplier}
-                potentialLegacyPoints={gameState.potentialLegacyPoints}
+                potentialLegacyPoints={gameState.potentialDarkMatter}
                 canPrestige={gameState.canPrestige}
                 onPrestige={handlePrestige}
                 achievements={achievementSystem.allAchievements}
@@ -220,14 +221,85 @@ function App() {
 
     return (
         <div className="app-container">
-            {/* Top Flavor Text Banner */}
-            <div className="flavor-banner">
+            {/* Top Flavor Text Banner with Theme Toggles */}
+            <div className="flavor-banner" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <FlavorText
                     cps={effectiveCps}
                     totalBaked={gameState.stats.totalBaked}
                     isGoldenActive={isBuffActive}
                     has67Pattern={upgradeSystem.has67Pattern}
                 />
+
+                {/* Theme Toggle Icons */}
+                <div style={{ display: 'flex', gap: '8px', marginRight: '12px' }}>
+                    {/* Seasonal Theme Toggle (Calendar-aware) */}
+                    <button
+                        id="theme-toggle-seasonal"
+                        onClick={() => {
+                            // Determine seasonal event ID based on current month
+                            const month = new Date().getMonth();
+                            let seasonalEventId = 'event_christmas_2025'; // Dec-Jan default
+                            if (month >= 9 && month <= 10) seasonalEventId = 'event_halloween_2025'; // Oct-Nov (placeholder)
+                            // Toggle: if already active, deactivate; else activate
+                            const current = useEventStore.getState().config?.eventId;
+                            if (current === seasonalEventId) {
+                                useEventStore.setState({ isActive: false, config: null });
+                            } else {
+                                useEventStore.getState().initEvent(seasonalEventId);
+                            }
+                        }}
+                        style={{
+                            background: 'transparent',
+                            border: 'none',
+                            fontSize: '1.5rem',
+                            cursor: 'pointer',
+                            filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))',
+                            transition: 'transform 0.2s'
+                        }}
+                        title="Toggle Seasonal Theme"
+                        aria-label="Toggle seasonal theme"
+                    >
+                        {/* Calendar-aware icon: Christmas Dec-Jan, Halloween Oct-Nov, etc. */}
+                        {(() => {
+                            const month = new Date().getMonth();
+                            if (month === 11 || month === 0) return '🎄'; // Dec-Jan
+                            if (month >= 9 && month <= 10) return '🎃'; // Oct-Nov
+                            if (month >= 1 && month <= 2) return '💘'; // Feb-Mar (Valentine)
+                            if (month >= 3 && month <= 4) return '🐰'; // Apr-May (Easter)
+                            return '🌞'; // Default summer
+                        })()}
+                    </button>
+
+                    {/* Brain Rot Toggle (67) */}
+                    <button
+                        id="theme-toggle-brainrot"
+                        onClick={() => {
+                            const current = useEventStore.getState().config?.eventId;
+                            if (current === 'event_brain_rot_v1') {
+                                useEventStore.setState({ isActive: false, config: null });
+                            } else {
+                                useEventStore.getState().initEvent('event_brain_rot_v1');
+                            }
+                        }}
+                        style={{
+                            background: 'linear-gradient(135deg, #ff00ff, #00ff00)',
+                            border: 'none',
+                            borderRadius: '4px',
+                            padding: '2px 6px',
+                            fontSize: '1rem',
+                            fontWeight: 'bold',
+                            color: '#000',
+                            cursor: 'pointer',
+                            fontFamily: "'Comic Sans MS', cursive",
+                            filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))',
+                            transition: 'transform 0.2s'
+                        }}
+                        title="Toggle Brain Rot Mode"
+                        aria-label="Toggle brain rot theme"
+                    >
+                        🫶
+                    </button>
+                </div>
             </div>
 
             {/* Mobile Split Viewport Layout */}

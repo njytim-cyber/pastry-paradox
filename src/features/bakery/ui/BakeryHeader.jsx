@@ -14,6 +14,7 @@ export function BakeryHeader({
     balance = 0,
     cps = 0,
     currencyName = "Delicious Cakes",
+    darkMatter = 0, // NEW PROP
 }) {
     const [isEditing, setIsEditing] = useState(false);
     const [editName, setEditName] = useState(bakeryName);
@@ -94,6 +95,23 @@ export function BakeryHeader({
                 <span className="bakery-currency-name">{currencyName}</span>
                 {cps > 0 && (
                     <span className="bakery-cps">per second: {formatNumberWord(cps)}</span>
+                )}
+
+                {/* Dark Matter Display */}
+                {darkMatter > 0 && (
+                    <div className="dark-matter-display" style={{
+                        marginTop: '8px',
+                        color: '#b3b3b3',
+                        fontSize: '0.9rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '6px'
+                    }}>
+                        <span className="dm-icon">🌌</span>
+                        <span className="dm-amount">{formatNumberWord(darkMatter)}</span>
+                        <span className="dm-label">Dark Matter</span>
+                    </div>
                 )}
             </div>
         </div>

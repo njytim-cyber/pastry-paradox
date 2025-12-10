@@ -5,6 +5,7 @@
 import React, { useState, useEffect } from 'react';
 import { formatNumber } from '../../cake/logic/useCakeLogic';
 import { Tooltip } from '../../shared/ui/Tooltip';
+import { BigCrunchButton } from '../../bakery/ui/BigCrunchButton';
 
 // Import all icons from assets folder
 const iconAssets = import.meta.glob('@assets/icons-optimized/*.{webp,png,svg}', { eager: true, import: 'default' });
@@ -253,17 +254,16 @@ export function StatsPanel({
                             </span>
                         ) : (
                             <span className="prestige-requirement">
-                                Bake 1 trillion cakes to collapse the universe
+                                Bake 1 trillion cakes to unlock the end.
                             </span>
                         )}
                     </div>
-                    <button
-                        className={`btn btn--prestige ${canPrestige ? '' : 'btn--disabled'}`}
-                        onClick={onPrestige}
-                        disabled={!canPrestige}
-                    >
-                        💥 The Big Crunch
-                    </button>
+                    {/* Check for unlock upgrade */}
+                    <BigCrunchButton
+                        onPrestige={onPrestige}
+                        unlocked={upgrades.some(u => u.id === 'the_end_is_nigh' && u.isPurchased)}
+                        canPrestige={canPrestige}
+                    />
                 </div>
             )}
         </div>

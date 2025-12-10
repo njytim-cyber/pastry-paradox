@@ -1,0 +1,194 @@
+{
+    "activeEventId": "event_brain_rot_v1",
+    "events": {
+        "event_brain_rot_v1": {
+            "name": "Brain Rot 2025",
+            "theme": {
+                "fontFamily": "'Comic Sans MS', 'Impact', fantasy",
+                "primaryColor": "#FF00FF",
+                "secondaryColor": "#00FF00",
+                "bgFilter": "contrast(140%) saturate(200%) hue-rotate(15deg)"
+            },
+            "localization": {
+                "currencyName": "Dopamine Hits",
+                "currencyPerSec": "Rot/sec",
+                "resetBtnLabel": "LOBOTOMIZE (Prestige)"
+            },
+            "mechanics": {
+                "doomScrollDecayRate": 0.05,
+                "doomScrollRecovery": 0.15
+            },
+            "overrides": {
+                "buildings": [
+                    {
+                        "originalId": "apprentice_baker",
+                        "newName": "Auto-Tapper",
+                        "newDescription": "Automated engagement farming script.",
+                        "newIconUrl": "/assets/events/brain_rot/icons/cursor_glitch.gif",
+                        "productionModifier": 1.0
+                    },
+                    {
+                        "originalId": "grandmas_secret_recipe",
+                        "newName": "Trad Wife Baker",
+                        "newDescription": "Baking sourdough for TikTok clout.",
+                        "newIconUrl": "/assets/events/brain_rot/icons/trad_wife.png",
+                        "productionModifier": 1.2
+                    },
+                    {
+                        "originalId": "convection_oven",
+                        "newName": "Content Farm",
+                        "newDescription": "Generates 1000 AI videos per minute.",
+                        "newIconUrl": "/assets/events/brain_rot/icons/server_rack.png",
+                        "productionModifier": 1.5
+                    },
+                    {
+                        "originalId": "professional_mixer",
+                        "newName": "Crypto Mine",
+                        "newDescription": "Solving math problems for rug pulls.",
+                        "newIconUrl": "/assets/events/brain_rot/icons/crypto_bro.png",
+                        "productionModifier": 1.5
+                    },
+                    {
+                        "originalId": "cake_factory",
+                        "newName": "Hype House",
+                        "newDescription": "Mass producing identical dance challenges.",
+                        "newIconUrl": "/assets/events/brain_rot/icons/hype_house.png",
+                        "productionModifier": 2.0
+                    }
+                ],
+                "mainClickable": {
+                    "newIconUrl": "/assets/events/brain_rot/icons/brain_rot_cake.png",
+                    "scale": 1.1,
+                    "spinSpeed": 0.5
+                },
+                "upgrades": [
+                    {
+                        "originalId": "click_mastery",
+                        "newName": "RGB Gaming Mouse",
+                        "effectDescription": "Clicking is 1% more efficient due to LEDs.",
+                        "triggerSoundId": "sfx_keyboard_clack"
+                    },
+                    {
+                        "originalId": "grandmas_secret_recipe_upgrade_1",
+                        "newName": "Energy Drink Lab",
+                        "newDescription": "Turns sleep into productivity.",
+                        "productionModifier": 1.5
+                    },
+                    {
+                        "originalId": "convection_oven_upgrade_1",
+                        "newName": "Infiniscroll Portal",
+                        "newDescription": "A gateway to lost hours.",
+                        "productionModifier": 1.7
+                    },
+                    {
+                        "originalId": "time_warp_oven",
+                        "newName": "Procrastination Station",
+                        "newDescription": "Time travel forward by wasting it.",
+                        "productionModifier": 2.0
+                    }
+                ]
+            },
+            "audio": {
+                "bgMusic": {
+                    "src": "/assets/events/brain_rot/sfx/subway_surfers_trap_remix.mp3",
+                    "volume": 0.4,
+                    "loop": true
+                },
+                "cues": [
+                    {
+                        "id": "sfx_vine_boom",
+                        "src": "/assets/events/brain_rot/sfx/boom.mp3",
+                        "volume": 1.0,
+                        "pitchVar": 0.0,
+                        "overlap": true
+                    },
+                    {
+                        "id": "sfx_bruh",
+                        "src": "/assets/events/brain_rot/sfx/bruh.wav",
+                        "volume": 0.8,
+                        "pitchVar": 0.2,
+                        "overlap": true
+                    }
+                ]
+            }
+        },
+        "event_christmas_2025": {
+            "name": "Pastry Paradox: Holiday Special",
+            "theme": {
+                "fontFamily": "'Mountains of Christmas', cursive",
+                "primaryColor": "#D42426",
+                "secondaryColor": "#165B33",
+                "bgFilter": "brightness(1.1) contrast(1.1)"
+            },
+            "localization": {
+                "currencyName": "Cookies",
+                "currencyPerSec": "Joy/sec",
+                "resetBtnLabel": "WRAP GIFTS (Prestige)"
+            },
+            "mechanics": {
+                "holidayCheerDecay": 0.02,
+                "holidayCheerRecovery": 0.1
+            },
+            "overrides": {
+                "buildings": [
+                    {
+                        "originalId": "apprentice_baker",
+                        "newName": "Candy Cane",
+                        "newDescription": "Sweet stick for tapping joy.",
+                        "newIconUrl": "/assets/events/christmas/icons/candy_cane.png",
+                        "productionModifier": 1.1
+                    },
+                    {
+                        "originalId": "grandmas_secret_recipe",
+                        "newName": "Mrs. Claus",
+                        "newDescription": "Baking cookies with North Pole magic.",
+                        "newIconUrl": "/assets/events/christmas/icons/mrs_claus.png",
+                        "productionModifier": 1.5
+                    },
+                    {
+                        "originalId": "convection_oven",
+                        "newName": "Reindeer Stable",
+                        "newDescription": "Where the magic flight begins.",
+                        "newIconUrl": "/assets/events/christmas/icons/reindeer.png",
+                        "productionModifier": 2.0
+                    },
+                    {
+                        "originalId": "professional_mixer",
+                        "newName": "Coal Mine",
+                        "newDescription": "Digging for the naughty list.",
+                        "newIconUrl": "/assets/events/christmas/icons/coal.png",
+                        "productionModifier": 1.2
+                    },
+                    {
+                        "originalId": "cake_factory",
+                        "newName": "Toy Workshop",
+                        "newDescription": "Elves working overtime.",
+                        "newIconUrl": "/assets/events/christmas/icons/workshop.png",
+                        "productionModifier": 2.5
+                    }
+                ],
+                "mainClickable": {
+                    "newIconUrl": "/assets/events/christmas/icons/gingerbread_house.png",
+                    "scale": 1.2,
+                    "spinSpeed": 0.2
+                },
+                "upgrades": [
+                    {
+                        "originalId": "click_mastery",
+                        "newName": "Mistletoe Mouse",
+                        "effectDescription": "Merry clicking!",
+                        "triggerSoundId": "sfx_jingle"
+                    }
+                ]
+            },
+            "audio": {
+                "bgMusic": {
+                    "src": "/assets/events/christmas/sfx/jingle_bells_lofi.mp3",
+                    "volume": 0.3,
+                    "loop": true
+                },
+                "cues": []
+            }
+        }
+    }
+}

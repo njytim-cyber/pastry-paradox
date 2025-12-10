@@ -1,6 +1,6 @@
 
 import { describe, it, expect } from 'vitest';
-import balanceData from '@data/balance.json';
+
 
 const COST_MULTIPLIER = 1.15;
 

@@ -8,7 +8,7 @@
  * - Show one mystery tier (???)
  * - Hide all other tiers
  */
-import React from 'react';
+
 import { formatNumber, formatNumberWordCompact } from '../../cake/logic/useCakeLogic';
 import { Tooltip } from '../../shared/ui/Tooltip';
 

@@ -1,6 +1,6 @@
 # Component Glossary
 
-> Auto-generated on 2025-12-09T22:56:55.742Z
+> Auto-generated on 2025-12-09T23:14:50.129Z
 
 ## Components
 

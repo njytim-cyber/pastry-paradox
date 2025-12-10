@@ -1,6 +1,6 @@
 # Balance Schema
 
-> Auto-generated on 2025-12-09T22:56:55.756Z
+> Auto-generated on 2025-12-09T23:14:50.143Z
 > Source: `src/data/balance.json`
 
 ## Version

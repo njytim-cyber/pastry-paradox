@@ -1,0 +1,23 @@
+
+> pastry-paradox@1.4.0 lint
+> eslint .
+
+
+C:\Users\njyti\Desktop\Google-Antigravity\pastry-paradox\src\features\audio\logic\useAudioSystem.test.js
+  6:48  warning  'afterEach' is defined but never used  no-unused-vars
+
+C:\Users\njyti\Desktop\Google-Antigravity\pastry-paradox\src\features\cake\logic\benchmark.test.js
+  3:8  warning  'balanceData' is defined but never used  no-unused-vars
+
+C:\Users\njyti\Desktop\Google-Antigravity\pastry-paradox\src\features\cake\logic\useCakeLogic.js
+  398:11  warning  'getGeneratorInfo' is assigned a value but never used  no-unused-vars
+
+C:\Users\njyti\Desktop\Google-Antigravity\pastry-paradox\src\features\game\logic\useGameState.test.js
+  2:32  warning  'beforeEach' is defined but never used  no-unused-vars
+  3:22  warning  'act' is defined but never used         no-unused-vars
+
+C:\Users\njyti\Desktop\Google-Antigravity\pastry-paradox\src\hooks\useMobileNav.test.js
+  4:44  warning  'afterEach' is defined but never used  no-unused-vars
+
+Γ£û 6 problems (0 errors, 6 warnings)
+

@@ -113,7 +113,7 @@ ${balanceData.productionTiers.map(tier =>
 ## Upgrades
 Total upgrades: ${Object.keys(balanceData.upgrades).length}
 
-${Object.entries(balanceData.upgrades).map(([key, upgrade]) => {
+${Object.entries(balanceData.upgrades).map(([_key, upgrade]) => {
         const effectType = upgrade.effect.type;
         const effectValue = upgrade.effect.value;
         const effectTier = upgrade.effect.tier !== undefined ? ` (Tier ${upgrade.effect.tier})` : '';
@@ -125,7 +125,7 @@ ${Object.entries(balanceData.upgrades).map(([key, upgrade]) => {
     }).join('\n\n')}
 
 ## Events
-${Object.entries(balanceData.events).map(([key, event]) => `### ${event.name}
+${Object.entries(balanceData.events).map(([_key, event]) => `### ${event.name}
 - **ID**: \`${event.id}\`
 - **Spawn Interval**: ${event.spawnIntervalMin}s - ${event.spawnIntervalMax}s
 - **Duration**: ${event.duration}s

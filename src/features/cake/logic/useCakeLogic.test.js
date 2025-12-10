@@ -102,7 +102,6 @@ describe('useCakeLogic', () => {
 
             // Verify canAfford also respects discount
             // Give 8 balance
-            const initialBalance = result.current.balance;
             act(() => {
                 result.current.grantResources(0); // Dummy acting
                 // Hack to set balance? No setter exposed.
