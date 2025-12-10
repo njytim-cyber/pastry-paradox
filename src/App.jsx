@@ -70,6 +70,12 @@ function App() {
         setCpsMultiplier: cakeLogic.setCpsMultiplier,
     });
 
+    // CRITICAL FIX: Sync legacy multiplier from prestige to cakeLogic's globalMultiplier
+    // This ensures the game tick uses the same multiplier as the display
+    React.useEffect(() => {
+        cakeLogic.setGlobalMultiplier(gameState.legacyMultiplier);
+    }, [gameState.legacyMultiplier, cakeLogic.setGlobalMultiplier]);
+
     // Notification State for Events
     const [currentBuffInfo, setCurrentBuffInfo] = React.useState(null);
     const [instantNotification, setInstantNotification] = React.useState(null);
@@ -163,8 +169,8 @@ function App() {
         }
     }, [gameState, cakeLogic, upgradeSystem]);
 
-    // Apply legacy multiplier to CpS
-    const effectiveCps = cakeLogic.cps * gameState.legacyMultiplier;
+    // CpS now includes legacy multiplier via globalMultiplier sync above
+    const effectiveCps = cakeLogic.cps;
 
     // Render bakery pane (shared between mobile/desktop)
     const renderBakeryPane = () => (

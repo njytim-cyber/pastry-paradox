@@ -1,5 +1,5 @@
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useMemo, useCallback } from 'react';
 import balanceData from '@data/balance.json';
 import { formatNumberWord } from '@features/cake/logic/useCakeLogic';
 
@@ -27,19 +27,55 @@ export function DarkMatterTree({ darkMatter, darkUpgrades, onBuy, totalGlobalMul
     const [pan, setPan] = useState({ x: 0, y: 0 });
     const [isDragging, setIsDragging] = useState(false);
     const [lastPos, setLastPos] = useState({ x: 0, y: 0 });
-    const [scale, setScale] = useState(1);
-    const [selectedNode, setSelectedNode] = useState(null); // ID of selected node for details
+    const [scale, setScale] = useState(0.6); // Start zoomed out to see more
+    const [selectedNode, setSelectedNode] = useState(null);
+
+    // Calculate tree bounds once
+    const nodes = Object.values(darkMatterUpgrades || {});
+    const treeBounds = useMemo(() => {
+        if (nodes.length === 0) return { minX: 0, maxX: 0, minY: 0, maxY: 0, width: 0, height: 0 };
+        const xs = nodes.map(n => n.position.x);
+        const ys = nodes.map(n => n.position.y);
+        const minX = Math.min(...xs) - NODE_SIZE;
+        const maxX = Math.max(...xs) + NODE_SIZE;
+        const minY = Math.min(...ys) - NODE_SIZE;
+        const maxY = Math.max(...ys) + NODE_SIZE;
+        return { minX, maxX, minY, maxY, width: maxX - minX, height: maxY - minY };
+    }, [nodes]);
+
+    // Auto-fit to show all nodes on mount
+    const fitToView = useCallback(() => {
+        if (!containerRef.current) return;
+        const container = containerRef.current;
+        const { offsetWidth, offsetHeight } = container;
+        const padding = 100;
+
+        // Calculate scale to fit
+        const scaleX = (offsetWidth - padding * 2) / treeBounds.width;
+        const scaleY = (offsetHeight - padding * 2) / treeBounds.height;
+        const fitScale = Math.min(scaleX, scaleY, 1); // Don't zoom in past 1x
+
+        // Center the tree
+        const centerX = (treeBounds.minX + treeBounds.maxX) / 2;
+        const centerY = (treeBounds.minY + treeBounds.maxY) / 2;
+
+        setScale(Math.max(0.25, Math.min(fitScale, 1)));
+        setPan({
+            x: offsetWidth / 2 - centerX * fitScale,
+            y: offsetHeight / 2 - centerY * fitScale
+        });
+    }, [treeBounds]);
 
     // Center the view on mount
     useEffect(() => {
-        if (containerRef.current) {
-            const { offsetWidth, offsetHeight } = containerRef.current;
-            setPan({ x: offsetWidth / 2, y: offsetHeight / 2 });
-        }
-    }, []);
+        // Small delay to ensure container is measured
+        const timer = setTimeout(fitToView, 100);
+        return () => clearTimeout(timer);
+    }, [fitToView]);
 
     // Handling Pan
     const handlePointerDown = (e) => {
+        if (e.target.closest('.zoom-controls, .node-details-panel')) return; // Don't drag from UI elements
         setIsDragging(true);
         setLastPos({ x: e.clientX, y: e.clientY });
     };
@@ -57,14 +93,16 @@ export function DarkMatterTree({ darkMatter, darkUpgrades, onBuy, totalGlobalMul
     };
 
     const handleWheel = (e) => {
-        // Simple zoom
         e.preventDefault();
         const delta = e.deltaY * -0.001;
-        setScale(prev => Math.min(Math.max(0.5, prev + delta), 2));
+        setScale(prev => Math.min(Math.max(0.25, prev + delta), 3)); // Extended range
     };
 
-    // Calculate connections
-    const nodes = Object.values(darkMatterUpgrades || {});
+    // Zoom controls
+    const zoomIn = () => setScale(prev => Math.min(prev * 1.3, 3));
+    const zoomOut = () => setScale(prev => Math.max(prev / 1.3, 0.25));
+
+    // Calculate connections (nodes already defined above)
     const connections = nodes
         .filter(n => n.parent)
         .map(n => {
@@ -250,6 +288,57 @@ export function DarkMatterTree({ darkMatter, darkUpgrades, onBuy, totalGlobalMul
                     </div>
                 </div>
             )}
+
+            {/* Zoom Controls */}
+            <div className="zoom-controls" style={{
+                position: 'absolute',
+                bottom: selectedNode ? '140px' : '20px',
+                right: '10px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4px',
+                zIndex: 15
+            }}>
+                <button
+                    onClick={zoomIn}
+                    style={{
+                        width: '36px', height: '36px',
+                        background: 'rgba(50, 50, 50, 0.9)',
+                        border: '1px solid #555',
+                        borderRadius: '6px',
+                        color: '#fff',
+                        fontSize: '1.2rem',
+                        cursor: 'pointer'
+                    }}
+                    title="Zoom In"
+                >+</button>
+                <button
+                    onClick={zoomOut}
+                    style={{
+                        width: '36px', height: '36px',
+                        background: 'rgba(50, 50, 50, 0.9)',
+                        border: '1px solid #555',
+                        borderRadius: '6px',
+                        color: '#fff',
+                        fontSize: '1.2rem',
+                        cursor: 'pointer'
+                    }}
+                    title="Zoom Out"
+                >−</button>
+                <button
+                    onClick={fitToView}
+                    style={{
+                        width: '36px', height: '36px',
+                        background: 'rgba(50, 50, 50, 0.9)',
+                        border: '1px solid #555',
+                        borderRadius: '6px',
+                        color: '#fff',
+                        fontSize: '0.7rem',
+                        cursor: 'pointer'
+                    }}
+                    title="Fit All Nodes"
+                >FIT</button>
+            </div>
 
             {/* Total Multiplier Badge */}
             <div style={{ position: 'absolute', top: 10, right: 10, background: 'rgba(0,0,0,0.6)', padding: '4px 8px', borderRadius: '4px', color: '#aaa', fontSize: '0.8rem' }}>
