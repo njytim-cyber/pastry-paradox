@@ -1,13 +1,19 @@
 
-import { describe, it, expect, beforeEach } from 'vitest';
-import { renderHook, act } from '@testing-library/react';
+import { describe, it, expect } from 'vitest'; // beforeEach
+import { renderHook } from '@testing-library/react'; // act
 import { useGameState } from './useGameState';
 
 describe('useGameState', () => {
+    // beforeEach(() => {
+    //     // Setup
+    // });
     it('initializes with default state', () => {
         const { result } = renderHook(() => useGameState());
         expect(result.current.bakeryName).toBe('Your Patisserie');
         expect(result.current.stats.totalBaked).toBe(0);
+        expect(result.current.bakeryName).toBe('Your Patisserie');
+        expect(result.current.stats.totalBaked).toBe(0);
+        expect(result.current.darkMatter).toBe(0);
         expect(result.current.shopMode).toBe('buy');
     });
 
