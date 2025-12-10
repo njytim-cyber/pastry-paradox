@@ -289,7 +289,7 @@ export function StorePanel({
                                     </div>
                                     {tier.baseCps > 0 && (
                                         <div style={{ fontSize: '0.8rem', marginTop: '4px', color: 'var(--ink-secondary)' }}>
-                                            Total: {formatNumberWordCompact(tier.baseCps * owned)} CpS
+                                            Total: {formatNumberWordCompact(info.contribution || 0)} CpS
                                         </div>
                                     )}
                                 </>
